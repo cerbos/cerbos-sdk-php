@@ -1,0 +1,10 @@
+composer.lock
+composer.phar
+vendor/*
+
+# Editor files
+.vscode
+.idea
+
+# macOS files
+.DS_Store

@@ -1,0 +1,20 @@
+{
+  "name": "cerbos/cerbos-sdk-php",
+  "homepage": "https://github.com/cerbos/cerbos-sdk-php",
+  "description": "PHP SDK for interacting with the Cerbos PDP",
+  "keywords": ["cerbos","pdp"],
+  "type": "library",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Cerbos",
+      "homepage": "https://cerbos.dev"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/cerbos/cerbos-sdk-php/issues"
+  },
+  "require": {
+    "php": "^7.4 || ^8.0"
+  }
+}
