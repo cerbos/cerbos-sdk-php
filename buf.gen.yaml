@@ -1,9 +1,0 @@
-version: v1
-managed:
-  enabled: false
-plugins:
-  - remote: buf.build/protocolbuffers/plugins/php:v21.1.0-1
-    out: src
-
-  - remote: buf.build/grpc/plugins/php
-    out: src
