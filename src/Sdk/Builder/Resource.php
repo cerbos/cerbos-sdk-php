@@ -21,7 +21,7 @@ class Resource
      * @param string $id
      * @return Resource
      */
-    public static function newInstance(string $id) : Resource {
+    public static function newInstance(string $id): Resource {
         return new Resource($id);
     }
 
@@ -29,7 +29,7 @@ class Resource
      * @param string $kind
      * @return Resource
      */
-    public function withKind(string $kind) : Resource {
+    public function withKind(string $kind): Resource {
         $this->resource->setKind($kind);
         return $this;
     }
@@ -38,7 +38,7 @@ class Resource
      * @param string $policyVersion
      * @return Resource
      */
-    public function withPolicyVersion(string $policyVersion) : Resource {
+    public function withPolicyVersion(string $policyVersion): Resource {
         $this->resource->setPolicyVersion($policyVersion);
         return $this;
     }
@@ -48,7 +48,7 @@ class Resource
      * @param string $value
      * @return $this
      */
-    public function withAttribute(string $key, string $value) : Resource {
+    public function withAttribute(string $key, string $value): Resource {
         $a = $this->resource->getAttributes();
         $a[$key] = $value;
         $this->resource->setAttributes($a);
@@ -59,7 +59,7 @@ class Resource
      * @param array $attributes dictionary of string key and values
      * @return $this
      */
-    public function withAttributes(array $attributes) : Resource {
+    public function withAttributes(array $attributes): Resource {
         $a = $this->resource->getAttributes();
         $a[] = $attributes;
         $this->resource->setAttributes($a);
@@ -70,7 +70,7 @@ class Resource
      * @param string $scope
      * @return $this
      */
-    public function withScope(string $scope) : Resource {
+    public function withScope(string $scope): Resource {
         $this->resource->setScope($scope);
         return $this;
     }
@@ -78,7 +78,7 @@ class Resource
     /**
      * @return \Cerbos\Api\V1\Engine\Resource
      */
-    public function toResource() : \Cerbos\Api\V1\Engine\Resource {
+    public function toResource(): \Cerbos\Api\V1\Engine\Resource {
         return $this->resource;
     }
 }

@@ -21,7 +21,7 @@ class Principal
      * @param string $id
      * @return Principal
      */
-    public static function newInstance(string $id) : Principal {
+    public static function newInstance(string $id): Principal {
         return new Principal($id);
     }
 
@@ -29,7 +29,7 @@ class Principal
      * @param string $policyVersion
      * @return $this
      */
-    public function withPolicyVersion(string $policyVersion) : Principal {
+    public function withPolicyVersion(string $policyVersion): Principal {
         $this->principal->setPolicyVersion($policyVersion);
         return $this;
     }
@@ -38,7 +38,7 @@ class Principal
      * @param string $role
      * @return $this
      */
-    public function withRole(string $role) : Principal {
+    public function withRole(string $role): Principal {
         $r = $this->principal->getRoles();
         $r[] = $role;
         $this->principal->setRoles($r);
@@ -49,7 +49,7 @@ class Principal
      * @param array $roles
      * @return $this
      */
-    public function withRoles(array $roles) : Principal {
+    public function withRoles(array $roles): Principal {
         $r = $this->principal->getRoles();
         $r[] = $roles;
         $this->principal->setRoles($r);
@@ -61,7 +61,7 @@ class Principal
      * @param string $value
      * @return $this
      */
-    public function withAttribute(string $key, string $value) : Principal {
+    public function withAttribute(string $key, string $value): Principal {
         $a = $this->principal->getAttributes();
         $a[$key] = $value;
         $this->principal->setAttributes($a);
@@ -72,7 +72,7 @@ class Principal
      * @param array $attributes dictionary of string key and values
      * @return $this
      */
-    public function withAttributes(array $attributes) : Principal {
+    public function withAttributes(array $attributes): Principal {
         $a = $this->principal->getAttributes();
         $a[] = $attributes;
         $this->principal->setAttributes($a);
@@ -83,7 +83,7 @@ class Principal
      * @param string $scope
      * @return $this
      */
-    public function withScope(string $scope) : Principal {
+    public function withScope(string $scope): Principal {
         $this->principal->setScope($scope);
         return $this;
     }
@@ -91,7 +91,7 @@ class Principal
     /**
      * @return \Cerbos\Api\V1\Engine\Principal
      */
-    public function toPrincipal() : \Cerbos\Api\V1\Engine\Principal {
+    public function toPrincipal(): \Cerbos\Api\V1\Engine\Principal {
         return $this->principal;
     }
 }

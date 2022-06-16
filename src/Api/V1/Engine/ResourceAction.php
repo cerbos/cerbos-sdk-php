@@ -85,7 +85,7 @@ class ResourceAction
      * @param array $attributes dictionary of string key and values
      * @return void
      */
-    public function setAttributes(array $attributes) : void {
+    public function setAttributes(array $attributes): void {
         $a = $this->resource->getAttributes();
         $a[] = $attributes;
         $this->resource->setAttributes($a);
