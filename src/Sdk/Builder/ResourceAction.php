@@ -93,7 +93,7 @@ class ResourceAction
     }
 
     /**
-     * @param array $actions
+     * @param array $actions array of strings
      * @return $this
      */
     public function withActions(array $actions): ResourceAction {
