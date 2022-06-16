@@ -7,14 +7,14 @@ namespace Cerbos\Sdk\Builder;
 
 class Principal
 {
-    private \Cerbos\Sdk\Principal $principal;
+    private \Cerbos\Api\V1\Engine\Principal $principal;
 
     /**
      * @param string $id
      */
     private function __construct(string $id)
     {
-        $this->principal = new \Cerbos\Sdk\Principal($id, null, null, null);
+        $this->principal = new \Cerbos\Api\V1\Engine\Principal($id, null, null, null);
     }
 
     /**
