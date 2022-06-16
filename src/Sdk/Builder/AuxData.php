@@ -23,7 +23,7 @@ class AuxData
      * @param string|null $keySetId
      * @return AuxData
      */
-    public function WithJwt(string $token, ?string $keySetId) : AuxData {
+    public static function WithJwt(string $token, ?string $keySetId) : AuxData {
         return new AuxData(new \Cerbos\Api\V1\Engine\AuxData(new Jwt($token, $keySetId)));
     }
 

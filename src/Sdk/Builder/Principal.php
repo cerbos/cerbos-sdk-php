@@ -21,7 +21,7 @@ class Principal
      * @param string $id
      * @return Principal
      */
-    public function newInstance(string $id) : Principal {
+    public static function newInstance(string $id) : Principal {
         return new Principal($id);
     }
 

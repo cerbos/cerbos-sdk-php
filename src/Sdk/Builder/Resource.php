@@ -21,7 +21,7 @@ class Resource
      * @param string $id
      * @return Resource
      */
-    public function newInstance(string $id) : Resource {
+    public static function newInstance(string $id) : Resource {
         return new Resource($id);
     }
 

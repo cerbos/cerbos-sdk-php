@@ -27,7 +27,7 @@ class ResourceAction
      * @param array|null $actions
      * @return ResourceAction
      */
-    public function newInstance(string $kind, string $id, ?array $actions): ResourceAction {
+    public static function newInstance(string $kind, string $id, ?array $actions): ResourceAction {
         return new ResourceAction($kind, $id, $actions);
     }
 
