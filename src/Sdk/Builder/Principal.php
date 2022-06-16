@@ -14,7 +14,7 @@ class Principal
      */
     private function __construct(string $id)
     {
-        $this->principal = new \Cerbos\Api\V1\Engine\Principal($id, null, null, null);
+        $this->principal = new \Cerbos\Api\V1\Engine\Principal($id, null, null, null, null);
     }
 
     /**
@@ -27,7 +27,7 @@ class Principal
 
     /**
      * @param string $policyVersion
-     * @return Principal
+     * @return $this
      */
     public function withPolicyVersion(string $policyVersion) : Principal {
         $this->principal->setPolicyVersion($policyVersion);
@@ -80,9 +80,18 @@ class Principal
     }
 
     /**
-     * @return \Cerbos\Sdk\Principal
+     * @param string $scope
+     * @return $this
      */
-    public function toPrincipal() : \Cerbos\Sdk\Principal {
+    public function withScope(string $scope) : Principal {
+        $this->principal->setScope($scope);
+        return $this;
+    }
+
+    /**
+     * @return \Cerbos\Api\V1\Engine\Principal
+     */
+    public function toPrincipal() : \Cerbos\Api\V1\Engine\Principal {
         return $this->principal;
     }
 }

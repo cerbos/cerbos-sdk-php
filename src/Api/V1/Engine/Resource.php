@@ -5,26 +5,27 @@ namespace Cerbos\Api\V1\Engine;
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-class Principal
+class Resource
 {
     private string $id;
-    private array $roles;
+    private string $kind;
     private string $policyVersion;
     private array $attributes;
     private string $scope;
 
     /**
      * @param string $id
-     * @param array|null $roles array of strings
+     * @param string|null $kind
      * @param string|null $policyVersion
      * @param array|null $attributes dictionary of string key and values
      * @param string|null $scope
      */
-    public function __construct(string $id, ?array $roles, ?string $policyVersion, ?array $attributes, ?string $scope) {
-        $this->$id = $id;
-        $this->$roles = $roles;
-        $this->$policyVersion = $policyVersion;
-        $this->$attributes = $attributes;
+    public function __construct(string $id, ?string $kind, ?string $policyVersion, ?array $attributes, ?string $scope)
+    {
+        $this->id = $id;
+        $this->kind = $kind;
+        $this->policyVersion = $policyVersion;
+        $this->attributes = $attributes;
         $this->scope = $scope;
     }
 
@@ -45,19 +46,19 @@ class Principal
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getRoles(): array
+    public function getKind(): string
     {
-        return $this->roles;
+        return $this->kind;
     }
 
     /**
-     * @param array $roles array of strings
+     * @param string $kind
      */
-    public function setRoles(array $roles): void
+    public function setKind(string $kind): void
     {
-        $this->roles = $roles;
+        $this->kind = $kind;
     }
 
     /**
