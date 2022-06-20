@@ -1,0 +1,82 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Cerbos\Sdk\Builder;
+
+// Copyright 2021-2022 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
+use Cerbos\Sdk\CerbosClient;
+use Http\Client\Common\HttpMethodsClient;
+use Http\Client\Common\Plugin;
+use Http\Client\Common\Plugin\BaseUriPlugin;
+use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
+use Http\Client\Common\PluginClientFactory;
+use Http\Discovery\HttpClientDiscovery;
+use Http\Discovery\Psr17FactoryDiscovery;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
+
+class CerbosClientBuilder
+{
+    private ClientInterface $httpClient;
+    private RequestFactoryInterface $requestFactoryInterface;
+    private StreamFactoryInterface $streamFactoryInterface;
+    private UriFactoryInterface $uriFactory;
+    private array $plugins = [];
+
+    /**
+     * @param string $uri
+     * @param ClientInterface|null $httpClient
+     * @param RequestFactoryInterface|null $requestFactoryInterface
+     * @param StreamFactoryInterface|null $streamFactoryInterface
+     * @param UriFactoryInterface|null $uriFactoryInterface
+     */
+    public function __construct(string                   $uri,
+                                ?ClientInterface         $httpClient,
+                                ?RequestFactoryInterface $requestFactoryInterface,
+                                ?StreamFactoryInterface  $streamFactoryInterface,
+                                ?UriFactoryInterface     $uriFactoryInterface
+    )
+    {
+        $this->httpClient = $httpClient ?: HttpClientDiscovery::find();
+        $this->requestFactoryInterface = $requestFactoryInterface ?: Psr17FactoryDiscovery::findRequestFactory();
+        $this->streamFactoryInterface = $streamFactoryInterface ?: Psr17FactoryDiscovery::findStreamFactory();
+        $this->uriFactory = $uriFactoryInterface ?: Psr17FactoryDiscovery::findUriFactory();
+        $this->addPlugin(new BaseUriPlugin($this->uriFactory->createUri($uri)));
+        $this->addPlugin(
+            new HeaderDefaultsPlugin(
+                [
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json',
+                ]
+            )
+        );
+    }
+
+    /**
+     * @param Plugin $plugin
+     * @return void
+     */
+    public function addPlugin(Plugin $plugin): void
+    {
+        $this->plugins[] = $plugin;
+    }
+
+    /**
+     * @return CerbosClient
+     */
+    public function build(): CerbosClient
+    {
+        $pluginClient = (new PluginClientFactory())->createClient($this->httpClient, $this->plugins);
+
+        return new CerbosClient(new HttpMethodsClient(
+            $pluginClient,
+            $this->requestFactoryInterface,
+            $this->streamFactoryInterface
+        ));
+    }
+}
