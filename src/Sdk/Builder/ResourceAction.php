@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Cerbos\Sdk\Builder;
 
 // Copyright 2021-2022 Zenauth Ltd.
