@@ -15,6 +15,14 @@
     "issues": "https://github.com/cerbos/cerbos-sdk-php/issues"
   },
   "require": {
-    "php": "^7.4 || ^8.0"
+    "php": "^7.4 || ^8.0",
+    "psr/http-client-implementation": "*",
+    "psr/http-factory": "^1.0",
+    "psr/http-client": "^1.0",
+    "php-http/client-common": "^2.5"
+  },
+  "require-dev": {
+    "php-http/curl-client": "^2.2",
+    "laminas/laminas-diactoros": "^2.11"
   }
 }
