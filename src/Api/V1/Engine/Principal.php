@@ -17,17 +17,13 @@ class Principal
 
     /**
      * @param string $id
-     * @param array|null $roles array of strings
-     * @param string|null $policyVersion
-     * @param array|null $attributes dictionary of string key and values
-     * @param string|null $scope
      */
-    public function __construct(string $id, ?array $roles, ?string $policyVersion, ?array $attributes, ?string $scope) {
-        $this->$id = $id;
-        $this->$roles = $roles;
-        $this->$policyVersion = $policyVersion;
-        $this->$attributes = $attributes;
-        $this->scope = $scope;
+    public function __construct(string $id) {
+        $this->id = $id;
+        $this->roles = array();
+        $this->policyVersion = "";
+        $this->attributes = array();
+        $this->scope = "";
     }
 
     /**

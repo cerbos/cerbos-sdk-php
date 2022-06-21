@@ -16,7 +16,7 @@ class Principal
      */
     private function __construct(string $id)
     {
-        $this->principal = new \Cerbos\Api\V1\Engine\Principal($id, null, null, null, null);
+        $this->principal = new \Cerbos\Api\V1\Engine\Principal($id);
     }
 
     /**
@@ -60,10 +60,10 @@ class Principal
 
     /**
      * @param string $key
-     * @param string $value
+     * @param $value
      * @return $this
      */
-    public function withAttribute(string $key, string $value): Principal {
+    public function withAttribute(string $key, $value): Principal {
         $a = $this->principal->getAttributes();
         $a[$key] = $value;
         $this->principal->setAttributes($a);

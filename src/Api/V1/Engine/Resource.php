@@ -22,13 +22,13 @@ class Resource
      * @param array|null $attributes dictionary of string key and values
      * @param string|null $scope
      */
-    public function __construct(string $id, ?string $kind, ?string $policyVersion, ?array $attributes, ?string $scope)
+    public function __construct(string $id, ?string $kind)
     {
         $this->id = $id;
-        $this->kind = $kind;
-        $this->policyVersion = $policyVersion;
-        $this->attributes = $attributes;
-        $this->scope = $scope;
+        $this->kind = $kind ?: "";
+        $this->policyVersion = "";
+        $this->attributes = array();
+        $this->scope = "";
     }
 
     /**

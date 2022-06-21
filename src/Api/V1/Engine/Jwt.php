@@ -19,7 +19,7 @@ class Jwt
     public function __construct(string $token, ?string $keySetId)
     {
         $this->token = $token;
-        $this->keySetId = $keySetId;
+        $this->keySetId = $keySetId ?: "";
     }
 
     /**

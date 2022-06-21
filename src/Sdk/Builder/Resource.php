@@ -16,7 +16,7 @@ class Resource
      */
     private function __construct(string $id)
     {
-        $this->resource = new \Cerbos\Api\V1\Engine\Resource($id, null, null, null, null);
+        $this->resource = new \Cerbos\Api\V1\Engine\Resource($id, null);
     }
 
     /**

@@ -19,7 +19,7 @@ class ResourceAction
      */
     private function __construct(string $kind, string $id, ?array $actions)
     {
-        $this->resourceAction = new \Cerbos\Api\V1\Engine\ResourceAction(new \Cerbos\Api\V1\Engine\Resource($id, $kind, null, null, null), array());
+        $this->resourceAction = new \Cerbos\Api\V1\Engine\ResourceAction(new \Cerbos\Api\V1\Engine\Resource($id, $kind), array());
         $this->actions = $actions;
     }
 
