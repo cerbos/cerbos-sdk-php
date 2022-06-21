@@ -11,18 +11,29 @@
       "homepage": "https://cerbos.dev"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Cerbos\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Cerbos\\Test\\": "tests"
+    }
+  },
   "support": {
     "issues": "https://github.com/cerbos/cerbos-sdk-php/issues"
   },
   "require": {
     "php": "^7.4 || ^8.0",
     "psr/http-client-implementation": "*",
-    "psr/http-factory": "^1.0",
-    "psr/http-client": "^1.0",
-    "php-http/client-common": "^2.5"
+    "psr/http-factory": "1.0.1",
+    "psr/http-client": "1.0.1",
+    "php-http/client-common": "2.5.0"
   },
   "require-dev": {
-    "php-http/curl-client": "^2.2",
-    "laminas/laminas-diactoros": "^2.11"
+    "php-http/curl-client": "2.2.1",
+    "laminas/laminas-diactoros": "2.11.0",
+    "phpunit/phpunit": "9.5.21"
   }
 }
