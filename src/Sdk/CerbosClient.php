@@ -7,15 +7,14 @@ namespace Cerbos\Sdk;
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
+use Exception;
 use Http\Client\Common\HttpMethodsClientInterface;
-use Http\Client\Exception;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\StreamInterface;
 
 final class CerbosClient
 {
     private HttpMethodsClientInterface $client;
-    private string $checkResourceEndpoint = "/api/check/resources";
+    private string $checkResourcesEndpoint = "/api/check/resources";
 
     /**
      * @param HttpMethodsClientInterface $client
@@ -27,22 +26,29 @@ final class CerbosClient
 
     /**
      * @param Builder\Principal $principal
-     * @param Builder\Resource $resource
-     * @param array $actions
+     * @param array $resourceActions array of Builder\ResourceAction
      * @param Builder\AuxData|null $auxData
      * @return ResponseInterface
-     * @throws Exception
+     * @throws Exception|\Http\Client\Exception
      */
-    public function checkResource(Builder\Principal $principal, Builder\Resource $resource, array $actions, ?Builder\AuxData $auxData): ResponseInterface
+    public function checkResources(Builder\Principal $principal, array $resourceActions, ?Builder\AuxData $auxData): ResponseInterface
     {
+        $resActs = array();
+        foreach ($resourceActions as $resourceAction) {
+            if (!$resourceAction instanceof Builder\ResourceAction) {
+                throw new Exception("resourceActions array has elements with non - Builder\ResourceAction type");
+            }
+
+            $resActs[] = $resourceAction->toResourceAction();
+        }
+
         return $this->client->post(
-            $this->checkResourceEndpoint,
+            $this->checkResourcesEndpoint,
             [],
-            json_encode(array([
+            json_encode(array(
                 "principal" => $principal->toPrincipal(),
-                "resource" => $resource->toResource(),
-                "actions" => $actions
-            ]))
+                "resources" => $resActs,
+            ))
         );
     }
 }

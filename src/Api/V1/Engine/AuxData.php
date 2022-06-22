@@ -7,9 +7,9 @@ namespace Cerbos\Api\V1\Engine;
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-class AuxData
+class AuxData implements \JsonSerializable
 {
-    private Jwt $jwt;
+    public Jwt $jwt;
 
     /**
      * @param Jwt $jwt
@@ -20,34 +20,12 @@ class AuxData
     }
 
     /**
-     * @return Jwt
+     * @return array
      */
-    public function getJwt(): Jwt
+    public function jsonSerialize(): array
     {
-        return $this->jwt;
-    }
-
-    /**
-     * @param Jwt $jwt
-     */
-    public function setJwt(Jwt $jwt): void
-    {
-        $this->jwt = $jwt;
-    }
-
-    /**
-     * @return string
-     */
-    public function getJwtToken(): string
-    {
-        return $this->jwt->getToken();
-    }
-
-    /**
-     * @return string
-     */
-    public function getJwtKeySetId(): string
-    {
-        return $this->jwt->getKeySetId();
+        return [
+            "jwt" => $this->jwt,
+        ];
     }
 }

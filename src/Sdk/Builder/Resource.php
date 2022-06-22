@@ -12,19 +12,30 @@ class Resource
     private \Cerbos\Api\V1\Engine\Resource $resource;
 
     /**
+     * @param string $kind
      * @param string $id
      */
-    private function __construct(string $id)
+    private function __construct(string $kind, string $id)
     {
-        $this->resource = new \Cerbos\Api\V1\Engine\Resource($id, null);
+        $this->resource = new \Cerbos\Api\V1\Engine\Resource($kind, $id);
+    }
+
+    /**
+     * @param string $kind
+     * @param string $id
+     * @return Resource
+     */
+    public static function newInstance(string $kind, string $id): Resource {
+        return new Resource($kind, $id);
     }
 
     /**
      * @param string $id
-     * @return Resource
+     * @return $this
      */
-    public static function newInstance(string $id): Resource {
-        return new Resource($id);
+    public function withId(string $id): Resource {
+        $this->resource->id = $id;
+        return $this;
     }
 
     /**
@@ -32,7 +43,7 @@ class Resource
      * @return Resource
      */
     public function withKind(string $kind): Resource {
-        $this->resource->setKind($kind);
+        $this->resource->kind = $kind;
         return $this;
     }
 
@@ -41,7 +52,7 @@ class Resource
      * @return Resource
      */
     public function withPolicyVersion(string $policyVersion): Resource {
-        $this->resource->setPolicyVersion($policyVersion);
+        $this->resource->policyVersion = $policyVersion;
         return $this;
     }
 
@@ -51,9 +62,7 @@ class Resource
      * @return $this
      */
     public function withAttribute(string $key, string $value): Resource {
-        $a = $this->resource->getAttributes();
-        $a[$key] = $value;
-        $this->resource->setAttributes($a);
+        $this->resource->attributes[$key] = $value;
         return $this;
     }
 
@@ -62,9 +71,9 @@ class Resource
      * @return $this
      */
     public function withAttributes(array $attributes): Resource {
-        $a = $this->resource->getAttributes();
-        $a[] = $attributes;
-        $this->resource->setAttributes($a);
+        foreach ($attributes as $attribute) {
+            $this->resource->attributes[] = $attribute;
+        }
         return $this;
     }
 
@@ -73,7 +82,7 @@ class Resource
      * @return $this
      */
     public function withScope(string $scope): Resource {
-        $this->resource->setScope($scope);
+        $this->resource->scope = $scope;
         return $this;
     }
 

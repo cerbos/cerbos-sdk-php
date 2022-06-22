@@ -28,11 +28,20 @@ class Principal
     }
 
     /**
+     * @param string $id
+     * @return $this
+     */
+    public function withId(string $id): Principal {
+        $this->principal->id = $id;
+        return $this;
+    }
+
+    /**
      * @param string $policyVersion
      * @return $this
      */
     public function withPolicyVersion(string $policyVersion): Principal {
-        $this->principal->setPolicyVersion($policyVersion);
+        $this->principal->policyVersion = $policyVersion;
         return $this;
     }
 
@@ -41,9 +50,7 @@ class Principal
      * @return $this
      */
     public function withRole(string $role): Principal {
-        $r = $this->principal->getRoles();
-        $r[] = $role;
-        $this->principal->setRoles($r);
+        $this->principal->roles[] = $role;
         return $this;
     }
 
@@ -52,9 +59,9 @@ class Principal
      * @return $this
      */
     public function withRoles(array $roles): Principal {
-        $r = $this->principal->getRoles();
-        $r[] = $roles;
-        $this->principal->setRoles($r);
+        foreach ($roles as $role) {
+            $this->principal->roles[] = $role;
+        }
         return $this;
     }
 
@@ -64,9 +71,7 @@ class Principal
      * @return $this
      */
     public function withAttribute(string $key, $value): Principal {
-        $a = $this->principal->getAttributes();
-        $a[$key] = $value;
-        $this->principal->setAttributes($a);
+        $this->principal->attributes[$key] = $value;
         return $this;
     }
 
@@ -75,9 +80,9 @@ class Principal
      * @return $this
      */
     public function withAttributes(array $attributes): Principal {
-        $a = $this->principal->getAttributes();
-        $a[] = $attributes;
-        $this->principal->setAttributes($a);
+        foreach ($attributes as $attribute) {
+            $this->principal->attributes[] = $attribute;
+        }
         return $this;
     }
 
@@ -86,7 +91,7 @@ class Principal
      * @return $this
      */
     public function withScope(string $scope): Principal {
-        $this->principal->setScope($scope);
+        $this->principal->scope = $scope;
         return $this;
     }
 

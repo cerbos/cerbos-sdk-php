@@ -9,28 +9,35 @@ namespace Cerbos\Sdk\Builder;
 
 class ResourceAction
 {
-    private \Cerbos\Api\V1\Engine\ResourceAction $resourceAction;
+    private Resource $resourceBuilder;
     private array $actions;
 
     /**
      * @param string $kind
      * @param string $id
-     * @param array|null $actions
      */
-    private function __construct(string $kind, string $id, ?array $actions)
+    private function __construct(string $kind, string $id)
     {
-        $this->resourceAction = new \Cerbos\Api\V1\Engine\ResourceAction(new \Cerbos\Api\V1\Engine\Resource($id, $kind), array());
-        $this->actions = $actions;
+        $this->resourceBuilder = Resource::newInstance($kind, $id);
+        $this->actions = array();
     }
 
     /**
      * @param string $kind
      * @param string $id
-     * @param array|null $actions
      * @return ResourceAction
      */
-    public static function newInstance(string $kind, string $id, ?array $actions): ResourceAction {
-        return new ResourceAction($kind, $id, $actions);
+    public static function newInstance(string $kind, string $id): ResourceAction {
+        return new ResourceAction($kind, $id);
+    }
+
+    /**
+     * @param string $id
+     * @return $this
+     */
+    public function withId(string $id): ResourceAction {
+        $this->resourceBuilder->withId($id);
+        return $this;
     }
 
     /**
@@ -38,7 +45,7 @@ class ResourceAction
      * @return ResourceAction
      */
     public function withKind(string $kind): ResourceAction {
-        $this->resourceAction->setKind($kind);
+        $this->resourceBuilder->withKind($kind);
         return $this;
     }
 
@@ -47,7 +54,7 @@ class ResourceAction
      * @return ResourceAction
      */
     public function withPolicyVersion(string $policyVersion): ResourceAction {
-        $this->resourceAction->setPolicyVersion($policyVersion);
+        $this->resourceBuilder->withPolicyVersion($policyVersion);
         return $this;
     }
 
@@ -57,9 +64,7 @@ class ResourceAction
      * @return $this
      */
     public function withAttribute(string $key, string $value): ResourceAction {
-        $a = $this->resourceAction->getAttributes();
-        $a[$key] = $value;
-        $this->resourceAction->setAttributes($a);
+        $this->resourceBuilder->withAttribute($key, $value);
         return $this;
     }
 
@@ -68,9 +73,7 @@ class ResourceAction
      * @return $this
      */
     public function withAttributes(array $attributes): ResourceAction {
-        $a = $this->resourceAction->getAttributes();
-        $a[] = $attributes;
-        $this->resourceAction->setAttributes($a);
+        $this->resourceBuilder->withAttributes($attributes);
         return $this;
     }
 
@@ -79,7 +82,7 @@ class ResourceAction
      * @return $this
      */
     public function withScope(string $scope): ResourceAction {
-        $this->resourceAction->setScope($scope);
+        $this->resourceBuilder->withScope($scope);
         return $this;
     }
 
@@ -88,9 +91,7 @@ class ResourceAction
      * @return $this
      */
     public function withAction(string $action): ResourceAction {
-        $a = $this->actions;
-        $a[] = $action;
-        $this->actions = $a;
+        $this->actions[] = $action;
         return $this;
     }
 
@@ -99,9 +100,16 @@ class ResourceAction
      * @return $this
      */
     public function withActions(array $actions): ResourceAction {
-        $a = $this->actions;
-        $a[] = $actions;
-        $this->actions = $a;
+        foreach ($actions as $action) {
+            $this->actions[] = $action;
+        }
         return $this;
+    }
+
+    /**
+     * @return \Cerbos\Api\V1\Engine\ResourceAction
+     */
+    public function toResourceAction(): \Cerbos\Api\V1\Engine\ResourceAction {
+        return new \Cerbos\Api\V1\Engine\ResourceAction($this->resourceBuilder->toResource(), $this->actions);
     }
 }

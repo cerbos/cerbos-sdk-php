@@ -7,10 +7,10 @@ namespace Cerbos\Api\V1\Engine;
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-class Jwt
+class Jwt implements \JsonSerializable
 {
-    private string $token;
-    private string $keySetId;
+    public string $token;
+    public string $keySetId;
 
     /**
      * @param string $token
@@ -23,34 +23,13 @@ class Jwt
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getToken(): string
+    public function jsonSerialize(): array
     {
-        return $this->token;
-    }
-
-    /**
-     * @param string $token
-     */
-    public function setToken(string $token): void
-    {
-        $this->token = $token;
-    }
-
-    /**
-     * @return string
-     */
-    public function getKeySetId(): string
-    {
-        return $this->keySetId;
-    }
-
-    /**
-     * @param string $keySetId
-     */
-    public function setKeySetId(string $keySetId): void
-    {
-        $this->keySetId = $keySetId;
+        return [
+            "token" => $this->token,
+            "keySetId" => $this->keySetId,
+        ];
     }
 }
