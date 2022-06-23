@@ -7,11 +7,11 @@ namespace Cerbos\Test;
 
 use Cerbos\Sdk\Builder\Principal;
 use Cerbos\Sdk\Builder\ResourceAction;
-use Http\Client\Exception;
+use Exception;
 
 class CerbosClientTest extends TestCase
 {
-    public function testCanRequest200Response(): void
+    public function testCerbosClient(): void
     {
         $principal = Principal::newInstance("john")
                         ->withRole("employee")
@@ -27,12 +27,20 @@ class CerbosClientTest extends TestCase
                         ->withAttribute("owner", "john");
 
         try {
-            $response = $this->client->checkResources($principal, array($resourceActions), null);
-            $this->assertEquals(200, $response->getStatusCode());
-
+            $checkResourcesResult = $this->client->checkResources($principal, array($resourceActions), null);
+            $resultEntry = $checkResourcesResult->find("xx125");
+            if ($resultEntry != null) {
+                $this->assertTrue($resultEntry->isAllowed("view:public"));
+                $this->assertFalse($resultEntry->isAllowed("approve"));
+                $this->assertFalse($resultEntry->isAllowed("nonexistent_action"));
+            }
+            else {
+                $this->fail("no result entry found");
+            }
         } catch (Exception $e) {
             $this->fail($e->getMessage());
-        } catch (\Exception $e) {
+        } catch (\Http\Client\Exception $e) {
+            $this->fail($e->getMessage());
         }
     }
 }

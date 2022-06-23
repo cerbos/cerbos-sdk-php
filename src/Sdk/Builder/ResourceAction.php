@@ -32,74 +32,82 @@ class ResourceAction
     }
 
     /**
-     * @param string $id
-     * @return $this
+     * @param string|null $id
+     * @return ResourceAction
      */
-    public function withId(string $id): ResourceAction {
+    public function withId(?string $id): ResourceAction {
+        if ($id == null) return $this;
         $this->resourceBuilder->withId($id);
         return $this;
     }
 
     /**
-     * @param string $kind
+     * @param string|null $kind
      * @return ResourceAction
      */
-    public function withKind(string $kind): ResourceAction {
+    public function withKind(?string $kind): ResourceAction {
+        if ($kind == null) return $this;
         $this->resourceBuilder->withKind($kind);
         return $this;
     }
 
     /**
-     * @param string $policyVersion
+     * @param string|null $policyVersion
      * @return ResourceAction
      */
-    public function withPolicyVersion(string $policyVersion): ResourceAction {
+    public function withPolicyVersion(?string $policyVersion): ResourceAction {
+        if ($policyVersion == null) return $this;
         $this->resourceBuilder->withPolicyVersion($policyVersion);
         return $this;
     }
 
     /**
-     * @param string $key
-     * @param string $value
-     * @return $this
+     * @param string|null $key
+     * @param string|null $value
+     * @return ResourceAction
      */
-    public function withAttribute(string $key, string $value): ResourceAction {
+    public function withAttribute(?string $key, ?string $value): ResourceAction {
+        if ($key == null || $value == null) return $this;
         $this->resourceBuilder->withAttribute($key, $value);
         return $this;
     }
 
     /**
-     * @param array $attributes dictionary of string key and values
-     * @return $this
+     * @param array|null $attributes dictionary of string key and values
+     * @return ResourceAction
      */
-    public function withAttributes(array $attributes): ResourceAction {
+    public function withAttributes(?array $attributes): ResourceAction {
+        if ($attributes == null) return $this;
         $this->resourceBuilder->withAttributes($attributes);
         return $this;
     }
 
     /**
-     * @param string $scope
-     * @return $this
+     * @param string|null $scope
+     * @return ResourceAction
      */
-    public function withScope(string $scope): ResourceAction {
+    public function withScope(?string $scope): ResourceAction {
+        if ($scope == null) return $this;
         $this->resourceBuilder->withScope($scope);
         return $this;
     }
 
     /**
-     * @param string $action
-     * @return $this
+     * @param string|null $action
+     * @return ResourceAction
      */
-    public function withAction(string $action): ResourceAction {
+    public function withAction(?string $action): ResourceAction {
+        if ($action == null) return $this;
         $this->actions[] = $action;
         return $this;
     }
 
     /**
-     * @param array $actions array of strings
-     * @return $this
+     * @param string[]|null $actions
+     * @return ResourceAction
      */
-    public function withActions(array $actions): ResourceAction {
+    public function withActions(?array $actions): ResourceAction {
+        if ($actions == null) return $this;
         foreach ($actions as $action) {
             $this->actions[] = $action;
         }

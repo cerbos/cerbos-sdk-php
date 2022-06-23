@@ -14,7 +14,7 @@ class ResourceAction implements \JsonSerializable
 
     /**
      * @param Resource $resource
-     * @param array $actions array of strings
+     * @param string[] $actions
      */
     public function __construct(Resource $resource, array $actions)
     {
