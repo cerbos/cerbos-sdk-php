@@ -1,0 +1,100 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - 'v*'
+
+jobs:
+  build-and-check-changes:
+    name: Check uncommitted changes
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout repository"
+        uses: "actions/checkout@v2"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "latest"
+          coverage: "none"
+
+      - name: "Install dependencies (Composer)"
+        uses: "ramsey/composer-install@v2"
+
+      - name: "Check syntax (php-parallel-lint)"
+        shell: "bash"
+        run: "composer dev:lint:syntax"
+
+      - name: "Check coding standards (PHP_CodeSniffer)"
+        shell: "bash"
+        run: "composer dev:lint:style"
+
+  static-analysis:
+    name: Static analysis
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout repository"
+        uses: "actions/checkout@v2"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "latest"
+          coverage: "none"
+
+      - name: "Install dependencies (Composer)"
+        uses: "ramsey/composer-install@v2"
+
+      - name: "Statically analyze code (PHPStan)"
+        shell: "bash"
+        run: "composer dev:analyze:phpstan"
+
+      - name: "Statically analyze code (Psalm)"
+        shell: "bash"
+        run: "composer dev:analyze:psalm -- --shepherd"
+
+  unit-tests:
+    name: "Unit tests"
+    needs: [ "code-coverage", "security-analysis" ]
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "7.4"
+          - "8.0"
+          - "8.1"
+        operating-system:
+          - "macos-latest"
+          - "ubuntu-latest"
+          - "windows-latest"
+        dependencies:
+          - "lowest"
+          - "highest"
+    steps:
+      - name: "Configure Git (for Windows)"
+        if: ${{ matrix.operating-system == 'windows-latest' }}
+        shell: "bash"
+        run: |
+          git config --system core.autocrlf false
+          git config --system core.eol lf
+      - name: "Checkout repository"
+        uses: "actions/checkout@v2"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "${{ matrix.php-version }}"
+          coverage: "none"
+
+      - name: "Install dependencies (Composer)"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
+          composer-options: "${{ matrix.composer-options }}"
+
+      - name: "Run unit tests (PHPUnit)"
+        shell: "bash"
+        run: "composer dev:test:unit"
