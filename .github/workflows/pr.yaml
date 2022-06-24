@@ -7,57 +7,40 @@ on:
       - 'v*'
 
 jobs:
-  build-and-check-changes:
-    name: Check uncommitted changes
-    runs-on: "ubuntu-latest"
+  lint:
+    name: Run linters
+    runs-on: ubuntu-latest
     steps:
-      - name: "Checkout repository"
-        uses: "actions/checkout@v2"
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
-        with:
-          php-version: "latest"
-          coverage: "none"
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
 
-      - name: "Install dependencies (Composer)"
-        uses: "ramsey/composer-install@v2"
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
 
-      - name: "Check syntax (php-parallel-lint)"
-        shell: "bash"
-        run: "composer dev:lint:syntax"
-
-      - name: "Check coding standards (PHP_CodeSniffer)"
-        shell: "bash"
-        run: "composer dev:lint:style"
+      - name: Lint
+        shell: bash
+        run: make lint
 
   static-analysis:
-    name: Static analysis
-    runs-on: "ubuntu-latest"
+    name: Run static analysis
+    runs-on: ubuntu-latest
     steps:
-      - name: "Checkout repository"
-        uses: "actions/checkout@v2"
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
-        with:
-          php-version: "latest"
-          coverage: "none"
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
 
-      - name: "Install dependencies (Composer)"
-        uses: "ramsey/composer-install@v2"
-
-      - name: "Statically analyze code (PHPStan)"
-        shell: "bash"
-        run: "composer dev:analyze:phpstan"
-
-      - name: "Statically analyze code (Psalm)"
-        shell: "bash"
-        run: "composer dev:analyze:psalm -- --shepherd"
+      - name: Statically analyze code
+        shell: bash
+        run: make static-analysis
 
   unit-tests:
-    name: "Unit tests"
-    needs: [ "code-coverage", "security-analysis" ]
+    name: Run unit tests
+    needs: [ "lint", "security-analysis" ]
     runs-on: ${{ matrix.operating-system }}
     strategy:
       fail-fast: false
@@ -69,32 +52,16 @@ jobs:
         operating-system:
           - "macos-latest"
           - "ubuntu-latest"
-          - "windows-latest"
         dependencies:
           - "lowest"
           - "highest"
     steps:
-      - name: "Configure Git (for Windows)"
-        if: ${{ matrix.operating-system == 'windows-latest' }}
-        shell: "bash"
-        run: |
-          git config --system core.autocrlf false
-          git config --system core.eol lf
-      - name: "Checkout repository"
-        uses: "actions/checkout@v2"
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
-        with:
-          php-version: "${{ matrix.php-version }}"
-          coverage: "none"
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
 
-      - name: "Install dependencies (Composer)"
-        uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: "${{ matrix.dependencies }}"
-          composer-options: "${{ matrix.composer-options }}"
-
-      - name: "Run unit tests (PHPUnit)"
-        shell: "bash"
-        run: "composer dev:test:unit"
+      - name: Run unit tests
+        shell: bash
+        run: make test
