@@ -28,37 +28,41 @@ class Principal
     }
 
     /**
-     * @param string $id
-     * @return $this
+     * @param string|null $id
+     * @return Principal
      */
-    public function withId(string $id): Principal {
+    public function withId(?string $id): Principal {
+        if ($id == null) return $this;
         $this->principal->id = $id;
         return $this;
     }
 
     /**
-     * @param string $policyVersion
-     * @return $this
+     * @param string|null $policyVersion
+     * @return Principal
      */
-    public function withPolicyVersion(string $policyVersion): Principal {
+    public function withPolicyVersion(?string $policyVersion): Principal {
+        if ($policyVersion == null) return $this;
         $this->principal->policyVersion = $policyVersion;
         return $this;
     }
 
     /**
-     * @param string $role
-     * @return $this
+     * @param string|null $role
+     * @return Principal
      */
-    public function withRole(string $role): Principal {
+    public function withRole(?string $role): Principal {
+        if ($role == null) return $this;
         $this->principal->roles[] = $role;
         return $this;
     }
 
     /**
-     * @param array $roles
-     * @return $this
+     * @param string[]|null $roles
+     * @return Principal
      */
-    public function withRoles(array $roles): Principal {
+    public function withRoles(?array $roles): Principal {
+        if ($roles == null) return $this;
         foreach ($roles as $role) {
             $this->principal->roles[] = $role;
         }
@@ -66,20 +70,22 @@ class Principal
     }
 
     /**
-     * @param string $key
+     * @param string|null $key
      * @param $value
-     * @return $this
+     * @return Principal
      */
-    public function withAttribute(string $key, $value): Principal {
+    public function withAttribute(?string $key, $value): Principal {
+        if ($key == null || $value == null) return $this;
         $this->principal->attributes[$key] = $value;
         return $this;
     }
 
     /**
-     * @param array $attributes dictionary of string key and values
-     * @return $this
+     * @param array|null $attributes dictionary of string key and values
+     * @return Principal
      */
-    public function withAttributes(array $attributes): Principal {
+    public function withAttributes(?array $attributes): Principal {
+        if ($attributes == null) return $this;
         foreach ($attributes as $attribute) {
             $this->principal->attributes[] = $attribute;
         }
@@ -87,10 +93,11 @@ class Principal
     }
 
     /**
-     * @param string $scope
-     * @return $this
+     * @param string|null $scope
+     * @return Principal
      */
-    public function withScope(string $scope): Principal {
+    public function withScope(?string $scope): Principal {
+        if ($scope == null) return $this;
         $this->principal->scope = $scope;
         return $this;
     }
