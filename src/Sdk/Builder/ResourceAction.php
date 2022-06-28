@@ -63,10 +63,10 @@ class ResourceAction
 
     /**
      * @param string|null $key
-     * @param string|null $value
+     * @param bool|int|float|string|null $value
      * @return ResourceAction
      */
-    public function withAttribute(?string $key, ?string $value): ResourceAction {
+    public function withAttribute(?string $key, $value): ResourceAction {
         if ($key == null || $value == null) return $this;
         $this->resourceBuilder->withAttribute($key, $value);
         return $this;

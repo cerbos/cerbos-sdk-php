@@ -71,7 +71,7 @@ class Principal
 
     /**
      * @param string|null $key
-     * @param $value
+     * @param bool|int|float|string|null $value
      * @return Principal
      */
     public function withAttribute(?string $key, $value): Principal {
