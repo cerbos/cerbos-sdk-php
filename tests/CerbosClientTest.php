@@ -29,7 +29,7 @@ class CerbosClientTest extends TestCase
         try {
             $checkResourcesResult = $this->client->checkResources($principal, array($resourceActions), null);
             $resultEntry = $checkResourcesResult->find("xx125");
-            if ($resultEntry != null) {
+            if (isset($resultEntry)) {
                 $this->assertTrue($resultEntry->isAllowed("view:public"));
                 $this->assertFalse($resultEntry->isAllowed("approve"));
                 $this->assertFalse($resultEntry->isAllowed("nonexistent_action"));
