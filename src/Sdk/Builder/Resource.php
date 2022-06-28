@@ -61,10 +61,10 @@ class Resource
 
     /**
      * @param string|null $key
-     * @param string|null $value
+     * @param bool|int|float|string|null $value
      * @return Resource
      */
-    public function withAttribute(?string $key, ?string $value): Resource {
+    public function withAttribute(?string $key, $value): Resource {
         if ($key == null || $value == null) return $this;
         $this->resource->attributes[$key] = $value;
         return $this;
