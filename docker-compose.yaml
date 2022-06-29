@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  cerbos:
+    image: ghcr.io/cerbos/cerbos:dev
+    restart: unless-stopped
+    environment:
+      - CERBOS_NO_TELEMETRY=1
+    volumes:
+      - ./tests/res/config:/config
+      - ./tests/res/policies:/policies
+    ports:
+      - "3592:3592"
