@@ -1,6 +1,11 @@
 Cerbos PHP SDK
 ===============
 
+[![Latest Stable Version](http://poser.pugx.org/cerbos/cerbos-sdk-php/v)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
+[![Latest Unstable Version](http://poser.pugx.org/cerbos/cerbos-sdk-php/v/unstable)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
+[![Total Downloads](http://poser.pugx.org/cerbos/cerbos-sdk-php/downloads)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
+[![License](http://poser.pugx.org/cerbos/cerbos-sdk-php/license)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
+
 PHP client library for the [Cerbos](https://github.com/cerbos/cerbos) open source access control solution. This library
 includes RPC clients for accessing the Cerbos PDP.
 
@@ -8,6 +13,11 @@ Find out more about Cerbos at https://cerbos.dev and read the documentation at h
 
 Installation
 -------------
+
+You can install the SDK via [Composer](https://getcomposer.org/). Run the following command:
+```bash
+composer require cerbos/cerbos-sdk-php
+```
 
 Examples
 --------
