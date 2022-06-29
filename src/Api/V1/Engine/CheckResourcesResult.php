@@ -7,6 +7,8 @@ namespace Cerbos\Api\V1\Engine;
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
+use Exception;
+
 class CheckResourcesResult implements \JsonSerializable
 {
     private array $resultEntries;
@@ -22,10 +24,15 @@ class CheckResourcesResult implements \JsonSerializable
 
     /**
      * @param string $id
-     * @return ResultEntry|null
+     * @return ResultEntry
+     * @throws Exception
      */
-    public function find(string $id): ?ResultEntry {
-        return $this->resultEntries[$id];
+    public function find(string $id): ResultEntry {
+        if (isset($this->resultEntries[$id])) {
+            return $this->resultEntries[$id];
+        }
+
+        throw new Exception("failed to find result entry with the id ".$id);
     }
 
     /**
