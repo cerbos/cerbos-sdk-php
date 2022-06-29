@@ -5,13 +5,16 @@ namespace Cerbos\Test;
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
+use Cerbos\Sdk\Builder\AuxData;
 use Cerbos\Sdk\Builder\Principal;
 use Cerbos\Sdk\Builder\ResourceAction;
 use Exception;
 
 class CerbosClientTest extends TestCase
 {
-    public function testSingle(): void
+    private string $jwt = "eyJhbGciOiJFUzM4NCIsImtpZCI6IjE5TGZaYXRFZGc4M1lOYzVyMjNndU1KcXJuND0iLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiY2VyYm9zLWp3dC10ZXN0cyJdLCJjdXN0b21BcnJheSI6WyJBIiwiQiIsIkMiXSwiY3VzdG9tSW50Ijo0MiwiY3VzdG9tTWFwIjp7IkEiOiJBQSIsIkIiOiJCQiIsIkMiOiJDQyJ9LCJjdXN0b21TdHJpbmciOiJmb29iYXIiLCJleHAiOjE5NTAyNzc5MjYsImlzcyI6ImNlcmJvcy10ZXN0LXN1aXRlIn0._nCHIsuFI3wczeuUv_xjSwaVnIQUdYA9sGf_jVsrsDWloLs3iPWDaA1bXpuIUJVsi8-G6qqdrPI0cOBxEocg1NCm8fyD9T_3hsZV0fYWon_Je6Kl93a3JIW3S6kbvjsL";
+
+    public function testCheckWithoutJwt(): void
     {
         $principal = Principal::newInstance("john")
                         ->withRole("employee")
@@ -26,69 +29,120 @@ class CerbosClientTest extends TestCase
                             ->withAttribute("owner", "john")
                             ->withActions(["view:public", "approve"]);
 
+        $checkResourcesResult = null;
         try {
             $checkResourcesResult = $this->client->checkResources($principal, array($resourceAction), null);
-            $resultEntry = $checkResourcesResult->find("xx125");
-            if (isset($resultEntry)) {
-                $this->assertTrue($resultEntry->isAllowed("view:public"));
-                $this->assertFalse($resultEntry->isAllowed("approve"));
-                $this->assertFalse($resultEntry->isAllowed("nonexistent_action"));
-            }
-            else {
-                $this->fail("no result entry found");
-            }
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         } catch (\Http\Client\Exception $e) {
             $this->fail($e->getMessage());
         }
+
+        try {
+            $resultEntry = $checkResourcesResult->find("xx125");
+
+            $this->assertTrue($resultEntry->isAllowed("view:public"), "result of XX125 for view:public action is wrong");
+            $this->assertFalse($resultEntry->isAllowed("approve"), "result of XX125 for approve action is wrong");
+            $this->assertFalse($resultEntry->isAllowed("nonexistent_action"), "result of XX125 for non-existent action is wrong");
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
     }
 
-    public function testMultiple(): void {
+    public function testCheckWithJwt(): void {
+        $principal = Principal::newInstance("john")
+            ->withRole("employee")
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", "marketing")
+            ->withAttribute("geography", "GB");
+
+        $resourceAction = ResourceAction::newInstance("leave_request", "XX125")
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", "marketing")
+            ->withAttribute("geography", "GB")
+            ->withAttribute("owner", "john")
+            ->withAction("defer");
+
+        $checkResourcesResult = null;
+        try {
+            $checkResourcesResult = $this->client->checkResources($principal, array($resourceAction), AuxData::WithJwt($this->jwt, null));
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        } catch (\Http\Client\Exception $e) {
+            $this->fail($e->getMessage());
+        }
+
+        try {
+            $resultEntry = $checkResourcesResult->find("XX125");
+            $this->assertTrue($resultEntry->isAllowed("defer"), "result of XX125 for defer action is wrong");
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
+    }
+
+    public function testCheckMultiple(): void {
         $principal = Principal::newInstance("john")
                         ->withRole("employee")
                         ->withPolicyVersion("20210210")
                         ->withAttribute("department", "marketing")
                         ->withAttribute("geography", "GB");
 
-        $resourceAction = ResourceAction::newInstance("leave_request", "XX125")
+        $resourceActionXX125 = ResourceAction::newInstance("leave_request", "XX125")
                             ->withPolicyVersion("20210210")
                             ->withAttribute("department", "marketing")
                             ->withAttribute("geography", "GB")
                             ->withAttribute("owner", "john")
                             ->withActions(["view:public", "approve", "defer"]);
 
-        $resourceAction1 = ResourceAction::newInstance("leave_request", "XX225")
+        $resourceActionXX225 = ResourceAction::newInstance("leave_request", "XX225")
                             ->withPolicyVersion("20210210")
                             ->withAttribute("department", "marketing")
                             ->withAttribute("geography", "GB")
                             ->withAttribute("owner", "martha")
                             ->withActions(["view:public", "approve"]);
 
+        $resourceActionXX325 = ResourceAction::newInstance("leave_request", "XX325")
+                                ->withPolicyVersion("20210210")
+                                ->withAttribute("department", "marketing")
+                                ->withAttribute("geography", "US")
+                                ->withAttribute("owner", "peggy")
+                                ->withActions(["view:public", "approve"]);
+
         $checkResourcesResult = null;
         try {
-            $checkResourcesResult = $this->client->checkResources($principal, array($resourceAction, $resourceAction1), null);
+            $checkResourcesResult = $this->client->checkResources($principal, array($resourceActionXX125, $resourceActionXX225, $resourceActionXX325), AuxData::WithJwt($this->jwt, null));
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         } catch (\Http\Client\Exception $e) {
             $this->fail($e->getMessage());
         }
 
-        $resultEntryXX125 = $checkResourcesResult->find("XX125");
-        if (!isset($resultEntryXX125)) {
-            $this->fail("no result entry found");
+        try {
+            $resultEntryXX125 = $checkResourcesResult->find("XX125");
+
+            $this->assertTrue($resultEntryXX125->isAllowed("view:public"), "result of XX125 for view:public action is wrong");
+            $this->assertTrue($resultEntryXX125->isAllowed("defer"), "result of XX125 for defer action is wrong");
+            $this->assertFalse($resultEntryXX125->isAllowed("approve"), "result of XX125 for defer action is wrong");
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
         }
 
-        $this->assertTrue($resultEntryXX125->isAllowed("view:public"));
-        $this->assertFalse($resultEntryXX125->isAllowed("defer"));
-        $this->assertFalse($resultEntryXX125->isAllowed("approve"));
+        try {
+            $resultEntryXX225 = $checkResourcesResult->find("XX225");
 
-        $resultEntryXX225 = $checkResourcesResult->find("XX225");
-        if (!isset($resultEntryXX225)) {
-            $this->fail("no result entry found");
+            $this->assertTrue($resultEntryXX225->isAllowed("view:public"), "result of XX225 for view:public action is wrong");
+            $this->assertFalse($resultEntryXX225->isAllowed("approve"), "result of XX225 for approve action is wrong");
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
         }
 
-        $this->assertTrue($resultEntryXX225->isAllowed("view:public"));
-        $this->assertFalse($resultEntryXX225->isAllowed("approve"));
+        try {
+            $resultEntryXX225 = $checkResourcesResult->find("XX325");
+
+            $this->assertTrue($resultEntryXX225->isAllowed("view:public"), "result of XX325 for view:public action is wrong");
+            $this->assertFalse($resultEntryXX225->isAllowed("approve"), "result of XX325 for approve action is wrong");
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
     }
 }

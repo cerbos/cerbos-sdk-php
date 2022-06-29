@@ -12,4 +12,7 @@ static-analysis:
 
 .PHONY: test
 test:
+	docker-compose up -d
+	sleep 3
 	vendor/bin/phpunit
+	docker-compose down

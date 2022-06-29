@@ -10,7 +10,7 @@ namespace Cerbos\Api\V1\Engine;
 class Jwt implements \JsonSerializable
 {
     public string $token;
-    public string $keySetId;
+    public ?string $keySetId;
 
     /**
      * @param string $token
@@ -19,7 +19,7 @@ class Jwt implements \JsonSerializable
     public function __construct(string $token, ?string $keySetId)
     {
         $this->token = $token;
-        $this->keySetId = $keySetId ?: "";
+        $this->keySetId = $keySetId;
     }
 
     /**
@@ -27,9 +27,11 @@ class Jwt implements \JsonSerializable
      */
     public function jsonSerialize(): array
     {
-        return [
-            "token" => $this->token,
-            "keySetId" => $this->keySetId,
-        ];
+        $serialized = ["token" => $this->token];
+        if (isset($this->keySetId)) {
+            $serialized["keySetId"] = $this->keySetId;
+        }
+
+        return $serialized;
     }
 }

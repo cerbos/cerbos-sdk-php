@@ -44,13 +44,20 @@ final class CerbosClient
             $resActs[] = $resourceAction->toResourceAction();
         }
 
+
+        $request = array(
+            "principal" => $principal->toPrincipal(),
+            "resources" => $resActs
+        );
+
+        if (isset($auxData)) {
+            $request["auxData"] = $auxData->toAuxData();
+        }
+
         $response = $this->client->post(
             $this->checkResourcesEndpoint,
             [],
-            json_encode(array(
-                "principal" => $principal->toPrincipal(),
-                "resources" => $resActs,
-            ))
+            json_encode($request)
         );
 
         if ($response->getStatusCode() != 200) {
