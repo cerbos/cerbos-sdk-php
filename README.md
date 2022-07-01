@@ -46,7 +46,7 @@ $resourceAction = ResourceAction::newInstance("leave_request", "xx125")
                     ->withAttribute("geography", "GB")
                     ->withAttribute("owner", "john");
                     
-$checkResourcesResult = $this->client->checkResources($principal, array($resourceAction), null);
+$checkResourcesResult = $this->client->checkResources($principal, array($resourceAction), null, null);
 
 $resultEntry = $checkResourcesResult->find("xx125");
 
@@ -81,7 +81,7 @@ $resourceAction1 = ResourceAction::newInstance("leave_request", "xx225")
                     ->withAttribute("department", "marketing")
                     ->withAttribute("owner", "john");
                     
-$checkResourcesResult = $this->client->checkResources($principal, array($resourceAction, $resourceAction1), null);
+$checkResourcesResult = $this->client->checkResources($principal, array($resourceAction, $resourceAction1), null, null);
 
 $resultEntry = $checkResourcesResult->find("xx125");
 

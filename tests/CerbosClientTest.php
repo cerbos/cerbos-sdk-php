@@ -31,7 +31,7 @@ class CerbosClientTest extends TestCase
 
         $checkResourcesResult = null;
         try {
-            $checkResourcesResult = $this->client->checkResources($principal, array($resourceAction), null);
+            $checkResourcesResult = $this->client->checkResources($principal, array($resourceAction), null, null);
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         } catch (\Http\Client\Exception $e) {
@@ -65,7 +65,7 @@ class CerbosClientTest extends TestCase
 
         $checkResourcesResult = null;
         try {
-            $checkResourcesResult = $this->client->checkResources($principal, array($resourceAction), AuxData::WithJwt($this->jwt, null));
+            $checkResourcesResult = $this->client->checkResources($principal, array($resourceAction), AuxData::WithJwt($this->jwt, null), null);
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         } catch (\Http\Client\Exception $e) {
@@ -110,7 +110,7 @@ class CerbosClientTest extends TestCase
 
         $checkResourcesResult = null;
         try {
-            $checkResourcesResult = $this->client->checkResources($principal, array($resourceActionXX125, $resourceActionXX225, $resourceActionXX325), AuxData::WithJwt($this->jwt, null));
+            $checkResourcesResult = $this->client->checkResources($principal, array($resourceActionXX125, $resourceActionXX225, $resourceActionXX325), AuxData::WithJwt($this->jwt, null), null);
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         } catch (\Http\Client\Exception $e) {

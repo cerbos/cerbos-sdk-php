@@ -10,6 +10,7 @@ namespace Cerbos\Sdk;
 use Cerbos\Api\V1\Engine\CheckResourcesResult;
 use Cerbos\Sdk\Builder\ResourceAction;
 use Cerbos\Sdk\Builder\ResultEntry;
+use Cerbos\Sdk\Utility\RequestId;
 use Exception;
 use Http\Client\Common\HttpMethodsClientInterface;
 
@@ -30,10 +31,11 @@ final class CerbosClient
      * @param Builder\Principal $principal
      * @param ResourceAction[] $resourceActions
      * @param Builder\AuxData|null $auxData
+     * @param string|null $requestId
      * @return CheckResourcesResult
-     * @throws Exception|\Http\Client\Exception
+     * @throws \Http\Client\Exception
      */
-    public function checkResources(Builder\Principal $principal, array $resourceActions, ?Builder\AuxData $auxData): CheckResourcesResult
+    public function checkResources(Builder\Principal $principal, array $resourceActions, ?Builder\AuxData $auxData, ?string $requestId): CheckResourcesResult
     {
         $resActs = array();
         foreach ($resourceActions as $resourceAction) {
@@ -44,11 +46,14 @@ final class CerbosClient
             $resActs[] = $resourceAction->toResourceAction();
         }
 
-
         $request = array(
             "principal" => $principal->toPrincipal(),
             "resources" => $resActs
         );
+
+        if (!isset($requestId)) {
+            $request["requestId"] = RequestId::generate();
+        }
 
         if (isset($auxData)) {
             $request["auxData"] = $auxData->toAuxData();
