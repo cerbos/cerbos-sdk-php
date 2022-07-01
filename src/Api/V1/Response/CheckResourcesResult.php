@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cerbos\Api\V1\Engine;
+namespace Cerbos\Api\V1\Response;
 
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0

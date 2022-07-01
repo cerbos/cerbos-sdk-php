@@ -18,3 +18,6 @@ storage:
   disk:
     directory: /policies
     watchForChanges: true
+
+schema:
+  enforcement: reject

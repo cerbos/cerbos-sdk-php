@@ -33,7 +33,7 @@ class ResourceAction
 
     /**
      * @param string|null $id
-     * @return ResourceAction
+     * @return $this
      */
     public function withId(?string $id): ResourceAction {
         if ($id == null) return $this;
@@ -43,7 +43,7 @@ class ResourceAction
 
     /**
      * @param string|null $kind
-     * @return ResourceAction
+     * @return $this
      */
     public function withKind(?string $kind): ResourceAction {
         if ($kind == null) return $this;
@@ -53,7 +53,7 @@ class ResourceAction
 
     /**
      * @param string|null $policyVersion
-     * @return ResourceAction
+     * @return $this
      */
     public function withPolicyVersion(?string $policyVersion): ResourceAction {
         if ($policyVersion == null) return $this;
@@ -64,7 +64,7 @@ class ResourceAction
     /**
      * @param string|null $key
      * @param bool|int|float|string|null $value
-     * @return ResourceAction
+     * @return $this
      */
     public function withAttribute(?string $key, $value): ResourceAction {
         if ($key == null || $value == null) return $this;
@@ -74,7 +74,7 @@ class ResourceAction
 
     /**
      * @param array|null $attributes dictionary of string key and values
-     * @return ResourceAction
+     * @return $this
      */
     public function withAttributes(?array $attributes): ResourceAction {
         if ($attributes == null) return $this;
@@ -84,7 +84,7 @@ class ResourceAction
 
     /**
      * @param string|null $scope
-     * @return ResourceAction
+     * @return $this
      */
     public function withScope(?string $scope): ResourceAction {
         if ($scope == null) return $this;
@@ -94,7 +94,7 @@ class ResourceAction
 
     /**
      * @param string|null $action
-     * @return ResourceAction
+     * @return $this
      */
     public function withAction(?string $action): ResourceAction {
         if ($action == null) return $this;
@@ -104,7 +104,7 @@ class ResourceAction
 
     /**
      * @param string[]|null $actions
-     * @return ResourceAction
+     * @return $this
      */
     public function withActions(?array $actions): ResourceAction {
         if ($actions == null) return $this;

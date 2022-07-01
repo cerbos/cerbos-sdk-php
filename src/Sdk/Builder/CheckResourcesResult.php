@@ -25,19 +25,19 @@ class CheckResourcesResult
 
     /**
      * @param string|null $id
-     * @param \Cerbos\Api\V1\Engine\ResultEntry|null $resultEntry
-     * @return CheckResourcesResult
+     * @param \Cerbos\Api\V1\Response\ResultEntry|null $resultEntry
+     * @return $this
      */
-    public function withResultEntry(?string $id, ?\Cerbos\Api\V1\Engine\ResultEntry $resultEntry): CheckResourcesResult {
+    public function withResultEntry(?string $id, ?\Cerbos\Api\V1\Response\ResultEntry $resultEntry): CheckResourcesResult {
         if ($id == null || $resultEntry == null) return $this;
         $this->resultEntries[$id] = $resultEntry;
         return $this;
     }
 
     /**
-     * @return \Cerbos\Api\V1\Engine\CheckResourcesResult
+     * @return \Cerbos\Api\V1\Response\CheckResourcesResult
      */
-    public function toCheckResourcesResult(): \Cerbos\Api\V1\Engine\CheckResourcesResult {
-        return new \Cerbos\Api\V1\Engine\CheckResourcesResult($this->resultEntries);
+    public function toCheckResourcesResult(): \Cerbos\Api\V1\Response\CheckResourcesResult {
+        return new \Cerbos\Api\V1\Response\CheckResourcesResult($this->resultEntries);
     }
 }

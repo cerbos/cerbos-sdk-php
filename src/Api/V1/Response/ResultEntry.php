@@ -2,26 +2,29 @@
 
 declare(strict_types=1);
 
-namespace Cerbos\Api\V1\Engine;
+namespace Cerbos\Api\V1\Response;
 
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
+
+use Cerbos\Api\V1\Engine\Resource;
 
 class ResultEntry implements \JsonSerializable
 {
     public Resource $resource;
     public array $actions;
-    // public array $validationErrors
-    // public Meta $meta
+    public array $validationErrors;
 
     /**
      * @param Resource $resource
      * @param array $actions dictionary of action names, values being EFFECT_ALLOW or EFFECT_DENY
+     * @param array $validationErrors
      */
-    public function __construct(Resource $resource, array $actions)
+    public function __construct(Resource $resource, array $actions, array $validationErrors)
     {
         $this->resource = $resource;
         $this->actions = $actions;
+        $this->validationErrors = $validationErrors;
     }
 
     /**
@@ -47,7 +50,8 @@ class ResultEntry implements \JsonSerializable
     {
         return [
             "resource" => $this->resource,
-            "actions" => $this->actions
+            "actions" => $this->actions,
+            "validationErrors" => $this->validationErrors
         ];
     }
 }
