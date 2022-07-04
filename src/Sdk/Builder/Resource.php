@@ -31,7 +31,7 @@ class Resource
 
     /**
      * @param string|null $id
-     * @return Resource
+     * @return $this
      */
     public function withId(?string $id): Resource {
         if ($id == null) return $this;
@@ -41,7 +41,7 @@ class Resource
 
     /**
      * @param string|null $kind
-     * @return Resource
+     * @return $this
      */
     public function withKind(?string $kind): Resource {
         if ($kind == null) return $this;
@@ -51,7 +51,7 @@ class Resource
 
     /**
      * @param string|null $policyVersion
-     * @return Resource
+     * @return $this
      */
     public function withPolicyVersion(?string $policyVersion): Resource {
         if ($policyVersion == null) return $this;
@@ -62,7 +62,7 @@ class Resource
     /**
      * @param string|null $key
      * @param bool|int|float|string|null $value
-     * @return Resource
+     * @return $this
      */
     public function withAttribute(?string $key, $value): Resource {
         if ($key == null || $value == null) return $this;
@@ -72,7 +72,7 @@ class Resource
 
     /**
      * @param array|null $attributes dictionary of string key and values
-     * @return Resource
+     * @return $this
      */
     public function withAttributes(?array $attributes): Resource {
         if ($attributes == null) return $this;
@@ -84,7 +84,7 @@ class Resource
 
     /**
      * @param string|null $scope
-     * @return Resource
+     * @return $this
      */
     public function withScope(?string $scope): Resource {
         if ($scope == null) return $this;

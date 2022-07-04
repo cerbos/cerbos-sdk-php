@@ -2,6 +2,10 @@ version: "3.9"
 services:
   cerbos:
     image: ghcr.io/cerbos/cerbos:dev
+    command:
+      - "server"
+      - "--config"
+      - "/config/config.yaml"
     restart: unless-stopped
     environment:
       - CERBOS_NO_TELEMETRY=1

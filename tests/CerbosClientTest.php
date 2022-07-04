@@ -22,7 +22,7 @@ class CerbosClientTest extends TestCase
                         ->withAttribute("department", "marketing")
                         ->withAttribute("geography", "GB");
 
-        $resourceAction = ResourceAction::newInstance("leave_request", "xx125")
+        $resourceAction = ResourceAction::newInstance("leave_request", "XX125")
                             ->withPolicyVersion("20210210")
                             ->withAttribute("department", "marketing")
                             ->withAttribute("geography", "GB")
@@ -39,7 +39,7 @@ class CerbosClientTest extends TestCase
         }
 
         try {
-            $resultEntry = $checkResourcesResult->find("xx125");
+            $resultEntry = $checkResourcesResult->find("XX125");
 
             $this->assertTrue($resultEntry->isAllowed("view:public"), "result of XX125 for view:public action is wrong");
             $this->assertFalse($resultEntry->isAllowed("approve"), "result of XX125 for approve action is wrong");
@@ -141,6 +141,37 @@ class CerbosClientTest extends TestCase
 
             $this->assertTrue($resultEntryXX225->isAllowed("view:public"), "result of XX325 for view:public action is wrong");
             $this->assertFalse($resultEntryXX225->isAllowed("approve"), "result of XX325 for approve action is wrong");
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
+    }
+
+    public function testValidationErrors(): void
+    {
+        $principal = Principal::newInstance("john")
+            ->withRole("employee")
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", 1.0)
+            ->withAttribute("geography", 2);
+
+        $resourceAction = ResourceAction::newInstance("leave_request", "XX125")
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", "marketing")
+            ->withAttribute("geography", "GB")
+            ->withAttribute("owner", "john")
+            ->withActions(["view:public", "approve"]);
+
+        $checkResourcesResult = null;
+        try {
+            $checkResourcesResult = $this->client->checkResources($principal, array($resourceAction), null, null);
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        } catch (\Http\Client\Exception $e) {
+            $this->fail($e->getMessage());
+        }
+
+        try {
+            $this->assertCount(2, $checkResourcesResult->find("XX125")->validationErrors);
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }

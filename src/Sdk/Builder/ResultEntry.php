@@ -5,10 +5,13 @@ namespace Cerbos\Sdk\Builder;
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
+use Cerbos\Api\V1\Schema\ValidationError;
+
 class ResultEntry
 {
     private Resource $resourceBuilder;
     private array $actions;
+    private array $validationErrors;
 
     /**
      * @param string $kind
@@ -17,6 +20,7 @@ class ResultEntry
     private function __construct(string $kind, string $id) {
         $this->resourceBuilder = Resource::newInstance($kind, $id);
         $this->actions = array();
+        $this->validationErrors = array();
     }
 
     /**
@@ -30,7 +34,7 @@ class ResultEntry
 
     /**
      * @param string|null $id
-     * @return ResultEntry
+     * @return $this
      */
     public function withId(?string $id): ResultEntry {
         if ($id == null) return $this;
@@ -40,7 +44,7 @@ class ResultEntry
 
     /**
      * @param string|null $kind
-     * @return ResultEntry
+     * @return $this
      */
     public function withKind(?string $kind): ResultEntry {
         if ($kind == null) return $this;
@@ -50,7 +54,7 @@ class ResultEntry
 
     /**
      * @param string|null $policyVersion
-     * @return ResultEntry
+     * @return $this
      */
     public function withPolicyVersion(?string $policyVersion): ResultEntry {
         if ($policyVersion == null) return $this;
@@ -60,7 +64,7 @@ class ResultEntry
 
     /**
      * @param string|null $scope
-     * @return ResultEntry
+     * @return $this
      */
     public function withScope(?string $scope): ResultEntry {
         if ($scope == null) return $this;
@@ -70,7 +74,8 @@ class ResultEntry
 
     /**
      * @param string|null $action
-     * @return ResultEntry
+     * @param string|null $effect
+     * @return $this
      */
     public function withAction(?string $action, ?string $effect): ResultEntry {
         if ($action == null || $effect == null) return $this;
@@ -80,7 +85,7 @@ class ResultEntry
 
     /**
      * @param array|null $actions dictionary of action names, values being EFFECT_ALLOW or EFFECT_DENY
-     * @return ResultEntry
+     * @return $this
      */
     public function withActions(?array $actions): ResultEntry {
         if ($actions == null) return $this;
@@ -91,9 +96,31 @@ class ResultEntry
     }
 
     /**
-     * @return \Cerbos\Api\V1\Engine\ResultEntry
+     * @param ValidationError|null $validationError
+     * @return $this
      */
-    public function toResultEntry(): \Cerbos\Api\V1\Engine\ResultEntry {
-        return new \Cerbos\Api\V1\Engine\ResultEntry($this->resourceBuilder->toResource(), $this->actions);
+    public function withValidationError(?ValidationError $validationError): ResultEntry {
+        if ($validationError == null) return $this;
+        $this->validationErrors[] = $validationError;
+        return $this;
+    }
+
+    /**
+     * @param ValidationError[] $validationErrors
+     * @return $this
+     */
+    public function withValidationErrors(array $validationErrors): ResultEntry {
+        if ($validationErrors == null) return $this;
+        foreach ($validationErrors as $validationError) {
+            $this->validationErrors[] = $validationError;
+        }
+        return $this;
+    }
+
+    /**
+     * @return \Cerbos\Api\V1\Response\ResultEntry
+     */
+    public function toResultEntry(): \Cerbos\Api\V1\Response\ResultEntry {
+        return new \Cerbos\Api\V1\Response\ResultEntry($this->resourceBuilder->toResource(), $this->actions, $this->validationErrors);
     }
 }

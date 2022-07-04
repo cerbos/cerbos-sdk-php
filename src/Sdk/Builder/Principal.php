@@ -29,7 +29,7 @@ class Principal
 
     /**
      * @param string|null $id
-     * @return Principal
+     * @return $this
      */
     public function withId(?string $id): Principal {
         if ($id == null) return $this;
@@ -39,7 +39,7 @@ class Principal
 
     /**
      * @param string|null $policyVersion
-     * @return Principal
+     * @return $this
      */
     public function withPolicyVersion(?string $policyVersion): Principal {
         if ($policyVersion == null) return $this;
@@ -49,7 +49,7 @@ class Principal
 
     /**
      * @param string|null $role
-     * @return Principal
+     * @return $this
      */
     public function withRole(?string $role): Principal {
         if ($role == null) return $this;
@@ -59,7 +59,7 @@ class Principal
 
     /**
      * @param string[]|null $roles
-     * @return Principal
+     * @return $this
      */
     public function withRoles(?array $roles): Principal {
         if ($roles == null) return $this;
@@ -72,7 +72,7 @@ class Principal
     /**
      * @param string|null $key
      * @param bool|int|float|string|null $value
-     * @return Principal
+     * @return $this
      */
     public function withAttribute(?string $key, $value): Principal {
         if ($key == null || $value == null) return $this;
@@ -82,7 +82,7 @@ class Principal
 
     /**
      * @param array|null $attributes dictionary of string key and values
-     * @return Principal
+     * @return $this
      */
     public function withAttributes(?array $attributes): Principal {
         if ($attributes == null) return $this;
@@ -94,7 +94,7 @@ class Principal
 
     /**
      * @param string|null $scope
-     * @return Principal
+     * @return $this
      */
     public function withScope(?string $scope): Principal {
         if ($scope == null) return $this;

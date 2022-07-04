@@ -7,12 +7,14 @@ namespace Cerbos\Sdk;
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-use Cerbos\Api\V1\Engine\CheckResourcesResult;
+use Cerbos\Api\V1\Response\CheckResourcesResult;
 use Cerbos\Sdk\Builder\ResourceAction;
 use Cerbos\Sdk\Builder\ResultEntry;
+use Cerbos\Sdk\Builder\ValidationError;
 use Cerbos\Sdk\Utility\RequestId;
 use Exception;
 use Http\Client\Common\HttpMethodsClientInterface;
+use Psr\Http\Message\ResponseInterface;
 
 final class CerbosClient
 {
@@ -33,7 +35,7 @@ final class CerbosClient
      * @param Builder\AuxData|null $auxData
      * @param string|null $requestId
      * @return CheckResourcesResult
-     * @throws \Http\Client\Exception
+     * @throws Exception|\Http\Client\Exception
      */
     public function checkResources(Builder\Principal $principal, array $resourceActions, ?Builder\AuxData $auxData, ?string $requestId): CheckResourcesResult
     {
@@ -51,12 +53,12 @@ final class CerbosClient
             "resources" => $resActs
         );
 
-        if (!isset($requestId)) {
-            $request["requestId"] = RequestId::generate();
-        }
-
         if (isset($auxData)) {
             $request["auxData"] = $auxData->toAuxData();
+        }
+
+        if (!isset($requestId)) {
+            $request["requestId"] = RequestId::generate();
         }
 
         $response = $this->client->post(
@@ -69,8 +71,17 @@ final class CerbosClient
             throw new Exception("HTTP status is ".$response->getStatusCode());
         }
 
-        $checkResourcesResultBuilder = Builder\CheckResourcesResult::newInstance();
+        return $this->getCheckResourceResult($response);
+    }
+
+    /**
+     * @param ResponseInterface $response
+     * @return CheckResourcesResult
+     */
+    private function getCheckResourceResult(ResponseInterface $response): CheckResourcesResult
+    {
         $json = json_decode($response->getBody()->getContents());
+        $checkResourcesResultBuilder = Builder\CheckResourcesResult::newInstance();
         foreach ($json->{'results'} as $result) {
             $res = $result->{'resource'};
 
@@ -91,10 +102,32 @@ final class CerbosClient
                 }
             }
 
+            $validationErrors = array();
+            if(isset($result->{'validationErrors'})) {
+                foreach ($result->{'validationErrors'} as $validationError) {
+                    $validationErrorBuilder = ValidationError::newInstance();
+
+                    if (isset($validationError->{'path'})) {
+                        $validationErrorBuilder->withPath($validationError->{'path'});
+                    }
+
+                    if (isset($validationError->{'message'})) {
+                        $validationErrorBuilder->withMessage($validationError->{'message'});
+                    }
+
+                    if (isset($validationError->{'source'})) {
+                        $validationErrorBuilder->withSource($validationError->{'source'});
+                    }
+
+                    $validationErrors[] = $validationErrorBuilder->toValidationError();
+                }
+            }
+
             $resultEntryBuilder = ResultEntry::newInstance($res->{'kind'}, $res->{'id'})
                 ->withPolicyVersion($policyVersion)
                 ->withScope($scope)
-                ->withActions($actions);
+                ->withActions($actions)
+                ->withValidationErrors($validationErrors);
 
             $checkResourcesResultBuilder->withResultEntry($result->{'resource'}->{'id'}, $resultEntryBuilder->toResultEntry());
         }

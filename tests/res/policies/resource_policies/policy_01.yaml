@@ -9,6 +9,9 @@ resourcePolicy:
   importDerivedRoles:
     - alpha
     - beta
+  schemas:
+    principalSchema:
+      ref: cerbos:///principal.json
   resource: leave_request
   rules:
     - actions: ['*']
