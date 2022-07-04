@@ -15,9 +15,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Validate composer.json and composer.lock
-        run: composer validate --strict
-
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
@@ -38,6 +35,17 @@ jobs:
       - name: Statically analyze code
         shell: bash
         run: make static-analysis
+
+  validate-composer:
+    name: composer.json validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Validate
+        shell: bash
+        run: make validate-composer
 
   unit-tests:
     name: Run unit tests

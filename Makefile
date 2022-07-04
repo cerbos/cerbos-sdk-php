@@ -1,5 +1,5 @@
 .PHONY: all
-all: lint static-analysis test
+all: lint static-analysis validate-composer test
 
 .PHONY: lint
 lint:
@@ -9,6 +9,10 @@ lint:
 static-analysis:
 	vendor/bin/psalm
 	vendor/bin/phpstan analyse src tests
+
+.PHONY: validate-composer
+validate-composer:
+	composer validate
 
 .PHONY: test
 test:
