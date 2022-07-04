@@ -76,8 +76,8 @@ class Resource
      */
     public function withAttributes(?array $attributes): Resource {
         if ($attributes == null) return $this;
-        foreach ($attributes as $attribute) {
-            $this->resource->attributes[] = $attribute;
+        foreach ($attributes as $key => $value) {
+            $this->resource->attributes[$key] = $value;
         }
         return $this;
     }
