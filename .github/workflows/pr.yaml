@@ -41,17 +41,15 @@ jobs:
 
   unit-tests:
     name: Run unit tests
-    needs: [ "lint", "security-analysis" ]
+    needs: [ "lint" ]
     runs-on: ${{ matrix.operating-system }}
     strategy:
       fail-fast: false
       matrix:
         php-version:
           - "7.4"
-          - "8.0"
           - "8.1"
         operating-system:
-          - "macos-latest"
           - "ubuntu-latest"
         dependencies:
           - "lowest"
@@ -62,6 +60,9 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
+
+      - name: Run docker-compose
+        run: docker-compose up -d
 
       - name: Run unit tests
         shell: bash
