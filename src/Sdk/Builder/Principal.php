@@ -86,8 +86,8 @@ class Principal
      */
     public function withAttributes(?array $attributes): Principal {
         if ($attributes == null) return $this;
-        foreach ($attributes as $attribute) {
-            $this->principal->attributes[] = $attribute;
+        foreach ($attributes as $key => $value) {
+            $this->principal->attributes[$key] = $value;
         }
         return $this;
     }

@@ -9,8 +9,8 @@ namespace Cerbos\Api\V1\Engine;
 
 class ResourceAction implements \JsonSerializable
 {
-    private Resource $resource;
-    private array $actions;
+    public Resource $resource;
+    public array $actions;
 
     /**
      * @param Resource $resource
