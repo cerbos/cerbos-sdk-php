@@ -29,22 +29,22 @@
     "sort-packages": true
   },
   "require": {
-    "php": "^7.4 || ^8.0",
     "ext-json": "*",
-    "php-http/client-common": "2.5.0",
-    "psr/http-client": "1.0.1",
+    "php": "^7.4 || ^8.0",
+    "php-http/client-common": "^2.5",
+    "psr/http-client": "^1.0",
     "psr/http-client-implementation": "*",
-    "psr/http-factory": "1.0.1",
+    "psr/http-factory": "^1.0",
     "ramsey/uuid": "^4.3"
   },
   "require-dev": {
-    "laminas/laminas-diactoros": "2.11.0",
-    "nyholm/psr7": "1.5.0",
-    "php-http/curl-client": "2.2.1",
-    "php-parallel-lint/php-parallel-lint": "v1.3.2",
-    "phpstan/phpstan": "1.7.15",
-    "phpunit/phpunit": "9.5.21",
-    "symfony/http-client": "v6.1.1",
-    "vimeo/psalm": "4.23.0"
+    "laminas/laminas-diactoros": "^2.11",
+    "nyholm/psr7": "^1.5",
+    "php-http/curl-client": "^2.2",
+    "php-parallel-lint/php-parallel-lint": "^v1.3",
+    "phpstan/phpstan": "^1.7",
+    "phpunit/phpunit": "^9.5",
+    "symfony/http-client": "^v6.1",
+    "vimeo/psalm": "^4.23"
   }
 }
