@@ -8,11 +8,11 @@ class ValidationError
     public string $message;
     public string $source;
 
-    /**
-     *
-     */
     public function __construct()
     {
+        $this->path = "";
+        $this->message = "";
+        $this->source = "";
     }
 }
 
