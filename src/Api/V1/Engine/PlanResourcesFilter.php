@@ -9,7 +9,7 @@ namespace Cerbos\Api\V1\Engine;
 
 use Cerbos\Api\V1\Engine\PlanResourcesFilter\Expression\Operand;
 
-class PlanResourcesFilter
+class PlanResourcesFilter implements \JsonSerializable
 {
     public string $kind;
     public ?Operand $condition;

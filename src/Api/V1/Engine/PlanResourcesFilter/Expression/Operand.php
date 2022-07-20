@@ -31,6 +31,10 @@ class Operand
      */
     public function __construct(?Expression $expression, ?string $variable, $value)
     {
+        $this->expression = null;
+        $this->variable = null;
+        $this->value = null;
+
         if (isset($expression)) {
             $this->expression = $expression;
         }

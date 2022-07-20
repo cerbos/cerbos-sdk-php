@@ -7,6 +7,7 @@ namespace Cerbos\Sdk;
 // Copyright 2021-2022 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
+use Cerbos\Api\V1\Engine\PlanResourcesFilter;
 use Cerbos\Api\V1\Response\CheckResourcesResult;
 use Cerbos\Api\V1\Response\PlanResourcesResult;
 use Cerbos\Sdk\Builder\ResourceAction;
@@ -101,6 +102,8 @@ final class CerbosClient
             $request["requestId"] = RequestId::generate();
         }
 
+        json_encode($request);
+
         $response = $this->client->post(
             $this->planResourcesEndpoint,
             [],
@@ -111,9 +114,97 @@ final class CerbosClient
             throw new Exception("HTTP status is ".$response->getStatusCode());
         }
 
-        // TODO(): Create a PlanResourcesResult, fill it with the incoming data and return.
+        return $this->getPlanResourcesResult($response);
+    }
 
-        return new PlanResourcesResult();
+    private function getPlanResourcesResult(ResponseInterface $response): PlanResourcesResult {
+        $json = json_decode($response->getBody()->getContents());
+
+        $resourceKind = "";
+        if(isset($json->{'resourceKind'})) {
+            $resourceKind = $json->{'resourceKind'};
+        }
+
+        $requestId = "";
+        if(isset($json->{'requestId'})) {
+            $requestId = $json->{'requestId'};
+        }
+
+        $action = "";
+        if(isset($json->{'action'})) {
+            $action = $json->{'action'};
+        }
+
+        $policyVersion = "";
+        if(isset($json->{'policyVersion'})) {
+            $policyVersion = $json->{'policyVersion'};
+        }
+
+        $planResourcesResultBuilder = Builder\PlanResourcesResult::newInstance($resourceKind, $requestId, $action, $policyVersion);
+
+        $validationErrors = array();
+        if(isset($json->{'validationErrors'})) {
+            foreach ($json->{'validationErrors'} as $validationError) {
+                $validationErrorBuilder = ValidationError::newInstance();
+
+                if (isset($validationError->{'path'})) {
+                    $validationErrorBuilder->withPath($validationError->{'path'});
+                }
+
+                if (isset($validationError->{'message'})) {
+                    $validationErrorBuilder->withMessage($validationError->{'message'});
+                }
+
+                if (isset($validationError->{'source'})) {
+                    $validationErrorBuilder->withSource($validationError->{'source'});
+                }
+
+                $validationErrors[] = $validationErrorBuilder->toValidationError();
+            }
+        }
+
+        $planResourcesResultBuilder = $planResourcesResultBuilder
+            ->withValidationErrors($validationErrors);
+
+        if (!isset($json->{'filter'}) || !isset($json->{'filter'}->{'kind'})) {
+            return $planResourcesResultBuilder->toPlanResourcesResult();
+        }
+
+        $filterBuilder = Builder\PlanResourcesFilter::newInstance()
+            ->withKind($json->{'filter'}->{'kind'});
+
+        if (isset($json->{'filter'}->{'condition'})) {
+            $filterBuilder->withCondition($this->getConditionTree($json->{'filter'}->{'condition'}));
+        }
+
+        $planResourcesResultBuilder = $planResourcesResultBuilder->withFilter($filterBuilder->toPlanResourcesFilter());
+
+        return $planResourcesResultBuilder->toPlanResourcesResult();
+    }
+
+    /**
+     * @param object $operand
+     * @return PlanResourcesFilter\Expression\Operand
+     */
+    private function getConditionTree(object $operand): PlanResourcesFilter\Expression\Operand {
+        if (isset($operand->{'expression'})) {
+            $expr = new PlanResourcesFilter\Expression($operand->{'expression'}->{'operator'});
+            if (isset($operand->{'expression'}->{'operands'})) {
+                foreach ($operand->{'expression'}->{'operands'} as $operand) {
+                    $expr->operands[] = $this->getConditionTree($operand);
+                }
+            }
+
+            return new PlanResourcesFilter\Expression\Operand($expr, null, null);
+        }
+        else if (isset($operand->{'variable'})) {
+            return new PlanResourcesFilter\Expression\Operand(null, $operand->{'variable'}, null);
+        }
+        else if (isset($operand->{'value'})) {
+            return new PlanResourcesFilter\Expression\Operand(null, null, $operand->{'value'});
+        }
+
+        return new PlanResourcesFilter\Expression\Operand(null, "", null);
     }
 
     /**

@@ -15,8 +15,8 @@ class PlanResourcesResult implements \JsonSerializable
     public string $requestId;
     public string $action;
     public string $policyVersion;
+    public array $validationErrors;
     public ?PlanResourcesFilter $filter;
-    public ?array $validationErrors;
 
     /**
      * @param string $resourceKind
@@ -30,8 +30,8 @@ class PlanResourcesResult implements \JsonSerializable
         $this->requestId = $requestId;
         $this->action = $action;
         $this->policyVersion = $policyVersion;
+        $this->validationErrors = array();
         $this->filter = null;
-        $this->validationErrors = null;
     }
 
     /**
@@ -71,10 +71,6 @@ class PlanResourcesResult implements \JsonSerializable
      * @return bool
      */
     public function hasValidationErrors(): bool {
-        if (!isset($this->validationErrors)) {
-            return false;
-        }
-
         return count($this->validationErrors) > 0;
     }
 
@@ -88,17 +84,13 @@ class PlanResourcesResult implements \JsonSerializable
             "requestId" => $this->requestId,
             "action" => $this->action,
             "policyVersion" => $this->policyVersion,
+            "validationErrors" => $this->validationErrors
         ];
 
         if (isset($this->filter)) {
             $serialized["filter"] = $this->filter;
         }
 
-        if (isset($this->validationErrors)) {
-            $serialized["validationErrors"] = $this->validationErrors;
-        }
-
         return $serialized;
     }
 }
-

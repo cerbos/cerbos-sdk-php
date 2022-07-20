@@ -26,15 +26,21 @@ class Resource implements \JsonSerializable
     }
 
     /**
+     * @psalm-suppress RedundantPropertyInitializationCheck
      * @return array
      */
     public function jsonSerialize(): array
     {
-        return [
+        $serialized = [
             "kind" => $this->kind,
             "policyVersion" => $this->policyVersion,
-            "attr" => $this->attributes,
             "scope" => $this->scope
         ];
+
+        if (count($this->attributes) > 0) {
+            $serialized["attr"] = $this->attributes;
+        }
+
+        return $serialized;
     }
 }

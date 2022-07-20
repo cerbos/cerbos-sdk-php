@@ -13,9 +13,9 @@ class Expression
 {
     public string $operator;
     /**
-     * @var Operand[]|null
+     * @var Operand[]
      */
-    public ?array $operands;
+    public array $operands;
 
     /**
      * @param string $operator
@@ -23,7 +23,7 @@ class Expression
     public function __construct(string $operator)
     {
         $this->operator = $operator;
-        $this->operands = null;
+        $this->operands = array();
     }
 
     /**
@@ -31,11 +31,9 @@ class Expression
      */
     public function jsonSerialize(): array
     {
-        $serialized = [ "operator" => $this->operator ];
-        if (isset($this->operands)) {
-            $serialized["operands"] = $this->operands;
-        }
-
-        return $serialized;
+        return [
+            "operator" => $this->operator,
+            "operands" => $this->operands
+        ];
     }
 }
