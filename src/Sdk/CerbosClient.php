@@ -20,6 +20,7 @@ final class CerbosClient
 {
     private HttpMethodsClientInterface $client;
     private string $checkResourcesEndpoint = "/api/check/resources";
+    private string $planResourcesEndpoint = "/api/plan/resources";
 
     /**
      * @param HttpMethodsClientInterface $client
@@ -72,6 +73,44 @@ final class CerbosClient
         }
 
         return $this->getCheckResourceResult($response);
+    }
+
+    /**
+     * @param Builder\Principal $principal
+     * @param Builder\Resource $resource
+     * @param string $action
+     * @param Builder\AuxData|null $auxData
+     * @param string|null $requestId
+     * @return void
+     * @throws Exception|\Http\Client\Exception
+     */
+    public function planResources(Builder\Principal $principal, Builder\Resource $resource, string $action, ?Builder\AuxData $auxData, ?string $requestId): void {
+        $request = array(
+            "action" => $action,
+            "principal" => $principal->toPrincipal(),
+            "resource" => $resource->toPlanResource(),
+            "includeMeta" => false
+        );
+
+        if (isset($auxData)) {
+            $request["auxData"] = $auxData->toAuxData();
+        }
+
+        if (!isset($requestId)) {
+            $request["requestId"] = RequestId::generate();
+        }
+
+        $response = $this->client->post(
+            $this->checkResourcesEndpoint,
+            [],
+            json_encode($request)
+        );
+
+        if ($response->getStatusCode() != 200) {
+            throw new Exception("HTTP status is ".$response->getStatusCode());
+        }
+
+        // TODO(): Create a PlanResourcesResult, fill it with the incoming data and return.
     }
 
     /**

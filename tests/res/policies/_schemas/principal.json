@@ -24,7 +24,7 @@
     "jobRoles": {
       "type": "array",
       "items": {
-        "type": "string"
+          "type": "string"
       }
     },
     "tags": {
@@ -33,19 +33,19 @@
         "brands": {
           "type": "array",
           "items": {
-            "type": "string"
+              "type": "string"
           }
         },
         "classes": {
           "type": "array",
           "items": {
-            "type": "string"
+              "type": "string"
           }
         },
         "regions": {
           "type": "array",
           "items": {
-            "type": "string"
+              "type": "string"
           }
         }
       }
@@ -53,6 +53,7 @@
   },
   "required": [
     "department",
-    "geography"
+    "geography",
+    "team"
   ]
 }

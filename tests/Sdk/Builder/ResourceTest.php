@@ -23,7 +23,7 @@ class ResourceTest extends TestCase
 
 
     public function testResource(): void {
-        $resource = Resource::newInstance($this->kind, $this->id)
+        $res = Resource::newInstance($this->kind, $this->id)
                                 ->withPolicyVersion($this->policyVersion)
                                 ->withScope($this->scope)
                                 ->withAttribute($this->lonelyAttr, $this->lonelyAttr)
@@ -32,8 +32,8 @@ class ResourceTest extends TestCase
                                     $this->intAttr => 10,
                                     $this->stringAttr => $this->stringAttr,
                                     $this->floatAttr => 1.2,
-                                ))
-                                ->toResource();
+                                ));
+        $resource = $res->toResource();
 
         $this->assertEquals($this->kind, $resource->kind, "value of the resource kind is invalid");
         $this->assertEquals($this->id, $resource->id, "value of the resource id is invalid");
@@ -57,5 +57,29 @@ class ResourceTest extends TestCase
         $this->assertEquals(10, $resource->attributes[$this->intAttr], "'".$this->intAttr."' of the resource is not equal to the expected value");
         $this->assertEquals($this->stringAttr, $resource->attributes[$this->stringAttr], "'".$this->stringAttr."' of the resource is not equal to the expected value");
         $this->assertEquals(1.2, $resource->attributes[$this->floatAttr], "'".$this->floatAttr."' of the resource is not equal to the expected value");
+
+        $planResource = $res->toPlanResource();
+
+        $this->assertEquals($this->kind, $planResource->kind, "value of the plan resource kind is invalid");
+        $this->assertEquals($this->policyVersion, $planResource->policyVersion, "value of the plan resource policyVersion is invalid");
+        $this->assertEquals($this->scope, $planResource->scope, "value of the plan resource scope is invalid");
+
+        $this->assertArrayHasKey($this->lonelyAttr, $planResource->attributes, "the plan resource does not have '".$this->lonelyAttr."' attribute");
+        $this->assertArrayHasKey($this->boolAttr, $planResource->attributes, "the plan resource does not have '".$this->boolAttr."' attribute");
+        $this->assertArrayHasKey($this->intAttr, $planResource->attributes, "the plan resource does not have '".$this->intAttr."' attribute");
+        $this->assertArrayHasKey($this->stringAttr, $planResource->attributes, "the plan resource does not have '".$this->stringAttr."' attribute");
+        $this->assertArrayHasKey($this->floatAttr, $planResource->attributes, "the plan resource does not have '".$this->floatAttr."' attribute");
+
+        $this->assertIsString($planResource->attributes[$this->lonelyAttr], "'".$this->lonelyAttr."' of the plan resource is not of type string");
+        $this->assertIsBool($planResource->attributes[$this->boolAttr], "'".$this->boolAttr."' of the plan resource is not of type bool");
+        $this->assertIsInt($planResource->attributes[$this->intAttr], "'".$this->intAttr."' of the plan resource is not of type int");
+        $this->assertIsString($planResource->attributes[$this->stringAttr], "'".$this->stringAttr."' of the plan resource is not of type string");
+        $this->assertIsFloat($planResource->attributes[$this->floatAttr], "'".$this->floatAttr."' of the plan resource is not of type float");
+
+        $this->assertEquals($this->lonelyAttr, $planResource->attributes[$this->lonelyAttr], "'".$this->lonelyAttr."' of the plan resource is not equal to the expected value");
+        $this->assertEquals(true, $planResource->attributes[$this->boolAttr], "'".$this->boolAttr."' of the plan resource is not equal to the expected value");
+        $this->assertEquals(10, $planResource->attributes[$this->intAttr], "'".$this->intAttr."' of the plan resource is not equal to the expected value");
+        $this->assertEquals($this->stringAttr, $planResource->attributes[$this->stringAttr], "'".$this->stringAttr."' of the plan resource is not equal to the expected value");
+        $this->assertEquals(1.2, $planResource->attributes[$this->floatAttr], "'".$this->floatAttr."' of the plan resource is not equal to the expected value");
     }
 }

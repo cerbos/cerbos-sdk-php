@@ -19,13 +19,17 @@ class CerbosClientTest extends TestCase
         $principal = Principal::newInstance("john")
                         ->withRole("employee")
                         ->withPolicyVersion("20210210")
+                        ->withAttribute("team", "design")
                         ->withAttribute("department", "marketing")
-                        ->withAttribute("geography", "GB");
+                        ->withAttribute("geography", "GB")
+                        ->withAttribute("reader", false);
 
         $resourceAction = ResourceAction::newInstance("leave_request", "XX125")
                             ->withPolicyVersion("20210210")
+                            ->withAttribute("id", "XX125")
                             ->withAttribute("department", "marketing")
                             ->withAttribute("geography", "GB")
+                            ->withAttribute("team", "design")
                             ->withAttribute("owner", "john")
                             ->withActions(["view:public", "approve"]);
 
@@ -53,11 +57,15 @@ class CerbosClientTest extends TestCase
         $principal = Principal::newInstance("john")
             ->withRole("employee")
             ->withPolicyVersion("20210210")
+            ->withAttribute("team", "design")
             ->withAttribute("department", "marketing")
-            ->withAttribute("geography", "GB");
+            ->withAttribute("geography", "GB")
+            ->withAttribute("reader", false);
 
         $resourceAction = ResourceAction::newInstance("leave_request", "XX125")
             ->withPolicyVersion("20210210")
+            ->withAttribute("id", "XX125")
+            ->withAttribute("team", "design")
             ->withAttribute("department", "marketing")
             ->withAttribute("geography", "GB")
             ->withAttribute("owner", "john")
@@ -84,27 +92,35 @@ class CerbosClientTest extends TestCase
         $principal = Principal::newInstance("john")
                         ->withRole("employee")
                         ->withPolicyVersion("20210210")
+                        ->withAttribute("team", "design")
                         ->withAttribute("department", "marketing")
-                        ->withAttribute("geography", "GB");
+                        ->withAttribute("geography", "GB")
+                        ->withAttribute("reader", false);
 
         $resourceActionXX125 = ResourceAction::newInstance("leave_request", "XX125")
                             ->withPolicyVersion("20210210")
+                            ->withAttribute("id", "XX125")
                             ->withAttribute("department", "marketing")
                             ->withAttribute("geography", "GB")
+                            ->withAttribute("team", "design")
                             ->withAttribute("owner", "john")
                             ->withActions(["view:public", "approve", "defer"]);
 
         $resourceActionXX225 = ResourceAction::newInstance("leave_request", "XX225")
                             ->withPolicyVersion("20210210")
+                            ->withAttribute("id", "XX225")
                             ->withAttribute("department", "marketing")
                             ->withAttribute("geography", "GB")
+                            ->withAttribute("team", "design")
                             ->withAttribute("owner", "martha")
                             ->withActions(["view:public", "approve"]);
 
         $resourceActionXX325 = ResourceAction::newInstance("leave_request", "XX325")
                                 ->withPolicyVersion("20210210")
+                                ->withAttribute("id", "XX325")
                                 ->withAttribute("department", "marketing")
                                 ->withAttribute("geography", "US")
+                                ->withAttribute("team", "design")
                                 ->withAttribute("owner", "peggy")
                                 ->withActions(["view:public", "approve"]);
 
@@ -171,7 +187,7 @@ class CerbosClientTest extends TestCase
         }
 
         try {
-            $this->assertCount(2, $checkResourcesResult->find("XX125")->validationErrors);
+            $this->assertCount(4, $checkResourcesResult->find("XX125")->validationErrors);
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
