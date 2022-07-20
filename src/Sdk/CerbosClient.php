@@ -8,6 +8,7 @@ namespace Cerbos\Sdk;
 // SPDX-License-Identifier: Apache-2.0
 
 use Cerbos\Api\V1\Response\CheckResourcesResult;
+use Cerbos\Api\V1\Response\PlanResourcesResult;
 use Cerbos\Sdk\Builder\ResourceAction;
 use Cerbos\Sdk\Builder\ResultEntry;
 use Cerbos\Sdk\Builder\ValidationError;
@@ -81,10 +82,10 @@ final class CerbosClient
      * @param string $action
      * @param Builder\AuxData|null $auxData
      * @param string|null $requestId
-     * @return void
+     * @return PlanResourcesResult
      * @throws Exception|\Http\Client\Exception
      */
-    public function planResources(Builder\Principal $principal, Builder\Resource $resource, string $action, ?Builder\AuxData $auxData, ?string $requestId): void {
+    public function planResources(Builder\Principal $principal, Builder\Resource $resource, string $action, ?Builder\AuxData $auxData, ?string $requestId): PlanResourcesResult {
         $request = array(
             "action" => $action,
             "principal" => $principal->toPrincipal(),
@@ -101,7 +102,7 @@ final class CerbosClient
         }
 
         $response = $this->client->post(
-            $this->checkResourcesEndpoint,
+            $this->planResourcesEndpoint,
             [],
             json_encode($request)
         );
@@ -111,6 +112,8 @@ final class CerbosClient
         }
 
         // TODO(): Create a PlanResourcesResult, fill it with the incoming data and return.
+
+        return new PlanResourcesResult();
     }
 
     /**

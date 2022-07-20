@@ -7,6 +7,7 @@ namespace Cerbos\Test;
 
 use Cerbos\Sdk\Builder\AuxData;
 use Cerbos\Sdk\Builder\Principal;
+use Cerbos\Sdk\Builder\Resource;
 use Cerbos\Sdk\Builder\ResourceAction;
 use Exception;
 
@@ -191,5 +192,60 @@ class CerbosClientTest extends TestCase
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
+    }
+
+    public function testPlanResources(): void{
+        $principal = Principal::newInstance("maggie")
+            ->withRole("manager")
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", "marketing")
+            ->withAttribute("geography", "GB")
+            ->withAttribute("managed_geographies", "GB")
+            ->withAttribute("team", "design")
+            ->withAttribute("reader", false);
+
+        $resource = Resource::newInstance("leave_request", "XX125")
+            ->withPolicyVersion("20210210");
+
+        $action = "approve";
+
+        $planResourcesResult = null;
+        try {
+            $planResourcesResult = $this->client->planResources($principal, $resource, $action, AuxData::WithJwt($this->jwt, null), null);
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        } catch (\Http\Client\Exception $e) {
+            $this->fail($e->getMessage());
+        }
+
+        // TODO(): Write assertions
+    }
+
+    public function testPlanResourcesValidation(): void{
+        $principal = Principal::newInstance("maggie")
+            ->withRole("manager")
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", "accounting")
+            ->withAttribute("geography", "GB")
+            ->withAttribute("managed_geographies", "GB")
+            ->withAttribute("team", "design")
+            ->withAttribute("reader", false);
+
+        $resource = Resource::newInstance("leave_request", "XX125")
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", "accounting");
+
+        $action = "approve";
+
+        $planResourcesResult = null;
+        try {
+            $planResourcesResult = $this->client->planResources($principal, $resource, $action, AuxData::WithJwt($this->jwt, null), null);
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        } catch (\Http\Client\Exception $e) {
+            $this->fail($e->getMessage());
+        }
+
+        // TODO(): Write assertions
     }
 }
