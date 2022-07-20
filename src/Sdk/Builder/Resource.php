@@ -98,4 +98,15 @@ class Resource
     public function toResource(): \Cerbos\Api\V1\Engine\Resource {
         return $this->resource;
     }
+
+    /**
+     * @return \Cerbos\Api\V1\Engine\PlanResourcesInput\Resource
+     */
+    public function toPlanResource(): \Cerbos\Api\V1\Engine\PlanResourcesInput\Resource {
+        $resource = new \Cerbos\Api\V1\Engine\PlanResourcesInput\Resource($this->resource->kind);
+        $resource->attributes = $this->resource->attributes;
+        $resource->policyVersion = $this->resource->policyVersion;
+        $resource->scope = $this->resource->scope;
+        return $resource;
+    }
 }
