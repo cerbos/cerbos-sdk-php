@@ -218,7 +218,23 @@ class CerbosClientTest extends TestCase
             $this->fail($e->getMessage());
         }
 
-        // TODO(): Write assertions
+        $this->assertEquals($action, $planResourcesResult->action, "planResourcesResult action is wrong");
+        $this->assertEquals("20210210", $planResourcesResult->policyVersion, "planResourcesResult policy version is wrong");
+        $this->assertEquals("leave_request", $planResourcesResult->resourceKind, "planResourcesResult resource kind is wrong");
+
+        $this->assertFalse($planResourcesResult->hasValidationErrors(), "planResourcesResult has validation errors");
+        $this->assertFalse($planResourcesResult->isAlwaysAllowed(), "planResourcesResult is always allowed");
+        $this->assertFalse($planResourcesResult->isAlwaysDenied(), "planResourcesResult is always denied");
+        $this->assertTrue($planResourcesResult->isConditional(), "planResourcesResult is not conditional");
+
+        $this->assertNotNull($planResourcesResult->filter, "planResourcesResult filter is null");
+        $this->assertNotNull($planResourcesResult->filter->condition, "planResourcesResult filter > condition is null");
+        $this->assertNotNull($planResourcesResult->filter->condition->expression, "planResourcesResult filter > condition > expression is null");
+        $this->assertNotNull($planResourcesResult->filter->condition->expression->operands, "planResourcesResult filter > condition > expression > operands is null");
+
+        $this->assertEquals("and", $planResourcesResult->filter->condition->expression->operator, "planResourcesResult expression's operator is not 'and'");
+        $this->assertEquals("eq", $planResourcesResult->filter->condition->expression->operands[0]->expression, "planResourcesResult operand is not 'eq'");
+        $this->assertEquals("eq", $planResourcesResult->filter->condition->expression->operands[1]->expression, "planResourcesResult operand is not 'eq'");
     }
 
     public function testPlanResourcesValidation(): void{
@@ -246,6 +262,16 @@ class CerbosClientTest extends TestCase
             $this->fail($e->getMessage());
         }
 
-        // TODO(): Write assertions
+        $this->assertEquals($action, $planResourcesResult->action, "planResourcesResult action is wrong");
+        $this->assertEquals("20210210", $planResourcesResult->policyVersion, "planResourcesResult policy version is wrong");
+        $this->assertEquals("leave_request", $planResourcesResult->resourceKind, "planResourcesResult resource kind is wrong");
+
+        $this->assertNotNull($planResourcesResult->validationErrors, "planResourcesResult validation errors is null");
+        $this->assertFalse($planResourcesResult->hasValidationErrors(), "planResourcesResult has validation errors");
+        $this->assertCount(2, $planResourcesResult->validationErrors, "planResourcesResult has not 2 validation errors");
+
+        $this->assertTrue($planResourcesResult->isAlwaysDenied(), "planResourcesResult is not always denied");
+        $this->assertFalse($planResourcesResult->isAlwaysAllowed(), "planResourcesResult is always allowed");
+        $this->assertFalse($planResourcesResult->isConditional(), "planResourcesResult is conditional");
     }
 }

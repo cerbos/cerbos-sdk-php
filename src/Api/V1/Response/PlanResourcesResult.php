@@ -37,7 +37,7 @@ class PlanResourcesResult implements \JsonSerializable
     /**
      * @return bool
      */
-    public function IsAlwaysAllowed(): bool {
+    public function isAlwaysAllowed(): bool {
         if (!isset($this->filter)) {
             return false;
         }
@@ -48,7 +48,7 @@ class PlanResourcesResult implements \JsonSerializable
     /**
      * @return bool
      */
-    public function IsAlwaysDenied(): bool {
+    public function isAlwaysDenied(): bool {
         if (!isset($this->filter)) {
             return false;
         }
@@ -59,7 +59,7 @@ class PlanResourcesResult implements \JsonSerializable
     /**
      * @return bool
      */
-    public function IsConditional(): bool {
+    public function isConditional(): bool {
         if (!isset($this->filter)) {
             return false;
         }
@@ -70,7 +70,7 @@ class PlanResourcesResult implements \JsonSerializable
     /**
      * @return bool
      */
-    public function HasValidationErrors(): bool {
+    public function hasValidationErrors(): bool {
         if (!isset($this->validationErrors)) {
             return false;
         }
