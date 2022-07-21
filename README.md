@@ -101,7 +101,7 @@ if ($resultEntry->isAllowed("defer")) { // returns true if `defer` action is all
 $principal = Principal::newInstance("maggie")
                 ->withRole("manager")
                 ->withAttribute("department", "marketing")
-                ->withAttribute("geography", "GB");
+                ->withAttribute("geography", "GB")
                 ->withAttribute("team", "design");
                 
 $resource = Resource::newInstance("leave_request", "xx125")
