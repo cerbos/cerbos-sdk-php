@@ -2,7 +2,6 @@ Cerbos PHP SDK
 ===============
 
 [![Latest Stable Version](http://poser.pugx.org/cerbos/cerbos-sdk-php/v)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
-[![Latest Unstable Version](http://poser.pugx.org/cerbos/cerbos-sdk-php/v/unstable)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
 [![Total Downloads](http://poser.pugx.org/cerbos/cerbos-sdk-php/downloads)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
 [![License](http://poser.pugx.org/cerbos/cerbos-sdk-php/license)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
 
@@ -92,6 +91,32 @@ if ($resultEntry->isAllowed("approve")) { // returns true if `approve` action is
 $resultEntry = $checkResourcesResult->find("xx225");
 
 if ($resultEntry->isAllowed("defer")) { // returns true if `defer` action is allowed
+    // ...
+}
+```
+
+### Plan Resources API
+
+```php
+$principal = Principal::newInstance("maggie")
+                ->withRole("manager")
+                ->withAttribute("department", "marketing")
+                ->withAttribute("geography", "GB");
+                ->withAttribute("team", "design");
+                
+$resource = Resource::newInstance("leave_request", "xx125")
+                ->withPolicyVersion("20210210");
+
+$action = "approve";
+
+$result = $this->client->planResources($principal, $resource, $action, null, null);
+if ($result->isAlwaysAllowed()) {
+    // ...
+}
+else if ($result->isAlwaysDenied()) {
+    // ...
+}
+else {
     // ...
 }
 ```
