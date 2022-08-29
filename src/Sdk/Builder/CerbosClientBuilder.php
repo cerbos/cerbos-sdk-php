@@ -27,6 +27,8 @@ class CerbosClientBuilder
     private StreamFactoryInterface $streamFactoryInterface;
     private UriFactoryInterface $uriFactory;
     private array $plugins = [];
+    private string $playgroundInstanceId;
+    private string $playgroundInstanceHeaderKey = "playground-instance";
 
     /**
      * @param string $uri
@@ -47,14 +49,7 @@ class CerbosClientBuilder
         $this->streamFactoryInterface = $streamFactoryInterface ?: Psr17FactoryDiscovery::findStreamFactory();
         $this->uriFactory = $uriFactoryInterface ?: Psr17FactoryDiscovery::findUriFactory();
         $this->addPlugin(new BaseUriPlugin($this->uriFactory->createUri($uri)));
-        $this->addPlugin(
-            new HeaderDefaultsPlugin(
-                [
-                    'Content-Type' => 'application/json',
-                    'Accept' => 'application/json',
-                ]
-            )
-        );
+        $this->playgroundInstanceId = "";
     }
 
     /**
@@ -66,11 +61,27 @@ class CerbosClientBuilder
         $this->plugins[] = $plugin;
     }
 
+    public function withPlayground(string $playgroundInstanceId): CerbosClientBuilder {
+        $this->playgroundInstanceId = $playgroundInstanceId;
+        return $this;
+    }
+
     /**
      * @return CerbosClient
      */
     public function build(): CerbosClient
     {
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ];
+
+        if ($this->playgroundInstanceId != "") {
+              $headers[$this->playgroundInstanceHeaderKey] = $this->playgroundInstanceId;
+        }
+
+        $this->addPlugin(new HeaderDefaultsPlugin($headers));
+
         $pluginClient = (new PluginClientFactory())->createClient($this->httpClient, $this->plugins);
 
         return new CerbosClient(new HttpMethodsClient(
