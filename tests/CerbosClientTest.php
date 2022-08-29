@@ -276,4 +276,39 @@ class CerbosClientTest extends TestCase
         $this->assertFalse($planResourcesResult->isAlwaysAllowed(), "planResourcesResult is always allowed");
         $this->assertFalse($planResourcesResult->isConditional(), "planResourcesResult is conditional");
     }
+
+    public function testPlayground(): void {
+        $principal = Principal::newInstance("sajit")
+            ->withRole("ADMIN")
+            ->withAttribute("department", "IT");
+
+        $resourceAction = ResourceAction::newInstance("expense", "XX125")
+            ->withAttribute("ownerId", "sally")
+            ->withAttribute("createdAt", "2021-10-01T10:00:00.021-05:00")
+            ->withAttribute("vendor", "Flux Water Gear")
+            ->withAttribute("region", "EMEA")
+            ->withAttribute("amount", 500)
+            ->withAttribute("status", "OPEN")
+            ->withActions(["approve", "delete"]);
+
+        $action = "approve";
+
+        $checkResourcesResult = null;
+        try {
+            $checkResourcesResult = $this->playgroundClient->checkResources($principal, array($resourceAction), null, null);
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        } catch (\Http\Client\Exception $e) {
+            $this->fail($e->getMessage());
+        }
+
+        try {
+            $resultEntry = $checkResourcesResult->find("XX125");
+
+            $this->assertTrue($resultEntry->isAllowed("approve"), "result of XX125 for approve action is wrong");
+            $this->assertTrue($resultEntry->isAllowed("delete"), "result of XX125 for delete action is wrong");
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
+    }
 }

@@ -13,7 +13,11 @@ use Symfony\Component\HttpClient\HttplugClient;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
+    private string $host = "http://localhost:3592";
+    private string $playgroundHost = "https://demo-pdp.cerbos.cloud";
+    private string $playgroundInstanceId = "XhkOi82fFKk3YW60e2c806Yvm0trKEje"; // See: https://play.cerbos.dev/p/XhkOi82fFKk3YW60e2c806Yvm0trKEje
     protected CerbosClient $client;
+    protected CerbosClient $playgroundClient;
 
     /**
      * @return void
@@ -21,8 +25,11 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $clientBuilder = new CerbosClientBuilder("http://localhost:3592", new HttplugClient(), null, null, null);
+        $clientBuilder = new CerbosClientBuilder($this->host, new HttplugClient(), null, null, null);
         $this->client = $clientBuilder->build();
+
+        $clientBuilder = new CerbosClientBuilder($this->playgroundHost, new HttplugClient(), null, null, null);
+        $this->playgroundClient = $clientBuilder->withPlayground($this->playgroundInstanceId)->build();
     }
 
     /**
