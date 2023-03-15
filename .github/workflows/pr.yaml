@@ -69,9 +69,6 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
-      - name: Run docker-compose
-        run: docker-compose up -d
-
       - name: Run unit tests
         shell: bash
         run: make test
