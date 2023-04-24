@@ -17,5 +17,5 @@ validate-composer:
 .PHONY: test
 test:
 	docker-compose up -d
-	vendor/bin/phpunit
+	vendor/bin/phpunit --no-coverage
 	docker-compose down
