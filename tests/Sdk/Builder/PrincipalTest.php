@@ -62,4 +62,14 @@ class PrincipalTest extends TestCase
         $this->assertEquals($this->roles[1], $principal->roles[1], "second role of the principal is not equal to the expected value");
         $this->assertEquals($this->roles[2], $principal->roles[2], "third role of the principal is not equal to the expected value");
     }
+
+    public function testPrincipalWithNoAttributesExcludesAttributeKeyInSerializedJson(): void {
+        $principal = Principal::newInstance($this->id)
+                                ->withPolicyVersion($this->policyVersion)
+                                ->withScope($this->scope)
+                                ->withRole($this->roles[0])
+                                ->withRoles(array($this->roles[1], $this->roles[2]))->toPrincipal();
+
+        $this->assertArrayNotHasKey("attr", $principal->jsonSerialize(), "the principal should not have an 'attr' key in the serialized json");
+    }
 }
