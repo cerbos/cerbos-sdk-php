@@ -37,11 +37,12 @@ class CerbosClientBuilder
      * @param StreamFactoryInterface|null $streamFactoryInterface
      * @param UriFactoryInterface|null $uriFactoryInterface
      */
-    public function __construct(string                   $uri,
-                                ?ClientInterface         $httpClient,
-                                ?RequestFactoryInterface $requestFactoryInterface,
-                                ?StreamFactoryInterface  $streamFactoryInterface,
-                                ?UriFactoryInterface     $uriFactoryInterface
+    public function __construct(
+        string                   $uri,
+        ?ClientInterface         $httpClient,
+        ?RequestFactoryInterface $requestFactoryInterface,
+        ?StreamFactoryInterface  $streamFactoryInterface,
+        ?UriFactoryInterface     $uriFactoryInterface
     )
     {
         $this->httpClient = $httpClient ?: Psr18ClientDiscovery::find();
