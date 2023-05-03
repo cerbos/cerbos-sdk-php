@@ -13,8 +13,8 @@ use Http\Client\Common\Plugin;
 use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Common\PluginClientFactory;
-use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\Psr17FactoryDiscovery;
+use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -37,14 +37,15 @@ class CerbosClientBuilder
      * @param StreamFactoryInterface|null $streamFactoryInterface
      * @param UriFactoryInterface|null $uriFactoryInterface
      */
-    public function __construct(string                   $uri,
-                                ?ClientInterface         $httpClient,
-                                ?RequestFactoryInterface $requestFactoryInterface,
-                                ?StreamFactoryInterface  $streamFactoryInterface,
-                                ?UriFactoryInterface     $uriFactoryInterface
+    public function __construct(
+        string                   $uri,
+        ?ClientInterface         $httpClient,
+        ?RequestFactoryInterface $requestFactoryInterface,
+        ?StreamFactoryInterface  $streamFactoryInterface,
+        ?UriFactoryInterface     $uriFactoryInterface
     )
     {
-        $this->httpClient = $httpClient ?: HttpClientDiscovery::find();
+        $this->httpClient = $httpClient ?: Psr18ClientDiscovery::find();
         $this->requestFactoryInterface = $requestFactoryInterface ?: Psr17FactoryDiscovery::findRequestFactory();
         $this->streamFactoryInterface = $streamFactoryInterface ?: Psr17FactoryDiscovery::findStreamFactory();
         $this->uriFactory = $uriFactoryInterface ?: Psr17FactoryDiscovery::findUriFactory();

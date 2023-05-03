@@ -26,7 +26,10 @@
     "issues": "https://github.com/cerbos/cerbos-sdk-php/issues"
   },
   "config": {
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
   },
   "require": {
     "ext-json": "*",
