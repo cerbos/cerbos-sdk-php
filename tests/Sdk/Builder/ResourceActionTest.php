@@ -5,7 +5,7 @@ namespace Cerbos\Test\Sdk\Builder;
 use Cerbos\Sdk\Builder\ResourceAction;
 use PHPUnit\Framework\TestCase;
 
-// Copyright 2021-2022 Zenauth Ltd.
+// Copyright 2021-2023 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
 class ResourceActionTest extends TestCase
