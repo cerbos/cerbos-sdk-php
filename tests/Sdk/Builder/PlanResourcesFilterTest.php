@@ -7,7 +7,7 @@ use Cerbos\Api\V1\Engine\PlanResourcesFilter\Expression\Operand;
 use Cerbos\Sdk\Builder\PlanResourcesFilter;
 use PHPUnit\Framework\TestCase;
 
-// Copyright 2021-2022 Zenauth Ltd.
+// Copyright 2021-2023 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
 class PlanResourcesFilterTest extends TestCase
