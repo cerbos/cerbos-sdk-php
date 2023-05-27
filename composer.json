@@ -32,9 +32,10 @@
     }
   },
   "require": {
-    "ext-json": "*",
     "php": "^7.4 || ^8.0",
+    "ext-json": "*",
     "php-http/client-common": "^2.5",
+    "php-http/message-factory": "^1.1",
     "psr/http-client": "^1.0",
     "psr/http-client-implementation": "^1.0",
     "psr/http-factory": "^1.0",
