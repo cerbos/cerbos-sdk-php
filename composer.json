@@ -42,7 +42,7 @@
     "ramsey/uuid": "^4.3"
   },
   "require-dev": {
-    "laminas/laminas-diactoros": "^2.24",
+    "laminas/laminas-diactoros": "^3.0",
     "nyholm/psr7": "^1.6",
     "php-http/curl-client": "^2.2",
     "php-parallel-lint/php-parallel-lint": "^v1.3",
