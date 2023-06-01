@@ -5,12 +5,14 @@ namespace Cerbos\Sdk\Builder;
 // Copyright 2021-2023 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
+use Cerbos\Api\V1\Engine\OutputEntry;
 use Cerbos\Api\V1\Schema\ValidationError;
 
 class ResultEntry
 {
-    private Resource $resourceBuilder;
     private array $actions;
+    private array $outputs;
+    private Resource $resourceBuilder;
     private array $validationErrors;
 
     /**
@@ -20,6 +22,7 @@ class ResultEntry
     private function __construct(string $kind, string $id) {
         $this->resourceBuilder = Resource::newInstance($kind, $id);
         $this->actions = array();
+        $this->outputs = array();
         $this->validationErrors = array();
     }
 
@@ -118,9 +121,30 @@ class ResultEntry
     }
 
     /**
+     * @param OutputEntry $output
+     * @return $this
+     */
+    public function withOutput(OutputEntry $output): ResultEntry {
+        $this->outputs[] = $output;
+        return $this;
+    }
+
+    /**
+     * @param OutputEntry[] $outputs
+     * @return $this
+     */
+    public function withOutputs(array $outputs): ResultEntry {
+        if ($outputs == null) return $this;
+        foreach ($outputs as $output) {
+            $this->outputs[] = $output;
+        }
+        return $this;
+    }
+
+    /**
      * @return \Cerbos\Api\V1\Response\ResultEntry
      */
     public function toResultEntry(): \Cerbos\Api\V1\Response\ResultEntry {
-        return new \Cerbos\Api\V1\Response\ResultEntry($this->resourceBuilder->toResource(), $this->actions, $this->validationErrors);
+        return new \Cerbos\Api\V1\Response\ResultEntry($this->actions, $this->outputs, $this->resourceBuilder->toResource(), $this->validationErrors);
     }
 }

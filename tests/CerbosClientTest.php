@@ -43,15 +43,20 @@ class CerbosClientTest extends TestCase
             $this->fail($e->getMessage());
         }
 
+        $resultEntry = null;
         try {
             $resultEntry = $checkResourcesResult->find("XX125");
-
-            $this->assertTrue($resultEntry->isAllowed("view:public"), "result of XX125 for view:public action is wrong");
-            $this->assertFalse($resultEntry->isAllowed("approve"), "result of XX125 for approve action is wrong");
-            $this->assertFalse($resultEntry->isAllowed("nonexistent_action"), "result of XX125 for non-existent action is wrong");
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
+
+        $this->assertTrue($resultEntry->isAllowed("view:public"), "result of XX125 for view:public action is wrong");
+        $this->assertFalse($resultEntry->isAllowed("approve"), "result of XX125 for approve action is wrong");
+        $this->assertFalse($resultEntry->isAllowed("nonexistent_action"), "result of XX125 for non-existent action is wrong");
+
+        $this->assertNotNull($resultEntry->outputs, "result of XX125 has null outputs");
+        $this->assertEquals("resource.leave_request.v20210210#rule-007", $resultEntry->outputs[0]->src, "result of XX125 has wrong src for the first output");
+        $this->assertEquals("approve:john", $resultEntry->outputs[0]->val, "result of XX125 has wrong val for the first output");
     }
 
     public function testCheckWithJwt(): void {

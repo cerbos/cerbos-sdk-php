@@ -7,6 +7,7 @@ namespace Cerbos\Sdk;
 // Copyright 2021-2023 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
+use Cerbos\Api\V1\Engine\OutputEntry;
 use Cerbos\Api\V1\Engine\PlanResourcesFilter;
 use Cerbos\Api\V1\Response\CheckResourcesResult;
 use Cerbos\Api\V1\Response\PlanResourcesResult;
@@ -235,6 +236,13 @@ final class CerbosClient
                 }
             }
 
+            $outputs = array();
+            if(isset($result->{'outputs'})) {
+                foreach ($result->{'outputs'} as $output) {
+                    $outputs[] = new OutputEntry($output->{'src'}, $output->{'val'});
+                }
+            }
+
             $validationErrors = array();
             if(isset($result->{'validationErrors'})) {
                 foreach ($result->{'validationErrors'} as $validationError) {
@@ -260,7 +268,8 @@ final class CerbosClient
                 ->withPolicyVersion($policyVersion)
                 ->withScope($scope)
                 ->withActions($actions)
-                ->withValidationErrors($validationErrors);
+                ->withValidationErrors($validationErrors)
+                ->withOutputs($outputs);
 
             $checkResourcesResultBuilder->withResultEntry($result->{'resource'}->{'id'}, $resultEntryBuilder->toResultEntry());
         }
