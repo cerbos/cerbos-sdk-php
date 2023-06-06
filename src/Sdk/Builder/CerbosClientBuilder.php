@@ -1,67 +1,86 @@
 <?php
 
+// Copyright 2021-2023 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 declare(strict_types=1);
 
 namespace Cerbos\Sdk\Builder;
 
-// Copyright 2021-2023 Zenauth Ltd.
-// SPDX-License-Identifier: Apache-2.0
-
 use Cerbos\Sdk\CerbosClient;
-use Http\Client\Common\HttpMethodsClient;
-use Http\Client\Common\Plugin;
-use Http\Client\Common\Plugin\BaseUriPlugin;
-use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
-use Http\Client\Common\PluginClientFactory;
-use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Discovery\Psr18ClientDiscovery;
-use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\RequestFactoryInterface;
-use Psr\Http\Message\StreamFactoryInterface;
-use Psr\Http\Message\UriFactoryInterface;
+use Cerbos\Svc\V1\CerbosServiceClient;
+use Exception;
+use Grpc\ChannelCredentials;
 
 class CerbosClientBuilder
 {
-    private ClientInterface $httpClient;
-    private RequestFactoryInterface $requestFactoryInterface;
-    private StreamFactoryInterface $streamFactoryInterface;
-    private UriFactoryInterface $uriFactory;
-    private array $plugins = [];
+    private string $hostname;
+    private bool $plaintext;
     private string $playgroundInstanceId;
-    private string $playgroundInstanceHeaderKey = "playground-instance";
+    private ?string $caCertificate;
+    private ?string $tlsCertificate;
+    private ?string $tlsKey;
 
     /**
-     * @param string $uri
-     * @param ClientInterface|null $httpClient
-     * @param RequestFactoryInterface|null $requestFactoryInterface
-     * @param StreamFactoryInterface|null $streamFactoryInterface
-     * @param UriFactoryInterface|null $uriFactoryInterface
+     * @param string $hostname
      */
-    public function __construct(
-        string                   $uri,
-        ?ClientInterface         $httpClient,
-        ?RequestFactoryInterface $requestFactoryInterface,
-        ?StreamFactoryInterface  $streamFactoryInterface,
-        ?UriFactoryInterface     $uriFactoryInterface
-    )
-    {
-        $this->httpClient = $httpClient ?: Psr18ClientDiscovery::find();
-        $this->requestFactoryInterface = $requestFactoryInterface ?: Psr17FactoryDiscovery::findRequestFactory();
-        $this->streamFactoryInterface = $streamFactoryInterface ?: Psr17FactoryDiscovery::findStreamFactory();
-        $this->uriFactory = $uriFactoryInterface ?: Psr17FactoryDiscovery::findUriFactory();
-        $this->addPlugin(new BaseUriPlugin($this->uriFactory->createUri($uri)));
+    private function __construct(string $hostname) {
+        $this->hostname = $hostname;
+        $this->plaintext = false;
         $this->playgroundInstanceId = "";
+        $this->caCertificate = null;
+        $this->tlsCertificate = null;
+        $this->tlsKey = null;
     }
 
     /**
-     * @param Plugin $plugin
-     * @return void
+     * @param string $hostname
+     * @return CerbosClientBuilder
      */
-    public function addPlugin(Plugin $plugin): void
-    {
-        $this->plugins[] = $plugin;
+    public static function newInstance(string $hostname): CerbosClientBuilder {
+        return new CerbosClientBuilder($hostname);
     }
 
+    /**
+     * @param bool $plaintext
+     * @return CerbosClientBuilder
+     */
+    public function withPlaintext(bool $plaintext): CerbosClientBuilder {
+        $this->plaintext = $plaintext;
+        return $this;
+    }
+
+    /**
+     * @param string $caCertificate
+     * @return $this
+     */
+    public function withCaCertificate(string $caCertificate): CerbosClientBuilder {
+        $this->caCertificate = $caCertificate;
+        return $this;
+    }
+
+    /**
+     * @param string $tlsCertificate
+     * @return $this
+     */
+    public function withTlsCertificate(string $tlsCertificate): CerbosClientBuilder {
+        $this->tlsCertificate = $tlsCertificate;
+        return $this;
+    }
+
+    /**
+     * @param string $tlsKey
+     * @return $this
+     */
+    public function withTlsKey(string $tlsKey): CerbosClientBuilder {
+        $this->tlsKey = $tlsKey;
+        return $this;
+    }
+
+    /**
+     * @param string $playgroundInstanceId
+     * @return $this
+     */
     public function withPlayground(string $playgroundInstanceId): CerbosClientBuilder {
         $this->playgroundInstanceId = $playgroundInstanceId;
         return $this;
@@ -69,26 +88,28 @@ class CerbosClientBuilder
 
     /**
      * @return CerbosClient
+     * @throws Exception
      */
-    public function build(): CerbosClient
-    {
-        $headers = [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-        ];
-
-        if ($this->playgroundInstanceId != "") {
-              $headers[$this->playgroundInstanceHeaderKey] = $this->playgroundInstanceId;
+    public function build(): CerbosClient {
+        if (!is_null($this->caCertificate) && !is_null($this->tlsKey) && !is_null($this->tlsCertificate)){
+            $credentials = ChannelCredentials::createSsl(
+                $this->caCertificate,
+                $this->tlsKey,
+                $this->tlsCertificate
+            );
+        } else if ($this->plaintext) {
+            $credentials = ChannelCredentials::createInsecure();
+        } else {
+            throw new Exception("either use the withPlaintext(true) or provide tlsKey and tlsCertificate");
         }
 
-        $this->addPlugin(new HeaderDefaultsPlugin($headers));
+        $csc = new CerbosServiceClient(
+            $this->hostname,
+            [
+                'credentials' => $credentials,
+            ]
+        );
 
-        $pluginClient = (new PluginClientFactory())->createClient($this->httpClient, $this->plugins);
-
-        return new CerbosClient(new HttpMethodsClient(
-            $pluginClient,
-            $this->requestFactoryInterface,
-            $this->streamFactoryInterface
-        ));
+        return new CerbosClient($csc, $this->playgroundInstanceId);
     }
 }

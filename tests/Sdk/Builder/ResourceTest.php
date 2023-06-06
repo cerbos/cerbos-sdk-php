@@ -1,85 +1,118 @@
 <?php
 
-namespace Cerbos\Test\Sdk\Builder;
-
-use Cerbos\Sdk\Builder\Resource;
-use PHPUnit\Framework\TestCase;
-
 // Copyright 2021-2023 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
+namespace Cerbos\Test\Sdk\Builder;
+
+use Cerbos\Sdk\Builder\AttributeValue;
+use Cerbos\Sdk\Builder\Resource;
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ * @psalm-suppress PossiblyNullReference
+ */
 class ResourceTest extends TestCase
 {
-    private string $kind = "leave_request";
-    private string $id = "XX125";
-    private string $policyVersion = "20210210";
-    private string $scope = "a_scope";
+    private AttributeValue $listValue;
+    private AttributeValue $mapValue;
 
-    private string $lonelyAttr = "lonelyAttr";
-    private string $boolAttr = "boolAttr";
-    private string $intAttr = "intAttr";
-    private string $stringAttr = "stringAttr";
-    private string $floatAttr = "floatAttr";
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->listValue = AttributeValue::listValue(
+            array(
+                AttributeValue::boolValue(true),
+                AttributeValue::floatValue(1.2),
+                AttributeValue::intValue(2)
+            )
+        );
 
+        $this->mapValue = AttributeValue::mapValue(
+            array(
+                "boolAttr" => AttributeValue::boolValue(true),
+                "floatAttr" => AttributeValue::floatValue(1.2),
+                "intAttr" => AttributeValue::intValue(2),
+                "listValue" => $this->listValue
+            )
+        );
+    }
 
-    public function testResource(): void {
-        $res = Resource::newInstance($this->kind, $this->id)
-                                ->withPolicyVersion($this->policyVersion)
-                                ->withScope($this->scope)
-                                ->withAttribute($this->lonelyAttr, $this->lonelyAttr)
-                                ->withAttributes(array(
-                                    $this->boolAttr => true,
-                                    $this->intAttr => 10,
-                                    $this->stringAttr => $this->stringAttr,
-                                    $this->floatAttr => 1.2,
-                                ));
-        $resource = $res->toResource();
+    public function testConstructor(): void {
+        $resource = Resource::newInstance("leave_request", "john")->toResource();
 
-        $this->assertEquals($this->kind, $resource->kind, "value of the resource kind is invalid");
-        $this->assertEquals($this->id, $resource->id, "value of the resource id is invalid");
-        $this->assertEquals($this->policyVersion, $resource->policyVersion, "value of the resource policyVersion is invalid");
-        $this->assertEquals($this->scope, $resource->scope, "value of the resource scope is invalid");
+        $this->assertEquals("leave_request", $resource->getKind(), "invalid kind");
+        $this->assertEquals("john", $resource->getId(), "invalid id");
+    }
 
-        $this->assertArrayHasKey($this->lonelyAttr, $resource->attributes, "the resource does not have '".$this->lonelyAttr."' attribute");
-        $this->assertArrayHasKey($this->boolAttr, $resource->attributes, "the resource does not have '".$this->boolAttr."' attribute");
-        $this->assertArrayHasKey($this->intAttr, $resource->attributes, "the resource does not have '".$this->intAttr."' attribute");
-        $this->assertArrayHasKey($this->stringAttr, $resource->attributes, "the resource does not have '".$this->stringAttr."' attribute");
-        $this->assertArrayHasKey($this->floatAttr, $resource->attributes, "the resource does not have '".$this->floatAttr."' attribute");
+    public function testWithKind(): void {
+        $resource = Resource::newInstance("leave_request", "alex")->withKind("purchase_order")->toResource();
 
-        $this->assertIsString($resource->attributes[$this->lonelyAttr], "'".$this->lonelyAttr."' of the resource is not of type string");
-        $this->assertIsBool($resource->attributes[$this->boolAttr], "'".$this->boolAttr."' of the resource is not of type bool");
-        $this->assertIsInt($resource->attributes[$this->intAttr], "'".$this->intAttr."' of the resource is not of type int");
-        $this->assertIsString($resource->attributes[$this->stringAttr], "'".$this->stringAttr."' of the resource is not of type string");
-        $this->assertIsFloat($resource->attributes[$this->floatAttr], "'".$this->floatAttr."' of the resource is not of type float");
+        $this->assertEquals("purchase_order", $resource->getKind(), "invalid kind");
+    }
 
-        $this->assertEquals($this->lonelyAttr, $resource->attributes[$this->lonelyAttr], "'".$this->lonelyAttr."' of the resource is not equal to the expected value");
-        $this->assertEquals(true, $resource->attributes[$this->boolAttr], "'".$this->boolAttr."' of the resource is not equal to the expected value");
-        $this->assertEquals(10, $resource->attributes[$this->intAttr], "'".$this->intAttr."' of the resource is not equal to the expected value");
-        $this->assertEquals($this->stringAttr, $resource->attributes[$this->stringAttr], "'".$this->stringAttr."' of the resource is not equal to the expected value");
-        $this->assertEquals(1.2, $resource->attributes[$this->floatAttr], "'".$this->floatAttr."' of the resource is not equal to the expected value");
+    public function testWithId(): void {
+        $resource = Resource::newInstance("leave_request", "alex")->withId("john")->toResource();
 
-        $planResource = $res->toPlanResource();
+        $this->assertEquals("john", $resource->getId(), "invalid id");
+    }
 
-        $this->assertEquals($this->kind, $planResource->kind, "value of the plan resource kind is invalid");
-        $this->assertEquals($this->policyVersion, $planResource->policyVersion, "value of the plan resource policyVersion is invalid");
-        $this->assertEquals($this->scope, $planResource->scope, "value of the plan resource scope is invalid");
+    public function testWithPolicyVersion(): void {
+        $resource = Resource::newInstance("leave_request", "john")->withPolicyVersion("20210210")->toResource();
 
-        $this->assertArrayHasKey($this->lonelyAttr, $planResource->attributes, "the plan resource does not have '".$this->lonelyAttr."' attribute");
-        $this->assertArrayHasKey($this->boolAttr, $planResource->attributes, "the plan resource does not have '".$this->boolAttr."' attribute");
-        $this->assertArrayHasKey($this->intAttr, $planResource->attributes, "the plan resource does not have '".$this->intAttr."' attribute");
-        $this->assertArrayHasKey($this->stringAttr, $planResource->attributes, "the plan resource does not have '".$this->stringAttr."' attribute");
-        $this->assertArrayHasKey($this->floatAttr, $planResource->attributes, "the plan resource does not have '".$this->floatAttr."' attribute");
+        $this->assertEquals("20210210", $resource->getPolicyVersion(), "invalid policyVersion");
+    }
 
-        $this->assertIsString($planResource->attributes[$this->lonelyAttr], "'".$this->lonelyAttr."' of the plan resource is not of type string");
-        $this->assertIsBool($planResource->attributes[$this->boolAttr], "'".$this->boolAttr."' of the plan resource is not of type bool");
-        $this->assertIsInt($planResource->attributes[$this->intAttr], "'".$this->intAttr."' of the plan resource is not of type int");
-        $this->assertIsString($planResource->attributes[$this->stringAttr], "'".$this->stringAttr."' of the plan resource is not of type string");
-        $this->assertIsFloat($planResource->attributes[$this->floatAttr], "'".$this->floatAttr."' of the plan resource is not of type float");
+    public function testWithAttribute(): void {
+        $resource = Resource::newInstance("leave_request", "john")
+            ->withAttribute("boolAttr", AttributeValue::boolValue(true))
+            ->withAttribute("floatAttr", AttributeValue::floatValue(1.2))
+            ->withAttribute("intAttr", AttributeValue::intValue(2))
+            ->withAttribute("listAttr", $this->listValue)
+            ->withAttribute("mapAttr", $this->mapValue)
+            ->toResource();
 
-        $this->assertEquals($this->lonelyAttr, $planResource->attributes[$this->lonelyAttr], "'".$this->lonelyAttr."' of the plan resource is not equal to the expected value");
-        $this->assertEquals(true, $planResource->attributes[$this->boolAttr], "'".$this->boolAttr."' of the plan resource is not equal to the expected value");
-        $this->assertEquals(10, $planResource->attributes[$this->intAttr], "'".$this->intAttr."' of the plan resource is not equal to the expected value");
-        $this->assertEquals($this->stringAttr, $planResource->attributes[$this->stringAttr], "'".$this->stringAttr."' of the plan resource is not equal to the expected value");
-        $this->assertEquals(1.2, $planResource->attributes[$this->floatAttr], "'".$this->floatAttr."' of the plan resource is not equal to the expected value");
+        $this->assertArrayHasKey("boolAttr", $resource->getAttr(), "missing attr boolAttr");
+        $this->assertArrayHasKey("floatAttr", $resource->getAttr(), "missing attr floatAttr");
+        $this->assertArrayHasKey("intAttr", $resource->getAttr(), "missing attr intAttr");
+        $this->assertArrayHasKey("listAttr", $resource->getAttr(), "missing attr listAttr");
+        $this->assertArrayHasKey("mapAttr", $resource->getAttr(), "missing attr mapAttr");
+
+        $this->assertTrue((bool)$resource->getAttr()->offsetGet("boolAttr")->getBoolValue(), "invalid bool attr value");
+        $this->assertEquals(1.2, $resource->getAttr()->offsetGet("floatAttr")->getNumberValue(), "invalid float attr value");
+        $this->assertEquals(2, $resource->getAttr()->offsetGet("intAttr")->getNumberValue(), "invalid int attr value");
+    }
+
+    public function testWithAttributes(): void {
+        $resource = Resource::newInstance("leave_request", "john")
+            ->withAttributes(
+                array(
+                    "boolAttr" => AttributeValue::boolValue(true),
+                    "floatAttr" => AttributeValue::floatValue(1.2),
+                    "intAttr" => AttributeValue::intValue(2),
+                )
+            )->withAttributes(
+                array(
+                    "listAttr" => $this->listValue,
+                    "mapAttr" => $this->mapValue
+                )
+            )->toResource();
+
+        $this->assertArrayHasKey("boolAttr", $resource->getAttr(), "missing attr boolAttr");
+        $this->assertArrayHasKey("floatAttr", $resource->getAttr(), "missing attr floatAttr");
+        $this->assertArrayHasKey("intAttr", $resource->getAttr(), "missing attr intAttr");
+        $this->assertArrayHasKey("listAttr", $resource->getAttr(), "missing attr listAttr");
+        $this->assertArrayHasKey("mapAttr", $resource->getAttr(), "missing attr mapAttr");
+
+        $this->assertTrue($resource->getAttr()->offsetGet("boolAttr")->getBoolValue(), "invalid bool attr value");
+        $this->assertEquals(1.2, $resource->getAttr()->offsetGet("floatAttr")->getNumberValue(), "invalid float attr value");
+        $this->assertEquals(2, $resource->getAttr()->offsetGet("intAttr")->getNumberValue(), "invalid int attr value");
+    }
+
+    public function testWithScope(): void {
+        $resource = Resource::newInstance("leave_request", "john")->withScope("acme")->toResource();
+
+        $this->assertEquals("acme", $resource->getScope(), "invalid scope");
     }
 }

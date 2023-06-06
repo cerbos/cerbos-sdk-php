@@ -13,4 +13,4 @@ services:
       - ./tests/res/config:/config
       - ./tests/res/policies:/policies
     ports:
-      - "3592:3592"
+      - "3593:3593"

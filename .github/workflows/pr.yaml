@@ -11,12 +11,25 @@ jobs:
   lint:
     name: Run linters
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: [ '8.1', '8.2' ]
+        experimental: [ false ]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: xdebug
+          extensions: "grpc"
+
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+        run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Lint
         shell: bash
@@ -25,12 +38,24 @@ jobs:
   static-analysis:
     name: Run static analysis
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: [ '8.1', '8.2' ]
+        experimental: [ false ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: xdebug
+          extensions: "grpc"
+
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+        run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Statically analyze code
         shell: bash
@@ -50,24 +75,25 @@ jobs:
   unit-tests:
     name: Run unit tests
     needs: [ "lint" ]
-    runs-on: ${{ matrix.operating-system }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        php-version:
-          - "7.4"
-          - "8.1"
-        operating-system:
-          - "ubuntu-latest"
-        dependencies:
-          - "lowest"
-          - "highest"
+        php-version: [ '8.1', '8.2' ]
+        experimental: [ false ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: xdebug
+          extensions: "grpc"
+
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+        run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Run docker-compose
         run: docker-compose up -d
