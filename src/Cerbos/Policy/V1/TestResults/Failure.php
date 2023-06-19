@@ -21,6 +21,10 @@ class Failure extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.cerbos.effect.v1.Effect actual = 2 [json_name = "actual"];</code>
      */
     protected $actual = 0;
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.OutputFailure outputs = 3 [json_name = "outputs"];</code>
+     */
+    private $outputs;
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class Failure extends \Google\Protobuf\Internal\Message
      *
      *     @type int $expected
      *     @type int $actual
+     *     @type array<\Cerbos\Policy\V1\TestResults\OutputFailure>|\Google\Protobuf\Internal\RepeatedField $outputs
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class Failure extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkEnum($var, \Cerbos\Effect\V1\Effect::class);
         $this->actual = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.OutputFailure outputs = 3 [json_name = "outputs"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getOutputs()
+    {
+        return $this->outputs;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.OutputFailure outputs = 3 [json_name = "outputs"];</code>
+     * @param array<\Cerbos\Policy\V1\TestResults\OutputFailure>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setOutputs($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\TestResults\OutputFailure::class);
+        $this->outputs = $arr;
 
         return $this;
     }

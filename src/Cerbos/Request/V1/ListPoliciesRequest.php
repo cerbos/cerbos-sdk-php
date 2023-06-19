@@ -17,6 +17,18 @@ class ListPoliciesRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>bool include_disabled = 1 [json_name = "includeDisabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
      */
     protected $include_disabled = false;
+    /**
+     * Generated from protobuf field <code>string name_regexp = 2 [json_name = "nameRegexp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    protected $name_regexp = '';
+    /**
+     * Generated from protobuf field <code>string scope_regexp = 3 [json_name = "scopeRegexp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    protected $scope_regexp = '';
+    /**
+     * Generated from protobuf field <code>string version_regexp = 4 [json_name = "versionRegexp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    protected $version_regexp = '';
 
     /**
      * Constructor.
@@ -25,6 +37,9 @@ class ListPoliciesRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type bool $include_disabled
+     *     @type string $name_regexp
+     *     @type string $scope_regexp
+     *     @type string $version_regexp
      * }
      */
     public function __construct($data = NULL) {
@@ -50,6 +65,72 @@ class ListPoliciesRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkBool($var);
         $this->include_disabled = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string name_regexp = 2 [json_name = "nameRegexp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return string
+     */
+    public function getNameRegexp()
+    {
+        return $this->name_regexp;
+    }
+
+    /**
+     * Generated from protobuf field <code>string name_regexp = 2 [json_name = "nameRegexp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setNameRegexp($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->name_regexp = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string scope_regexp = 3 [json_name = "scopeRegexp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return string
+     */
+    public function getScopeRegexp()
+    {
+        return $this->scope_regexp;
+    }
+
+    /**
+     * Generated from protobuf field <code>string scope_regexp = 3 [json_name = "scopeRegexp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setScopeRegexp($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->scope_regexp = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string version_regexp = 4 [json_name = "versionRegexp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return string
+     */
+    public function getVersionRegexp()
+    {
+        return $this->version_regexp;
+    }
+
+    /**
+     * Generated from protobuf field <code>string version_regexp = 4 [json_name = "versionRegexp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setVersionRegexp($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->version_regexp = $var;
 
         return $this;
     }

@@ -4,8 +4,8 @@ deps:
   - remote: buf.build
     owner: cerbos
     repository: cerbos-api
-    commit: ae205d1775c647c283085ca6a703b683
-    digest: shake256:00dd9051bfb4320b3ba3af0df26ec157e020c753e08299b19efdc4fda97e25deae45447b0feb07ddfae44cd601aeed4f6dfad1df0e1ae87215c0c94b96b2e5fd
+    commit: 9930b65ea1d14cd7abdffdc4d7591344
+    digest: shake256:92c9aa8d21618f28a085b024f589811a30d9bca2d9094388e80e4294737ad39abcae5a205dd7e00610348d20998a7c033aa02d97a85b3beba3f01260034005aa
   - remote: buf.build
     owner: envoyproxy
     repository: protoc-gen-validate

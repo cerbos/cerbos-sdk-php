@@ -41,6 +41,10 @@ class Test extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.cerbos.policy.v1.TestOptions options = 7 [json_name = "options"];</code>
      */
     protected $options = null;
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.Test.OutputEntries> expected_outputs = 8 [json_name = "expectedOutputs"];</code>
+     */
+    private $expected_outputs;
 
     /**
      * Constructor.
@@ -55,6 +59,7 @@ class Test extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Engine\V1\CheckInput $input
      *     @type array|\Google\Protobuf\Internal\MapField $expected
      *     @type \Cerbos\Policy\V1\TestOptions $options
+     *     @type array|\Google\Protobuf\Internal\MapField $expected_outputs
      * }
      */
     public function __construct($data = NULL) {
@@ -242,6 +247,28 @@ class Test extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Policy\V1\TestOptions::class);
         $this->options = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.Test.OutputEntries> expected_outputs = 8 [json_name = "expectedOutputs"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getExpectedOutputs()
+    {
+        return $this->expected_outputs;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.Test.OutputEntries> expected_outputs = 8 [json_name = "expectedOutputs"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setExpectedOutputs($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\Test\OutputEntries::class);
+        $this->expected_outputs = $arr;
 
         return $this;
     }

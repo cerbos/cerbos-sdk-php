@@ -25,7 +25,7 @@ class Request
         \GPBMetadata\Validate\Validate::initOnce();
         $pool->internalAddGeneratedFile(
             '
-ÔM
+ÂO
 cerbos/request/v1/request.protocerbos.request.v1cerbos/policy/v1/policy.protocerbos/schema/v1/schema.protogoogle/api/field_behavior.protogoogle/protobuf/duration.protogoogle/protobuf/struct.protogoogle/protobuf/timestamp.proto.protoc-gen-openapiv2/options/annotations.protovalidate/validate.proto"É
 PlanResourcesRequestñ
 
@@ -144,9 +144,13 @@ By Call IDä(^[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}$˙B,r*2(^[0123456789ABCDEFGH
 KIND_DECISIONB
 filter¯B"/
 ServerInfoRequest:íA
-2Server info request"Å
+2Server info request"˜
 ListPoliciesRequestL
-include_disabled (B!íA2Include disabled policies‡ARincludeDisabled:íA
+include_disabled (B!íA2Include disabled policies‡ARincludeDisabledL
+name_regexp (	B+íA%2#Filter policies by name with regexp‡AR
+nameRegexpO
+scope_regexp (	B,íA&2$Filter policies by scope with regexp‡ARscopeRegexpU
+version_regexp (	B.íA(2&Filter policies by version with regexp‡ARversionRegexp:íA
 2List policies request"É
 GetPolicyRequest”
 id (	B¬íA¶2áFor blob, disk, git stores use file name (<filename>.yaml). For mysql, postgres, sqlite3 use id (<kind>.<name>.<version>) of the policyJ"principal.sarah.vdefault"‡A˙Bí"rÄ

@@ -25,6 +25,10 @@ class Expectation extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions", (.validate.rules) = {</code>
      */
     private $actions;
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable.OutputExpectations outputs = 4 [json_name = "outputs"];</code>
+     */
+    private $outputs;
 
     /**
      * Constructor.
@@ -35,6 +39,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
      *     @type string $principal
      *     @type string $resource
      *     @type array|\Google\Protobuf\Internal\MapField $actions
+     *     @type array<\Cerbos\Policy\V1\TestTable\OutputExpectations>|\Google\Protobuf\Internal\RepeatedField $outputs
      * }
      */
     public function __construct($data = NULL) {
@@ -104,6 +109,28 @@ class Expectation extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::ENUM, \Cerbos\Effect\V1\Effect::class);
         $this->actions = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable.OutputExpectations outputs = 4 [json_name = "outputs"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getOutputs()
+    {
+        return $this->outputs;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable.OutputExpectations outputs = 4 [json_name = "outputs"];</code>
+     * @param array<\Cerbos\Policy\V1\TestTable\OutputExpectations>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setOutputs($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\TestTable\OutputExpectations::class);
+        $this->outputs = $arr;
 
         return $this;
     }
