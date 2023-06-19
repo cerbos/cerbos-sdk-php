@@ -131,30 +131,24 @@ else {
 }
 ```
 
-# Changes from `v0.1.x`
+# Upgrading from `v0.1.x`
 
-This part of the `README.md` describes the changes made between PHP SDK `v0.1.x` version and this version.
-
-Since `v0.1.x` version(s) used HTTP API and this version use the gRPC API, there are a couple of steps to take.
+Newer versions of the library make use of gRPC libraries. This is in order to make the integration with Cerbos easier to manage. This change requires existing users of 0.1.x versions to perform some migration steps.
 
 ## gRPC
 
-`gRPC` extension required to be installed on the development and production environment.
 
-There is a [nice guide](https://cloud.google.com/php/grpc) from Google describing how to download and enable the `gRPC`
-extension.
+This library requires the `gRPC` extension to be installed. Follow the [instructions for your environment](https://cloud.google.com/php/grpc#installing_the_grpc_extension) to install the extension.
 
 ## Differences between SDK API v0.1.x
 
 ### PHP version requirements
 
-Due to some of the dependencies, the SDK only supports PHP `>=8.1`.
+The minimum supported version of PHP is `8.1`.
 
 ### Simpler `CerbosClientBuilder`
 
-Thanks to migration from HTTP API to the gRPC API, `CerbosClientBuilder` became much simpler.
-
-Now, `CerbosClientBuilder` only expects `hostname` as a parameter;
+`CerbosClientBuilder` is simpler and only expects `hostname` as a parameter.
 ```php
 $client = CerbosClientBuilder::newInstance("localhost:3593")
     ->withPlaintext(true)
@@ -163,13 +157,11 @@ $client = CerbosClientBuilder::newInstance("localhost:3593")
 
 ### Renamed `ResourceAction` to `ResourceEntry`
 
-Since in the original protobuf definitions pairing of a `resource` and one or more `action(s)` are named `ResourceEntry`,
-the name `ResourceAction` changed to be `ResourceEntry`.
+The `ResourceAction` class has been renamed to `ResourceEntry`.
 
 ### New `AttributeValue` builder class
 
-Since in the original protobuf definitions the attribute values are represented with `.google.protobuf.Value`, a builder
-class `AttributeValue` was required to improve the user experience.
+Principal and resource attributes must be created using the `AttributeValue` builder class.
 
 Creating a bool value;
 ```php
@@ -183,9 +175,7 @@ $val = AttributeValue::stringValue("marketing");
 
 ### New `CheckResourcesRequest` and `PlanResourcesRequest` builder classes
 
-Creating the requests are much easier now with the `CheckResourcesRequest` and `PlanResourcesRequest` builder classes.
-
-Here is an example for the `CheckResourcesRequest`;
+Use the new builder classes to construct `CheckResources` and `PlanResources` requests.
 ```php
 $request = CheckResourcesRequest::newInstance()
     ->withRequestId(RequestId::generate())
@@ -208,7 +198,6 @@ $request = CheckResourcesRequest::newInstance()
     );
 ```
 
-Here is an example for the `PlanResourcesRequest`;
 ```php
 $request = PlanResourcesRequest::newInstance()
     ->withRequestId(RequestId::generate())
@@ -226,6 +215,5 @@ $request = PlanResourcesRequest::newInstance()
 
 ### Simpler `CerbosClient`
 
-The `CerbosClient` has two functions `checkResources` and `planResources`. These functions were both expecting a couple 
-of parameters. To improve the user experience, these two functions now expects only a `CheckResourcesRequest` or 
-`PlanResourcesRequest`, respectively.
+The `checkResources` and `planResources` methods on the `CerbosClient` now accepts only a `CheckResourcesRequest` or 
+`PlanResourcesRequest` object respectively.
