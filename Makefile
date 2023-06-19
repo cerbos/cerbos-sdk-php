@@ -1,6 +1,5 @@
 SRC_DIR := "src"
-TESTS_DIR := "src"
-OVERRIDE_PROTOS_DIR := "override_protos"
+TESTS_DIR := "tests"
 PROTOS_DIR := "protos"
 
 .PHONY: all
@@ -31,7 +30,8 @@ test:
 .PHONY: generate-proto-code
 generate-proto-code:
 	./fetch_protos.sh
-	rm -rf ${PROTOS_DIR}/validate
-	cp -rf ${OVERRIDE_PROTOS_DIR}/validate ${PROTOS_DIR}/
+	sed -i.bak 's/syntax = "proto2"/syntax = "proto3"/' ${PROTOS_DIR}/validate/validate.proto
+	sed -i.bak 's/ \[default = true\];/;/' ${PROTOS_DIR}/validate/validate.proto
+	rm ${PROTOS_DIR}/validate/validate.proto.bak
 	rm -rf ${SRC_DIR}/Cerbos ${SRC_DIR}/GPBMetadata
 	buf generate ${PROTOS_DIR}
