@@ -1,15 +1,19 @@
 <?php
 
+// Copyright 2021-2023 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 declare(strict_types=1);
 
 namespace Cerbos\Sdk\Builder;
 
-// Copyright 2021-2023 Zenauth Ltd.
-// SPDX-License-Identifier: Apache-2.0
-
 class Resource
 {
-    private \Cerbos\Api\V1\Engine\Resource $resource;
+    private string $kind;
+    private string $id;
+    private string $policyVersion;
+    private string $scope;
+    private array $attr;
 
     /**
      * @param string $kind
@@ -17,7 +21,11 @@ class Resource
      */
     private function __construct(string $kind, string $id)
     {
-        $this->resource = new \Cerbos\Api\V1\Engine\Resource($kind, $id);
+        $this->kind = $kind;
+        $this->id = $id;
+        $this->policyVersion = "";
+        $this->scope = "";
+        $this->attr = array();
     }
 
     /**
@@ -30,83 +38,84 @@ class Resource
     }
 
     /**
-     * @param string|null $id
+     * @param string $id
      * @return $this
      */
-    public function withId(?string $id): Resource {
-        if ($id == null) return $this;
-        $this->resource->id = $id;
+    public function withId(string $id): Resource {
+        $this->id = $id;
         return $this;
     }
 
     /**
-     * @param string|null $kind
+     * @param string $kind
      * @return $this
      */
-    public function withKind(?string $kind): Resource {
-        if ($kind == null) return $this;
-        $this->resource->kind = $kind;
+    public function withKind(string $kind): Resource {
+        $this->kind = $kind;
         return $this;
     }
 
     /**
-     * @param string|null $policyVersion
+     * @param string $policyVersion
      * @return $this
      */
-    public function withPolicyVersion(?string $policyVersion): Resource {
-        if ($policyVersion == null) return $this;
-        $this->resource->policyVersion = $policyVersion;
+    public function withPolicyVersion(string $policyVersion): Resource {
+        $this->policyVersion = $policyVersion;
         return $this;
     }
 
     /**
-     * @param string|null $key
-     * @param bool|int|float|string|null $value
+     * @psalm-suppress MissingParamType
+     * @param string $key
+     * @param AttributeValue $value
      * @return $this
      */
-    public function withAttribute(?string $key, $value): Resource {
-        if ($key == null || $value == null) return $this;
-        $this->resource->attributes[$key] = $value;
+    public function withAttribute(string $key, AttributeValue $value): Resource {
+        $this->attr[$key] = $value->toValue();
         return $this;
     }
 
     /**
-     * @param array|null $attributes dictionary of string key and values
+     * @param array<string, AttributeValue> $attributes
      * @return $this
      */
-    public function withAttributes(?array $attributes): Resource {
-        if ($attributes == null) return $this;
-        foreach ($attributes as $key => $value) {
-            $this->resource->attributes[$key] = $value;
+    public function withAttributes(array $attributes): Resource {
+        foreach ($attributes as $k => $v) {
+            $this->attr[$k] = $v->toValue();
         }
+
         return $this;
     }
 
     /**
-     * @param string|null $scope
+     * @param string $scope
      * @return $this
      */
-    public function withScope(?string $scope): Resource {
-        if ($scope == null) return $this;
-        $this->resource->scope = $scope;
+    public function withScope(string $scope): Resource {
+        $this->scope = $scope;
         return $this;
     }
 
     /**
-     * @return \Cerbos\Api\V1\Engine\Resource
+     * @return \Cerbos\Engine\V1\Resource
      */
-    public function toResource(): \Cerbos\Api\V1\Engine\Resource {
-        return $this->resource;
+    public function toResource(): \Cerbos\Engine\V1\Resource {
+        return (new \Cerbos\Engine\V1\Resource())
+            ->setKind($this->kind)
+            ->setId($this->id)
+            ->setScope($this->scope)
+            ->setPolicyVersion($this->policyVersion)
+            ->setAttr($this->attr);
     }
 
     /**
-     * @return \Cerbos\Api\V1\Engine\PlanResourcesInput\Resource
+     * @return \Cerbos\Engine\V1\PlanResourcesInput\Resource
      */
-    public function toPlanResource(): \Cerbos\Api\V1\Engine\PlanResourcesInput\Resource {
-        $resource = new \Cerbos\Api\V1\Engine\PlanResourcesInput\Resource($this->resource->kind);
-        $resource->attributes = $this->resource->attributes;
-        $resource->policyVersion = $this->resource->policyVersion;
-        $resource->scope = $this->resource->scope;
-        return $resource;
+    public function toPlanResource(): \Cerbos\Engine\V1\PlanResourcesInput\Resource {
+        return (new \Cerbos\Engine\V1\PlanResourcesInput\Resource())
+            ->setKind($this->kind)
+            ->setPolicyVersion($this->policyVersion)
+            ->setScope($this->scope)
+            ->setAttr($this->attr);
     }
 }

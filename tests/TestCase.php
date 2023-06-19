@@ -1,42 +1,31 @@
 <?php
 
+// Copyright 2021-2023 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 declare(strict_types=1);
 
 namespace Cerbos\Test;
 
-// Copyright 2021-2023 Zenauth Ltd.
-// SPDX-License-Identifier: Apache-2.0
-
 use Cerbos\Sdk\Builder\CerbosClientBuilder;
 use Cerbos\Sdk\CerbosClient;
-use Symfony\Component\HttpClient\HttplugClient;
+use Exception;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
-    private string $host = "http://localhost:3592";
-    private string $playgroundHost = "https://demo-pdp.cerbos.cloud";
+    private string $host = "localhost:3593";
     private string $playgroundInstanceId = "XhkOi82fFKk3YW60e2c806Yvm0trKEje"; // See: https://play.cerbos.dev/p/XhkOi82fFKk3YW60e2c806Yvm0trKEje
     protected CerbosClient $client;
     protected CerbosClient $playgroundClient;
 
     /**
      * @return void
+     * @throws Exception
      */
     protected function setUp(): void
     {
         parent::setUp();
-        $clientBuilder = new CerbosClientBuilder($this->host, new HttplugClient(), null, null, null);
-        $this->client = $clientBuilder->build();
 
-        $clientBuilder = new CerbosClientBuilder($this->playgroundHost, new HttplugClient(), null, null, null);
-        $this->playgroundClient = $clientBuilder->withPlayground($this->playgroundInstanceId)->build();
-    }
-
-    /**
-     * @return CerbosClient
-     */
-    protected function client(): CerbosClient
-    {
-        return $this->client;
+        $this->client = CerbosClientBuilder::newInstance($this->host)->withPlaintext(true)->build();
     }
 }

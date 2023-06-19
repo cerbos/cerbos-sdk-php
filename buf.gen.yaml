@@ -1,0 +1,7 @@
+version: v1
+plugins:
+  - plugin: buf.build/protocolbuffers/php:v23.2
+    out: ./src
+
+  - plugin: buf.build/grpc/php:v1.55.1
+    out: ./src

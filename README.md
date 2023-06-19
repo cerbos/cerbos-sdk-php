@@ -1,52 +1,53 @@
-Cerbos PHP SDK
-===============
+# Cerbos PHP SDK
 
 [![Latest Stable Version](http://poser.pugx.org/cerbos/cerbos-sdk-php/v)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
 [![Total Downloads](http://poser.pugx.org/cerbos/cerbos-sdk-php/downloads)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
 [![License](http://poser.pugx.org/cerbos/cerbos-sdk-php/license)](https://packagist.org/packages/cerbos/cerbos-sdk-php)
 
 PHP client library for the [Cerbos](https://github.com/cerbos/cerbos) open source access control solution. This library
-includes RPC clients for accessing the Cerbos PDP.
+includes gRPC client for accessing the Cerbos PDP.
 
 Find out more about Cerbos at https://cerbos.dev and read the documentation at https://docs.cerbos.dev.
 
-Installation
--------------
+# Installation
 
 You can install the SDK via [Composer](https://getcomposer.org/). Run the following command:
 ```bash
 composer require cerbos/cerbos-sdk-php
 ```
 
-Examples
---------
+# Examples
 
-### Creating a client
-
+## Creating a gRPC client
 
 ```php
-$clientBuilder = new CerbosClientBuilder("http://localhost:3592", new HttplugClient(), null, null, null);
-$client = $clientBuilder->build();
+$client = CerbosClientBuilder::newInstance($this->host)
+    ->withPlaintext(true)
+    ->build();
 ```
 
-### Check a single principal and resource
+## Check a single principal and resource
 
 ```php
-$principal = Principal::newInstance("john")
-                ->withRole("employee")
-                ->withPolicyVersion("20210210")
-                ->withAttribute("department", "marketing")
-                ->withAttribute("geography", "GB");
-                
-$resourceAction = ResourceAction::newInstance("leave_request", "xx125")
-                    ->withActions(["view:public", "approve"])
-                    ->withPolicyVersion("20210210")
-                    ->withAttribute("department", "marketing")
-                    ->withAttribute("geography", "GB")
-                    ->withAttribute("owner", "john");
-                    
-$checkResourcesResult = $this->client->checkResources($principal, array($resourceAction), null, null);
-
+$request = CheckResourcesRequest::newInstance()
+    ->withRequestId(RequestId::generate())
+    ->withPrincipal(
+        Principal::newInstance("john")
+            ->withRole("employee")
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", AttributeValue::stringValue("marketing"))
+            ->withAttribute("geography", AttributeValue::stringValue("GB"))
+    )
+    ->withResourceEntry(
+        ResourceEntry::newInstance("leave_request", "xx125")
+            ->withActions(["view:public", "approve"])
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", AttributeValue::stringValue("marketing"))
+            ->withAttribute("geography", AttributeValue::stringValue("GB"))
+            ->withAttribute("owner", AttributeValue::stringValue("john"))
+    )
+  
+$checkResourcesResult = $client->checkResources($request);
 $resultEntry = $checkResourcesResult->find("xx125");
 
 if ($resultEntry->isAllowed("view:public")) { // returns true if `view:public` action is allowed
@@ -58,65 +59,161 @@ if ($resultEntry->isAllowed("approve")) { // returns true if `approve` action is
 }
 ```
 
-### Check a single principal and multiple resource & action pairs
+## Check a single principal and multiple resource & action pairs
 
 ```php
-$principal = Principal::newInstance("john")
-                ->withRole("employee")
+$request = CheckResourcesRequest::newInstance()
+    ->withRequestId(RequestId::generate())
+    ->withPrincipal(
+        Principal::newInstance("john")
+            ->withRole("employee")
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", "marketing")
+            ->withAttribute("geography", "GB")
+    )
+    ->withResourceEntries(
+        array(
+            ResourceEntry::newInstance("leave_request", "xx125")
+                ->withAction("approve")
                 ->withPolicyVersion("20210210")
-                ->withAttribute("department", "marketing")
-                ->withAttribute("geography", "GB");
-                
-$resourceAction = ResourceAction::newInstance("leave_request", "xx125")
-                    ->withAction("approve")
-                    ->withPolicyVersion("20210210")
-                    ->withAttribute("department", "marketing")
-                    ->withAttribute("geography", "GB")
-                    ->withAttribute("owner", "john");
+                ->withAttribute("department", AttributeValue::stringValue("marketing"))
+                ->withAttribute("geography", AttributeValue::stringValue("GB"))
+                ->withAttribute("owner", AttributeValue::stringValue("john")),
+
+            ResourceEntry::newInstance("leave_request", "xx225")
+                ->withAction("defer")
+                ->withPolicyVersion("20210210")
+                ->withAttribute("department", AttributeValue::stringValue("marketing"))
+                ->withAttribute("owner", AttributeValue::stringValue("john"))
+        )
+    )
                     
-$resourceAction1 = ResourceAction::newInstance("leave_request", "xx225")
-                    ->withAction("defer")
-                    ->withPolicyVersion("20210210")
-                    ->withAttribute("department", "marketing")
-                    ->withAttribute("owner", "john");
-                    
-$checkResourcesResult = $this->client->checkResources($principal, array($resourceAction, $resourceAction1), null, null);
+$checkResourcesResult = $client->checkResources($request);
 
 $resultEntry = $checkResourcesResult->find("xx125");
-
 if ($resultEntry->isAllowed("approve")) { // returns true if `approve` action is allowed
     // ...
 }
 
 $resultEntry = $checkResourcesResult->find("xx225");
-
 if ($resultEntry->isAllowed("defer")) { // returns true if `defer` action is allowed
     // ...
 }
 ```
 
-### Plan Resources API
+## Plan Resources API
 
 ```php
-$principal = Principal::newInstance("maggie")
-                ->withRole("manager")
-                ->withAttribute("department", "marketing")
-                ->withAttribute("geography", "GB")
-                ->withAttribute("team", "design");
-                
-$resource = Resource::newInstance("leave_request", "xx125")
-                ->withPolicyVersion("20210210");
+$request = PlanResourcesRequest::newInstance()
+    ->withRequestId(RequestId::generate())
+    ->withAction("approve")
+    ->withPrincipal(
+        Principal::newInstance("maggie")
+            ->withRole("manager")
+            ->withAttribute("department", AttributeValue::stringValue("marketing"))
+            ->withAttribute("geography", AttributeValue::stringValue("GB"))
+            ->withAttribute("team", AttributeValue::stringValue("design"))
+    )
+    ->withResource(
+        Resource::newInstance("leave_request", "xx125")
+            ->withPolicyVersion("20210210")
+    );                
 
-$action = "approve";
-
-$result = $this->client->planResources($principal, $resource, $action, null, null);
-if ($result->isAlwaysAllowed()) {
+$planResourcesResult = $this->client->planResources($request);
+if ($planResourcesResult->isAlwaysAllowed()) {
     // ...
 }
-else if ($result->isAlwaysDenied()) {
+else if ($planResourcesResult->isAlwaysDenied()) {
     // ...
 }
 else {
     // ...
 }
 ```
+
+# Upgrading from `v0.1.x`
+
+Newer versions of the library make use of gRPC libraries. This is in order to make the integration with Cerbos easier to manage. This change requires existing users of 0.1.x versions to perform some migration steps.
+
+## gRPC
+
+
+This library requires the `gRPC` extension to be installed. Follow the [instructions for your environment](https://cloud.google.com/php/grpc#installing_the_grpc_extension) to install the extension.
+
+## Differences between SDK API v0.1.x
+
+### PHP version requirements
+
+The minimum supported version of PHP is `8.1`.
+
+### Simpler `CerbosClientBuilder`
+
+`CerbosClientBuilder` is simpler and only expects `hostname` as a parameter.
+```php
+$client = CerbosClientBuilder::newInstance("localhost:3593")
+    ->withPlaintext(true)
+    ->build();
+```
+
+### Renamed `ResourceAction` to `ResourceEntry`
+
+The `ResourceAction` class has been renamed to `ResourceEntry`.
+
+### New `AttributeValue` builder class
+
+Principal and resource attributes must be created using the `AttributeValue` builder class.
+
+Creating a bool value;
+```php
+$val = AttributeValue::boolValue(true);
+```
+
+Creating a string value;
+```php
+$val = AttributeValue::stringValue("marketing");
+```
+
+### New `CheckResourcesRequest` and `PlanResourcesRequest` builder classes
+
+Use the new builder classes to construct `CheckResources` and `PlanResources` requests.
+```php
+$request = CheckResourcesRequest::newInstance()
+    ->withRequestId(RequestId::generate())
+    ->withPrincipal(
+        Principal::newInstance("john")
+            ->withRole("employee")
+            ->withPolicyVersion("20210210")
+            ->withAttribute("department", "marketing")
+    )
+    ->withResourceEntries(
+        array(
+            ResourceEntry::newInstance("leave_request", "xx125")
+                ->withAction("approve")
+                ->withAttribute("department", AttributeValue::stringValue("marketing")),
+
+            ResourceEntry::newInstance("leave_request", "xx225")
+                ->withAction("defer")
+                ->withAttribute("department", AttributeValue::stringValue("marketing"))
+        )
+    );
+```
+
+```php
+$request = PlanResourcesRequest::newInstance()
+    ->withRequestId(RequestId::generate())
+    ->withAction("approve")
+    ->withPrincipal(
+        Principal::newInstance("maggie")
+            ->withRole("manager")
+            ->withAttribute("department", AttributeValue::stringValue("marketing"))
+    )
+    ->withResource(
+        Resource::newInstance("leave_request", "xx125")
+            ->withAttribute("department", AttributeValue::stringValue("marketing"))
+    );
+```
+
+### Simpler `CerbosClient`
+
+The `checkResources` and `planResources` methods on the `CerbosClient` now accepts only a `CheckResourcesRequest` or 
+`PlanResourcesRequest` object respectively.

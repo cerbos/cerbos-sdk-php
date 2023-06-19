@@ -1,22 +1,22 @@
 <?php
 
+// Copyright 2021-2023 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 declare(strict_types=1);
 
 namespace Cerbos\Sdk\Builder;
 
-// Copyright 2021-2023 Zenauth Ltd.
-// SPDX-License-Identifier: Apache-2.0
-
 class Principal
 {
-    private \Cerbos\Api\V1\Engine\Principal $principal;
+    private \Cerbos\Engine\V1\Principal $principal;
 
     /**
      * @param string $id
      */
     private function __construct(string $id)
     {
-        $this->principal = new \Cerbos\Api\V1\Engine\Principal($id);
+        $this->principal = (new \Cerbos\Engine\V1\Principal())->setId($id);
     }
 
     /**
@@ -28,84 +28,103 @@ class Principal
     }
 
     /**
-     * @param string|null $id
+     * @param string $id
      * @return $this
      */
-    public function withId(?string $id): Principal {
-        if ($id == null) return $this;
-        $this->principal->id = $id;
+    public function withId(string $id): Principal {
+        $this->principal->setId($id);
         return $this;
     }
 
     /**
-     * @param string|null $policyVersion
+     * @param string $policyVersion
      * @return $this
      */
-    public function withPolicyVersion(?string $policyVersion): Principal {
-        if ($policyVersion == null) return $this;
-        $this->principal->policyVersion = $policyVersion;
+    public function withPolicyVersion(string $policyVersion): Principal {
+        $this->principal->setPolicyVersion($policyVersion);
         return $this;
     }
 
     /**
-     * @param string|null $role
+     * @param string $role
      * @return $this
      */
-    public function withRole(?string $role): Principal {
-        if ($role == null) return $this;
-        $this->principal->roles[] = $role;
-        return $this;
-    }
-
-    /**
-     * @param string[]|null $roles
-     * @return $this
-     */
-    public function withRoles(?array $roles): Principal {
-        if ($roles == null) return $this;
-        foreach ($roles as $role) {
-            $this->principal->roles[] = $role;
+    public function withRole(string $role): Principal {
+        $newRoles = array();
+        foreach ($this->principal->getRoles()->getIterator() as $r) {
+            $newRoles[] = $r;
         }
+        $newRoles[] = $role;
+
+        $this->principal->setRoles($newRoles);
         return $this;
     }
 
     /**
-     * @param string|null $key
-     * @param bool|int|float|string|null $value
+     * @param string[] $roles
      * @return $this
      */
-    public function withAttribute(?string $key, $value): Principal {
-        if ($key == null || $value == null) return $this;
-        $this->principal->attributes[$key] = $value;
-        return $this;
-    }
-
-    /**
-     * @param array|null $attributes dictionary of string key and values
-     * @return $this
-     */
-    public function withAttributes(?array $attributes): Principal {
-        if ($attributes == null) return $this;
-        foreach ($attributes as $key => $value) {
-            $this->principal->attributes[$key] = $value;
+    public function withRoles(array $roles): Principal {
+        $newRoles = array();
+        foreach ($this->principal->getRoles()->getIterator() as $r) {
+            $newRoles[] = $r;
         }
+
+        foreach ($roles as $r) {
+            $newRoles[] = $r;
+        }
+
+        $this->principal->setRoles($newRoles);
         return $this;
     }
 
     /**
-     * @param string|null $scope
+     * @param string $key
+     * @param AttributeValue $value
      * @return $this
      */
-    public function withScope(?string $scope): Principal {
-        if ($scope == null) return $this;
-        $this->principal->scope = $scope;
+    public function withAttribute(string $key, AttributeValue $value): Principal {
+        $newAttrs = array();
+        foreach ($this->principal->getAttr()->getIterator() as $k => $v) {
+            $newAttrs[$k] = $v;
+        }
+        $newAttrs[$key] = $value->toValue();
+
+        $this->principal->setAttr($newAttrs);
         return $this;
     }
 
     /**
-     * @return \Cerbos\Api\V1\Engine\Principal
+     * @param array<string, AttributeValue> $attributes
+     * @return $this
      */
-    public function toPrincipal(): \Cerbos\Api\V1\Engine\Principal {
+    public function withAttributes(array $attributes): Principal {
+        $newAttrs = array();
+        foreach ($this->principal->getAttr()->getIterator() as $k => $v) {
+            $newAttrs[$k] = $v;
+        }
+
+        foreach ($attributes as $k => $v) {
+            $newAttrs[$k] = $v->toValue();
+        }
+
+        $this->principal->setAttr($newAttrs);
+        return $this;
+    }
+
+    /**
+     * @param string $scope
+     * @return $this
+     */
+    public function withScope(string $scope): Principal {
+        $this->principal->setScope($scope);
+        return $this;
+    }
+
+    /**
+     * @return \Cerbos\Engine\V1\Principal
+     */
+    public function toPrincipal(): \Cerbos\Engine\V1\Principal {
         return $this->principal;
     }
 }

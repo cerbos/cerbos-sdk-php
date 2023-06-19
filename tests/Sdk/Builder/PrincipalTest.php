@@ -1,75 +1,128 @@
 <?php
 
-namespace Cerbos\Test\Sdk\Builder;
-
-use Cerbos\Sdk\Builder\Principal;
-use PHPUnit\Framework\TestCase;
-
 // Copyright 2021-2023 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
+namespace Cerbos\Test\Sdk\Builder;
+
+use Cerbos\Sdk\Builder\AttributeValue;
+use Cerbos\Sdk\Builder\Principal;
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ * @psalm-suppress PossiblyNullReference
+ */
 class PrincipalTest extends TestCase
 {
-    private string $id = "john";
-    private string $policyVersion = "20210210";
-    private string $scope = "a_scope";
-    private array $roles = array("employee", "manager", "admin");
+    private AttributeValue $listValue;
+    private AttributeValue $mapValue;
 
-    private string $lonelyAttr = "lonelyAttr";
-    private string $boolAttr = "boolAttr";
-    private string $intAttr = "intAttr";
-    private string $stringAttr = "stringAttr";
-    private string $floatAttr = "floatAttr";
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->listValue = AttributeValue::listValue(
+            array(
+                AttributeValue::boolValue(true),
+                AttributeValue::floatValue(1.2),
+                AttributeValue::intValue(2)
+            )
+        );
 
-
-    public function testPrincipal(): void {
-        $principal = Principal::newInstance($this->id)
-                                ->withPolicyVersion($this->policyVersion)
-                                ->withScope($this->scope)
-                                ->withAttribute($this->lonelyAttr, $this->lonelyAttr)
-                                ->withAttributes(array(
-                                    $this->boolAttr => true,
-                                    $this->intAttr => 10,
-                                    $this->stringAttr => $this->stringAttr,
-                                    $this->floatAttr => 1.2,
-                                ))
-                                ->withRole($this->roles[0])
-                                ->withRoles(array($this->roles[1], $this->roles[2]))->toPrincipal();
-
-        $this->assertEquals($this->id, $principal->id, "value of the principal id is invalid");
-        $this->assertEquals($this->policyVersion, $principal->policyVersion, "value of the principal policyVersion is invalid");
-        $this->assertEquals($this->scope, $principal->scope, "value of the principal scope is invalid");
-
-        $this->assertArrayHasKey($this->lonelyAttr, $principal->attributes, "the principal does not have '".$this->lonelyAttr."' attribute");
-        $this->assertArrayHasKey($this->boolAttr, $principal->attributes, "the principal does not have '".$this->boolAttr."' attribute");
-        $this->assertArrayHasKey($this->intAttr, $principal->attributes, "the principal does not have '".$this->intAttr."' attribute");
-        $this->assertArrayHasKey($this->stringAttr, $principal->attributes, "the principal does not have '".$this->stringAttr."' attribute");
-        $this->assertArrayHasKey($this->floatAttr, $principal->attributes, "the principal does not have '".$this->floatAttr."' attribute");
-
-        $this->assertIsString($principal->attributes[$this->lonelyAttr], "'".$this->lonelyAttr."' of the principal is not of type string");
-        $this->assertIsBool($principal->attributes[$this->boolAttr], "'".$this->boolAttr."' of the principal is not of type bool");
-        $this->assertIsInt($principal->attributes[$this->intAttr], "'".$this->intAttr."' of the principal is not of type int");
-        $this->assertIsString($principal->attributes[$this->stringAttr], "'".$this->stringAttr."' of the principal is not of type string");
-        $this->assertIsFloat($principal->attributes[$this->floatAttr], "'".$this->floatAttr."' of the principal is not of type float");
-
-        $this->assertEquals($this->lonelyAttr, $principal->attributes[$this->lonelyAttr], "'".$this->lonelyAttr."' of the principal is not equal to the expected value");
-        $this->assertEquals(true, $principal->attributes[$this->boolAttr], "'".$this->boolAttr."' of the principal is not equal to the expected value");
-        $this->assertEquals(10, $principal->attributes[$this->intAttr], "'".$this->intAttr."' of the principal is not equal to the expected value");
-        $this->assertEquals($this->stringAttr, $principal->attributes[$this->stringAttr], "'".$this->stringAttr."' of the principal is not equal to the expected value");
-        $this->assertEquals(1.2, $principal->attributes[$this->floatAttr], "'".$this->floatAttr."' of the principal is not equal to the expected value");
-
-        $this->assertEquals($this->roles[0], $principal->roles[0], "first role of the principal is not equal to the expected value");
-        $this->assertEquals($this->roles[1], $principal->roles[1], "second role of the principal is not equal to the expected value");
-        $this->assertEquals($this->roles[2], $principal->roles[2], "third role of the principal is not equal to the expected value");
+        $this->mapValue = AttributeValue::mapValue(
+            array(
+                "boolAttr" => AttributeValue::boolValue(true),
+                "floatAttr" => AttributeValue::floatValue(1.2),
+                "intAttr" => AttributeValue::intValue(2),
+                "listValue" => $this->listValue
+            )
+        );
     }
 
-    public function testPrincipalWithNoAttributesExcludesAttributeKeyInSerializedJson(): void {
-        $principal = Principal::newInstance($this->id)
-                                ->withPolicyVersion($this->policyVersion)
-                                ->withScope($this->scope)
-                                ->withRole($this->roles[0])
-                                ->withRoles(array($this->roles[1], $this->roles[2]))->toPrincipal();
+    public function testConstructor(): void {
+        $principal = Principal::newInstance("john")->toPrincipal();
 
-        $this->assertArrayNotHasKey("attr", $principal->jsonSerialize(), "the principal should not have an 'attr' key in the serialized json");
+        $this->assertEquals("john", $principal->getId(), "invalid id");
+    }
+
+    public function testWithId(): void {
+        $principal = Principal::newInstance("alex")->withId("john")->toPrincipal();
+
+        $this->assertEquals("john", $principal->getId(), "invalid id");
+    }
+
+    public function testWithPolicyVersion(): void {
+        $principal = Principal::newInstance("john")->withPolicyVersion("20210210")->toPrincipal();
+
+        $this->assertEquals("20210210", $principal->getPolicyVersion(), "invalid policyVersion");
+    }
+
+    public function testWithRole(): void {
+        $principal = Principal::newInstance("john")->withRole("employee")->withRole("manager")->toPrincipal();
+
+        $this->assertEquals("employee", $principal->getRoles()[0], "missing role employee");
+        $this->assertEquals("manager", $principal->getRoles()[1], "missing role manager");
+    }
+
+    public function testWithRoles(): void {
+        $principal = Principal::newInstance("john")->withRoles(array("employee", "manager"))->withRoles(array("admin"))->toPrincipal();
+
+        $this->assertEquals("employee", $principal->getRoles()[0], "missing role employee");
+        $this->assertEquals("manager", $principal->getRoles()[1], "missing role manager");
+        $this->assertEquals("admin", $principal->getRoles()[2], "missing role admin");
+    }
+
+    public function testWithAttribute(): void {
+        $principal = Principal::newInstance("john")
+            ->withAttribute("boolAttr", AttributeValue::boolValue(true))
+            ->withAttribute("floatAttr", AttributeValue::floatValue(1.2))
+            ->withAttribute("intAttr", AttributeValue::intValue(2))
+            ->withAttribute("listAttr", $this->listValue)
+            ->withAttribute("mapAttr", $this->mapValue)
+            ->toPrincipal();
+
+        $this->assertArrayHasKey("boolAttr", $principal->getAttr(), "missing attr boolAttr");
+        $this->assertArrayHasKey("floatAttr", $principal->getAttr(), "missing attr floatAttr");
+        $this->assertArrayHasKey("intAttr", $principal->getAttr(), "missing attr intAttr");
+        $this->assertArrayHasKey("listAttr", $principal->getAttr(), "missing attr listAttr");
+        $this->assertArrayHasKey("mapAttr", $principal->getAttr(), "missing attr mapAttr");
+
+        $this->assertTrue((bool)$principal->getAttr()->offsetGet("boolAttr")->getBoolValue(), "invalid bool attr value");
+        $this->assertEquals(1.2, $principal->getAttr()->offsetGet("floatAttr")->getNumberValue(), "invalid float attr value");
+        $this->assertEquals(2, $principal->getAttr()->offsetGet("intAttr")->getNumberValue(), "invalid int attr value");
+    }
+
+    public function testWithAttributes(): void {
+        $principal = Principal::newInstance("john")
+            ->withAttributes(
+                array(
+                    "boolAttr" => AttributeValue::boolValue(true),
+                    "floatAttr" => AttributeValue::floatValue(1.2),
+                    "intAttr" => AttributeValue::intValue(2),
+                )
+            )
+            ->withAttributes(
+                array(
+                    "listAttr" => $this->listValue,
+                    "mapAttr" => $this->mapValue
+                )
+            )
+            ->toPrincipal();
+
+        $this->assertArrayHasKey("boolAttr", $principal->getAttr(), "missing attr boolAttr");
+        $this->assertArrayHasKey("floatAttr", $principal->getAttr(), "missing attr floatAttr");
+        $this->assertArrayHasKey("intAttr", $principal->getAttr(), "missing attr intAttr");
+        $this->assertArrayHasKey("listAttr", $principal->getAttr(), "missing attr listAttr");
+        $this->assertArrayHasKey("mapAttr", $principal->getAttr(), "missing attr mapAttr");
+
+        $this->assertTrue((bool)$principal->getAttr()->offsetGet("boolAttr")->getBoolValue(), "invalid bool attr value");
+        $this->assertEquals(1.2, $principal->getAttr()->offsetGet("floatAttr")->getNumberValue(), "invalid float attr value");
+        $this->assertEquals(2, $principal->getAttr()->offsetGet("intAttr")->getNumberValue(), "invalid int attr value");
+    }
+
+    public function testWithScope(): void {
+        $principal = Principal::newInstance("john")->withScope("acme")->toPrincipal();
+
+        $this->assertEquals("acme", $principal->getScope(), "invalid scope");
     }
 }
