@@ -8,6 +8,6 @@
 >
     <projectFiles>
         <directory name="src/Sdk" />
-        <directory name="tests/Sdk" />
+        <directory name="tests" />
     </projectFiles>
 </psalm>
