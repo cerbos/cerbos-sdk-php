@@ -91,16 +91,32 @@ class CerbosClientBuilder
      * @throws Exception
      */
     public function build(): CerbosClient {
-        if (!is_null($this->caCertificate) && !is_null($this->tlsKey) && !is_null($this->tlsCertificate)){
-            $credentials = ChannelCredentials::createSsl(
-                $this->caCertificate,
-                $this->tlsKey,
-                $this->tlsCertificate
-            );
-        } else if ($this->plaintext) {
+        if ($this->plaintext) {
+            if ($this->playgroundInstanceId != "") {
+                throw new Exception("cannot use a plaintext connection to interact with the Cerbos Playground");
+            }
+
             $credentials = ChannelCredentials::createInsecure();
-        } else {
-            throw new Exception("either use the withPlaintext(true) or provide tlsKey and tlsCertificate");
+        }
+        else if (!is_null($this->caCertificate)) {
+            if (!is_null($this->tlsCertificate) && !is_null($this->tlsKey)) {
+                $credentials = ChannelCredentials::createSsl(
+                    $this->caCertificate,
+                    $this->tlsKey,
+                    $this->tlsCertificate
+                );
+            }
+            else {
+                $credentials = ChannelCredentials::createSsl(
+                    $this->caCertificate
+                );
+            }
+        }
+        else {
+            /**
+             * @psalm-suppress TooFewArguments
+             */
+            $credentials = ChannelCredentials::createSsl();
         }
 
         $csc = new CerbosServiceClient(
