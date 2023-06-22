@@ -93,7 +93,7 @@ class CerbosClientBuilder
     public function build(): CerbosClient {
         if ($this->plaintext) {
             if ($this->playgroundInstanceId != "") {
-                throw new Exception("it is not possible to connect to a playground instance if the connection is plaintext due to the nature of gRPC");
+                throw new Exception("cannot use a plaintext connection to interact with the Cerbos Playground");
             }
 
             $credentials = ChannelCredentials::createInsecure();
