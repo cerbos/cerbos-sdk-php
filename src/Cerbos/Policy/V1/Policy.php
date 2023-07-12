@@ -30,9 +30,14 @@ class Policy extends \Google\Protobuf\Internal\Message
      */
     protected $metadata = null;
     /**
-     * Generated from protobuf field <code>map<string, string> variables = 8 [json_name = "variables"];</code>
+     * Generated from protobuf field <code>map<string, string> variables = 8 [json_name = "variables", deprecated = true];</code>
+     * @deprecated
      */
     private $variables;
+    /**
+     * Generated from protobuf field <code>string json_schema = 9 [json_name = "$schema"];</code>
+     */
+    protected $json_schema = '';
     protected $policy_type;
 
     /**
@@ -48,7 +53,9 @@ class Policy extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Policy\V1\ResourcePolicy $resource_policy
      *     @type \Cerbos\Policy\V1\PrincipalPolicy $principal_policy
      *     @type \Cerbos\Policy\V1\DerivedRoles $derived_roles
+     *     @type \Cerbos\Policy\V1\ExportVariables $export_variables
      *     @type array|\Google\Protobuf\Internal\MapField $variables
+     *     @type string $json_schema
      * }
      */
     public function __construct($data = NULL) {
@@ -236,23 +243,76 @@ class Policy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, string> variables = 8 [json_name = "variables"];</code>
+     * Generated from protobuf field <code>.cerbos.policy.v1.ExportVariables export_variables = 10 [json_name = "exportVariables"];</code>
+     * @return \Cerbos\Policy\V1\ExportVariables|null
+     */
+    public function getExportVariables()
+    {
+        return $this->readOneof(10);
+    }
+
+    public function hasExportVariables()
+    {
+        return $this->hasOneof(10);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.ExportVariables export_variables = 10 [json_name = "exportVariables"];</code>
+     * @param \Cerbos\Policy\V1\ExportVariables $var
+     * @return $this
+     */
+    public function setExportVariables($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\ExportVariables::class);
+        $this->writeOneof(10, $var);
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, string> variables = 8 [json_name = "variables", deprecated = true];</code>
      * @return \Google\Protobuf\Internal\MapField
+     * @deprecated
      */
     public function getVariables()
     {
+        @trigger_error('variables is deprecated.', E_USER_DEPRECATED);
         return $this->variables;
     }
 
     /**
-     * Generated from protobuf field <code>map<string, string> variables = 8 [json_name = "variables"];</code>
+     * Generated from protobuf field <code>map<string, string> variables = 8 [json_name = "variables", deprecated = true];</code>
      * @param array|\Google\Protobuf\Internal\MapField $var
      * @return $this
+     * @deprecated
      */
     public function setVariables($var)
     {
+        @trigger_error('variables is deprecated.', E_USER_DEPRECATED);
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::STRING);
         $this->variables = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string json_schema = 9 [json_name = "$schema"];</code>
+     * @return string
+     */
+    public function getJsonSchema()
+    {
+        return $this->json_schema;
+    }
+
+    /**
+     * Generated from protobuf field <code>string json_schema = 9 [json_name = "$schema"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setJsonSchema($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->json_schema = $var;
 
         return $this;
     }

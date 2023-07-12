@@ -49,6 +49,10 @@ class TestSuite extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.cerbos.policy.v1.TestOptions options = 9 [json_name = "options"];</code>
      */
     protected $options = null;
+    /**
+     * Generated from protobuf field <code>string json_schema = 10 [json_name = "$schema"];</code>
+     */
+    protected $json_schema = '';
 
     /**
      * Constructor.
@@ -65,6 +69,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
      *     @type array|\Google\Protobuf\Internal\MapField $resources
      *     @type array|\Google\Protobuf\Internal\MapField $aux_data
      *     @type \Cerbos\Policy\V1\TestOptions $options
+     *     @type string $json_schema
      * }
      */
     public function __construct($data = NULL) {
@@ -276,6 +281,28 @@ class TestSuite extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Policy\V1\TestOptions::class);
         $this->options = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string json_schema = 10 [json_name = "$schema"];</code>
+     * @return string
+     */
+    public function getJsonSchema()
+    {
+        return $this->json_schema;
+    }
+
+    /**
+     * Generated from protobuf field <code>string json_schema = 10 [json_name = "$schema"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setJsonSchema($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->json_schema = $var;
 
         return $this;
     }
