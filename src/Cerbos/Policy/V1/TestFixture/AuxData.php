@@ -17,6 +17,10 @@ class AuxData extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>map<string, .cerbos.engine.v1.AuxData> aux_data = 1 [json_name = "auxData"];</code>
      */
     private $aux_data;
+    /**
+     * Generated from protobuf field <code>string json_schema = 2 [json_name = "$schema"];</code>
+     */
+    protected $json_schema = '';
 
     /**
      * Constructor.
@@ -25,6 +29,7 @@ class AuxData extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type array|\Google\Protobuf\Internal\MapField $aux_data
+     *     @type string $json_schema
      * }
      */
     public function __construct($data = NULL) {
@@ -50,6 +55,28 @@ class AuxData extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\AuxData::class);
         $this->aux_data = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string json_schema = 2 [json_name = "$schema"];</code>
+     * @return string
+     */
+    public function getJsonSchema()
+    {
+        return $this->json_schema;
+    }
+
+    /**
+     * Generated from protobuf field <code>string json_schema = 2 [json_name = "$schema"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setJsonSchema($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->json_schema = $var;
 
         return $this;
     }

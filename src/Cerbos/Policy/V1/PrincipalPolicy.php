@@ -29,6 +29,10 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string scope = 4 [json_name = "scope", (.validate.rules) = {</code>
      */
     protected $scope = '';
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 5 [json_name = "variables"];</code>
+     */
+    protected $variables = null;
 
     /**
      * Constructor.
@@ -40,6 +44,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
      *     @type string $version
      *     @type array<\Cerbos\Policy\V1\PrincipalRule>|\Google\Protobuf\Internal\RepeatedField $rules
      *     @type string $scope
+     *     @type \Cerbos\Policy\V1\Variables $variables
      * }
      */
     public function __construct($data = NULL) {
@@ -131,6 +136,38 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->scope = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 5 [json_name = "variables"];</code>
+     * @return \Cerbos\Policy\V1\Variables|null
+     */
+    public function getVariables()
+    {
+        return $this->variables;
+    }
+
+    public function hasVariables()
+    {
+        return isset($this->variables);
+    }
+
+    public function clearVariables()
+    {
+        unset($this->variables);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 5 [json_name = "variables"];</code>
+     * @param \Cerbos\Policy\V1\Variables $var
+     * @return $this
+     */
+    public function setVariables($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Variables::class);
+        $this->variables = $var;
 
         return $this;
     }

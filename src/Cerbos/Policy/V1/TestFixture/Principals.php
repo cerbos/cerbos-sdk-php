@@ -17,6 +17,10 @@ class Principals extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>map<string, .cerbos.engine.v1.Principal> principals = 1 [json_name = "principals"];</code>
      */
     private $principals;
+    /**
+     * Generated from protobuf field <code>string json_schema = 2 [json_name = "$schema"];</code>
+     */
+    protected $json_schema = '';
 
     /**
      * Constructor.
@@ -25,6 +29,7 @@ class Principals extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type array|\Google\Protobuf\Internal\MapField $principals
+     *     @type string $json_schema
      * }
      */
     public function __construct($data = NULL) {
@@ -50,6 +55,28 @@ class Principals extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\Principal::class);
         $this->principals = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string json_schema = 2 [json_name = "$schema"];</code>
+     * @return string
+     */
+    public function getJsonSchema()
+    {
+        return $this->json_schema;
+    }
+
+    /**
+     * Generated from protobuf field <code>string json_schema = 2 [json_name = "$schema"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setJsonSchema($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->json_schema = $var;
 
         return $this;
     }

@@ -21,6 +21,10 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions", (.validate.rules) = {</code>
      */
     private $definitions;
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 3 [json_name = "variables"];</code>
+     */
+    protected $variables = null;
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
      *
      *     @type string $name
      *     @type array<\Cerbos\Policy\V1\RoleDef>|\Google\Protobuf\Internal\RepeatedField $definitions
+     *     @type \Cerbos\Policy\V1\Variables $variables
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,38 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\RoleDef::class);
         $this->definitions = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 3 [json_name = "variables"];</code>
+     * @return \Cerbos\Policy\V1\Variables|null
+     */
+    public function getVariables()
+    {
+        return $this->variables;
+    }
+
+    public function hasVariables()
+    {
+        return isset($this->variables);
+    }
+
+    public function clearVariables()
+    {
+        unset($this->variables);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 3 [json_name = "variables"];</code>
+     * @param \Cerbos\Policy\V1\Variables $var
+     * @return $this
+     */
+    public function setVariables($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Variables::class);
+        $this->variables = $var;
 
         return $this;
     }

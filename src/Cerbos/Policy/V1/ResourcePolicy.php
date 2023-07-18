@@ -37,6 +37,10 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.cerbos.policy.v1.Schemas schemas = 6 [json_name = "schemas"];</code>
      */
     protected $schemas = null;
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 7 [json_name = "variables"];</code>
+     */
+    protected $variables = null;
 
     /**
      * Constructor.
@@ -50,6 +54,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
      *     @type array<\Cerbos\Policy\V1\ResourceRule>|\Google\Protobuf\Internal\RepeatedField $rules
      *     @type string $scope
      *     @type \Cerbos\Policy\V1\Schemas $schemas
+     *     @type \Cerbos\Policy\V1\Variables $variables
      * }
      */
     public function __construct($data = NULL) {
@@ -195,6 +200,38 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Schemas::class);
         $this->schemas = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 7 [json_name = "variables"];</code>
+     * @return \Cerbos\Policy\V1\Variables|null
+     */
+    public function getVariables()
+    {
+        return $this->variables;
+    }
+
+    public function hasVariables()
+    {
+        return isset($this->variables);
+    }
+
+    public function clearVariables()
+    {
+        unset($this->variables);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 7 [json_name = "variables"];</code>
+     * @param \Cerbos\Policy\V1\Variables $var
+     * @return $this
+     */
+    public function setVariables($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Variables::class);
+        $this->variables = $var;
 
         return $this;
     }
