@@ -47,8 +47,8 @@ $request = CheckResourcesRequest::newInstance()
             ->withAttribute("owner", AttributeValue::stringValue("john"))
     )
   
-$checkResourcesResult = $client->checkResources($request);
-$resultEntry = $checkResourcesResult->find("xx125");
+$checkResourcesResponse = $client->checkResources($request);
+$resultEntry = $checkResourcesResponse->find("xx125");
 
 if ($resultEntry->isAllowed("view:public")) { // returns true if `view:public` action is allowed
     // ...
@@ -88,14 +88,14 @@ $request = CheckResourcesRequest::newInstance()
         )
     )
                     
-$checkResourcesResult = $client->checkResources($request);
+$checkResourcesResponse = $client->checkResources($request);
 
-$resultEntry = $checkResourcesResult->find("xx125");
+$resultEntry = $checkResourcesResponse->find("xx125");
 if ($resultEntry->isAllowed("approve")) { // returns true if `approve` action is allowed
     // ...
 }
 
-$resultEntry = $checkResourcesResult->find("xx225");
+$resultEntry = $checkResourcesResponse->find("xx225");
 if ($resultEntry->isAllowed("defer")) { // returns true if `defer` action is allowed
     // ...
 }
@@ -119,11 +119,11 @@ $request = PlanResourcesRequest::newInstance()
             ->withPolicyVersion("20210210")
     );                
 
-$planResourcesResult = $this->client->planResources($request);
-if ($planResourcesResult->isAlwaysAllowed()) {
+$planResourcesResponse = $this->client->planResources($request);
+if ($planResourcesResponse->isAlwaysAllowed()) {
     // ...
 }
-else if ($planResourcesResult->isAlwaysDenied()) {
+else if ($planResourcesResponse->isAlwaysDenied()) {
     // ...
 }
 else {
