@@ -24,7 +24,7 @@ class ResultEntry
     }
 
     /**
-     * @return array<string>
+     * @return array<string, Effect>
      */
     public function getActions(): array {
         $actions = array();
