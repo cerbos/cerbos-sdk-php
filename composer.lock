@@ -63,16 +63,16 @@
         },
         {
             "name": "google/common-protos",
-            "version": "v4.2.0",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/common-protos-php.git",
-                "reference": "5d9e21141d94329d69d45a8c7a0cdeafd1a143f3"
+                "reference": "4ab56787c4f7c34277055ea7bd9982ad758b2c67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/common-protos-php/zipball/5d9e21141d94329d69d45a8c7a0cdeafd1a143f3",
-                "reference": "5d9e21141d94329d69d45a8c7a0cdeafd1a143f3",
+                "url": "https://api.github.com/repos/googleapis/common-protos-php/zipball/4ab56787c4f7c34277055ea7bd9982ad758b2c67",
+                "reference": "4ab56787c4f7c34277055ea7bd9982ad758b2c67",
                 "shasum": ""
             },
             "require": {
@@ -109,22 +109,22 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/common-protos-php/issues",
-                "source": "https://github.com/googleapis/common-protos-php/tree/v4.2.0"
+                "source": "https://github.com/googleapis/common-protos-php/tree/v4.3.0"
             },
-            "time": "2023-07-25T21:51:55+00:00"
+            "time": "2023-08-22T18:10:13+00:00"
         },
         {
             "name": "google/protobuf",
-            "version": "v3.24.1",
+            "version": "v3.24.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "5c3a6828e1aa64fdbb1748ed60b9f0366d897a92"
+                "reference": "c1043089b14d4b41798b1665b9fbc58ca0f0383d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/5c3a6828e1aa64fdbb1748ed60b9f0366d897a92",
-                "reference": "5c3a6828e1aa64fdbb1748ed60b9f0366d897a92",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/c1043089b14d4b41798b1665b9fbc58ca0f0383d",
+                "reference": "c1043089b14d4b41798b1665b9fbc58ca0f0383d",
                 "shasum": ""
             },
             "require": {
@@ -153,9 +153,9 @@
                 "proto"
             ],
             "support": {
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.24.1"
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.24.2"
             },
-            "time": "2023-08-18T19:38:44+00:00"
+            "time": "2023-08-25T20:17:43+00:00"
         },
         {
             "name": "grpc/grpc",
@@ -1565,16 +1565,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.29",
+            "version": "1.10.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "ee5d8f2d3977fb09e55603eee6fb53bdd76ee9c1"
+                "reference": "c47e47d3ab03137c0e121e77c4d2cb58672f6d44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ee5d8f2d3977fb09e55603eee6fb53bdd76ee9c1",
-                "reference": "ee5d8f2d3977fb09e55603eee6fb53bdd76ee9c1",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c47e47d3ab03137c0e121e77c4d2cb58672f6d44",
+                "reference": "c47e47d3ab03137c0e121e77c4d2cb58672f6d44",
                 "shasum": ""
             },
             "require": {
@@ -1623,7 +1623,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-14T13:24:11+00:00"
+            "time": "2023-08-24T21:54:50+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
