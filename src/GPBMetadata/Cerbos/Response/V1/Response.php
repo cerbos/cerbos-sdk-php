@@ -23,13 +23,13 @@ class Response
         \GPBMetadata\ProtocGenOpenapiv2\Options\Annotations::initOnce();
         $pool->internalAddGeneratedFile(
             '
-€Y
-!cerbos/response/v1/response.protocerbos.response.v1cerbos/effect/v1/effect.protocerbos/engine/v1/engine.protocerbos/policy/v1/policy.protocerbos/schema/v1/schema.protogoogle/protobuf/empty.proto.protoc-gen-openapiv2/options/annotations.proto"µ
+’X
+!cerbos/response/v1/response.protocerbos.response.v1cerbos/effect/v1/effect.protocerbos/engine/v1/engine.protocerbos/policy/v1/policy.protocerbos/schema/v1/schema.protogoogle/protobuf/empty.proto.protoc-gen-openapiv2/options/annotations.proto"Ú
 PlanResourcesResponseo
 
 request_id (	BPíAM2#Request ID provided in the request.J&"c2db17b8-4f9f-4fb1-acfd-9162a02be42b"R	requestId2
-action (	BíA2ActionJ"view:public"Ractionä
-resource_kind (	BeíAb2Resource kind.J"album:object"ä?^[[:alpha:]][[:word:]\\@\\.\\-]*(\\:[[:alpha:]][[:word:]\\@\\.\\-]*)*$RresourceKindJ
+action (	BíA2ActionJ"view:public"RactionH
+resource_kind (	B#íA 2Resource kind.J"album:object"RresourceKindJ
 policy_version (	B#íA 2The policy version.J	"default"RpolicyVersionJ
 filter (2%.cerbos.engine.v1.PlanResourcesFilterBíA2FilterRfilter
 meta (2..cerbos.response.v1.PlanResourcesResponse.MetaB;íA826Optional metadata about the request evaluation processRmetaê
@@ -85,20 +85,20 @@ resourceId©
 ActionsEntry
 key (	Rkey.
 value (2.cerbos.effect.v1.EffectRvalue:8:;íA8
-624Policy evaluation response for a batch of resources."¶
+624Policy evaluation response for a batch of resources."„
 CheckResourcesResponseo
 
 request_id (	BPíAM2#Request ID provided in the request.J&"c2db17b8-4f9f-4fb1-acfd-9162a02be42b"R	requestId„
-results (26.cerbos.response.v1.CheckResourcesResponse.ResultEntryBêíAå2Result for each resourceJp[{"resource": {"Id":"XX125", "kind":"album:object"}, "actions":{"view":"EFFECT_ALLOW","comment":"EFFECT_DENY"}}]RresultsÄ
+results (26.cerbos.response.v1.CheckResourcesResponse.ResultEntryBêíAå2Result for each resourceJp[{"resource": {"Id":"XX125", "kind":"album:object"}, "actions":{"view":"EFFECT_ALLOW","comment":"EFFECT_DENY"}}]RresultsΩ
 ResultEntry[
 resource (2?.cerbos.response.v1.CheckResourcesResponse.ResultEntry.ResourceRresource°
 actions (2C.cerbos.response.v1.CheckResourcesResponse.ResultEntry.ActionsEntryBBíA?2$Mapping of each action to an effect.J{"view":"EFFECT_ALLOW"}Ractionsê
 validation_errors (2!.cerbos.schema.v1.ValidationErrorB@íA=2;List of validation errors (if schema validation is enabled)RvalidationErrorsò
 meta (2;.cerbos.response.v1.CheckResourcesResponse.ResultEntry.MetaB∆íA¬2 Metadata about policy evaluationJù{"actions": {"view:*":{"matched_policy": "album:object:default"},"comment":{"matched_policy": "album:object:default"}}, "effective_derived_roles": ["owner"]}Rmetaˆ
-outputs (2.cerbos.engine.v1.OutputEntryBºíA∏2,Output for each rule with outputs configuredJá[{"src": "resource.expense.v1/acme#rule-001", "val": "view_allowed:alice"}, {"src": "resource.expense.v1/acme#rule-002", "val": "foo"}]Routputsˇ
+outputs (2.cerbos.engine.v1.OutputEntryBºíA∏2,Output for each rule with outputs configuredJá[{"src": "resource.expense.v1/acme#rule-001", "val": "view_allowed:alice"}, {"src": "resource.expense.v1/acme#rule-002", "val": "foo"}]Routputsº
 Resource9
-id (	B)íA&2ID of the resource instanceJ"XX125"Ridì
-kind (	BíA|2)Name of the resource kind being accessed.J"album:photo"ä?^[[:alpha:]][[:word:]\\@\\.\\-]*(\\:[[:alpha:]][[:word:]\\@\\.\\-]*)*$Rkind≈
+id (	B)íA&2ID of the resource instanceJ"XX125"RidQ
+kind (	B=íA:2)Name of the resource kind being accessed.J"album:photo"Rkind≈
 policy_version (	BùíAô2|The policy version to use to evaluate this request. If not specified, will default to the server-configured default version.J	"default"ä^[[:word:]]*$RpolicyVersionŸ
 scope (	B¬íAæ2}A dot-separated scope that describes the hierarchy this resource belongs to. This is used for determining policy inheritance.J"acme.corp"ä/^([[:alnum:]][[:word:]\\-]*(\\.[[:word:]\\-]*)*)*$Rscope
 Meta¶
