@@ -14,11 +14,11 @@ use Google\Protobuf\Internal\GPBUtil;
 class File extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string file_name = 1 [json_name = "fileName", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string file_name = 1 [json_name = "fileName", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      */
     protected $file_name = '';
     /**
-     * Generated from protobuf field <code>bytes contents = 2 [json_name = "contents", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>bytes contents = 2 [json_name = "contents", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      */
     protected $contents = '';
 
@@ -38,7 +38,7 @@ class File extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string file_name = 1 [json_name = "fileName", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string file_name = 1 [json_name = "fileName", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @return string
      */
     public function getFileName()
@@ -47,7 +47,7 @@ class File extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string file_name = 1 [json_name = "fileName", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string file_name = 1 [json_name = "fileName", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */
@@ -60,7 +60,7 @@ class File extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>bytes contents = 2 [json_name = "contents", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>bytes contents = 2 [json_name = "contents", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @return string
      */
     public function getContents()
@@ -69,7 +69,7 @@ class File extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>bytes contents = 2 [json_name = "contents", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>bytes contents = 2 [json_name = "contents", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */

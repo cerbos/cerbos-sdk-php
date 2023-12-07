@@ -20,7 +20,7 @@ class CheckResourceBatchRequest extends \Google\Protobuf\Internal\Message
      */
     protected $request_id = '';
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 2 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 2 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      */
     protected $principal = null;
     /**
@@ -72,7 +72,7 @@ class CheckResourceBatchRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 2 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 2 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @return \Cerbos\Engine\V1\Principal|null
      */
     public function getPrincipal()
@@ -91,7 +91,7 @@ class CheckResourceBatchRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 2 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 2 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @param \Cerbos\Engine\V1\Principal $var
      * @return $this
      */

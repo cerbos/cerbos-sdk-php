@@ -34,6 +34,10 @@ class Metadata extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string store_identifier = 5 [json_name = "storeIdentifier"];</code>
      */
     protected $store_identifier = '';
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.SourceAttributes source_attributes = 6 [json_name = "sourceAttributes"];</code>
+     */
+    protected $source_attributes = null;
 
     /**
      * Constructor.
@@ -46,6 +50,7 @@ class Metadata extends \Google\Protobuf\Internal\Message
      *     @type \Google\Protobuf\UInt64Value $hash
      *     @type string $store_identifer
      *     @type string $store_identifier
+     *     @type \Cerbos\Policy\V1\SourceAttributes $source_attributes
      * }
      */
     public function __construct($data = NULL) {
@@ -196,6 +201,38 @@ class Metadata extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->store_identifier = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.SourceAttributes source_attributes = 6 [json_name = "sourceAttributes"];</code>
+     * @return \Cerbos\Policy\V1\SourceAttributes|null
+     */
+    public function getSourceAttributes()
+    {
+        return $this->source_attributes;
+    }
+
+    public function hasSourceAttributes()
+    {
+        return isset($this->source_attributes);
+    }
+
+    public function clearSourceAttributes()
+    {
+        unset($this->source_attributes);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.SourceAttributes source_attributes = 6 [json_name = "sourceAttributes"];</code>
+     * @param \Cerbos\Policy\V1\SourceAttributes $var
+     * @return $this
+     */
+    public function setSourceAttributes($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\SourceAttributes::class);
+        $this->source_attributes = $var;
 
         return $this;
     }

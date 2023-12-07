@@ -14,11 +14,11 @@ use Google\Protobuf\Internal\GPBUtil;
 class DerivedRoles extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      */
     protected $name = '';
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions", (.buf.validate.field) = {</code>
      */
     private $definitions;
     /**
@@ -43,7 +43,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getName()
@@ -52,7 +52,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */
@@ -65,7 +65,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions", (.buf.validate.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getDefinitions()
@@ -74,7 +74,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions", (.buf.validate.field) = {</code>
      * @param array<\Cerbos\Policy\V1\RoleDef>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */

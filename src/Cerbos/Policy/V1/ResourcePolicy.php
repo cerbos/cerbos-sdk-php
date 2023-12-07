@@ -14,15 +14,15 @@ use Google\Protobuf\Internal\GPBUtil;
 class ResourcePolicy extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
      */
     protected $resource = '';
     /**
-     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.buf.validate.field) = {</code>
      */
     protected $version = '';
     /**
-     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles", (.buf.validate.field) = {</code>
      */
     private $import_derived_roles;
     /**
@@ -30,7 +30,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
      */
     private $rules;
     /**
-     * Generated from protobuf field <code>string scope = 5 [json_name = "scope", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string scope = 5 [json_name = "scope", (.buf.validate.field) = {</code>
      */
     protected $scope = '';
     /**
@@ -63,7 +63,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getResource()
@@ -72,7 +72,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */
@@ -85,7 +85,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getVersion()
@@ -94,7 +94,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */
@@ -107,7 +107,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles", (.buf.validate.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getImportDerivedRoles()
@@ -116,7 +116,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles", (.buf.validate.field) = {</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -151,7 +151,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string scope = 5 [json_name = "scope", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string scope = 5 [json_name = "scope", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getScope()
@@ -160,7 +160,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string scope = 5 [json_name = "scope", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string scope = 5 [json_name = "scope", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */

@@ -24,11 +24,11 @@ class CheckResourceSetRequest extends \Google\Protobuf\Internal\Message
      */
     private $actions;
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      */
     protected $principal = null;
     /**
-     * Generated from protobuf field <code>.cerbos.request.v1.ResourceSet resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.request.v1.ResourceSet resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      */
     protected $resource = null;
     /**
@@ -104,7 +104,7 @@ class CheckResourceSetRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @return \Cerbos\Engine\V1\Principal|null
      */
     public function getPrincipal()
@@ -123,7 +123,7 @@ class CheckResourceSetRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @param \Cerbos\Engine\V1\Principal $var
      * @return $this
      */
@@ -136,7 +136,7 @@ class CheckResourceSetRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.request.v1.ResourceSet resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.request.v1.ResourceSet resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @return \Cerbos\Request\V1\ResourceSet|null
      */
     public function getResource()
@@ -155,7 +155,7 @@ class CheckResourceSetRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.request.v1.ResourceSet resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.request.v1.ResourceSet resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @param \Cerbos\Request\V1\ResourceSet $var
      * @return $this
      */

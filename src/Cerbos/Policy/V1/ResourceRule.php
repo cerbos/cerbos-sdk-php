@@ -14,15 +14,15 @@ use Google\Protobuf\Internal\GPBUtil;
 class ResourceRule extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.buf.validate.field) = {</code>
      */
     private $actions;
     /**
-     * Generated from protobuf field <code>repeated string derived_roles = 2 [json_name = "derivedRoles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string derived_roles = 2 [json_name = "derivedRoles", (.buf.validate.field) = {</code>
      */
     private $derived_roles;
     /**
-     * Generated from protobuf field <code>repeated string roles = 3 [json_name = "roles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string roles = 3 [json_name = "roles", (.buf.validate.field) = {</code>
      */
     private $roles;
     /**
@@ -30,11 +30,11 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
      */
     protected $condition = null;
     /**
-     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 5 [json_name = "effect", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 5 [json_name = "effect", (.buf.validate.field) = {</code>
      */
     protected $effect = 0;
     /**
-     * Generated from protobuf field <code>string name = 6 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 6 [json_name = "name", (.buf.validate.field) = {</code>
      */
     protected $name = '';
     /**
@@ -63,7 +63,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.buf.validate.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getActions()
@@ -72,7 +72,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.buf.validate.field) = {</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -85,7 +85,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string derived_roles = 2 [json_name = "derivedRoles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string derived_roles = 2 [json_name = "derivedRoles", (.buf.validate.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getDerivedRoles()
@@ -94,7 +94,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string derived_roles = 2 [json_name = "derivedRoles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string derived_roles = 2 [json_name = "derivedRoles", (.buf.validate.field) = {</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -107,7 +107,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string roles = 3 [json_name = "roles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string roles = 3 [json_name = "roles", (.buf.validate.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getRoles()
@@ -116,7 +116,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string roles = 3 [json_name = "roles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string roles = 3 [json_name = "roles", (.buf.validate.field) = {</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -161,7 +161,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 5 [json_name = "effect", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 5 [json_name = "effect", (.buf.validate.field) = {</code>
      * @return int
      */
     public function getEffect()
@@ -170,7 +170,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 5 [json_name = "effect", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 5 [json_name = "effect", (.buf.validate.field) = {</code>
      * @param int $var
      * @return $this
      */
@@ -183,7 +183,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 6 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 6 [json_name = "name", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getName()
@@ -192,7 +192,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 6 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 6 [json_name = "name", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */

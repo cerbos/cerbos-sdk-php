@@ -47,6 +47,10 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>map<string, .cerbos.audit.v1.MetaValues> metadata = 15 [json_name = "metadata"];</code>
      */
     private $metadata;
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.AuditTrail audit_trail = 16 [json_name = "auditTrail"];</code>
+     */
+    protected $audit_trail = null;
     protected $method;
 
     /**
@@ -67,6 +71,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Audit\V1\DecisionLogEntry\CheckResources $check_resources
      *     @type \Cerbos\Audit\V1\DecisionLogEntry\PlanResources $plan_resources
      *     @type array|\Google\Protobuf\Internal\MapField $metadata
+     *     @type \Cerbos\Audit\V1\AuditTrail $audit_trail
      * }
      */
     public function __construct($data = NULL) {
@@ -310,6 +315,38 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Audit\V1\MetaValues::class);
         $this->metadata = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.AuditTrail audit_trail = 16 [json_name = "auditTrail"];</code>
+     * @return \Cerbos\Audit\V1\AuditTrail|null
+     */
+    public function getAuditTrail()
+    {
+        return $this->audit_trail;
+    }
+
+    public function hasAuditTrail()
+    {
+        return isset($this->audit_trail);
+    }
+
+    public function clearAuditTrail()
+    {
+        unset($this->audit_trail);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.AuditTrail audit_trail = 16 [json_name = "auditTrail"];</code>
+     * @param \Cerbos\Audit\V1\AuditTrail $var
+     * @return $this
+     */
+    public function setAuditTrail($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Audit\V1\AuditTrail::class);
+        $this->audit_trail = $var;
 
         return $this;
     }

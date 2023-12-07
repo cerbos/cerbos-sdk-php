@@ -14,11 +14,11 @@ use Google\Protobuf\Internal\GPBUtil;
 class RoleDef extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      */
     protected $name = '';
     /**
-     * Generated from protobuf field <code>repeated string parent_roles = 2 [json_name = "parentRoles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string parent_roles = 2 [json_name = "parentRoles", (.buf.validate.field) = {</code>
      */
     private $parent_roles;
     /**
@@ -43,7 +43,7 @@ class RoleDef extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getName()
@@ -52,7 +52,7 @@ class RoleDef extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */
@@ -65,7 +65,7 @@ class RoleDef extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string parent_roles = 2 [json_name = "parentRoles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string parent_roles = 2 [json_name = "parentRoles", (.buf.validate.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getParentRoles()
@@ -74,7 +74,7 @@ class RoleDef extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string parent_roles = 2 [json_name = "parentRoles", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string parent_roles = 2 [json_name = "parentRoles", (.buf.validate.field) = {</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */

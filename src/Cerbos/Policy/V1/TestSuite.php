@@ -14,7 +14,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class TestSuite extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      */
     protected $name = '';
     /**
@@ -30,7 +30,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
      */
     protected $skip_reason = '';
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests", (.buf.validate.field) = {</code>
      */
     private $tests;
     /**
@@ -78,7 +78,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getName()
@@ -87,7 +87,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */
@@ -166,7 +166,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests", (.buf.validate.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getTests()
@@ -175,7 +175,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests", (.buf.validate.field) = {</code>
      * @param array<\Cerbos\Policy\V1\TestTable>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */

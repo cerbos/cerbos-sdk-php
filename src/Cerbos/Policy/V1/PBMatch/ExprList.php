@@ -14,7 +14,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class ExprList extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.Match of = 1 [json_name = "of", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.Match of = 1 [json_name = "of", (.buf.validate.field) = {</code>
      */
     private $of;
 
@@ -33,7 +33,7 @@ class ExprList extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.Match of = 1 [json_name = "of", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.Match of = 1 [json_name = "of", (.buf.validate.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getOf()
@@ -42,7 +42,7 @@ class ExprList extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.Match of = 1 [json_name = "of", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.Match of = 1 [json_name = "of", (.buf.validate.field) = {</code>
      * @param array<\Cerbos\Policy\V1\PBMatch>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */

@@ -17,6 +17,14 @@ class TestOptions extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.google.protobuf.Timestamp now = 1 [json_name = "now"];</code>
      */
     protected $now = null;
+    /**
+     * Generated from protobuf field <code>bool lenient_scope_search = 2 [json_name = "lenientScopeSearch"];</code>
+     */
+    protected $lenient_scope_search = false;
+    /**
+     * Generated from protobuf field <code>map<string, .google.protobuf.Value> globals = 3 [json_name = "globals"];</code>
+     */
+    private $globals;
 
     /**
      * Constructor.
@@ -25,6 +33,8 @@ class TestOptions extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type \Google\Protobuf\Timestamp $now
+     *     @type bool $lenient_scope_search
+     *     @type array|\Google\Protobuf\Internal\MapField $globals
      * }
      */
     public function __construct($data = NULL) {
@@ -60,6 +70,50 @@ class TestOptions extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Google\Protobuf\Timestamp::class);
         $this->now = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool lenient_scope_search = 2 [json_name = "lenientScopeSearch"];</code>
+     * @return bool
+     */
+    public function getLenientScopeSearch()
+    {
+        return $this->lenient_scope_search;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool lenient_scope_search = 2 [json_name = "lenientScopeSearch"];</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setLenientScopeSearch($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->lenient_scope_search = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .google.protobuf.Value> globals = 3 [json_name = "globals"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getGlobals()
+    {
+        return $this->globals;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .google.protobuf.Value> globals = 3 [json_name = "globals"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setGlobals($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Google\Protobuf\Value::class);
+        $this->globals = $arr;
 
         return $this;
     }
