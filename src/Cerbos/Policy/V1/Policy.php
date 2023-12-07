@@ -14,7 +14,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class Policy extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion", (.buf.validate.field) = {</code>
      */
     protected $api_version = '';
     /**
@@ -64,7 +64,7 @@ class Policy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getApiVersion()
@@ -73,7 +73,7 @@ class Policy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */

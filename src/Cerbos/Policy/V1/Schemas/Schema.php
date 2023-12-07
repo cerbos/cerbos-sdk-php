@@ -14,7 +14,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class Schema extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string ref = 1 [json_name = "ref", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string ref = 1 [json_name = "ref", (.buf.validate.field) = {</code>
      */
     protected $ref = '';
     /**
@@ -38,7 +38,7 @@ class Schema extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string ref = 1 [json_name = "ref", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string ref = 1 [json_name = "ref", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getRef()
@@ -47,7 +47,7 @@ class Schema extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string ref = 1 [json_name = "ref", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string ref = 1 [json_name = "ref", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */

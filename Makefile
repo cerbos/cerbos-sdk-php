@@ -30,8 +30,5 @@ test:
 .PHONY: generate-proto-code
 generate-proto-code:
 	./fetch_protos.sh
-	sed -i.bak 's/syntax = "proto2"/syntax = "proto3"/' ${PROTOS_DIR}/validate/validate.proto
-	sed -i.bak 's/ \[default = true\];/;/' ${PROTOS_DIR}/validate/validate.proto
-	rm ${PROTOS_DIR}/validate/validate.proto.bak
 	rm -rf ${SRC_DIR}/Cerbos ${SRC_DIR}/GPBMetadata
 	buf generate ${PROTOS_DIR}

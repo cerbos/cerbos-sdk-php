@@ -18,15 +18,15 @@ class CheckInput extends \Google\Protobuf\Internal\Message
      */
     protected $request_id = '';
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      */
     protected $resource = null;
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      */
     protected $principal = null;
     /**
-     * Generated from protobuf field <code>repeated string actions = 4 [json_name = "actions", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 4 [json_name = "actions", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      */
     private $actions;
     /**
@@ -75,7 +75,7 @@ class CheckInput extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @return \Cerbos\Engine\V1\Resource|null
      */
     public function getResource()
@@ -94,7 +94,7 @@ class CheckInput extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @param \Cerbos\Engine\V1\Resource $var
      * @return $this
      */
@@ -107,7 +107,7 @@ class CheckInput extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @return \Cerbos\Engine\V1\Principal|null
      */
     public function getPrincipal()
@@ -126,7 +126,7 @@ class CheckInput extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @param \Cerbos\Engine\V1\Principal $var
      * @return $this
      */
@@ -139,7 +139,7 @@ class CheckInput extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string actions = 4 [json_name = "actions", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 4 [json_name = "actions", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getActions()
@@ -148,7 +148,7 @@ class CheckInput extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string actions = 4 [json_name = "actions", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 4 [json_name = "actions", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */

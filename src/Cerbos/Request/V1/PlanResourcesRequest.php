@@ -22,11 +22,11 @@ class PlanResourcesRequest extends \Google\Protobuf\Internal\Message
      */
     protected $action = '';
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      */
     protected $principal = null;
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.PlanResourcesInput.Resource resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.PlanResourcesInput.Resource resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      */
     protected $resource = null;
     /**
@@ -102,7 +102,7 @@ class PlanResourcesRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @return \Cerbos\Engine\V1\Principal|null
      */
     public function getPrincipal()
@@ -121,7 +121,7 @@ class PlanResourcesRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Principal principal = 3 [json_name = "principal", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @param \Cerbos\Engine\V1\Principal $var
      * @return $this
      */
@@ -134,7 +134,7 @@ class PlanResourcesRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.PlanResourcesInput.Resource resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.PlanResourcesInput.Resource resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @return \Cerbos\Engine\V1\PlanResourcesInput\Resource|null
      */
     public function getResource()
@@ -153,7 +153,7 @@ class PlanResourcesRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.PlanResourcesInput.Resource resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.validate.rules) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.PlanResourcesInput.Resource resource = 4 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
      * @param \Cerbos\Engine\V1\PlanResourcesInput\Resource $var
      * @return $this
      */

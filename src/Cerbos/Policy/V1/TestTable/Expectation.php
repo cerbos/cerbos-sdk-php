@@ -14,15 +14,15 @@ use Google\Protobuf\Internal\GPBUtil;
 class Expectation extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.buf.validate.field) = {</code>
      */
     protected $principal = '';
     /**
-     * Generated from protobuf field <code>string resource = 2 [json_name = "resource", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string resource = 2 [json_name = "resource", (.buf.validate.field) = {</code>
      */
     protected $resource = '';
     /**
-     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions", (.buf.validate.field) = {</code>
      */
     private $actions;
     /**
@@ -48,7 +48,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getPrincipal()
@@ -57,7 +57,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */
@@ -70,7 +70,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 2 [json_name = "resource", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string resource = 2 [json_name = "resource", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getResource()
@@ -79,7 +79,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 2 [json_name = "resource", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string resource = 2 [json_name = "resource", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */
@@ -92,7 +92,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions", (.buf.validate.field) = {</code>
      * @return \Google\Protobuf\Internal\MapField
      */
     public function getActions()
@@ -101,7 +101,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions", (.buf.validate.field) = {</code>
      * @param array|\Google\Protobuf\Internal\MapField $var
      * @return $this
      */

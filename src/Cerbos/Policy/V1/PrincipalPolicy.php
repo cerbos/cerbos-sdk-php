@@ -14,11 +14,11 @@ use Google\Protobuf\Internal\GPBUtil;
 class PrincipalPolicy extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.buf.validate.field) = {</code>
      */
     protected $principal = '';
     /**
-     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.buf.validate.field) = {</code>
      */
     protected $version = '';
     /**
@@ -26,7 +26,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
      */
     private $rules;
     /**
-     * Generated from protobuf field <code>string scope = 4 [json_name = "scope", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string scope = 4 [json_name = "scope", (.buf.validate.field) = {</code>
      */
     protected $scope = '';
     /**
@@ -53,7 +53,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getPrincipal()
@@ -62,7 +62,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */
@@ -75,7 +75,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getVersion()
@@ -84,7 +84,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */
@@ -119,7 +119,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string scope = 4 [json_name = "scope", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string scope = 4 [json_name = "scope", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getScope()
@@ -128,7 +128,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string scope = 4 [json_name = "scope", (.validate.rules) = {</code>
+     * Generated from protobuf field <code>string scope = 4 [json_name = "scope", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */

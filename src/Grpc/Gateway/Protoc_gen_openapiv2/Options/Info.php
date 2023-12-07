@@ -24,7 +24,7 @@ use Google\Protobuf\Internal\GPBUtil;
  *      };
  *      license: {
  *        name: "BSD 3-Clause License";
- *        url: "https://github.com/grpc-ecosystem/grpc-gateway/blob/main/LICENSE.txt";
+ *        url: "https://github.com/grpc-ecosystem/grpc-gateway/blob/main/LICENSE";
  *      };
  *    };
  *    ...

@@ -32,6 +32,7 @@ class Details extends \Google\Protobuf\Internal\Message
      *     @type int $result
      *     @type \Cerbos\Policy\V1\TestResults\Failure $failure
      *     @type string $error
+     *     @type \Cerbos\Policy\V1\TestResults\Success $success
      *     @type array<\Cerbos\Engine\V1\Trace>|\Google\Protobuf\Internal\RepeatedField $engine_trace
      * }
      */
@@ -112,6 +113,33 @@ class Details extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->writeOneof(3, $var);
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.TestResults.Success success = 5 [json_name = "success"];</code>
+     * @return \Cerbos\Policy\V1\TestResults\Success|null
+     */
+    public function getSuccess()
+    {
+        return $this->readOneof(5);
+    }
+
+    public function hasSuccess()
+    {
+        return $this->hasOneof(5);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.TestResults.Success success = 5 [json_name = "success"];</code>
+     * @param \Cerbos\Policy\V1\TestResults\Success $var
+     * @return $this
+     */
+    public function setSuccess($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\TestResults\Success::class);
+        $this->writeOneof(5, $var);
 
         return $this;
     }
