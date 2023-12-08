@@ -144,7 +144,7 @@ This library requires the `gRPC` extension to be installed. Follow the [instruct
 
 ### PHP version requirements
 
-The minimum supported version of PHP is `8.1`.
+The minimum supported version of PHP is `8.2`.
 
 ### Simpler `CerbosClientBuilder`
 

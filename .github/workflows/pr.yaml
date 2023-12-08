@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.1', '8.2' ]
+        php-version: [ '8.2', '8.3' ]
         experimental: [ false ]
 
     steps:
@@ -35,13 +35,24 @@ jobs:
         shell: bash
         run: make lint
 
+      - name: Check repo status
+        shell: bash
+        run: |
+          repo_status=$(git status --porcelain)
+          if [[ ! -z "${repo_status}" ]]; then
+            echo "::error::Uncommitted changes detected"
+            echo "${repo_status}"
+            git status -vv
+            exit 1
+          fi
+
   static-analysis:
     name: Run static analysis
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.1', '8.2' ]
+        php-version: [ '8.2', '8.3' ]
         experimental: [ false ]
     steps:
       - name: Checkout repository
@@ -61,6 +72,17 @@ jobs:
         shell: bash
         run: make static-analysis
 
+      - name: Check repo status
+        shell: bash
+        run: |
+          repo_status=$(git status --porcelain)
+          if [[ ! -z "${repo_status}" ]]; then
+            echo "::error::Uncommitted changes detected"
+            echo "${repo_status}"
+            git status -vv
+            exit 1
+          fi
+
   validate-composer:
     name: composer.json validation
     runs-on: ubuntu-latest
@@ -72,6 +94,17 @@ jobs:
         shell: bash
         run: make validate-composer
 
+      - name: Check repo status
+        shell: bash
+        run: |
+          repo_status=$(git status --porcelain)
+          if [[ ! -z "${repo_status}" ]]; then
+            echo "::error::Uncommitted changes detected"
+            echo "${repo_status}"
+            git status -vv
+            exit 1
+          fi
+
   unit-tests:
     name: Run unit tests
     needs: [ "lint" ]
@@ -79,7 +112,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.1', '8.2' ]
+        php-version: [ '8.2', '8.3' ]
         experimental: [ false ]
     steps:
       - name: Checkout repository
@@ -101,3 +134,17 @@ jobs:
       - name: Run unit tests
         shell: bash
         run: make test
+
+      - name: Stop docker-compose
+        run: docker-compose down
+
+      - name: Check repo status
+        shell: bash
+        run: |
+          repo_status=$(git status --porcelain)
+          if [[ ! -z "${repo_status}" ]]; then
+            echo "::error::Uncommitted changes detected"
+            echo "${repo_status}"
+            git status -vv
+            exit 1
+          fi
