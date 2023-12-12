@@ -16,6 +16,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     private string $host = 'localhost:3593';
     private string $playgroundHost = 'demo-pdp.cerbos.cloud';
     private string $playgroundInstanceId = 'XhkOi82fFKk3YW60e2c806Yvm0trKEje'; // See: https://play.cerbos.dev/p/XhkOi82fFKk3YW60e2c806Yvm0trKEje
+    protected array $metadata = ["wibble" => ["wobble"]];
     protected CerbosClient $client;
     protected CerbosClient $playgroundClient;
 
@@ -26,8 +27,13 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        $this->client = CerbosClientBuilder::newInstance($this->host)->withPlaintext(true)->build();
-        $this->playgroundClient = CerbosClientBuilder::newInstance($this->playgroundHost)->withPlayground($this->playgroundInstanceId)->build();
+        $this->client = CerbosClientBuilder::newInstance($this->host)
+            ->withMetadata($this->metadata)
+            ->withPlaintext(true)
+            ->build();
+        $this->playgroundClient = CerbosClientBuilder::newInstance($this->playgroundHost)
+            ->withMetadata($this->metadata)
+            ->withPlayground($this->playgroundInstanceId)
+            ->build();
     }
 }

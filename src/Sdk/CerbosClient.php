@@ -11,32 +11,32 @@ use Cerbos\Sdk\Builder\CheckResourcesRequest;
 use Cerbos\Sdk\Builder\PlanResourcesRequest;
 use Cerbos\Sdk\Response\V1\CheckResourcesResponse\CheckResourcesResponse;
 use Cerbos\Sdk\Response\V1\PlanResourcesResponse\PlanResourcesResponse;
+use Cerbos\Sdk\Utility\Metadata;
 use Cerbos\Svc\V1\CerbosServiceClient;
 use Exception;
 
 class CerbosClient
 {
     private CerbosServiceClient $csc;
-
-    private string $playgroundInstanceId;
-    private string $playgroundInstanceHeader = "playground-instance";
+    private ?array $metadata;
 
     /**
      * @param CerbosServiceClient $csc
-     * @param string $playgroundInstanceId
+     * @param array<string, array> $headers
      */
-    public function __construct(CerbosServiceClient $csc, string $playgroundInstanceId) {
+    public function __construct(CerbosServiceClient $csc, $headers = null) {
         $this->csc = $csc;
-        $this->playgroundInstanceId = $playgroundInstanceId;
+        $this->metadata = $headers;
     }
 
     /**
      * @param CheckResourcesRequest $request
+     * @param array<string, array> $headers
      * @return CheckResourcesResponse
      * @throws Exception
      */
-    public function checkResources(CheckResourcesRequest $request): CheckResourcesResponse {
-        list($checkResourcesResponse, $status) = $this->csc->CheckResources($request->toCheckResourcesRequest(), $this->getMetadata())->wait();
+    public function checkResources(CheckResourcesRequest $request, $headers = null): CheckResourcesResponse {
+        list($checkResourcesResponse, $status) = $this->csc->CheckResources($request->toCheckResourcesRequest(), Metadata::merge($this->metadata, $headers))->wait();
         $this->handleError($status);
 
         return new CheckResourcesResponse($checkResourcesResponse);
@@ -44,23 +44,15 @@ class CerbosClient
 
     /**
      * @param PlanResourcesRequest $request
+     * @param array<string, array> $headers
      * @return PlanResourcesResponse
      * @throws Exception
      */
-    public function planResources(PlanResourcesRequest $request): PlanResourcesResponse {
-        list($planResourcesResponse, $status) = $this->csc->PlanResources($request->toPlanResourcesRequest(), $this->getMetadata())->wait();
+    public function planResources(PlanResourcesRequest $request, $headers = null): PlanResourcesResponse {
+        list($planResourcesResponse, $status) = $this->csc->PlanResources($request->toPlanResourcesRequest(), Metadata::merge($this->metadata, $headers))->wait();
         $this->handleError($status);
 
         return new PlanResourcesResponse($planResourcesResponse);
-    }
-
-    /**
-     * @return array<string, array>
-     */
-    private function getMetadata(): array {
-        return array(
-            $this->playgroundInstanceHeader => [$this->playgroundInstanceId]
-        );
     }
 
     /**

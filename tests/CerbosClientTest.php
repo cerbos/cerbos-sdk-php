@@ -47,7 +47,7 @@ class CerbosClientTest extends TestCase
             );
 
         try {
-            $checkResourcesResult = $this->client->checkResources($request);
+            $checkResourcesResult = $this->client->checkResources($request, $this->metadata);
             $resultEntry = $checkResourcesResult->find("XX125");
         } catch (Exception $e) {
             $this->fail($e->getMessage());
@@ -83,7 +83,7 @@ class CerbosClientTest extends TestCase
             );
 
         try {
-            $checkResourcesResult = $this->client->checkResources($request);
+            $checkResourcesResult = $this->client->checkResources($request, $this->metadata);
             $resultEntry = $checkResourcesResult->find("XX125");
         } catch (Exception $e) {
             $this->fail($e->getMessage());
@@ -137,7 +137,7 @@ class CerbosClientTest extends TestCase
             );
 
         try {
-            $checkResourcesResult = $this->client->checkResources($request);
+            $checkResourcesResult = $this->client->checkResources($request, $this->metadata);
             $resultEntryXX125 = $checkResourcesResult->find("XX125");
             $resultEntryXX225 = $checkResourcesResult->find("XX225");
             $resultEntryXX325 = $checkResourcesResult->find("XX325");
@@ -177,7 +177,7 @@ class CerbosClientTest extends TestCase
             );
 
         try {
-            $checkResourcesResult = $this->client->checkResources($request);
+            $checkResourcesResult = $this->client->checkResources($request, $this->metadata);
             $resultEntry = $checkResourcesResult->find("XX125");
         } catch (Exception $e) {
             $this->fail($e->getMessage());
@@ -208,7 +208,7 @@ class CerbosClientTest extends TestCase
 
 
         try {
-            $planResourcesResult = $this->client->planResources($request);
+            $planResourcesResult = $this->client->planResources($request, $this->metadata);
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
@@ -256,7 +256,7 @@ class CerbosClientTest extends TestCase
             ->withAction("approve");
 
         try {
-            $planResourcesResult = $this->client->planResources($request);
+            $planResourcesResult = $this->client->planResources($request, $this->metadata);
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
@@ -294,7 +294,7 @@ class CerbosClientTest extends TestCase
             );
 
         try {
-            $checkResourcesResult = $this->playgroundClient->checkResources($request);
+            $checkResourcesResult = $this->playgroundClient->checkResources($request, $this->metadata);
             $resultEntry = $checkResourcesResult->find("XX125");
         } catch (Exception $e) {
             $this->fail($e->getMessage());
