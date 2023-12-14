@@ -8,9 +8,12 @@ declare(strict_types=1);
 namespace Cerbos\Sdk\Builder;
 
 use Cerbos\Sdk\CerbosClient;
+use Cerbos\Sdk\Utility\Metadata;
 use Cerbos\Svc\V1\CerbosServiceClient;
 use Exception;
 use Grpc\ChannelCredentials;
+
+const playgroundInstanceHeader = "playground-instance";
 
 class CerbosClientBuilder
 {
@@ -20,6 +23,7 @@ class CerbosClientBuilder
     private ?string $caCertificate;
     private ?string $tlsCertificate;
     private ?string $tlsKey;
+    private ?array $metadata;
 
     /**
      * @param string $hostname
@@ -31,6 +35,7 @@ class CerbosClientBuilder
         $this->caCertificate = null;
         $this->tlsCertificate = null;
         $this->tlsKey = null;
+        $this->metadata = null;
     }
 
     /**
@@ -39,6 +44,15 @@ class CerbosClientBuilder
      */
     public static function newInstance(string $hostname): CerbosClientBuilder {
         return new CerbosClientBuilder($hostname);
+    }
+
+    /**
+     * @param array<string, array> $headers
+     * @return CerbosClientBuilder
+     */
+    public function withMetadata(array $headers): CerbosClientBuilder {
+        $this->metadata = $headers;
+        return $this;
     }
 
     /**
@@ -126,6 +140,16 @@ class CerbosClientBuilder
             ]
         );
 
-        return new CerbosClient($csc, $this->playgroundInstanceId);
+        $combined = $this->metadata;
+        if ($this->playgroundInstanceId != "") {
+            $combined = Metadata::merge(
+                $this->metadata,
+                [
+                    playgroundInstanceHeader => [ $this->playgroundInstanceId ]
+                ]
+            );
+        }
+
+        return new CerbosClient($csc, $combined);
     }
 }
