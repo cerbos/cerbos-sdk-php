@@ -16,27 +16,27 @@ use Google\Protobuf\Internal\GPBUtil;
 class AnyRules extends \Google\Protobuf\Internal\Message
 {
     /**
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * message is generated.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string in = 2 [json_name = "in"];</code>
      */
     private $in;
     /**
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string not_in = 3 [json_name = "notIn"];</code>
      */
@@ -49,23 +49,23 @@ class AnyRules extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $in
-     *          `in` requires the field's `type_url` to be equal to one of the
+     *           `in` requires the field's `type_url` to be equal to one of the
      *          specified values. If it doesn't match any of the specified values, an error
-     *          message is generated.
-     *          ```proto
-     *          message MyAny {
-     *            //  The `value` field must have a `type_url` equal to one of the specified values.
+     *           message is generated.
+     *           ```proto
+     *           message MyAny {
+     *             //  The `value` field must have a `type_url` equal to one of the specified values.
      *             google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $not_in
      *           requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
-     *          ```proto
-     *          message MyAny {
-     *            // The field `value` must not have a `type_url` equal to any of the specified values.
+     *           ```proto
+     *           message MyAny {
+     *             // The field `value` must not have a `type_url` equal to any of the specified values.
      *             google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *          }
-     *          ```
+     *           }
+     *           ```
      * }
      */
     public function __construct($data = NULL) {
@@ -74,15 +74,15 @@ class AnyRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * message is generated.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string in = 2 [json_name = "in"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -93,15 +93,15 @@ class AnyRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * message is generated.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string in = 2 [json_name = "in"];</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
@@ -117,12 +117,12 @@ class AnyRules extends \Google\Protobuf\Internal\Message
 
     /**
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string not_in = 3 [json_name = "notIn"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -134,12 +134,12 @@ class AnyRules extends \Google\Protobuf\Internal\Message
 
     /**
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string not_in = 3 [json_name = "notIn"];</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var

@@ -23,8 +23,8 @@ class Response
         \GPBMetadata\ProtocGenOpenapiv2\Options\Annotations::initOnce();
         $pool->internalAddGeneratedFile(
             '
-’X
-!cerbos/response/v1/response.protocerbos.response.v1cerbos/effect/v1/effect.protocerbos/engine/v1/engine.protocerbos/policy/v1/policy.protocerbos/schema/v1/schema.protogoogle/protobuf/empty.proto.protoc-gen-openapiv2/options/annotations.proto"Ú
+ãZ
+!cerbos/response/v1/response.protocerbos.response.v1cerbos/effect/v1/effect.protocerbos/engine/v1/engine.protocerbos/policy/v1/policy.protocerbos/schema/v1/schema.protogoogle/protobuf/empty.proto.protoc-gen-openapiv2/options/annotations.proto"Õ
 PlanResourcesResponseo
 
 request_id (	BPíAM2#Request ID provided in the request.J&"c2db17b8-4f9f-4fb1-acfd-9162a02be42b"R	requestId2
@@ -33,7 +33,8 @@ request_id (	BPíAM2#Request ID provided in the request.J&"c2db17b8-4f9f-4fb1-
 policy_version (	B#íA 2The policy version.J	"default"RpolicyVersionJ
 filter (2%.cerbos.engine.v1.PlanResourcesFilterBíA2FilterRfilter
 meta (2..cerbos.response.v1.PlanResourcesResponse.MetaB;íA826Optional metadata about the request evaluation processRmetaê
-validation_errors (2!.cerbos.schema.v1.ValidationErrorB@íA=2;List of validation errors (if schema validation is enabled)RvalidationErrorsˇ
+validation_errors (2!.cerbos.schema.v1.ValidationErrorB@íA=2;List of validation errors (if schema validation is enabled)RvalidationErrorsY
+cerbos_call_id (	B3íA02.Audit log call ID associated with this requestRcerbosCallIdˇ
 Meta]
 filter_debug (	B:íA725Filter textual representation for debugging purposes.RfilterDebugm
 matched_scope (	BHíAE21Policy scope that matched to produce this effect.J"acme.corp.base"RmatchedScope:)íA&
@@ -85,11 +86,12 @@ resourceId©
 ActionsEntry
 key (	Rkey.
 value (2.cerbos.effect.v1.EffectRvalue:8:;íA8
-624Policy evaluation response for a batch of resources."„
+624Policy evaluation response for a batch of resources."æ
 CheckResourcesResponseo
 
 request_id (	BPíAM2#Request ID provided in the request.J&"c2db17b8-4f9f-4fb1-acfd-9162a02be42b"R	requestId„
-results (26.cerbos.response.v1.CheckResourcesResponse.ResultEntryBêíAå2Result for each resourceJp[{"resource": {"Id":"XX125", "kind":"album:object"}, "actions":{"view":"EFFECT_ALLOW","comment":"EFFECT_DENY"}}]RresultsΩ
+results (26.cerbos.response.v1.CheckResourcesResponse.ResultEntryBêíAå2Result for each resourceJp[{"resource": {"Id":"XX125", "kind":"album:object"}, "actions":{"view":"EFFECT_ALLOW","comment":"EFFECT_DENY"}}]RresultsY
+cerbos_call_id (	B3íA02.Audit log call ID associated with this requestRcerbosCallIdΩ
 ResultEntry[
 resource (2?.cerbos.response.v1.CheckResourcesResponse.ResultEntry.ResourceRresource°
 actions (2C.cerbos.response.v1.CheckResourcesResponse.ResultEntry.ActionsEntryBBíA?2$Mapping of each action to an effect.J{"view":"EFFECT_ALLOW"}Ractionsê

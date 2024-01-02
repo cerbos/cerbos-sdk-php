@@ -16,62 +16,63 @@ use Google\Protobuf\Internal\GPBUtil;
 class RepeatedRules extends \Google\Protobuf\Internal\Message
 {
     /**
-     *`min_items` requires that this field must contain at least the specified
-     *minimum number of items.
-     *```proto
-     *message MyRepeated {
-     *  // value must contain at least  2 items
-     *  repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
-     *}
-     *```
+     * `min_items` requires that this field must contain at least the specified
+     * minimum number of items.
+     * Note that `min_items = 1` is equivalent to setting a field as `required`.
+     * ```proto
+     * message MyRepeated {
+     *   // value must contain at least  2 items
+     *   repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = {</code>
      */
     protected $min_items = null;
     /**
-     *`max_items` denotes that this field must not exceed a
-     *certain number of items as the upper limit. If the field contains more
-     *items than specified, an error message will be generated, requiring the
-     *field to maintain no more than the specified number of items.
-     *```proto
-     *message MyRepeated {
-     *  // value must contain no more than 3 item(s)
-     *  repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
-     *}
-     *```
+     * `max_items` denotes that this field must not exceed a
+     * certain number of items as the upper limit. If the field contains more
+     * items than specified, an error message will be generated, requiring the
+     * field to maintain no more than the specified number of items.
+     * ```proto
+     * message MyRepeated {
+     *   // value must contain no more than 3 item(s)
+     *   repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = {</code>
      */
     protected $max_items = null;
     /**
-     *`unique` indicates that all elements in this field must
-     *be unique. This constraint is strictly applicable to scalar and enum
-     *types, with message types not being supported.
-     *```proto
-     *message MyRepeated {
-     *  // repeated value must contain unique items
-     *  repeated string value = 1 [(buf.validate.field).repeated.unique = true];
-     *}
-     *```
+     * `unique` indicates that all elements in this field must
+     * be unique. This constraint is strictly applicable to scalar and enum
+     * types, with message types not being supported.
+     * ```proto
+     * message MyRepeated {
+     *   // repeated value must contain unique items
+     *   repeated string value = 1 [(buf.validate.field).repeated.unique = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = {</code>
      */
     protected $unique = null;
     /**
-     *`items` details the constraints to be applied to each item
-     *in the field. Even for repeated message fields, validation is executed
-     *against each item unless skip is explicitly specified.
-     *```proto
-     *message MyRepeated {
-     *  // The items in the field `value` must follow the specified constraints.
-     *  repeated string value = 1 [(buf.validate.field).repeated.items = {
-     *    string: {
-     *      min_len: 3
-     *      max_len: 10
-     *    }
-     *  }];
-     *}
-     *```
+     * `items` details the constraints to be applied to each item
+     * in the field. Even for repeated message fields, validation is executed
+     * against each item unless skip is explicitly specified.
+     * ```proto
+     * message MyRepeated {
+     *   // The items in the field `value` must follow the specified constraints.
+     *   repeated string value = 1 [(buf.validate.field).repeated.items = {
+     *     string: {
+     *       min_len: 3
+     *       max_len: 10
+     *     }
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
      */
@@ -84,50 +85,51 @@ class RepeatedRules extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int|string $min_items
-     *          `min_items` requires that this field must contain at least the specified
-     *          minimum number of items.
-     *          ```proto
-     *          message MyRepeated {
-     *            // value must contain at least  2 items
-     *            repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
-     *          }
-     *          ```
+     *           `min_items` requires that this field must contain at least the specified
+     *           minimum number of items.
+     *           Note that `min_items = 1` is equivalent to setting a field as `required`.
+     *           ```proto
+     *           message MyRepeated {
+     *             // value must contain at least  2 items
+     *             repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
+     *           }
+     *           ```
      *     @type int|string $max_items
-     *          `max_items` denotes that this field must not exceed a
-     *          certain number of items as the upper limit. If the field contains more
-     *          items than specified, an error message will be generated, requiring the
-     *          field to maintain no more than the specified number of items.
-     *          ```proto
-     *          message MyRepeated {
-     *            // value must contain no more than 3 item(s)
-     *            repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
-     *          }
-     *          ```
+     *           `max_items` denotes that this field must not exceed a
+     *           certain number of items as the upper limit. If the field contains more
+     *           items than specified, an error message will be generated, requiring the
+     *           field to maintain no more than the specified number of items.
+     *           ```proto
+     *           message MyRepeated {
+     *             // value must contain no more than 3 item(s)
+     *             repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
+     *           }
+     *           ```
      *     @type bool $unique
-     *          `unique` indicates that all elements in this field must
-     *          be unique. This constraint is strictly applicable to scalar and enum
-     *          types, with message types not being supported.
-     *          ```proto
-     *          message MyRepeated {
-     *            // repeated value must contain unique items
-     *            repeated string value = 1 [(buf.validate.field).repeated.unique = true];
-     *          }
-     *          ```
+     *           `unique` indicates that all elements in this field must
+     *           be unique. This constraint is strictly applicable to scalar and enum
+     *           types, with message types not being supported.
+     *           ```proto
+     *           message MyRepeated {
+     *             // repeated value must contain unique items
+     *             repeated string value = 1 [(buf.validate.field).repeated.unique = true];
+     *           }
+     *           ```
      *     @type \Buf\Validate\FieldConstraints $items
-     *          `items` details the constraints to be applied to each item
-     *          in the field. Even for repeated message fields, validation is executed
-     *          against each item unless skip is explicitly specified.
-     *          ```proto
-     *          message MyRepeated {
-     *            // The items in the field `value` must follow the specified constraints.
-     *            repeated string value = 1 [(buf.validate.field).repeated.items = {
-     *              string: {
-     *                min_len: 3
-     *                max_len: 10
-     *              }
-     *            }];
-     *          }
-     *          ```
+     *           `items` details the constraints to be applied to each item
+     *           in the field. Even for repeated message fields, validation is executed
+     *           against each item unless skip is explicitly specified.
+     *           ```proto
+     *           message MyRepeated {
+     *             // The items in the field `value` must follow the specified constraints.
+     *             repeated string value = 1 [(buf.validate.field).repeated.items = {
+     *               string: {
+     *                 min_len: 3
+     *                 max_len: 10
+     *               }
+     *             }];
+     *           }
+     *           ```
      * }
      */
     public function __construct($data = NULL) {
@@ -136,14 +138,15 @@ class RepeatedRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`min_items` requires that this field must contain at least the specified
-     *minimum number of items.
-     *```proto
-     *message MyRepeated {
-     *  // value must contain at least  2 items
-     *  repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
-     *}
-     *```
+     * `min_items` requires that this field must contain at least the specified
+     * minimum number of items.
+     * Note that `min_items = 1` is equivalent to setting a field as `required`.
+     * ```proto
+     * message MyRepeated {
+     *   // value must contain at least  2 items
+     *   repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -164,14 +167,15 @@ class RepeatedRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`min_items` requires that this field must contain at least the specified
-     *minimum number of items.
-     *```proto
-     *message MyRepeated {
-     *  // value must contain at least  2 items
-     *  repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
-     *}
-     *```
+     * `min_items` requires that this field must contain at least the specified
+     * minimum number of items.
+     * Note that `min_items = 1` is equivalent to setting a field as `required`.
+     * ```proto
+     * message MyRepeated {
+     *   // value must contain at least  2 items
+     *   repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -186,16 +190,16 @@ class RepeatedRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`max_items` denotes that this field must not exceed a
-     *certain number of items as the upper limit. If the field contains more
-     *items than specified, an error message will be generated, requiring the
-     *field to maintain no more than the specified number of items.
-     *```proto
-     *message MyRepeated {
-     *  // value must contain no more than 3 item(s)
-     *  repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
-     *}
-     *```
+     * `max_items` denotes that this field must not exceed a
+     * certain number of items as the upper limit. If the field contains more
+     * items than specified, an error message will be generated, requiring the
+     * field to maintain no more than the specified number of items.
+     * ```proto
+     * message MyRepeated {
+     *   // value must contain no more than 3 item(s)
+     *   repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -216,16 +220,16 @@ class RepeatedRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`max_items` denotes that this field must not exceed a
-     *certain number of items as the upper limit. If the field contains more
-     *items than specified, an error message will be generated, requiring the
-     *field to maintain no more than the specified number of items.
-     *```proto
-     *message MyRepeated {
-     *  // value must contain no more than 3 item(s)
-     *  repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
-     *}
-     *```
+     * `max_items` denotes that this field must not exceed a
+     * certain number of items as the upper limit. If the field contains more
+     * items than specified, an error message will be generated, requiring the
+     * field to maintain no more than the specified number of items.
+     * ```proto
+     * message MyRepeated {
+     *   // value must contain no more than 3 item(s)
+     *   repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -240,15 +244,15 @@ class RepeatedRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`unique` indicates that all elements in this field must
-     *be unique. This constraint is strictly applicable to scalar and enum
-     *types, with message types not being supported.
-     *```proto
-     *message MyRepeated {
-     *  // repeated value must contain unique items
-     *  repeated string value = 1 [(buf.validate.field).repeated.unique = true];
-     *}
-     *```
+     * `unique` indicates that all elements in this field must
+     * be unique. This constraint is strictly applicable to scalar and enum
+     * types, with message types not being supported.
+     * ```proto
+     * message MyRepeated {
+     *   // repeated value must contain unique items
+     *   repeated string value = 1 [(buf.validate.field).repeated.unique = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -269,15 +273,15 @@ class RepeatedRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`unique` indicates that all elements in this field must
-     *be unique. This constraint is strictly applicable to scalar and enum
-     *types, with message types not being supported.
-     *```proto
-     *message MyRepeated {
-     *  // repeated value must contain unique items
-     *  repeated string value = 1 [(buf.validate.field).repeated.unique = true];
-     *}
-     *```
+     * `unique` indicates that all elements in this field must
+     * be unique. This constraint is strictly applicable to scalar and enum
+     * types, with message types not being supported.
+     * ```proto
+     * message MyRepeated {
+     *   // repeated value must contain unique items
+     *   repeated string value = 1 [(buf.validate.field).repeated.unique = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -292,20 +296,20 @@ class RepeatedRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`items` details the constraints to be applied to each item
-     *in the field. Even for repeated message fields, validation is executed
-     *against each item unless skip is explicitly specified.
-     *```proto
-     *message MyRepeated {
-     *  // The items in the field `value` must follow the specified constraints.
-     *  repeated string value = 1 [(buf.validate.field).repeated.items = {
-     *    string: {
-     *      min_len: 3
-     *      max_len: 10
-     *    }
-     *  }];
-     *}
-     *```
+     * `items` details the constraints to be applied to each item
+     * in the field. Even for repeated message fields, validation is executed
+     * against each item unless skip is explicitly specified.
+     * ```proto
+     * message MyRepeated {
+     *   // The items in the field `value` must follow the specified constraints.
+     *   repeated string value = 1 [(buf.validate.field).repeated.items = {
+     *     string: {
+     *       min_len: 3
+     *       max_len: 10
+     *     }
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
      * @return \Buf\Validate\FieldConstraints|null
@@ -326,20 +330,20 @@ class RepeatedRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`items` details the constraints to be applied to each item
-     *in the field. Even for repeated message fields, validation is executed
-     *against each item unless skip is explicitly specified.
-     *```proto
-     *message MyRepeated {
-     *  // The items in the field `value` must follow the specified constraints.
-     *  repeated string value = 1 [(buf.validate.field).repeated.items = {
-     *    string: {
-     *      min_len: 3
-     *      max_len: 10
-     *    }
-     *  }];
-     *}
-     *```
+     * `items` details the constraints to be applied to each item
+     * in the field. Even for repeated message fields, validation is executed
+     * against each item unless skip is explicitly specified.
+     * ```proto
+     * message MyRepeated {
+     *   // The items in the field `value` must follow the specified constraints.
+     *   repeated string value = 1 [(buf.validate.field).repeated.items = {
+     *     string: {
+     *       min_len: 3
+     *       max_len: 10
+     *     }
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
      * @param \Buf\Validate\FieldConstraints $var

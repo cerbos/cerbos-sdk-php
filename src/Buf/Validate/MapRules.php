@@ -17,62 +17,62 @@ class MapRules extends \Google\Protobuf\Internal\Message
 {
     /**
      *Specifies the minimum number of key-value pairs allowed. If the field has
-     *fewer key-value pairs than specified, an error message is generated.
-     *```proto
-     *message MyMap {
-     *  // The field `value` must have at least 2 key-value pairs.
-     *  map<string, string> value = 1 [(buf.validate.field).map.min_pairs = 2];
-     *}
-     *```
+     * fewer key-value pairs than specified, an error message is generated.
+     * ```proto
+     * message MyMap {
+     *   // The field `value` must have at least 2 key-value pairs.
+     *   map<string, string> value = 1 [(buf.validate.field).map.min_pairs = 2];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = {</code>
      */
     protected $min_pairs = null;
     /**
      *Specifies the maximum number of key-value pairs allowed. If the field has
-     *more key-value pairs than specified, an error message is generated.
-     *```proto
-     *message MyMap {
-     *  // The field `value` must have at most 3 key-value pairs.
-     *  map<string, string> value = 1 [(buf.validate.field).map.max_pairs = 3];
-     *}
-     *```
+     * more key-value pairs than specified, an error message is generated.
+     * ```proto
+     * message MyMap {
+     *   // The field `value` must have at most 3 key-value pairs.
+     *   map<string, string> value = 1 [(buf.validate.field).map.max_pairs = 3];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = {</code>
      */
     protected $max_pairs = null;
     /**
      *Specifies the constraints to be applied to each key in the field.
-     *```proto
-     *message MyMap {
-     *  // The keys in the field `value` must follow the specified constraints.
-     *  map<string, string> value = 1 [(buf.validate.field).map.keys = {
-     *    string: {
-     *      min_len: 3
-     *      max_len: 10
-     *    }
-     *  }];
-     *}
-     *```
+     * ```proto
+     * message MyMap {
+     *   // The keys in the field `value` must follow the specified constraints.
+     *   map<string, string> value = 1 [(buf.validate.field).map.keys = {
+     *     string: {
+     *       min_len: 3
+     *       max_len: 10
+     *     }
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
      */
     protected $keys = null;
     /**
      *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
+     * field. Message values will still have their validations evaluated unless
      *skip is specified here.
-     *```proto
-     *message MyMap {
-     *  // The values in the field `value` must follow the specified constraints.
-     *  map<string, string> value = 1 [(buf.validate.field).map.values = {
-     *    string: {
-     *      min_len: 5
-     *      max_len: 20
-     *    }
-     *  }];
-     *}
-     *```
+     * ```proto
+     * message MyMap {
+     *   // The values in the field `value` must follow the specified constraints.
+     *   map<string, string> value = 1 [(buf.validate.field).map.values = {
+     *     string: {
+     *       min_len: 5
+     *       max_len: 20
+     *     }
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
      */
@@ -86,50 +86,50 @@ class MapRules extends \Google\Protobuf\Internal\Message
      *
      *     @type int|string $min_pairs
      *          Specifies the minimum number of key-value pairs allowed. If the field has
-     *          fewer key-value pairs than specified, an error message is generated.
-     *          ```proto
-     *          message MyMap {
-     *            // The field `value` must have at least 2 key-value pairs.
-     *            map<string, string> value = 1 [(buf.validate.field).map.min_pairs = 2];
-     *          }
-     *          ```
+     *           fewer key-value pairs than specified, an error message is generated.
+     *           ```proto
+     *           message MyMap {
+     *             // The field `value` must have at least 2 key-value pairs.
+     *             map<string, string> value = 1 [(buf.validate.field).map.min_pairs = 2];
+     *           }
+     *           ```
      *     @type int|string $max_pairs
      *          Specifies the maximum number of key-value pairs allowed. If the field has
-     *          more key-value pairs than specified, an error message is generated.
-     *          ```proto
-     *          message MyMap {
-     *            // The field `value` must have at most 3 key-value pairs.
-     *            map<string, string> value = 1 [(buf.validate.field).map.max_pairs = 3];
-     *          }
-     *          ```
+     *           more key-value pairs than specified, an error message is generated.
+     *           ```proto
+     *           message MyMap {
+     *             // The field `value` must have at most 3 key-value pairs.
+     *             map<string, string> value = 1 [(buf.validate.field).map.max_pairs = 3];
+     *           }
+     *           ```
      *     @type \Buf\Validate\FieldConstraints $keys
      *          Specifies the constraints to be applied to each key in the field.
-     *          ```proto
-     *          message MyMap {
-     *            // The keys in the field `value` must follow the specified constraints.
-     *            map<string, string> value = 1 [(buf.validate.field).map.keys = {
-     *              string: {
-     *                min_len: 3
-     *                max_len: 10
-     *              }
-     *            }];
-     *          }
-     *          ```
+     *           ```proto
+     *           message MyMap {
+     *             // The keys in the field `value` must follow the specified constraints.
+     *             map<string, string> value = 1 [(buf.validate.field).map.keys = {
+     *               string: {
+     *                 min_len: 3
+     *                 max_len: 10
+     *               }
+     *             }];
+     *           }
+     *           ```
      *     @type \Buf\Validate\FieldConstraints $values
      *          Specifies the constraints to be applied to the value of each key in the
-     *          field. Message values will still have their validations evaluated unless
+     *           field. Message values will still have their validations evaluated unless
      *          skip is specified here.
-     *          ```proto
-     *          message MyMap {
-     *            // The values in the field `value` must follow the specified constraints.
-     *            map<string, string> value = 1 [(buf.validate.field).map.values = {
-     *              string: {
-     *                min_len: 5
-     *                max_len: 20
-     *              }
-     *            }];
-     *          }
-     *          ```
+     *           ```proto
+     *           message MyMap {
+     *             // The values in the field `value` must follow the specified constraints.
+     *             map<string, string> value = 1 [(buf.validate.field).map.values = {
+     *               string: {
+     *                 min_len: 5
+     *                 max_len: 20
+     *               }
+     *             }];
+     *           }
+     *           ```
      * }
      */
     public function __construct($data = NULL) {
@@ -139,13 +139,13 @@ class MapRules extends \Google\Protobuf\Internal\Message
 
     /**
      *Specifies the minimum number of key-value pairs allowed. If the field has
-     *fewer key-value pairs than specified, an error message is generated.
-     *```proto
-     *message MyMap {
-     *  // The field `value` must have at least 2 key-value pairs.
-     *  map<string, string> value = 1 [(buf.validate.field).map.min_pairs = 2];
-     *}
-     *```
+     * fewer key-value pairs than specified, an error message is generated.
+     * ```proto
+     * message MyMap {
+     *   // The field `value` must have at least 2 key-value pairs.
+     *   map<string, string> value = 1 [(buf.validate.field).map.min_pairs = 2];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -167,13 +167,13 @@ class MapRules extends \Google\Protobuf\Internal\Message
 
     /**
      *Specifies the minimum number of key-value pairs allowed. If the field has
-     *fewer key-value pairs than specified, an error message is generated.
-     *```proto
-     *message MyMap {
-     *  // The field `value` must have at least 2 key-value pairs.
-     *  map<string, string> value = 1 [(buf.validate.field).map.min_pairs = 2];
-     *}
-     *```
+     * fewer key-value pairs than specified, an error message is generated.
+     * ```proto
+     * message MyMap {
+     *   // The field `value` must have at least 2 key-value pairs.
+     *   map<string, string> value = 1 [(buf.validate.field).map.min_pairs = 2];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -189,13 +189,13 @@ class MapRules extends \Google\Protobuf\Internal\Message
 
     /**
      *Specifies the maximum number of key-value pairs allowed. If the field has
-     *more key-value pairs than specified, an error message is generated.
-     *```proto
-     *message MyMap {
-     *  // The field `value` must have at most 3 key-value pairs.
-     *  map<string, string> value = 1 [(buf.validate.field).map.max_pairs = 3];
-     *}
-     *```
+     * more key-value pairs than specified, an error message is generated.
+     * ```proto
+     * message MyMap {
+     *   // The field `value` must have at most 3 key-value pairs.
+     *   map<string, string> value = 1 [(buf.validate.field).map.max_pairs = 3];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -217,13 +217,13 @@ class MapRules extends \Google\Protobuf\Internal\Message
 
     /**
      *Specifies the maximum number of key-value pairs allowed. If the field has
-     *more key-value pairs than specified, an error message is generated.
-     *```proto
-     *message MyMap {
-     *  // The field `value` must have at most 3 key-value pairs.
-     *  map<string, string> value = 1 [(buf.validate.field).map.max_pairs = 3];
-     *}
-     *```
+     * more key-value pairs than specified, an error message is generated.
+     * ```proto
+     * message MyMap {
+     *   // The field `value` must have at most 3 key-value pairs.
+     *   map<string, string> value = 1 [(buf.validate.field).map.max_pairs = 3];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -239,17 +239,17 @@ class MapRules extends \Google\Protobuf\Internal\Message
 
     /**
      *Specifies the constraints to be applied to each key in the field.
-     *```proto
-     *message MyMap {
-     *  // The keys in the field `value` must follow the specified constraints.
-     *  map<string, string> value = 1 [(buf.validate.field).map.keys = {
-     *    string: {
-     *      min_len: 3
-     *      max_len: 10
-     *    }
-     *  }];
-     *}
-     *```
+     * ```proto
+     * message MyMap {
+     *   // The keys in the field `value` must follow the specified constraints.
+     *   map<string, string> value = 1 [(buf.validate.field).map.keys = {
+     *     string: {
+     *       min_len: 3
+     *       max_len: 10
+     *     }
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
      * @return \Buf\Validate\FieldConstraints|null
@@ -271,17 +271,17 @@ class MapRules extends \Google\Protobuf\Internal\Message
 
     /**
      *Specifies the constraints to be applied to each key in the field.
-     *```proto
-     *message MyMap {
-     *  // The keys in the field `value` must follow the specified constraints.
-     *  map<string, string> value = 1 [(buf.validate.field).map.keys = {
-     *    string: {
-     *      min_len: 3
-     *      max_len: 10
-     *    }
-     *  }];
-     *}
-     *```
+     * ```proto
+     * message MyMap {
+     *   // The keys in the field `value` must follow the specified constraints.
+     *   map<string, string> value = 1 [(buf.validate.field).map.keys = {
+     *     string: {
+     *       min_len: 3
+     *       max_len: 10
+     *     }
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
      * @param \Buf\Validate\FieldConstraints $var
@@ -297,19 +297,19 @@ class MapRules extends \Google\Protobuf\Internal\Message
 
     /**
      *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
+     * field. Message values will still have their validations evaluated unless
      *skip is specified here.
-     *```proto
-     *message MyMap {
-     *  // The values in the field `value` must follow the specified constraints.
-     *  map<string, string> value = 1 [(buf.validate.field).map.values = {
-     *    string: {
-     *      min_len: 5
-     *      max_len: 20
-     *    }
-     *  }];
-     *}
-     *```
+     * ```proto
+     * message MyMap {
+     *   // The values in the field `value` must follow the specified constraints.
+     *   map<string, string> value = 1 [(buf.validate.field).map.values = {
+     *     string: {
+     *       min_len: 5
+     *       max_len: 20
+     *     }
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
      * @return \Buf\Validate\FieldConstraints|null
@@ -331,19 +331,19 @@ class MapRules extends \Google\Protobuf\Internal\Message
 
     /**
      *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
+     * field. Message values will still have their validations evaluated unless
      *skip is specified here.
-     *```proto
-     *message MyMap {
-     *  // The values in the field `value` must follow the specified constraints.
-     *  map<string, string> value = 1 [(buf.validate.field).map.values = {
-     *    string: {
-     *      min_len: 5
-     *      max_len: 20
-     *    }
-     *  }];
-     *}
-     *```
+     * ```proto
+     * message MyMap {
+     *   // The values in the field `value` must follow the specified constraints.
+     *   map<string, string> value = 1 [(buf.validate.field).map.values = {
+     *     string: {
+     *       min_len: 5
+     *       max_len: 20
+     *     }
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
      * @param \Buf\Validate\FieldConstraints $var

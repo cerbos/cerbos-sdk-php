@@ -17,142 +17,142 @@ use Google\Protobuf\Internal\GPBUtil;
 class BytesRules extends \Google\Protobuf\Internal\Message
 {
     /**
-     *`const` requires the field value to exactly match the specified bytes
-     *value. If the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyBytes {
-     *  // value must be "\x01\x02\x03\x04"
+     * `const` requires the field value to exactly match the specified bytes
+     * value. If the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be "\x01\x02\x03\x04"
      *   bytes value = 1 [(buf.validate.field).bytes.const = "\x01\x02\x03\x04"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      */
     protected $const = null;
     /**
-     *`len` requires the field value to have the specified length in bytes.
-     *If the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyBytes {
-     *      // value length must be 4 bytes.
-     *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-     *}
-     *```
+     * `len` requires the field value to have the specified length in bytes.
+     * If the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value length must be 4 bytes.
+     *   optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = {</code>
      */
     protected $len = null;
     /**
-     *`min_len` requires the field value to have at least the specified minimum
-     *length in bytes.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value length must be at least 2 bytes.
-     * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-     *}
-     *```
+     * `min_len` requires the field value to have at least the specified minimum
+     * length in bytes.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value length must be at least 2 bytes.
+     *   optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = {</code>
      */
     protected $min_len = null;
     /**
-     *`max_len` requires the field value to have at most the specified maximum
-     *length in bytes.
-     *If the field value exceeds the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must be at most 6 bytes.
-     * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-     *}
-     *```
+     * `max_len` requires the field value to have at most the specified maximum
+     * length in bytes.
+     * If the field value exceeds the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be at most 6 bytes.
+     *   optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = {</code>
      */
     protected $max_len = null;
     /**
-     *`pattern` requires the field value to match the specified regular
-     *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-     *The value of the field must be valid UTF-8 or validation will fail with a
-     *runtime error.
-     *If the field value doesn't match the pattern, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must match regex pattern "^[a-zA-Z0-9]+$".
-     * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-     *}
-     *```
+     * `pattern` requires the field value to match the specified regular
+     * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+     * The value of the field must be valid UTF-8 or validation will fail with a
+     * runtime error.
+     * If the field value doesn't match the pattern, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must match regex pattern "^[a-zA-Z0-9]+$".
+     *   optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = {</code>
      */
     protected $pattern = null;
     /**
-     *`prefix` requires the field value to have the specified bytes at the
-     *beginning of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value does not have prefix \x01\x02
-     *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "\x01\x02"];
-     *}
-     *```
+     * `prefix` requires the field value to have the specified bytes at the
+     * beginning of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value does not have prefix \x01\x02
+     *   optional bytes value = 1 [(buf.validate.field).bytes.prefix = "\x01\x02"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = {</code>
      */
     protected $prefix = null;
     /**
-     *`suffix` requires the field value to have the specified bytes at the end
-     *of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value does not have suffix \x03\x04
-     * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "\x03\x04"];
-     *}
-     *```
+     * `suffix` requires the field value to have the specified bytes at the end
+     * of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value does not have suffix \x03\x04
+     *   optional bytes value = 1 [(buf.validate.field).bytes.suffix = "\x03\x04"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = {</code>
      */
     protected $suffix = null;
     /**
-     *`contains` requires the field value to have the specified bytes anywhere in
-     *the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```protobuf
-     *message MyBytes {
-     * // value does not contain \x02\x03
-     * optional bytes value = 1 [(buf.validate.field).bytes.contains = "\x02\x03"];
-     *}
-     *```
+     * `contains` requires the field value to have the specified bytes anywhere in
+     * the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```protobuf
+     * message MyBytes {
+     *   // value does not contain \x02\x03
+     *   optional bytes value = 1 [(buf.validate.field).bytes.contains = "\x02\x03"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = {</code>
      */
     protected $contains = null;
     /**
-     *`in` requires the field value to be equal to one of the specified
-     *values. If the field value doesn't match any of the specified values, an
-     *error message is generated.
-     *```protobuf
-     *message MyBytes {
-     * // value must in ["\x01\x02", "\x02\x03", "\x03\x04"]
-     * optional bytes value = 1 [(buf.validate.field).bytes.in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
-     *}
-     *```
+     * `in` requires the field value to be equal to one of the specified
+     * values. If the field value doesn't match any of the specified values, an
+     * error message is generated.
+     * ```protobuf
+     * message MyBytes {
+     *   // value must in ["\x01\x02", "\x02\x03", "\x03\x04"]
+     *   optional bytes value = 1 [(buf.validate.field).bytes.in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = {</code>
      */
     private $in;
     /**
-     *`not_in` requires the field value to be not equal to any of the specified
-     *values.
-     *If the field value matches any of the specified values, an error message is
-     *generated.
-     *```proto
-     *message MyBytes {
-     * // value must not in ["\x01\x02", "\x02\x03", "\x03\x04"]
-     * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
-     *}
-     *```
+     * `not_in` requires the field value to be not equal to any of the specified
+     * values.
+     * If the field value matches any of the specified values, an error message is
+     * generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must not in ["\x01\x02", "\x02\x03", "\x03\x04"]
+     *   optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      */
@@ -166,133 +166,133 @@ class BytesRules extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $const
-     *          `const` requires the field value to exactly match the specified bytes
-     *          value. If the field value doesn't match, an error message is generated.
-     *          ```proto
-     *          message MyBytes {
-     *            // value must be "\x01\x02\x03\x04"
+     *           `const` requires the field value to exactly match the specified bytes
+     *           value. If the field value doesn't match, an error message is generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value must be "\x01\x02\x03\x04"
      *             bytes value = 1 [(buf.validate.field).bytes.const = "\x01\x02\x03\x04"];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type int|string $len
-     *          `len` requires the field value to have the specified length in bytes.
-     *          If the field value doesn't match, an error message is generated.
-     *          ```proto
-     *          message MyBytes {
-     *                // value length must be 4 bytes.
-     *                optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-     *          }
-     *          ```
+     *           `len` requires the field value to have the specified length in bytes.
+     *           If the field value doesn't match, an error message is generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value length must be 4 bytes.
+     *             optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
+     *           }
+     *           ```
      *     @type int|string $min_len
-     *          `min_len` requires the field value to have at least the specified minimum
-     *          length in bytes.
-     *          If the field value doesn't meet the requirement, an error message is generated.
-     *          ```proto
-     *          message MyBytes {
-     *           // value length must be at least 2 bytes.
-     *           optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-     *          }
-     *          ```
+     *           `min_len` requires the field value to have at least the specified minimum
+     *           length in bytes.
+     *           If the field value doesn't meet the requirement, an error message is generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value length must be at least 2 bytes.
+     *             optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
+     *           }
+     *           ```
      *     @type int|string $max_len
-     *          `max_len` requires the field value to have at most the specified maximum
-     *          length in bytes.
-     *          If the field value exceeds the requirement, an error message is generated.
-     *          ```proto
-     *          message MyBytes {
-     *           // value must be at most 6 bytes.
-     *           optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-     *          }
-     *          ```
+     *           `max_len` requires the field value to have at most the specified maximum
+     *           length in bytes.
+     *           If the field value exceeds the requirement, an error message is generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value must be at most 6 bytes.
+     *             optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
+     *           }
+     *           ```
      *     @type string $pattern
-     *          `pattern` requires the field value to match the specified regular
-     *          expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-     *          The value of the field must be valid UTF-8 or validation will fail with a
-     *          runtime error.
-     *          If the field value doesn't match the pattern, an error message is generated.
-     *          ```proto
-     *          message MyBytes {
-     *           // value must match regex pattern "^[a-zA-Z0-9]+$".
-     *           optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-     *          }
-     *          ```
+     *           `pattern` requires the field value to match the specified regular
+     *           expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+     *           The value of the field must be valid UTF-8 or validation will fail with a
+     *           runtime error.
+     *           If the field value doesn't match the pattern, an error message is generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value must match regex pattern "^[a-zA-Z0-9]+$".
+     *             optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
+     *           }
+     *           ```
      *     @type string $prefix
-     *          `prefix` requires the field value to have the specified bytes at the
-     *          beginning of the string.
-     *          If the field value doesn't meet the requirement, an error message is generated.
-     *          ```proto
-     *          message MyBytes {
-     *          // value does not have prefix \x01\x02
-     *          optional bytes value = 1 [(buf.validate.field).bytes.prefix = "\x01\x02"];
-     *          }
-     *          ```
+     *           `prefix` requires the field value to have the specified bytes at the
+     *           beginning of the string.
+     *           If the field value doesn't meet the requirement, an error message is generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value does not have prefix \x01\x02
+     *             optional bytes value = 1 [(buf.validate.field).bytes.prefix = "\x01\x02"];
+     *           }
+     *           ```
      *     @type string $suffix
-     *          `suffix` requires the field value to have the specified bytes at the end
-     *          of the string.
-     *          If the field value doesn't meet the requirement, an error message is generated.
-     *          ```proto
-     *          message MyBytes {
-     *           // value does not have suffix \x03\x04
-     *           optional bytes value = 1 [(buf.validate.field).bytes.suffix = "\x03\x04"];
-     *          }
-     *          ```
+     *           `suffix` requires the field value to have the specified bytes at the end
+     *           of the string.
+     *           If the field value doesn't meet the requirement, an error message is generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value does not have suffix \x03\x04
+     *             optional bytes value = 1 [(buf.validate.field).bytes.suffix = "\x03\x04"];
+     *           }
+     *           ```
      *     @type string $contains
-     *          `contains` requires the field value to have the specified bytes anywhere in
-     *          the string.
-     *          If the field value doesn't meet the requirement, an error message is generated.
-     *          ```protobuf
-     *          message MyBytes {
-     *           // value does not contain \x02\x03
-     *           optional bytes value = 1 [(buf.validate.field).bytes.contains = "\x02\x03"];
-     *          }
-     *          ```
+     *           `contains` requires the field value to have the specified bytes anywhere in
+     *           the string.
+     *           If the field value doesn't meet the requirement, an error message is generated.
+     *           ```protobuf
+     *           message MyBytes {
+     *             // value does not contain \x02\x03
+     *             optional bytes value = 1 [(buf.validate.field).bytes.contains = "\x02\x03"];
+     *           }
+     *           ```
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $in
-     *          `in` requires the field value to be equal to one of the specified
-     *          values. If the field value doesn't match any of the specified values, an
-     *          error message is generated.
-     *          ```protobuf
-     *          message MyBytes {
-     *           // value must in ["\x01\x02", "\x02\x03", "\x03\x04"]
-     *           optional bytes value = 1 [(buf.validate.field).bytes.in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
-     *          }
-     *          ```
+     *           `in` requires the field value to be equal to one of the specified
+     *           values. If the field value doesn't match any of the specified values, an
+     *           error message is generated.
+     *           ```protobuf
+     *           message MyBytes {
+     *             // value must in ["\x01\x02", "\x02\x03", "\x03\x04"]
+     *             optional bytes value = 1 [(buf.validate.field).bytes.in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
+     *           }
+     *           ```
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $not_in
-     *          `not_in` requires the field value to be not equal to any of the specified
-     *          values.
-     *          If the field value matches any of the specified values, an error message is
-     *          generated.
-     *          ```proto
-     *          message MyBytes {
-     *           // value must not in ["\x01\x02", "\x02\x03", "\x03\x04"]
-     *           optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
-     *          }
-     *          ```
+     *           `not_in` requires the field value to be not equal to any of the specified
+     *           values.
+     *           If the field value matches any of the specified values, an error message is
+     *           generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value must not in ["\x01\x02", "\x02\x03", "\x03\x04"]
+     *             optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
+     *           }
+     *           ```
      *     @type bool $ip
-     *          `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-     *          If the field value doesn't meet this constraint, an error message is generated.
-     *          ```proto
-     *          message MyBytes {
-     *           // value must be a valid IP address
-     *           optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-     *          }
-     *          ```
+     *           `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+     *           If the field value doesn't meet this constraint, an error message is generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value must be a valid IP address
+     *             optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
+     *           }
+     *           ```
      *     @type bool $ipv4
-     *          `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-     *          If the field value doesn't meet this constraint, an error message is generated.
-     *          ```proto
-     *          message MyBytes {
-     *           // value must be a valid IPv4 address
-     *           optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-     *          }
-     *          ```
+     *           `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+     *           If the field value doesn't meet this constraint, an error message is generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value must be a valid IPv4 address
+     *             optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
+     *           }
+     *           ```
      *     @type bool $ipv6
-     *          `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-     *          If the field value doesn't meet this constraint, an error message is generated.
-     *          ```proto
-     *          message MyBytes {
-     *           // value must be a valid IPv6 address
-     *           optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-     *          }
-     *          ```
+     *           `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+     *           If the field value doesn't meet this constraint, an error message is generated.
+     *           ```proto
+     *           message MyBytes {
+     *             // value must be a valid IPv6 address
+     *             optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
+     *           }
+     *           ```
      * }
      */
     public function __construct($data = NULL) {
@@ -301,14 +301,14 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`const` requires the field value to exactly match the specified bytes
-     *value. If the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyBytes {
-     *  // value must be "\x01\x02\x03\x04"
+     * `const` requires the field value to exactly match the specified bytes
+     * value. If the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be "\x01\x02\x03\x04"
      *   bytes value = 1 [(buf.validate.field).bytes.const = "\x01\x02\x03\x04"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -329,14 +329,14 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`const` requires the field value to exactly match the specified bytes
-     *value. If the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyBytes {
-     *  // value must be "\x01\x02\x03\x04"
+     * `const` requires the field value to exactly match the specified bytes
+     * value. If the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be "\x01\x02\x03\x04"
      *   bytes value = 1 [(buf.validate.field).bytes.const = "\x01\x02\x03\x04"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -351,14 +351,14 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`len` requires the field value to have the specified length in bytes.
-     *If the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyBytes {
-     *      // value length must be 4 bytes.
-     *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-     *}
-     *```
+     * `len` requires the field value to have the specified length in bytes.
+     * If the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value length must be 4 bytes.
+     *   optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -379,14 +379,14 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`len` requires the field value to have the specified length in bytes.
-     *If the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyBytes {
-     *      // value length must be 4 bytes.
-     *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-     *}
-     *```
+     * `len` requires the field value to have the specified length in bytes.
+     * If the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value length must be 4 bytes.
+     *   optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -401,15 +401,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`min_len` requires the field value to have at least the specified minimum
-     *length in bytes.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value length must be at least 2 bytes.
-     * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-     *}
-     *```
+     * `min_len` requires the field value to have at least the specified minimum
+     * length in bytes.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value length must be at least 2 bytes.
+     *   optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -430,15 +430,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`min_len` requires the field value to have at least the specified minimum
-     *length in bytes.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value length must be at least 2 bytes.
-     * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-     *}
-     *```
+     * `min_len` requires the field value to have at least the specified minimum
+     * length in bytes.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value length must be at least 2 bytes.
+     *   optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -453,15 +453,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`max_len` requires the field value to have at most the specified maximum
-     *length in bytes.
-     *If the field value exceeds the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must be at most 6 bytes.
-     * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-     *}
-     *```
+     * `max_len` requires the field value to have at most the specified maximum
+     * length in bytes.
+     * If the field value exceeds the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be at most 6 bytes.
+     *   optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -482,15 +482,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`max_len` requires the field value to have at most the specified maximum
-     *length in bytes.
-     *If the field value exceeds the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must be at most 6 bytes.
-     * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-     *}
-     *```
+     * `max_len` requires the field value to have at most the specified maximum
+     * length in bytes.
+     * If the field value exceeds the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be at most 6 bytes.
+     *   optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -505,17 +505,17 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`pattern` requires the field value to match the specified regular
-     *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-     *The value of the field must be valid UTF-8 or validation will fail with a
-     *runtime error.
-     *If the field value doesn't match the pattern, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must match regex pattern "^[a-zA-Z0-9]+$".
-     * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-     *}
-     *```
+     * `pattern` requires the field value to match the specified regular
+     * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+     * The value of the field must be valid UTF-8 or validation will fail with a
+     * runtime error.
+     * If the field value doesn't match the pattern, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must match regex pattern "^[a-zA-Z0-9]+$".
+     *   optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -536,17 +536,17 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`pattern` requires the field value to match the specified regular
-     *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-     *The value of the field must be valid UTF-8 or validation will fail with a
-     *runtime error.
-     *If the field value doesn't match the pattern, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must match regex pattern "^[a-zA-Z0-9]+$".
-     * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-     *}
-     *```
+     * `pattern` requires the field value to match the specified regular
+     * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+     * The value of the field must be valid UTF-8 or validation will fail with a
+     * runtime error.
+     * If the field value doesn't match the pattern, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must match regex pattern "^[a-zA-Z0-9]+$".
+     *   optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -561,15 +561,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`prefix` requires the field value to have the specified bytes at the
-     *beginning of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value does not have prefix \x01\x02
-     *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "\x01\x02"];
-     *}
-     *```
+     * `prefix` requires the field value to have the specified bytes at the
+     * beginning of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value does not have prefix \x01\x02
+     *   optional bytes value = 1 [(buf.validate.field).bytes.prefix = "\x01\x02"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -590,15 +590,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`prefix` requires the field value to have the specified bytes at the
-     *beginning of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value does not have prefix \x01\x02
-     *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "\x01\x02"];
-     *}
-     *```
+     * `prefix` requires the field value to have the specified bytes at the
+     * beginning of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value does not have prefix \x01\x02
+     *   optional bytes value = 1 [(buf.validate.field).bytes.prefix = "\x01\x02"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -613,15 +613,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`suffix` requires the field value to have the specified bytes at the end
-     *of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value does not have suffix \x03\x04
-     * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "\x03\x04"];
-     *}
-     *```
+     * `suffix` requires the field value to have the specified bytes at the end
+     * of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value does not have suffix \x03\x04
+     *   optional bytes value = 1 [(buf.validate.field).bytes.suffix = "\x03\x04"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -642,15 +642,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`suffix` requires the field value to have the specified bytes at the end
-     *of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value does not have suffix \x03\x04
-     * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "\x03\x04"];
-     *}
-     *```
+     * `suffix` requires the field value to have the specified bytes at the end
+     * of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value does not have suffix \x03\x04
+     *   optional bytes value = 1 [(buf.validate.field).bytes.suffix = "\x03\x04"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -665,15 +665,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`contains` requires the field value to have the specified bytes anywhere in
-     *the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```protobuf
-     *message MyBytes {
-     * // value does not contain \x02\x03
-     * optional bytes value = 1 [(buf.validate.field).bytes.contains = "\x02\x03"];
-     *}
-     *```
+     * `contains` requires the field value to have the specified bytes anywhere in
+     * the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```protobuf
+     * message MyBytes {
+     *   // value does not contain \x02\x03
+     *   optional bytes value = 1 [(buf.validate.field).bytes.contains = "\x02\x03"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -694,15 +694,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`contains` requires the field value to have the specified bytes anywhere in
-     *the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
-     *```protobuf
-     *message MyBytes {
-     * // value does not contain \x02\x03
-     * optional bytes value = 1 [(buf.validate.field).bytes.contains = "\x02\x03"];
-     *}
-     *```
+     * `contains` requires the field value to have the specified bytes anywhere in
+     * the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     * ```protobuf
+     * message MyBytes {
+     *   // value does not contain \x02\x03
+     *   optional bytes value = 1 [(buf.validate.field).bytes.contains = "\x02\x03"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -717,15 +717,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`in` requires the field value to be equal to one of the specified
-     *values. If the field value doesn't match any of the specified values, an
-     *error message is generated.
-     *```protobuf
-     *message MyBytes {
-     * // value must in ["\x01\x02", "\x02\x03", "\x03\x04"]
-     * optional bytes value = 1 [(buf.validate.field).bytes.in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
-     *}
-     *```
+     * `in` requires the field value to be equal to one of the specified
+     * values. If the field value doesn't match any of the specified values, an
+     * error message is generated.
+     * ```protobuf
+     * message MyBytes {
+     *   // value must in ["\x01\x02", "\x02\x03", "\x03\x04"]
+     *   optional bytes value = 1 [(buf.validate.field).bytes.in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -736,15 +736,15 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`in` requires the field value to be equal to one of the specified
-     *values. If the field value doesn't match any of the specified values, an
-     *error message is generated.
-     *```protobuf
-     *message MyBytes {
-     * // value must in ["\x01\x02", "\x02\x03", "\x03\x04"]
-     * optional bytes value = 1 [(buf.validate.field).bytes.in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
-     *}
-     *```
+     * `in` requires the field value to be equal to one of the specified
+     * values. If the field value doesn't match any of the specified values, an
+     * error message is generated.
+     * ```protobuf
+     * message MyBytes {
+     *   // value must in ["\x01\x02", "\x02\x03", "\x03\x04"]
+     *   optional bytes value = 1 [(buf.validate.field).bytes.in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = {</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
@@ -759,16 +759,16 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`not_in` requires the field value to be not equal to any of the specified
-     *values.
-     *If the field value matches any of the specified values, an error message is
-     *generated.
-     *```proto
-     *message MyBytes {
-     * // value must not in ["\x01\x02", "\x02\x03", "\x03\x04"]
-     * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
-     *}
-     *```
+     * `not_in` requires the field value to be not equal to any of the specified
+     * values.
+     * If the field value matches any of the specified values, an error message is
+     * generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must not in ["\x01\x02", "\x02\x03", "\x03\x04"]
+     *   optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -779,16 +779,16 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`not_in` requires the field value to be not equal to any of the specified
-     *values.
-     *If the field value matches any of the specified values, an error message is
-     *generated.
-     *```proto
-     *message MyBytes {
-     * // value must not in ["\x01\x02", "\x02\x03", "\x03\x04"]
-     * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
-     *}
-     *```
+     * `not_in` requires the field value to be not equal to any of the specified
+     * values.
+     * If the field value matches any of the specified values, an error message is
+     * generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must not in ["\x01\x02", "\x02\x03", "\x03\x04"]
+     *   optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"\x01\x02", "\x02\x03", "\x03\x04"}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
@@ -803,14 +803,14 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must be a valid IP address
-     * optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-     *}
-     *```
+     * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be a valid IP address
+     *   optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ip = 10 [json_name = "ip", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -826,14 +826,14 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must be a valid IP address
-     * optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-     *}
-     *```
+     * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be a valid IP address
+     *   optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ip = 10 [json_name = "ip", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -848,14 +848,14 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must be a valid IPv4 address
-     * optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-     *}
-     *```
+     * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be a valid IPv4 address
+     *   optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ipv4 = 11 [json_name = "ipv4", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -871,14 +871,14 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must be a valid IPv4 address
-     * optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-     *}
-     *```
+     * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be a valid IPv4 address
+     *   optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ipv4 = 11 [json_name = "ipv4", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -893,14 +893,14 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must be a valid IPv6 address
-     * optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-     *}
-     *```
+     * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be a valid IPv6 address
+     *   optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ipv6 = 12 [json_name = "ipv6", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -916,14 +916,14 @@ class BytesRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
-     *```proto
-     *message MyBytes {
-     * // value must be a valid IPv6 address
-     * optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-     *}
-     *```
+     * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     * ```proto
+     * message MyBytes {
+     *   // value must be a valid IPv6 address
+     *   optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ipv6 = 12 [json_name = "ipv6", (.buf.validate.priv.field) = {</code>
      * @param bool $var

@@ -10,28 +10,29 @@ use Google\Protobuf\Internal\GPBUtil;
 
 /**
  * The `OneofConstraints` message type enables you to manage constraints for
- * oneof fields in your protobuf messages. Use the `required` constraint to ensure
- * that exactly one of the fields within a oneof is set; validation will fail
- * if none of the fields in the oneof are set:
+ * oneof fields in your protobuf messages.
  *
  * Generated from protobuf message <code>buf.validate.OneofConstraints</code>
  */
 class OneofConstraints extends \Google\Protobuf\Internal\Message
 {
     /**
-     *`required` is an optional boolean attribute that ensures that
-     *exactly one of the field options in a oneof is set; validation fails if
-     *no fields in the oneof are set.
-     *```proto
-     *message MyMessage {
-     *  oneof value {
-     *    // The field `a` or `b` must be set.
-     *    option (buf.validate.oneof).required = true;
-     *    optional string a = 1;
-     *    optional string b = 2;
-     *  }
-     *}
-     *```
+     * If `required` is true, exactly one field of the oneof must be present. A
+     * validation error is returned if no fields in the oneof are present. The
+     * field itself may still be a default value; further constraints
+     * should be placed on the fields themselves to ensure they are valid values,
+     * such as `min_len` or `gt`.
+     * ```proto
+     * message MyMessage {
+     *   oneof value {
+     *     // Either `a` or `b` must be set. If `a` is set, it must also be
+     *     // non-empty; whereas if `b` is set, it can still be an empty string.
+     *     option (buf.validate.oneof).required = true;
+     *     string a = 1 [(buf.validate.field).string.min_len = 1];
+     *     string b = 2;
+     *   }
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool required = 1 [json_name = "required"];</code>
      */
@@ -44,19 +45,22 @@ class OneofConstraints extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type bool $required
-     *          `required` is an optional boolean attribute that ensures that
-     *          exactly one of the field options in a oneof is set; validation fails if
-     *          no fields in the oneof are set.
-     *          ```proto
-     *          message MyMessage {
-     *            oneof value {
-     *              // The field `a` or `b` must be set.
-     *              option (buf.validate.oneof).required = true;
-     *              optional string a = 1;
-     *              optional string b = 2;
-     *            }
-     *          }
-     *          ```
+     *           If `required` is true, exactly one field of the oneof must be present. A
+     *           validation error is returned if no fields in the oneof are present. The
+     *           field itself may still be a default value; further constraints
+     *           should be placed on the fields themselves to ensure they are valid values,
+     *           such as `min_len` or `gt`.
+     *           ```proto
+     *           message MyMessage {
+     *             oneof value {
+     *               // Either `a` or `b` must be set. If `a` is set, it must also be
+     *               // non-empty; whereas if `b` is set, it can still be an empty string.
+     *               option (buf.validate.oneof).required = true;
+     *               string a = 1 [(buf.validate.field).string.min_len = 1];
+     *               string b = 2;
+     *             }
+     *           }
+     *           ```
      * }
      */
     public function __construct($data = NULL) {
@@ -65,19 +69,22 @@ class OneofConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`required` is an optional boolean attribute that ensures that
-     *exactly one of the field options in a oneof is set; validation fails if
-     *no fields in the oneof are set.
-     *```proto
-     *message MyMessage {
-     *  oneof value {
-     *    // The field `a` or `b` must be set.
-     *    option (buf.validate.oneof).required = true;
-     *    optional string a = 1;
-     *    optional string b = 2;
-     *  }
-     *}
-     *```
+     * If `required` is true, exactly one field of the oneof must be present. A
+     * validation error is returned if no fields in the oneof are present. The
+     * field itself may still be a default value; further constraints
+     * should be placed on the fields themselves to ensure they are valid values,
+     * such as `min_len` or `gt`.
+     * ```proto
+     * message MyMessage {
+     *   oneof value {
+     *     // Either `a` or `b` must be set. If `a` is set, it must also be
+     *     // non-empty; whereas if `b` is set, it can still be an empty string.
+     *     option (buf.validate.oneof).required = true;
+     *     string a = 1 [(buf.validate.field).string.min_len = 1];
+     *     string b = 2;
+     *   }
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool required = 1 [json_name = "required"];</code>
      * @return bool
@@ -98,19 +105,22 @@ class OneofConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`required` is an optional boolean attribute that ensures that
-     *exactly one of the field options in a oneof is set; validation fails if
-     *no fields in the oneof are set.
-     *```proto
-     *message MyMessage {
-     *  oneof value {
-     *    // The field `a` or `b` must be set.
-     *    option (buf.validate.oneof).required = true;
-     *    optional string a = 1;
-     *    optional string b = 2;
-     *  }
-     *}
-     *```
+     * If `required` is true, exactly one field of the oneof must be present. A
+     * validation error is returned if no fields in the oneof are present. The
+     * field itself may still be a default value; further constraints
+     * should be placed on the fields themselves to ensure they are valid values,
+     * such as `min_len` or `gt`.
+     * ```proto
+     * message MyMessage {
+     *   oneof value {
+     *     // Either `a` or `b` must be set. If `a` is set, it must also be
+     *     // non-empty; whereas if `b` is set, it can still be an empty string.
+     *     option (buf.validate.oneof).required = true;
+     *     string a = 1 [(buf.validate.field).string.min_len = 1];
+     *     string b = 2;
+     *   }
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool required = 1 [json_name = "required"];</code>
      * @param bool $var

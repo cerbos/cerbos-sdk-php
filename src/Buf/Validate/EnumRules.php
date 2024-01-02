@@ -16,75 +16,75 @@ use Google\Protobuf\Internal\GPBUtil;
 class EnumRules extends \Google\Protobuf\Internal\Message
 {
     /**
-     *`const` requires the field value to exactly match the specified enum value.
-     *If the field value doesn't match, an error message is generated.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must be exactly MY_ENUM_VALUE1.
+     * `const` requires the field value to exactly match the specified enum value.
+     * If the field value doesn't match, an error message is generated.
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must be exactly MY_ENUM_VALUE1.
      *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      */
     protected $const = null;
     /**
-     *`defined_only` requires the field value to be one of the defined values for
+     * `defined_only` requires the field value to be one of the defined values for
      * this enum, failing on any undefined value.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must be a defined value of MyEnum.
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must be a defined value of MyEnum.
      *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
      */
     protected $defined_only = null;
     /**
-     *`in` requires the field value to be equal to one of the
+     * `in` requires the field value to be equal to one of the
      *specified enum values. If the field value doesn't match any of the
      *specified values, an error message is generated.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must be equal to one of the specified values.
-     *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *}
-     *```
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must be equal to one of the specified values.
+     *   MyEnum value = 1 [(buf.validate.field).enum = { in: [1, 2]}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = {</code>
      */
     private $in;
     /**
-     *`not_in` requires the field value to be not equal to any of the
+     * `not_in` requires the field value to be not equal to any of the
      *specified enum values. If the field value matches one of the specified
-     *values, an error message is generated.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must not be equal to any of the specified values.
-     *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *}
-     *```
+     * values, an error message is generated.
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must not be equal to any of the specified values.
+     *   MyEnum value = 1 [(buf.validate.field).enum = { not_in: [1, 2]}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      */
@@ -97,63 +97,63 @@ class EnumRules extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int $const
-     *          `const` requires the field value to exactly match the specified enum value.
-     *          If the field value doesn't match, an error message is generated.
-     *          ```proto
-     *          enum MyEnum {
-     *            MY_ENUM_UNSPECIFIED = 0;
-     *            MY_ENUM_VALUE1 = 1;
-     *            MY_ENUM_VALUE2 = 2;
-     *          }
-     *          message MyMessage {
-     *            // The field `value` must be exactly MY_ENUM_VALUE1.
+     *           `const` requires the field value to exactly match the specified enum value.
+     *           If the field value doesn't match, an error message is generated.
+     *           ```proto
+     *           enum MyEnum {
+     *             MY_ENUM_UNSPECIFIED = 0;
+     *             MY_ENUM_VALUE1 = 1;
+     *             MY_ENUM_VALUE2 = 2;
+     *           }
+     *           message MyMessage {
+     *             // The field `value` must be exactly MY_ENUM_VALUE1.
      *             MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type bool $defined_only
-     *          `defined_only` requires the field value to be one of the defined values for
+     *           `defined_only` requires the field value to be one of the defined values for
      *           this enum, failing on any undefined value.
-     *          ```proto
-     *          enum MyEnum {
-     *            MY_ENUM_UNSPECIFIED = 0;
-     *            MY_ENUM_VALUE1 = 1;
-     *            MY_ENUM_VALUE2 = 2;
-     *          }
-     *          message MyMessage {
-     *            // The field `value` must be a defined value of MyEnum.
+     *           ```proto
+     *           enum MyEnum {
+     *             MY_ENUM_UNSPECIFIED = 0;
+     *             MY_ENUM_VALUE1 = 1;
+     *             MY_ENUM_VALUE2 = 2;
+     *           }
+     *           message MyMessage {
+     *             // The field `value` must be a defined value of MyEnum.
      *             MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type array<int>|\Google\Protobuf\Internal\RepeatedField $in
-     *          `in` requires the field value to be equal to one of the
+     *           `in` requires the field value to be equal to one of the
      *          specified enum values. If the field value doesn't match any of the
      *          specified values, an error message is generated.
-     *          ```proto
-     *          enum MyEnum {
-     *            MY_ENUM_UNSPECIFIED = 0;
-     *            MY_ENUM_VALUE1 = 1;
-     *            MY_ENUM_VALUE2 = 2;
-     *          }
-     *          message MyMessage {
-     *            // The field `value` must be equal to one of the specified values.
-     *             MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *          }
-     *          ```
+     *           ```proto
+     *           enum MyEnum {
+     *             MY_ENUM_UNSPECIFIED = 0;
+     *             MY_ENUM_VALUE1 = 1;
+     *             MY_ENUM_VALUE2 = 2;
+     *           }
+     *           message MyMessage {
+     *             // The field `value` must be equal to one of the specified values.
+     *             MyEnum value = 1 [(buf.validate.field).enum = { in: [1, 2]}];
+     *           }
+     *           ```
      *     @type array<int>|\Google\Protobuf\Internal\RepeatedField $not_in
-     *          `not_in` requires the field value to be not equal to any of the
+     *           `not_in` requires the field value to be not equal to any of the
      *          specified enum values. If the field value matches one of the specified
-     *          values, an error message is generated.
-     *          ```proto
-     *          enum MyEnum {
-     *            MY_ENUM_UNSPECIFIED = 0;
-     *            MY_ENUM_VALUE1 = 1;
-     *            MY_ENUM_VALUE2 = 2;
-     *          }
-     *          message MyMessage {
-     *            // The field `value` must not be equal to any of the specified values.
-     *             MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *          }
-     *          ```
+     *           values, an error message is generated.
+     *           ```proto
+     *           enum MyEnum {
+     *             MY_ENUM_UNSPECIFIED = 0;
+     *             MY_ENUM_VALUE1 = 1;
+     *             MY_ENUM_VALUE2 = 2;
+     *           }
+     *           message MyMessage {
+     *             // The field `value` must not be equal to any of the specified values.
+     *             MyEnum value = 1 [(buf.validate.field).enum = { not_in: [1, 2]}];
+     *           }
+     *           ```
      * }
      */
     public function __construct($data = NULL) {
@@ -162,19 +162,19 @@ class EnumRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`const` requires the field value to exactly match the specified enum value.
-     *If the field value doesn't match, an error message is generated.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must be exactly MY_ENUM_VALUE1.
+     * `const` requires the field value to exactly match the specified enum value.
+     * If the field value doesn't match, an error message is generated.
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must be exactly MY_ENUM_VALUE1.
      *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      * @return int
@@ -195,19 +195,19 @@ class EnumRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`const` requires the field value to exactly match the specified enum value.
-     *If the field value doesn't match, an error message is generated.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must be exactly MY_ENUM_VALUE1.
+     * `const` requires the field value to exactly match the specified enum value.
+     * If the field value doesn't match, an error message is generated.
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must be exactly MY_ENUM_VALUE1.
      *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      * @param int $var
@@ -222,19 +222,19 @@ class EnumRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`defined_only` requires the field value to be one of the defined values for
+     * `defined_only` requires the field value to be one of the defined values for
      * this enum, failing on any undefined value.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must be a defined value of MyEnum.
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must be a defined value of MyEnum.
      *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
      * @return bool
@@ -255,19 +255,19 @@ class EnumRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`defined_only` requires the field value to be one of the defined values for
+     * `defined_only` requires the field value to be one of the defined values for
      * this enum, failing on any undefined value.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must be a defined value of MyEnum.
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must be a defined value of MyEnum.
      *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
      * @param bool $var
@@ -282,20 +282,20 @@ class EnumRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`in` requires the field value to be equal to one of the
+     * `in` requires the field value to be equal to one of the
      *specified enum values. If the field value doesn't match any of the
      *specified values, an error message is generated.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must be equal to one of the specified values.
-     *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *}
-     *```
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must be equal to one of the specified values.
+     *   MyEnum value = 1 [(buf.validate.field).enum = { in: [1, 2]}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -306,20 +306,20 @@ class EnumRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`in` requires the field value to be equal to one of the
+     * `in` requires the field value to be equal to one of the
      *specified enum values. If the field value doesn't match any of the
      *specified values, an error message is generated.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must be equal to one of the specified values.
-     *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *}
-     *```
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must be equal to one of the specified values.
+     *   MyEnum value = 1 [(buf.validate.field).enum = { in: [1, 2]}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = {</code>
      * @param array<int>|\Google\Protobuf\Internal\RepeatedField $var
@@ -334,20 +334,20 @@ class EnumRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`not_in` requires the field value to be not equal to any of the
+     * `not_in` requires the field value to be not equal to any of the
      *specified enum values. If the field value matches one of the specified
-     *values, an error message is generated.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must not be equal to any of the specified values.
-     *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *}
-     *```
+     * values, an error message is generated.
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must not be equal to any of the specified values.
+     *   MyEnum value = 1 [(buf.validate.field).enum = { not_in: [1, 2]}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -358,20 +358,20 @@ class EnumRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`not_in` requires the field value to be not equal to any of the
+     * `not_in` requires the field value to be not equal to any of the
      *specified enum values. If the field value matches one of the specified
-     *values, an error message is generated.
-     *```proto
-     *enum MyEnum {
-     *  MY_ENUM_UNSPECIFIED = 0;
-     *  MY_ENUM_VALUE1 = 1;
-     *  MY_ENUM_VALUE2 = 2;
-     *}
-     *message MyMessage {
-     *  // The field `value` must not be equal to any of the specified values.
-     *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *}
-     *```
+     * values, an error message is generated.
+     * ```proto
+     * enum MyEnum {
+     *   MY_ENUM_UNSPECIFIED = 0;
+     *   MY_ENUM_VALUE1 = 1;
+     *   MY_ENUM_VALUE2 = 2;
+     * }
+     * message MyMessage {
+     *   // The field `value` must not be equal to any of the specified values.
+     *   MyEnum value = 1 [(buf.validate.field).enum = { not_in: [1, 2]}];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      * @param array<int>|\Google\Protobuf\Internal\RepeatedField $var
