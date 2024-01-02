@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright (c) 2021-2023 Zenauth Ltd.
+# Copyright (c) 2021-2024 Zenauth Ltd.
 # SPDX-License-Identifier: Apache-2.0
 #
 
