@@ -17,14 +17,14 @@ use Google\Protobuf\Internal\GPBUtil;
 class BoolRules extends \Google\Protobuf\Internal\Message
 {
     /**
-     *`const` requires the field value to exactly match the specified boolean value.
-     *If the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyBool {
-     *  // value must equal true
+     * `const` requires the field value to exactly match the specified boolean value.
+     * If the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyBool {
+     *   // value must equal true
      *   bool value = 1 [(buf.validate.field).bool.const = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      */
@@ -37,14 +37,14 @@ class BoolRules extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type bool $const
-     *          `const` requires the field value to exactly match the specified boolean value.
-     *          If the field value doesn't match, an error message is generated.
-     *          ```proto
-     *          message MyBool {
-     *            // value must equal true
+     *           `const` requires the field value to exactly match the specified boolean value.
+     *           If the field value doesn't match, an error message is generated.
+     *           ```proto
+     *           message MyBool {
+     *             // value must equal true
      *             bool value = 1 [(buf.validate.field).bool.const = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
      * }
      */
     public function __construct($data = NULL) {
@@ -53,14 +53,14 @@ class BoolRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`const` requires the field value to exactly match the specified boolean value.
-     *If the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyBool {
-     *  // value must equal true
+     * `const` requires the field value to exactly match the specified boolean value.
+     * If the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyBool {
+     *   // value must equal true
      *   bool value = 1 [(buf.validate.field).bool.const = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -81,14 +81,14 @@ class BoolRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`const` requires the field value to exactly match the specified boolean value.
-     *If the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyBool {
-     *  // value must equal true
+     * `const` requires the field value to exactly match the specified boolean value.
+     * If the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyBool {
+     *   // value must equal true
      *   bool value = 1 [(buf.validate.field).bool.const = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      * @param bool $var

@@ -17,217 +17,217 @@ use Google\Protobuf\Internal\GPBUtil;
 class StringRules extends \Google\Protobuf\Internal\Message
 {
     /**
-     *`const` requires the field value to exactly match the specified value. If
-     *the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyString {
-     *  // value must equal `hello`
+     * `const` requires the field value to exactly match the specified value. If
+     * the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyString {
+     *   // value must equal `hello`
      *   string value = 1 [(buf.validate.field).string.const = "hello"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      */
     protected $const = null;
     /**
-     *`len` dictates that the field value must have the specified
-     *number of characters (Unicode code points), which may differ from the number
-     *of bytes in the string. If the field value does not meet the specified
-     *length, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be 5 characters
+     * `len` dictates that the field value must have the specified
+     * number of characters (Unicode code points), which may differ from the number
+     * of bytes in the string. If the field value does not meet the specified
+     * length, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be 5 characters
      *   string value = 1 [(buf.validate.field).string.len = 5];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = {</code>
      */
     protected $len = null;
     /**
-     *`min_len` specifies that the field value must have at least the specified
-     *number of characters (Unicode code points), which may differ from the number
-     *of bytes in the string. If the field value contains fewer characters, an error
-     *message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at least 3 characters
+     * `min_len` specifies that the field value must have at least the specified
+     * number of characters (Unicode code points), which may differ from the number
+     * of bytes in the string. If the field value contains fewer characters, an error
+     * message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at least 3 characters
      *   string value = 1 [(buf.validate.field).string.min_len = 3];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = {</code>
      */
     protected $min_len = null;
     /**
-     *`max_len` specifies that the field value must have no more than the specified
-     *number of characters (Unicode code points), which may differ from the
-     *number of bytes in the string. If the field value contains more characters,
-     *an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at most 10 characters
+     * `max_len` specifies that the field value must have no more than the specified
+     * number of characters (Unicode code points), which may differ from the
+     * number of bytes in the string. If the field value contains more characters,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at most 10 characters
      *   string value = 1 [(buf.validate.field).string.max_len = 10];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = {</code>
      */
     protected $max_len = null;
     /**
-     *`len_bytes` dictates that the field value must have the specified number of
-     *bytes. If the field value does not match the specified length in bytes,
-     *an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be 6 bytes
+     * `len_bytes` dictates that the field value must have the specified number of
+     * bytes. If the field value does not match the specified length in bytes,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be 6 bytes
      *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = {</code>
      */
     protected $len_bytes = null;
     /**
-     *`min_bytes` specifies that the field value must have at least the specified
-     *number of bytes. If the field value contains fewer bytes, an error message
-     *will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at least 4 bytes
+     * `min_bytes` specifies that the field value must have at least the specified
+     * number of bytes. If the field value contains fewer bytes, an error message
+     * will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at least 4 bytes
      *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = {</code>
      */
     protected $min_bytes = null;
     /**
-     *`max_bytes` specifies that the field value must have no more than the
+     * `max_bytes` specifies that the field value must have no more than the
      *specified number of bytes. If the field value contains more bytes, an
-     *error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at most 8 bytes
+     * error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at most 8 bytes
      *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = {</code>
      */
     protected $max_bytes = null;
     /**
-     *`pattern` specifies that the field value must match the specified
-     *regular expression (RE2 syntax), with the expression provided without any
-     *delimiters. If the field value doesn't match the regular expression, an
-     *error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value does not match regex pattern `^[a-zA-Z]//$`
+     * `pattern` specifies that the field value must match the specified
+     * regular expression (RE2 syntax), with the expression provided without any
+     * delimiters. If the field value doesn't match the regular expression, an
+     * error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value does not match regex pattern `^[a-zA-Z]//$`
      *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = {</code>
      */
     protected $pattern = null;
     /**
-     *`prefix` specifies that the field value must have the
+     * `prefix` specifies that the field value must have the
      *specified substring at the beginning of the string. If the field value
-     *doesn't start with the specified prefix, an error message will be
-     *generated.
-     *```proto
-     *message MyString {
-     *  // value does not have prefix `pre`
+     * doesn't start with the specified prefix, an error message will be
+     * generated.
+     * ```proto
+     * message MyString {
+     *   // value does not have prefix `pre`
      *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = {</code>
      */
     protected $prefix = null;
     /**
-     *`suffix` specifies that the field value must have the
+     * `suffix` specifies that the field value must have the
      *specified substring at the end of the string. If the field value doesn't
-     *end with the specified suffix, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value does not have suffix `post`
+     * end with the specified suffix, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value does not have suffix `post`
      *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = {</code>
      */
     protected $suffix = null;
     /**
-     *`contains` specifies that the field value must have the
+     * `contains` specifies that the field value must have the
      *specified substring anywhere in the string. If the field value doesn't
-     *contain the specified substring, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value does not contain substring `inside`.
+     * contain the specified substring, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value does not contain substring `inside`.
      *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = {</code>
      */
     protected $contains = null;
     /**
-     *`not_contains` specifies that the field value must not have the
+     * `not_contains` specifies that the field value must not have the
      *specified substring anywhere in the string. If the field value contains
-     *the specified substring, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value contains substring `inside`.
+     * the specified substring, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value contains substring `inside`.
      *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = {</code>
      */
     protected $not_contains = null;
     /**
-     *`in` specifies that the field value must be equal to one of the specified
-     *values. If the field value isn't one of the specified values, an error
-     *message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be in list ["apple", "banana"]
-     *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     *}
-     *```
+     * `in` specifies that the field value must be equal to one of the specified
+     * values. If the field value isn't one of the specified values, an error
+     * message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be in list ["apple", "banana"]
+     *   repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = {</code>
      */
     private $in;
     /**
-     *`not_in` specifies that the field value cannot be equal to any
-     *of the specified values. If the field value is one of the specified values,
-     *an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must not be in list ["orange", "grape"]
-     *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     *}
-     *```
+     * `not_in` specifies that the field value cannot be equal to any
+     * of the specified values. If the field value is one of the specified values,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must not be in list ["orange", "grape"]
+     *   repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      */
     private $not_in;
     /**
-     *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-     *enable strict header validation. By default, this is true, and HTTP header
-     *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-     *validations that only disallow `\r\n\0` characters, which can be used to
-     *bypass header matching rules.
-     *```proto
-     *message MyString {
+     * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+     * enable strict header validation. By default, this is true, and HTTP header
+     * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+     * validations that only disallow `\r\n\0` characters, which can be used to
+     * bypass header matching rules.
+     * ```proto
+     * message MyString {
      *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
      *   string value = 1 [(buf.validate.field).string.strict = false];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool strict = 25 [json_name = "strict"];</code>
      */
@@ -241,272 +241,337 @@ class StringRules extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $const
-     *          `const` requires the field value to exactly match the specified value. If
-     *          the field value doesn't match, an error message is generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must equal `hello`
+     *           `const` requires the field value to exactly match the specified value. If
+     *           the field value doesn't match, an error message is generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must equal `hello`
      *             string value = 1 [(buf.validate.field).string.const = "hello"];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type int|string $len
-     *          `len` dictates that the field value must have the specified
-     *          number of characters (Unicode code points), which may differ from the number
-     *          of bytes in the string. If the field value does not meet the specified
-     *          length, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value length must be 5 characters
+     *           `len` dictates that the field value must have the specified
+     *           number of characters (Unicode code points), which may differ from the number
+     *           of bytes in the string. If the field value does not meet the specified
+     *           length, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value length must be 5 characters
      *             string value = 1 [(buf.validate.field).string.len = 5];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type int|string $min_len
-     *          `min_len` specifies that the field value must have at least the specified
-     *          number of characters (Unicode code points), which may differ from the number
-     *          of bytes in the string. If the field value contains fewer characters, an error
-     *          message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value length must be at least 3 characters
+     *           `min_len` specifies that the field value must have at least the specified
+     *           number of characters (Unicode code points), which may differ from the number
+     *           of bytes in the string. If the field value contains fewer characters, an error
+     *           message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value length must be at least 3 characters
      *             string value = 1 [(buf.validate.field).string.min_len = 3];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type int|string $max_len
-     *          `max_len` specifies that the field value must have no more than the specified
-     *          number of characters (Unicode code points), which may differ from the
-     *          number of bytes in the string. If the field value contains more characters,
-     *          an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value length must be at most 10 characters
+     *           `max_len` specifies that the field value must have no more than the specified
+     *           number of characters (Unicode code points), which may differ from the
+     *           number of bytes in the string. If the field value contains more characters,
+     *           an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value length must be at most 10 characters
      *             string value = 1 [(buf.validate.field).string.max_len = 10];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type int|string $len_bytes
-     *          `len_bytes` dictates that the field value must have the specified number of
-     *          bytes. If the field value does not match the specified length in bytes,
-     *          an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value length must be 6 bytes
+     *           `len_bytes` dictates that the field value must have the specified number of
+     *           bytes. If the field value does not match the specified length in bytes,
+     *           an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value length must be 6 bytes
      *             string value = 1 [(buf.validate.field).string.len_bytes = 6];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type int|string $min_bytes
-     *          `min_bytes` specifies that the field value must have at least the specified
-     *          number of bytes. If the field value contains fewer bytes, an error message
-     *          will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value length must be at least 4 bytes
+     *           `min_bytes` specifies that the field value must have at least the specified
+     *           number of bytes. If the field value contains fewer bytes, an error message
+     *           will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value length must be at least 4 bytes
      *             string value = 1 [(buf.validate.field).string.min_bytes = 4];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type int|string $max_bytes
-     *          `max_bytes` specifies that the field value must have no more than the
+     *           `max_bytes` specifies that the field value must have no more than the
      *          specified number of bytes. If the field value contains more bytes, an
-     *          error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value length must be at most 8 bytes
+     *           error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value length must be at most 8 bytes
      *             string value = 1 [(buf.validate.field).string.max_bytes = 8];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type string $pattern
-     *          `pattern` specifies that the field value must match the specified
-     *          regular expression (RE2 syntax), with the expression provided without any
-     *          delimiters. If the field value doesn't match the regular expression, an
-     *          error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value does not match regex pattern `^[a-zA-Z]//$`
+     *           `pattern` specifies that the field value must match the specified
+     *           regular expression (RE2 syntax), with the expression provided without any
+     *           delimiters. If the field value doesn't match the regular expression, an
+     *           error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value does not match regex pattern `^[a-zA-Z]//$`
      *             string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type string $prefix
-     *          `prefix` specifies that the field value must have the
+     *           `prefix` specifies that the field value must have the
      *          specified substring at the beginning of the string. If the field value
-     *          doesn't start with the specified prefix, an error message will be
-     *          generated.
-     *          ```proto
-     *          message MyString {
-     *            // value does not have prefix `pre`
+     *           doesn't start with the specified prefix, an error message will be
+     *           generated.
+     *           ```proto
+     *           message MyString {
+     *             // value does not have prefix `pre`
      *             string value = 1 [(buf.validate.field).string.prefix = "pre"];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type string $suffix
-     *          `suffix` specifies that the field value must have the
+     *           `suffix` specifies that the field value must have the
      *          specified substring at the end of the string. If the field value doesn't
-     *          end with the specified suffix, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value does not have suffix `post`
+     *           end with the specified suffix, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value does not have suffix `post`
      *             string value = 1 [(buf.validate.field).string.suffix = "post"];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type string $contains
-     *          `contains` specifies that the field value must have the
+     *           `contains` specifies that the field value must have the
      *          specified substring anywhere in the string. If the field value doesn't
-     *          contain the specified substring, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value does not contain substring `inside`.
+     *           contain the specified substring, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value does not contain substring `inside`.
      *             string value = 1 [(buf.validate.field).string.contains = "inside"];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type string $not_contains
-     *          `not_contains` specifies that the field value must not have the
+     *           `not_contains` specifies that the field value must not have the
      *          specified substring anywhere in the string. If the field value contains
-     *          the specified substring, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value contains substring `inside`.
+     *           the specified substring, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value contains substring `inside`.
      *             string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $in
-     *          `in` specifies that the field value must be equal to one of the specified
-     *          values. If the field value isn't one of the specified values, an error
-     *          message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be in list ["apple", "banana"]
-     *            repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     *          }
-     *          ```
+     *           `in` specifies that the field value must be equal to one of the specified
+     *           values. If the field value isn't one of the specified values, an error
+     *           message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be in list ["apple", "banana"]
+     *             repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
+     *           }
+     *           ```
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $not_in
-     *          `not_in` specifies that the field value cannot be equal to any
-     *          of the specified values. If the field value is one of the specified values,
-     *          an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must not be in list ["orange", "grape"]
-     *            repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     *          }
-     *          ```
+     *           `not_in` specifies that the field value cannot be equal to any
+     *           of the specified values. If the field value is one of the specified values,
+     *           an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must not be in list ["orange", "grape"]
+     *             repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
+     *           }
+     *           ```
      *     @type bool $email
-     *          `email` specifies that the field value must be a valid email address
-     *          (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-     *          If the field value isn't a valid email address, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be a valid email address
+     *           `email` specifies that the field value must be a valid email address
+     *           (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+     *           If the field value isn't a valid email address, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid email address
      *             string value = 1 [(buf.validate.field).string.email = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type bool $hostname
-     *          `hostname` specifies that the field value must be a valid
-     *          hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-     *          internationalized domain names (IDNs). If the field value isn't a
-     *          valid hostname, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be a valid hostname
+     *           `hostname` specifies that the field value must be a valid
+     *           hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+     *           internationalized domain names (IDNs). If the field value isn't a
+     *           valid hostname, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid hostname
      *             string value = 1 [(buf.validate.field).string.hostname = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type bool $ip
-     *          `ip` specifies that the field value must be a valid IP
-     *          (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-     *          If the field value isn't a valid IP address, an error message will be
-     *          generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be a valid IP address
+     *           `ip` specifies that the field value must be a valid IP
+     *           (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+     *           If the field value isn't a valid IP address, an error message will be
+     *           generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid IP address
      *             string value = 1 [(buf.validate.field).string.ip = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type bool $ipv4
-     *          `ipv4` specifies that the field value must be a valid IPv4
-     *          address. If the field value isn't a valid IPv4 address, an error message
-     *          will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be a valid IPv4 address
+     *           `ipv4` specifies that the field value must be a valid IPv4
+     *           address. If the field value isn't a valid IPv4 address, an error message
+     *           will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid IPv4 address
      *             string value = 1 [(buf.validate.field).string.ipv4 = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type bool $ipv6
-     *          `ipv6` specifies that the field value must be a valid
-     *          IPv6 address, without surrounding square brackets. If the field value is
-     *          not a valid IPv6 address, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be a valid IPv6 address
+     *           `ipv6` specifies that the field value must be a valid
+     *           IPv6 address, without surrounding square brackets. If the field value is
+     *           not a valid IPv6 address, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid IPv6 address
      *             string value = 1 [(buf.validate.field).string.ipv6 = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type bool $uri
-     *          `uri` specifies that the field value must be a valid,
-     *          absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-     *          absolute URI, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be a valid URI
+     *           `uri` specifies that the field value must be a valid,
+     *           absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+     *           absolute URI, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid URI
      *             string value = 1 [(buf.validate.field).string.uri = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type bool $uri_ref
-     *          `uri_ref` specifies that the field value must be a valid URI
-     *          as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-     *          field value isn't a valid URI, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be a valid URI
+     *           `uri_ref` specifies that the field value must be a valid URI
+     *           as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+     *           field value isn't a valid URI, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid URI
      *             string value = 1 [(buf.validate.field).string.uri_ref = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type bool $address
-     *          `address` specifies that the field value must be either a valid hostname
-     *          as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-     *          (which doesn't support internationalized domain names or IDNs) or a valid
-     *          IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-     *          message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be a valid hostname, or ip address
+     *           `address` specifies that the field value must be either a valid hostname
+     *           as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+     *           (which doesn't support internationalized domain names or IDNs) or a valid
+     *           IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+     *           message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid hostname, or ip address
      *             string value = 1 [(buf.validate.field).string.address = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type bool $uuid
-     *          `uuid` specifies that the field value must be a valid UUID as defined by
-     *          [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-     *          field value isn't a valid UUID, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be a valid UUID
+     *           `uuid` specifies that the field value must be a valid UUID as defined by
+     *           [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+     *           field value isn't a valid UUID, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid UUID
      *             string value = 1 [(buf.validate.field).string.uuid = true];
-     *          }
-     *          ```
+     *           }
+     *           ```
+     *     @type bool $ip_with_prefixlen
+     *           `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+     *           address with prefix length. If the field value isn't a valid IP with prefix
+     *           length, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid IP with prefix length
+     *              string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+     *           }
+     *           ```
+     *     @type bool $ipv4_with_prefixlen
+     *           `ipv4_with_prefixlen` specifies that the field value must be a valid
+     *           IPv4 address with prefix.
+     *           If the field value isn't a valid IPv4 address with prefix length,
+     *           an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid IPv4 address with prefix lentgh
+     *              string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+     *           }
+     *           ```
+     *     @type bool $ipv6_with_prefixlen
+     *           `ipv6_with_prefixlen` specifies that the field value must be a valid
+     *           IPv6 address with prefix length.
+     *           If the field value is not a valid IPv6 address with prefix length,
+     *           an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid IPv6 address prefix length
+     *              string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+     *           }
+     *           ```
+     *     @type bool $ip_prefix
+     *           `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+     *           If the field value isn't a valid IP prefix, an error message will be
+     *           generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+     *           `127.0.0.0/16`, not `127.0.0.1/16`).
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid IP prefix
+     *              string value = 1 [(buf.validate.field).string.ip_prefix = true];
+     *           }
+     *           ```
+     *     @type bool $ipv4_prefix
+     *           `ipv4_prefix` specifies that the field value must be a valid IPv4
+     *           prefix. If the field value isn't a valid IPv4 prefix, an error message
+     *           will be generated. The prefix must have all zeros for the masked bits of
+     *           the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid IPv4 prefix
+     *              string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+     *           }
+     *           ```
+     *     @type bool $ipv6_prefix
+     *           `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+     *           If the field value is not a valid IPv6 prefix, an error message will be
+     *           generated. The prefix must have all zeros for the masked bits of the prefix
+     *           (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid IPv6 prefix
+     *              string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+     *           }
+     *           ```
      *     @type int $well_known_regex
-     *          `well_known_regex` specifies a common well-known pattern
-     *          defined as a regex. If the field value doesn't match the well-known
-     *          regex, an error message will be generated.
-     *          ```proto
-     *          message MyString {
-     *            // value must be a valid HTTP header value
+     *           `well_known_regex` specifies a common well-known pattern
+     *           defined as a regex. If the field value doesn't match the well-known
+     *           regex, an error message will be generated.
+     *           ```proto
+     *           message MyString {
+     *             // value must be a valid HTTP header value
      *             string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-     *          }
-     *          ```
-     *          #### KnownRegex
-     *          `well_known_regex` contains some well-known patterns.
-     *          | Name                          | Number | Description                               |
-     *          |-------------------------------|--------|-------------------------------------------|
-     *          | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-     *          | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-     *          | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+     *           }
+     *           ```
+     *           #### KnownRegex
+     *           `well_known_regex` contains some well-known patterns.
+     *           | Name                          | Number | Description                               |
+     *           |-------------------------------|--------|-------------------------------------------|
+     *           | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+     *           | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+     *           | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
      *     @type bool $strict
-     *          This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-     *          enable strict header validation. By default, this is true, and HTTP header
-     *          validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-     *          validations that only disallow `\r\n\0` characters, which can be used to
-     *          bypass header matching rules.
-     *          ```proto
-     *          message MyString {
+     *           This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+     *           enable strict header validation. By default, this is true, and HTTP header
+     *           validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+     *           validations that only disallow `\r\n\0` characters, which can be used to
+     *           bypass header matching rules.
+     *           ```proto
+     *           message MyString {
      *             // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
      *             string value = 1 [(buf.validate.field).string.strict = false];
-     *          }
-     *          ```
+     *           }
+     *           ```
      * }
      */
     public function __construct($data = NULL) {
@@ -515,14 +580,14 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`const` requires the field value to exactly match the specified value. If
-     *the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyString {
-     *  // value must equal `hello`
+     * `const` requires the field value to exactly match the specified value. If
+     * the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyString {
+     *   // value must equal `hello`
      *   string value = 1 [(buf.validate.field).string.const = "hello"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -543,14 +608,14 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`const` requires the field value to exactly match the specified value. If
-     *the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyString {
-     *  // value must equal `hello`
+     * `const` requires the field value to exactly match the specified value. If
+     * the field value doesn't match, an error message is generated.
+     * ```proto
+     * message MyString {
+     *   // value must equal `hello`
      *   string value = 1 [(buf.validate.field).string.const = "hello"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -565,16 +630,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`len` dictates that the field value must have the specified
-     *number of characters (Unicode code points), which may differ from the number
-     *of bytes in the string. If the field value does not meet the specified
-     *length, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be 5 characters
+     * `len` dictates that the field value must have the specified
+     * number of characters (Unicode code points), which may differ from the number
+     * of bytes in the string. If the field value does not meet the specified
+     * length, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be 5 characters
      *   string value = 1 [(buf.validate.field).string.len = 5];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -595,16 +660,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`len` dictates that the field value must have the specified
-     *number of characters (Unicode code points), which may differ from the number
-     *of bytes in the string. If the field value does not meet the specified
-     *length, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be 5 characters
+     * `len` dictates that the field value must have the specified
+     * number of characters (Unicode code points), which may differ from the number
+     * of bytes in the string. If the field value does not meet the specified
+     * length, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be 5 characters
      *   string value = 1 [(buf.validate.field).string.len = 5];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -619,16 +684,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`min_len` specifies that the field value must have at least the specified
-     *number of characters (Unicode code points), which may differ from the number
-     *of bytes in the string. If the field value contains fewer characters, an error
-     *message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at least 3 characters
+     * `min_len` specifies that the field value must have at least the specified
+     * number of characters (Unicode code points), which may differ from the number
+     * of bytes in the string. If the field value contains fewer characters, an error
+     * message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at least 3 characters
      *   string value = 1 [(buf.validate.field).string.min_len = 3];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -649,16 +714,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`min_len` specifies that the field value must have at least the specified
-     *number of characters (Unicode code points), which may differ from the number
-     *of bytes in the string. If the field value contains fewer characters, an error
-     *message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at least 3 characters
+     * `min_len` specifies that the field value must have at least the specified
+     * number of characters (Unicode code points), which may differ from the number
+     * of bytes in the string. If the field value contains fewer characters, an error
+     * message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at least 3 characters
      *   string value = 1 [(buf.validate.field).string.min_len = 3];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -673,16 +738,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`max_len` specifies that the field value must have no more than the specified
-     *number of characters (Unicode code points), which may differ from the
-     *number of bytes in the string. If the field value contains more characters,
-     *an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at most 10 characters
+     * `max_len` specifies that the field value must have no more than the specified
+     * number of characters (Unicode code points), which may differ from the
+     * number of bytes in the string. If the field value contains more characters,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at most 10 characters
      *   string value = 1 [(buf.validate.field).string.max_len = 10];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -703,16 +768,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`max_len` specifies that the field value must have no more than the specified
-     *number of characters (Unicode code points), which may differ from the
-     *number of bytes in the string. If the field value contains more characters,
-     *an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at most 10 characters
+     * `max_len` specifies that the field value must have no more than the specified
+     * number of characters (Unicode code points), which may differ from the
+     * number of bytes in the string. If the field value contains more characters,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at most 10 characters
      *   string value = 1 [(buf.validate.field).string.max_len = 10];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -727,15 +792,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`len_bytes` dictates that the field value must have the specified number of
-     *bytes. If the field value does not match the specified length in bytes,
-     *an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be 6 bytes
+     * `len_bytes` dictates that the field value must have the specified number of
+     * bytes. If the field value does not match the specified length in bytes,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be 6 bytes
      *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -756,15 +821,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`len_bytes` dictates that the field value must have the specified number of
-     *bytes. If the field value does not match the specified length in bytes,
-     *an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be 6 bytes
+     * `len_bytes` dictates that the field value must have the specified number of
+     * bytes. If the field value does not match the specified length in bytes,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be 6 bytes
      *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -779,15 +844,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`min_bytes` specifies that the field value must have at least the specified
-     *number of bytes. If the field value contains fewer bytes, an error message
-     *will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at least 4 bytes
+     * `min_bytes` specifies that the field value must have at least the specified
+     * number of bytes. If the field value contains fewer bytes, an error message
+     * will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at least 4 bytes
      *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -808,15 +873,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`min_bytes` specifies that the field value must have at least the specified
-     *number of bytes. If the field value contains fewer bytes, an error message
-     *will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at least 4 bytes
+     * `min_bytes` specifies that the field value must have at least the specified
+     * number of bytes. If the field value contains fewer bytes, an error message
+     * will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at least 4 bytes
      *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -831,15 +896,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`max_bytes` specifies that the field value must have no more than the
+     * `max_bytes` specifies that the field value must have no more than the
      *specified number of bytes. If the field value contains more bytes, an
-     *error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at most 8 bytes
+     * error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at most 8 bytes
      *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = {</code>
      * @return int|string
@@ -860,15 +925,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`max_bytes` specifies that the field value must have no more than the
+     * `max_bytes` specifies that the field value must have no more than the
      *specified number of bytes. If the field value contains more bytes, an
-     *error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value length must be at most 8 bytes
+     * error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value length must be at most 8 bytes
      *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = {</code>
      * @param int|string $var
@@ -883,16 +948,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`pattern` specifies that the field value must match the specified
-     *regular expression (RE2 syntax), with the expression provided without any
-     *delimiters. If the field value doesn't match the regular expression, an
-     *error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value does not match regex pattern `^[a-zA-Z]//$`
+     * `pattern` specifies that the field value must match the specified
+     * regular expression (RE2 syntax), with the expression provided without any
+     * delimiters. If the field value doesn't match the regular expression, an
+     * error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value does not match regex pattern `^[a-zA-Z]//$`
      *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -913,16 +978,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`pattern` specifies that the field value must match the specified
-     *regular expression (RE2 syntax), with the expression provided without any
-     *delimiters. If the field value doesn't match the regular expression, an
-     *error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value does not match regex pattern `^[a-zA-Z]//$`
+     * `pattern` specifies that the field value must match the specified
+     * regular expression (RE2 syntax), with the expression provided without any
+     * delimiters. If the field value doesn't match the regular expression, an
+     * error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value does not match regex pattern `^[a-zA-Z]//$`
      *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -937,16 +1002,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`prefix` specifies that the field value must have the
+     * `prefix` specifies that the field value must have the
      *specified substring at the beginning of the string. If the field value
-     *doesn't start with the specified prefix, an error message will be
-     *generated.
-     *```proto
-     *message MyString {
-     *  // value does not have prefix `pre`
+     * doesn't start with the specified prefix, an error message will be
+     * generated.
+     * ```proto
+     * message MyString {
+     *   // value does not have prefix `pre`
      *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -967,16 +1032,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`prefix` specifies that the field value must have the
+     * `prefix` specifies that the field value must have the
      *specified substring at the beginning of the string. If the field value
-     *doesn't start with the specified prefix, an error message will be
-     *generated.
-     *```proto
-     *message MyString {
-     *  // value does not have prefix `pre`
+     * doesn't start with the specified prefix, an error message will be
+     * generated.
+     * ```proto
+     * message MyString {
+     *   // value does not have prefix `pre`
      *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -991,15 +1056,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`suffix` specifies that the field value must have the
+     * `suffix` specifies that the field value must have the
      *specified substring at the end of the string. If the field value doesn't
-     *end with the specified suffix, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value does not have suffix `post`
+     * end with the specified suffix, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value does not have suffix `post`
      *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -1020,15 +1085,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`suffix` specifies that the field value must have the
+     * `suffix` specifies that the field value must have the
      *specified substring at the end of the string. If the field value doesn't
-     *end with the specified suffix, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value does not have suffix `post`
+     * end with the specified suffix, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value does not have suffix `post`
      *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -1043,15 +1108,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`contains` specifies that the field value must have the
+     * `contains` specifies that the field value must have the
      *specified substring anywhere in the string. If the field value doesn't
-     *contain the specified substring, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value does not contain substring `inside`.
+     * contain the specified substring, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value does not contain substring `inside`.
      *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -1072,15 +1137,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`contains` specifies that the field value must have the
+     * `contains` specifies that the field value must have the
      *specified substring anywhere in the string. If the field value doesn't
-     *contain the specified substring, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value does not contain substring `inside`.
+     * contain the specified substring, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value does not contain substring `inside`.
      *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -1095,15 +1160,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`not_contains` specifies that the field value must not have the
+     * `not_contains` specifies that the field value must not have the
      *specified substring anywhere in the string. If the field value contains
-     *the specified substring, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value contains substring `inside`.
+     * the specified substring, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value contains substring `inside`.
      *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = {</code>
      * @return string
@@ -1124,15 +1189,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`not_contains` specifies that the field value must not have the
+     * `not_contains` specifies that the field value must not have the
      *specified substring anywhere in the string. If the field value contains
-     *the specified substring, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value contains substring `inside`.
+     * the specified substring, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value contains substring `inside`.
      *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = {</code>
      * @param string $var
@@ -1147,15 +1212,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`in` specifies that the field value must be equal to one of the specified
-     *values. If the field value isn't one of the specified values, an error
-     *message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be in list ["apple", "banana"]
-     *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     *}
-     *```
+     * `in` specifies that the field value must be equal to one of the specified
+     * values. If the field value isn't one of the specified values, an error
+     * message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be in list ["apple", "banana"]
+     *   repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -1166,15 +1231,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`in` specifies that the field value must be equal to one of the specified
-     *values. If the field value isn't one of the specified values, an error
-     *message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be in list ["apple", "banana"]
-     *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     *}
-     *```
+     * `in` specifies that the field value must be equal to one of the specified
+     * values. If the field value isn't one of the specified values, an error
+     * message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be in list ["apple", "banana"]
+     *   repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = {</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
@@ -1189,15 +1254,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`not_in` specifies that the field value cannot be equal to any
-     *of the specified values. If the field value is one of the specified values,
-     *an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must not be in list ["orange", "grape"]
-     *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     *}
-     *```
+     * `not_in` specifies that the field value cannot be equal to any
+     * of the specified values. If the field value is one of the specified values,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must not be in list ["orange", "grape"]
+     *   repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -1208,15 +1273,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`not_in` specifies that the field value cannot be equal to any
-     *of the specified values. If the field value is one of the specified values,
-     *an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must not be in list ["orange", "grape"]
-     *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     *}
-     *```
+     * `not_in` specifies that the field value cannot be equal to any
+     * of the specified values. If the field value is one of the specified values,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must not be in list ["orange", "grape"]
+     *   repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
@@ -1231,15 +1296,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`email` specifies that the field value must be a valid email address
-     *(addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-     *If the field value isn't a valid email address, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid email address
+     * `email` specifies that the field value must be a valid email address
+     * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+     * If the field value isn't a valid email address, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid email address
      *   string value = 1 [(buf.validate.field).string.email = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool email = 12 [json_name = "email", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -1255,15 +1320,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`email` specifies that the field value must be a valid email address
-     *(addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-     *If the field value isn't a valid email address, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid email address
+     * `email` specifies that the field value must be a valid email address
+     * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+     * If the field value isn't a valid email address, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid email address
      *   string value = 1 [(buf.validate.field).string.email = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool email = 12 [json_name = "email", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -1278,16 +1343,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`hostname` specifies that the field value must be a valid
-     *hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-     *internationalized domain names (IDNs). If the field value isn't a
-     *valid hostname, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid hostname
+     * `hostname` specifies that the field value must be a valid
+     * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+     * internationalized domain names (IDNs). If the field value isn't a
+     * valid hostname, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid hostname
      *   string value = 1 [(buf.validate.field).string.hostname = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool hostname = 13 [json_name = "hostname", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -1303,16 +1368,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`hostname` specifies that the field value must be a valid
-     *hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-     *internationalized domain names (IDNs). If the field value isn't a
-     *valid hostname, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid hostname
+     * `hostname` specifies that the field value must be a valid
+     * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+     * internationalized domain names (IDNs). If the field value isn't a
+     * valid hostname, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid hostname
      *   string value = 1 [(buf.validate.field).string.hostname = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool hostname = 13 [json_name = "hostname", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -1327,16 +1392,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ip` specifies that the field value must be a valid IP
-     *(v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-     *If the field value isn't a valid IP address, an error message will be
-     *generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid IP address
+     * `ip` specifies that the field value must be a valid IP
+     * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+     * If the field value isn't a valid IP address, an error message will be
+     * generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP address
      *   string value = 1 [(buf.validate.field).string.ip = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ip = 14 [json_name = "ip", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -1352,16 +1417,16 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ip` specifies that the field value must be a valid IP
-     *(v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-     *If the field value isn't a valid IP address, an error message will be
-     *generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid IP address
+     * `ip` specifies that the field value must be a valid IP
+     * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+     * If the field value isn't a valid IP address, an error message will be
+     * generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP address
      *   string value = 1 [(buf.validate.field).string.ip = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ip = 14 [json_name = "ip", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -1376,15 +1441,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ipv4` specifies that the field value must be a valid IPv4
-     *address. If the field value isn't a valid IPv4 address, an error message
-     *will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid IPv4 address
+     * `ipv4` specifies that the field value must be a valid IPv4
+     * address. If the field value isn't a valid IPv4 address, an error message
+     * will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 address
      *   string value = 1 [(buf.validate.field).string.ipv4 = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ipv4 = 15 [json_name = "ipv4", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -1400,15 +1465,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ipv4` specifies that the field value must be a valid IPv4
-     *address. If the field value isn't a valid IPv4 address, an error message
-     *will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid IPv4 address
+     * `ipv4` specifies that the field value must be a valid IPv4
+     * address. If the field value isn't a valid IPv4 address, an error message
+     * will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 address
      *   string value = 1 [(buf.validate.field).string.ipv4 = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ipv4 = 15 [json_name = "ipv4", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -1423,15 +1488,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ipv6` specifies that the field value must be a valid
-     *IPv6 address, without surrounding square brackets. If the field value is
-     *not a valid IPv6 address, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid IPv6 address
+     * `ipv6` specifies that the field value must be a valid
+     * IPv6 address, without surrounding square brackets. If the field value is
+     * not a valid IPv6 address, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 address
      *   string value = 1 [(buf.validate.field).string.ipv6 = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ipv6 = 16 [json_name = "ipv6", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -1447,15 +1512,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ipv6` specifies that the field value must be a valid
-     *IPv6 address, without surrounding square brackets. If the field value is
-     *not a valid IPv6 address, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid IPv6 address
+     * `ipv6` specifies that the field value must be a valid
+     * IPv6 address, without surrounding square brackets. If the field value is
+     * not a valid IPv6 address, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 address
      *   string value = 1 [(buf.validate.field).string.ipv6 = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ipv6 = 16 [json_name = "ipv6", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -1470,15 +1535,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`uri` specifies that the field value must be a valid,
-     *absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-     *absolute URI, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid URI
+     * `uri` specifies that the field value must be a valid,
+     * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+     * absolute URI, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool uri = 17 [json_name = "uri", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -1494,15 +1559,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`uri` specifies that the field value must be a valid,
-     *absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-     *absolute URI, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid URI
+     * `uri` specifies that the field value must be a valid,
+     * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+     * absolute URI, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool uri = 17 [json_name = "uri", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -1517,15 +1582,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`uri_ref` specifies that the field value must be a valid URI
-     *as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-     *field value isn't a valid URI, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid URI
+     * `uri_ref` specifies that the field value must be a valid URI
+     * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+     * field value isn't a valid URI, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri_ref = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool uri_ref = 18 [json_name = "uriRef", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -1541,15 +1606,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`uri_ref` specifies that the field value must be a valid URI
-     *as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-     *field value isn't a valid URI, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid URI
+     * `uri_ref` specifies that the field value must be a valid URI
+     * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+     * field value isn't a valid URI, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri_ref = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool uri_ref = 18 [json_name = "uriRef", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -1564,17 +1629,17 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`address` specifies that the field value must be either a valid hostname
-     *as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-     *(which doesn't support internationalized domain names or IDNs) or a valid
-     *IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-     *message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid hostname, or ip address
+     * `address` specifies that the field value must be either a valid hostname
+     * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+     * (which doesn't support internationalized domain names or IDNs) or a valid
+     * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+     * message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid hostname, or ip address
      *   string value = 1 [(buf.validate.field).string.address = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool address = 21 [json_name = "address", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -1590,17 +1655,17 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`address` specifies that the field value must be either a valid hostname
-     *as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-     *(which doesn't support internationalized domain names or IDNs) or a valid
-     *IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-     *message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid hostname, or ip address
+     * `address` specifies that the field value must be either a valid hostname
+     * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+     * (which doesn't support internationalized domain names or IDNs) or a valid
+     * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+     * message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid hostname, or ip address
      *   string value = 1 [(buf.validate.field).string.address = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool address = 21 [json_name = "address", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -1615,15 +1680,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`uuid` specifies that the field value must be a valid UUID as defined by
-     *[RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-     *field value isn't a valid UUID, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid UUID
+     * `uuid` specifies that the field value must be a valid UUID as defined by
+     * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+     * field value isn't a valid UUID, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid UUID
      *   string value = 1 [(buf.validate.field).string.uuid = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool uuid = 22 [json_name = "uuid", (.buf.validate.priv.field) = {</code>
      * @return bool
@@ -1639,15 +1704,15 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`uuid` specifies that the field value must be a valid UUID as defined by
-     *[RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-     *field value isn't a valid UUID, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid UUID
+     * `uuid` specifies that the field value must be a valid UUID as defined by
+     * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+     * field value isn't a valid UUID, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid UUID
      *   string value = 1 [(buf.validate.field).string.uuid = true];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool uuid = 22 [json_name = "uuid", (.buf.validate.priv.field) = {</code>
      * @param bool $var
@@ -1662,22 +1727,314 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`well_known_regex` specifies a common well-known pattern
-     *defined as a regex. If the field value doesn't match the well-known
-     *regex, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid HTTP header value
+     * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+     * address with prefix length. If the field value isn't a valid IP with prefix
+     * length, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP with prefix length
+     *    string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ip_with_prefixlen = 26 [json_name = "ipWithPrefixlen", (.buf.validate.priv.field) = {</code>
+     * @return bool
+     */
+    public function getIpWithPrefixlen()
+    {
+        return $this->readOneof(26);
+    }
+
+    public function hasIpWithPrefixlen()
+    {
+        return $this->hasOneof(26);
+    }
+
+    /**
+     * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+     * address with prefix length. If the field value isn't a valid IP with prefix
+     * length, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP with prefix length
+     *    string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ip_with_prefixlen = 26 [json_name = "ipWithPrefixlen", (.buf.validate.priv.field) = {</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setIpWithPrefixlen($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->writeOneof(26, $var);
+
+        return $this;
+    }
+
+    /**
+     * `ipv4_with_prefixlen` specifies that the field value must be a valid
+     * IPv4 address with prefix.
+     * If the field value isn't a valid IPv4 address with prefix length,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 address with prefix lentgh
+     *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ipv4_with_prefixlen = 27 [json_name = "ipv4WithPrefixlen", (.buf.validate.priv.field) = {</code>
+     * @return bool
+     */
+    public function getIpv4WithPrefixlen()
+    {
+        return $this->readOneof(27);
+    }
+
+    public function hasIpv4WithPrefixlen()
+    {
+        return $this->hasOneof(27);
+    }
+
+    /**
+     * `ipv4_with_prefixlen` specifies that the field value must be a valid
+     * IPv4 address with prefix.
+     * If the field value isn't a valid IPv4 address with prefix length,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 address with prefix lentgh
+     *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ipv4_with_prefixlen = 27 [json_name = "ipv4WithPrefixlen", (.buf.validate.priv.field) = {</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setIpv4WithPrefixlen($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->writeOneof(27, $var);
+
+        return $this;
+    }
+
+    /**
+     * `ipv6_with_prefixlen` specifies that the field value must be a valid
+     * IPv6 address with prefix length.
+     * If the field value is not a valid IPv6 address with prefix length,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 address prefix length
+     *    string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ipv6_with_prefixlen = 28 [json_name = "ipv6WithPrefixlen", (.buf.validate.priv.field) = {</code>
+     * @return bool
+     */
+    public function getIpv6WithPrefixlen()
+    {
+        return $this->readOneof(28);
+    }
+
+    public function hasIpv6WithPrefixlen()
+    {
+        return $this->hasOneof(28);
+    }
+
+    /**
+     * `ipv6_with_prefixlen` specifies that the field value must be a valid
+     * IPv6 address with prefix length.
+     * If the field value is not a valid IPv6 address with prefix length,
+     * an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 address prefix length
+     *    string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ipv6_with_prefixlen = 28 [json_name = "ipv6WithPrefixlen", (.buf.validate.priv.field) = {</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setIpv6WithPrefixlen($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->writeOneof(28, $var);
+
+        return $this;
+    }
+
+    /**
+     * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+     * If the field value isn't a valid IP prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+     * `127.0.0.0/16`, not `127.0.0.1/16`).
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP prefix
+     *    string value = 1 [(buf.validate.field).string.ip_prefix = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ip_prefix = 29 [json_name = "ipPrefix", (.buf.validate.priv.field) = {</code>
+     * @return bool
+     */
+    public function getIpPrefix()
+    {
+        return $this->readOneof(29);
+    }
+
+    public function hasIpPrefix()
+    {
+        return $this->hasOneof(29);
+    }
+
+    /**
+     * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+     * If the field value isn't a valid IP prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+     * `127.0.0.0/16`, not `127.0.0.1/16`).
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP prefix
+     *    string value = 1 [(buf.validate.field).string.ip_prefix = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ip_prefix = 29 [json_name = "ipPrefix", (.buf.validate.priv.field) = {</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setIpPrefix($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->writeOneof(29, $var);
+
+        return $this;
+    }
+
+    /**
+     * `ipv4_prefix` specifies that the field value must be a valid IPv4
+     * prefix. If the field value isn't a valid IPv4 prefix, an error message
+     * will be generated. The prefix must have all zeros for the masked bits of
+     * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ipv4_prefix = 30 [json_name = "ipv4Prefix", (.buf.validate.priv.field) = {</code>
+     * @return bool
+     */
+    public function getIpv4Prefix()
+    {
+        return $this->readOneof(30);
+    }
+
+    public function hasIpv4Prefix()
+    {
+        return $this->hasOneof(30);
+    }
+
+    /**
+     * `ipv4_prefix` specifies that the field value must be a valid IPv4
+     * prefix. If the field value isn't a valid IPv4 prefix, an error message
+     * will be generated. The prefix must have all zeros for the masked bits of
+     * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ipv4_prefix = 30 [json_name = "ipv4Prefix", (.buf.validate.priv.field) = {</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setIpv4Prefix($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->writeOneof(30, $var);
+
+        return $this;
+    }
+
+    /**
+     * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+     * If the field value is not a valid IPv6 prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix
+     * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ipv6_prefix = 31 [json_name = "ipv6Prefix", (.buf.validate.priv.field) = {</code>
+     * @return bool
+     */
+    public function getIpv6Prefix()
+    {
+        return $this->readOneof(31);
+    }
+
+    public function hasIpv6Prefix()
+    {
+        return $this->hasOneof(31);
+    }
+
+    /**
+     * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+     * If the field value is not a valid IPv6 prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix
+     * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+     * }
+     * ```
+     *
+     * Generated from protobuf field <code>bool ipv6_prefix = 31 [json_name = "ipv6Prefix", (.buf.validate.priv.field) = {</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setIpv6Prefix($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->writeOneof(31, $var);
+
+        return $this;
+    }
+
+    /**
+     * `well_known_regex` specifies a common well-known pattern
+     * defined as a regex. If the field value doesn't match the well-known
+     * regex, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid HTTP header value
      *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-     *}
-     *```
-     *#### KnownRegex
-     *`well_known_regex` contains some well-known patterns.
-     *| Name                          | Number | Description                               |
-     *|-------------------------------|--------|-------------------------------------------|
-     *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-     *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-     *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+     * }
+     * ```
+     * #### KnownRegex
+     * `well_known_regex` contains some well-known patterns.
+     * | Name                          | Number | Description                               |
+     * |-------------------------------|--------|-------------------------------------------|
+     * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+     * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+     * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
      *
      * Generated from protobuf field <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = {</code>
      * @return int
@@ -1693,22 +2050,22 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`well_known_regex` specifies a common well-known pattern
-     *defined as a regex. If the field value doesn't match the well-known
-     *regex, an error message will be generated.
-     *```proto
-     *message MyString {
-     *  // value must be a valid HTTP header value
+     * `well_known_regex` specifies a common well-known pattern
+     * defined as a regex. If the field value doesn't match the well-known
+     * regex, an error message will be generated.
+     * ```proto
+     * message MyString {
+     *   // value must be a valid HTTP header value
      *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-     *}
-     *```
-     *#### KnownRegex
-     *`well_known_regex` contains some well-known patterns.
-     *| Name                          | Number | Description                               |
-     *|-------------------------------|--------|-------------------------------------------|
-     *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-     *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-     *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+     * }
+     * ```
+     * #### KnownRegex
+     * `well_known_regex` contains some well-known patterns.
+     * | Name                          | Number | Description                               |
+     * |-------------------------------|--------|-------------------------------------------|
+     * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+     * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+     * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
      *
      * Generated from protobuf field <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = {</code>
      * @param int $var
@@ -1723,17 +2080,17 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-     *enable strict header validation. By default, this is true, and HTTP header
-     *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-     *validations that only disallow `\r\n\0` characters, which can be used to
-     *bypass header matching rules.
-     *```proto
-     *message MyString {
+     * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+     * enable strict header validation. By default, this is true, and HTTP header
+     * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+     * validations that only disallow `\r\n\0` characters, which can be used to
+     * bypass header matching rules.
+     * ```proto
+     * message MyString {
      *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
      *   string value = 1 [(buf.validate.field).string.strict = false];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool strict = 25 [json_name = "strict"];</code>
      * @return bool
@@ -1754,17 +2111,17 @@ class StringRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-     *enable strict header validation. By default, this is true, and HTTP header
-     *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-     *validations that only disallow `\r\n\0` characters, which can be used to
-     *bypass header matching rules.
-     *```proto
-     *message MyString {
+     * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+     * enable strict header validation. By default, this is true, and HTTP header
+     * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+     * validations that only disallow `\r\n\0` characters, which can be used to
+     * bypass header matching rules.
+     * ```proto
+     * message MyString {
      *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
      *   string value = 1 [(buf.validate.field).string.strict = false];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional bool strict = 25 [json_name = "strict"];</code>
      * @param bool $var

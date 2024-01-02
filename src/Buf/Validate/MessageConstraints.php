@@ -17,7 +17,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class MessageConstraints extends \Google\Protobuf\Internal\Message
 {
     /**
-     * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
+     * `disabled` is a boolean flag that, when set to true, nullifies any validation rules for this message.
      * This includes any fields within the message that would otherwise support validation.
      * ```proto
      * message MyMessage {
@@ -30,20 +30,20 @@ class MessageConstraints extends \Google\Protobuf\Internal\Message
      */
     protected $disabled = null;
     /**
-     * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
+     * `cel` is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
-     *```proto
-     *message MyMessage {
-     *  // The field `foo` must be greater than 42.
-     *  option (buf.validate.message).cel = {
-     *    id: "my_message.value",
-     *    message: "value must be greater than 42",
-     *    expression: "this.foo > 42",
-     *  };
-     *  optional int32 foo = 1;
-     *}
-     *```
+     * ```proto
+     * message MyMessage {
+     *   // The field `foo` must be greater than 42.
+     *   option (buf.validate.message).cel = {
+     *     id: "my_message.value",
+     *     message: "value must be greater than 42",
+     *     expression: "this.foo > 42",
+     *   };
+     *   optional int32 foo = 1;
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
@@ -56,7 +56,7 @@ class MessageConstraints extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type bool $disabled
-     *           disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
+     *           `disabled` is a boolean flag that, when set to true, nullifies any validation rules for this message.
      *           This includes any fields within the message that would otherwise support validation.
      *           ```proto
      *           message MyMessage {
@@ -65,20 +65,20 @@ class MessageConstraints extends \Google\Protobuf\Internal\Message
      *           }
      *           ```
      *     @type array<\Buf\Validate\Constraint>|\Google\Protobuf\Internal\RepeatedField $cel
-     *           cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
+     *           `cel` is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      *           These constraints are written in Common Expression Language (CEL) syntax. For more information on
      *           CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
-     *          ```proto
-     *          message MyMessage {
-     *            // The field `foo` must be greater than 42.
-     *            option (buf.validate.message).cel = {
-     *              id: "my_message.value",
-     *              message: "value must be greater than 42",
-     *              expression: "this.foo > 42",
-     *            };
-     *            optional int32 foo = 1;
-     *          }
-     *          ```
+     *           ```proto
+     *           message MyMessage {
+     *             // The field `foo` must be greater than 42.
+     *             option (buf.validate.message).cel = {
+     *               id: "my_message.value",
+     *               message: "value must be greater than 42",
+     *               expression: "this.foo > 42",
+     *             };
+     *             optional int32 foo = 1;
+     *           }
+     *           ```
      * }
      */
     public function __construct($data = NULL) {
@@ -87,7 +87,7 @@ class MessageConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
+     * `disabled` is a boolean flag that, when set to true, nullifies any validation rules for this message.
      * This includes any fields within the message that would otherwise support validation.
      * ```proto
      * message MyMessage {
@@ -115,7 +115,7 @@ class MessageConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
+     * `disabled` is a boolean flag that, when set to true, nullifies any validation rules for this message.
      * This includes any fields within the message that would otherwise support validation.
      * ```proto
      * message MyMessage {
@@ -137,20 +137,20 @@ class MessageConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
+     * `cel` is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
-     *```proto
-     *message MyMessage {
-     *  // The field `foo` must be greater than 42.
-     *  option (buf.validate.message).cel = {
-     *    id: "my_message.value",
-     *    message: "value must be greater than 42",
-     *    expression: "this.foo > 42",
-     *  };
-     *  optional int32 foo = 1;
-     *}
-     *```
+     * ```proto
+     * message MyMessage {
+     *   // The field `foo` must be greater than 42.
+     *   option (buf.validate.message).cel = {
+     *     id: "my_message.value",
+     *     message: "value must be greater than 42",
+     *     expression: "this.foo > 42",
+     *   };
+     *   optional int32 foo = 1;
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -161,20 +161,20 @@ class MessageConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
+     * `cel` is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
-     *```proto
-     *message MyMessage {
-     *  // The field `foo` must be greater than 42.
-     *  option (buf.validate.message).cel = {
-     *    id: "my_message.value",
-     *    message: "value must be greater than 42",
-     *    expression: "this.foo > 42",
-     *  };
-     *  optional int32 foo = 1;
-     *}
-     *```
+     * ```proto
+     * message MyMessage {
+     *   // The field `foo` must be greater than 42.
+     *   option (buf.validate.message).cel = {
+     *     id: "my_message.value",
+     *     message: "value must be greater than 42",
+     *     expression: "this.foo > 42",
+     *   };
+     *   optional int32 foo = 1;
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      * @param array<\Buf\Validate\Constraint>|\Google\Protobuf\Internal\RepeatedField $var

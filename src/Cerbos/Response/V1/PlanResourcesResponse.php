@@ -41,6 +41,10 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 7 [json_name = "validationErrors", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
      */
     private $validation_errors;
+    /**
+     * Generated from protobuf field <code>string cerbos_call_id = 8 [json_name = "cerbosCallId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    protected $cerbos_call_id = '';
 
     /**
      * Constructor.
@@ -55,6 +59,7 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Engine\V1\PlanResourcesFilter $filter
      *     @type \Cerbos\Response\V1\PlanResourcesResponse\Meta $meta
      *     @type array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $validation_errors
+     *     @type string $cerbos_call_id
      * }
      */
     public function __construct($data = NULL) {
@@ -232,6 +237,28 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Schema\V1\ValidationError::class);
         $this->validation_errors = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string cerbos_call_id = 8 [json_name = "cerbosCallId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return string
+     */
+    public function getCerbosCallId()
+    {
+        return $this->cerbos_call_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string cerbos_call_id = 8 [json_name = "cerbosCallId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCerbosCallId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->cerbos_call_id = $var;
 
         return $this;
     }

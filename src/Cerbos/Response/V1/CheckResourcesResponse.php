@@ -21,6 +21,10 @@ class CheckResourcesResponse extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated .cerbos.response.v1.CheckResourcesResponse.ResultEntry results = 2 [json_name = "results", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
      */
     private $results;
+    /**
+     * Generated from protobuf field <code>string cerbos_call_id = 3 [json_name = "cerbosCallId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    protected $cerbos_call_id = '';
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class CheckResourcesResponse extends \Google\Protobuf\Internal\Message
      *
      *     @type string $request_id
      *     @type array<\Cerbos\Response\V1\CheckResourcesResponse\ResultEntry>|\Google\Protobuf\Internal\RepeatedField $results
+     *     @type string $cerbos_call_id
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class CheckResourcesResponse extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry::class);
         $this->results = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string cerbos_call_id = 3 [json_name = "cerbosCallId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return string
+     */
+    public function getCerbosCallId()
+    {
+        return $this->cerbos_call_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string cerbos_call_id = 3 [json_name = "cerbosCallId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCerbosCallId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->cerbos_call_id = $var;
 
         return $this;
     }

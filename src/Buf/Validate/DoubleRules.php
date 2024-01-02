@@ -17,14 +17,14 @@ use Google\Protobuf\Internal\GPBUtil;
 class DoubleRules extends \Google\Protobuf\Internal\Message
 {
     /**
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must equal 42.0
+     * ```proto
+     * message MyDouble {
+     *   // value must equal 42.0
      *   double value = 1 [(buf.validate.field).double.const = 42.0];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      */
@@ -33,32 +33,32 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
      * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be in list [1.0, 2.0, 3.0]
-     *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     *}
-     *```
+     * ```proto
+     * message MyDouble {
+     *   // value must be in list [1.0, 2.0, 3.0]
+     *   repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = {</code>
      */
     private $in;
     /**
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must not be in list [1.0, 2.0, 3.0]
-     *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     *}
-     *```
+     * ```proto
+     * message MyDouble {
+     *   // value must not be in list [1.0, 2.0, 3.0]
+     *   repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      */
     private $not_in;
     /**
-     *`finite` requires the field value to be finite. If the field value is
+     * `finite` requires the field value to be finite. If the field value is
      * infinite or NaN, an error message is generated.
      *
      * Generated from protobuf field <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = {</code>
@@ -74,88 +74,88 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type float $const
-     *          `const` requires the field value to exactly match the specified value. If
+     *           `const` requires the field value to exactly match the specified value. If
      *           the field value doesn't match, an error message is generated.
-     *          ```proto
-     *          message MyDouble {
-     *            // value must equal 42.0
+     *           ```proto
+     *           message MyDouble {
+     *             // value must equal 42.0
      *             double value = 1 [(buf.validate.field).double.const = 42.0];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type float $lt
      *           `lt` requires the field value to be less than the specified value (field <
      *           value). If the field value is equal to or greater than the specified
      *           value, an error message is generated.
-     *          ```proto
-     *          message MyDouble {
-     *            // value must be less than 10.0
+     *           ```proto
+     *           message MyDouble {
+     *             // value must be less than 10.0
      *             double value = 1 [(buf.validate.field).double.lt = 10.0];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type float $lte
-     *          `lte` requires the field value to be less than or equal to the specified value
+     *           `lte` requires the field value to be less than or equal to the specified value
      *           (field <= value). If the field value is greater than the specified value,
      *           an error message is generated.
-     *          ```proto
-     *          message MyDouble {
-     *            // value must be less than or equal to 10.0
+     *           ```proto
+     *           message MyDouble {
+     *             // value must be less than or equal to 10.0
      *             double value = 1 [(buf.validate.field).double.lte = 10.0];
-     *          }
-     *          ```
+     *           }
+     *           ```
      *     @type float $gt
      *           `gt` requires the field value to be greater than the specified value
      *           (exclusive). If the value of `gt` is larger than a specified `lt` or `lte`,
      *           the range is reversed, and the field value must be outside the specified
      *           range. If the field value doesn't meet the required conditions, an error
      *           message is generated.
-     *          ```proto
-     *          message MyDouble {
-     *            // value must be greater than 5.0 [double.gt]
-     *            double value = 1 [(buf.validate.field).double.gt = 5.0];
-     *            // value must be greater than 5 and less than 10.0 [double.gt_lt]
-     *            double other_value = 2 [(buf.validate.field).double = { gt: 5.0, lt: 10.0 }];
-     *            // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
-     *            double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
-     *          }
-     *          ```
+     *           ```proto
+     *           message MyDouble {
+     *             // value must be greater than 5.0 [double.gt]
+     *             double value = 1 [(buf.validate.field).double.gt = 5.0];
+     *             // value must be greater than 5 and less than 10.0 [double.gt_lt]
+     *             double other_value = 2 [(buf.validate.field).double = { gt: 5.0, lt: 10.0 }];
+     *             // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
+     *             double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
+     *           }
+     *           ```
      *     @type float $gte
      *           `gte` requires the field value to be greater than or equal to the specified
      *           value (exclusive). If the value of `gte` is larger than a specified `lt` or
      *           `lte`, the range is reversed, and the field value must be outside the
      *           specified range. If the field value doesn't meet the required conditions,
      *           an error message is generated.
-     *          ```proto
-     *          message MyDouble {
-     *            // value must be greater than or equal to 5.0 [double.gte]
-     *            double value = 1 [(buf.validate.field).double.gte = 5.0];
-     *            // value must be greater than or equal to 5.0 and less than 10.0 [double.gte_lt]
-     *            double other_value = 2 [(buf.validate.field).double = { gte: 5.0, lt: 10.0 }];
-     *            // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
-     *            double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
-     *          }
-     *          ```
+     *           ```proto
+     *           message MyDouble {
+     *             // value must be greater than or equal to 5.0 [double.gte]
+     *             double value = 1 [(buf.validate.field).double.gte = 5.0];
+     *             // value must be greater than or equal to 5.0 and less than 10.0 [double.gte_lt]
+     *             double other_value = 2 [(buf.validate.field).double = { gte: 5.0, lt: 10.0 }];
+     *             // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
+     *             double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
+     *           }
+     *           ```
      *     @type array<float>|\Google\Protobuf\Internal\RepeatedField $in
      *           `in` requires the field value to be equal to one of the specified values.
      *           If the field value isn't one of the specified values, an error message is
      *           generated.
-     *          ```proto
-     *          message MyDouble {
-     *            // value must be in list [1.0, 2.0, 3.0]
-     *            repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     *          }
-     *          ```
+     *           ```proto
+     *           message MyDouble {
+     *             // value must be in list [1.0, 2.0, 3.0]
+     *             repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     *           }
+     *           ```
      *     @type array<float>|\Google\Protobuf\Internal\RepeatedField $not_in
-     *          `not_in` requires the field value to not be equal to any of the specified
+     *           `not_in` requires the field value to not be equal to any of the specified
      *           values. If the field value is one of the specified values, an error
      *           message is generated.
-     *          ```proto
-     *          message MyDouble {
-     *            // value must not be in list [1.0, 2.0, 3.0]
-     *            repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     *          }
-     *          ```
+     *           ```proto
+     *           message MyDouble {
+     *             // value must not be in list [1.0, 2.0, 3.0]
+     *             repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     *           }
+     *           ```
      *     @type bool $finite
-     *          `finite` requires the field value to be finite. If the field value is
+     *           `finite` requires the field value to be finite. If the field value is
      *           infinite or NaN, an error message is generated.
      * }
      */
@@ -165,14 +165,14 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must equal 42.0
+     * ```proto
+     * message MyDouble {
+     *   // value must equal 42.0
      *   double value = 1 [(buf.validate.field).double.const = 42.0];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      * @return float
@@ -193,14 +193,14 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must equal 42.0
+     * ```proto
+     * message MyDouble {
+     *   // value must equal 42.0
      *   double value = 1 [(buf.validate.field).double.const = 42.0];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = {</code>
      * @param float $var
@@ -218,12 +218,12 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
      * `lt` requires the field value to be less than the specified value (field <
      * value). If the field value is equal to or greater than the specified
      * value, an error message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be less than 10.0
+     * ```proto
+     * message MyDouble {
+     *   // value must be less than 10.0
      *   double value = 1 [(buf.validate.field).double.lt = 10.0];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = {</code>
      * @return float
@@ -242,12 +242,12 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
      * `lt` requires the field value to be less than the specified value (field <
      * value). If the field value is equal to or greater than the specified
      * value, an error message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be less than 10.0
+     * ```proto
+     * message MyDouble {
+     *   // value must be less than 10.0
      *   double value = 1 [(buf.validate.field).double.lt = 10.0];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = {</code>
      * @param float $var
@@ -262,15 +262,15 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`lte` requires the field value to be less than or equal to the specified value
+     * `lte` requires the field value to be less than or equal to the specified value
      * (field <= value). If the field value is greater than the specified value,
      * an error message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be less than or equal to 10.0
+     * ```proto
+     * message MyDouble {
+     *   // value must be less than or equal to 10.0
      *   double value = 1 [(buf.validate.field).double.lte = 10.0];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = {</code>
      * @return float
@@ -286,15 +286,15 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`lte` requires the field value to be less than or equal to the specified value
+     * `lte` requires the field value to be less than or equal to the specified value
      * (field <= value). If the field value is greater than the specified value,
      * an error message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be less than or equal to 10.0
+     * ```proto
+     * message MyDouble {
+     *   // value must be less than or equal to 10.0
      *   double value = 1 [(buf.validate.field).double.lte = 10.0];
-     *}
-     *```
+     * }
+     * ```
      *
      * Generated from protobuf field <code>double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = {</code>
      * @param float $var
@@ -314,16 +314,16 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
      * the range is reversed, and the field value must be outside the specified
      * range. If the field value doesn't meet the required conditions, an error
      * message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be greater than 5.0 [double.gt]
-     *  double value = 1 [(buf.validate.field).double.gt = 5.0];
-     *  // value must be greater than 5 and less than 10.0 [double.gt_lt]
-     *  double other_value = 2 [(buf.validate.field).double = { gt: 5.0, lt: 10.0 }];
-     *  // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
-     *  double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
-     *}
-     *```
+     * ```proto
+     * message MyDouble {
+     *   // value must be greater than 5.0 [double.gt]
+     *   double value = 1 [(buf.validate.field).double.gt = 5.0];
+     *   // value must be greater than 5 and less than 10.0 [double.gt_lt]
+     *   double other_value = 2 [(buf.validate.field).double = { gt: 5.0, lt: 10.0 }];
+     *   // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
+     *   double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = {</code>
      * @return float
@@ -344,16 +344,16 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
      * the range is reversed, and the field value must be outside the specified
      * range. If the field value doesn't meet the required conditions, an error
      * message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be greater than 5.0 [double.gt]
-     *  double value = 1 [(buf.validate.field).double.gt = 5.0];
-     *  // value must be greater than 5 and less than 10.0 [double.gt_lt]
-     *  double other_value = 2 [(buf.validate.field).double = { gt: 5.0, lt: 10.0 }];
-     *  // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
-     *  double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
-     *}
-     *```
+     * ```proto
+     * message MyDouble {
+     *   // value must be greater than 5.0 [double.gt]
+     *   double value = 1 [(buf.validate.field).double.gt = 5.0];
+     *   // value must be greater than 5 and less than 10.0 [double.gt_lt]
+     *   double other_value = 2 [(buf.validate.field).double = { gt: 5.0, lt: 10.0 }];
+     *   // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
+     *   double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = {</code>
      * @param float $var
@@ -373,16 +373,16 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be greater than or equal to 5.0 [double.gte]
-     *  double value = 1 [(buf.validate.field).double.gte = 5.0];
-     *  // value must be greater than or equal to 5.0 and less than 10.0 [double.gte_lt]
-     *  double other_value = 2 [(buf.validate.field).double = { gte: 5.0, lt: 10.0 }];
-     *  // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
-     *  double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
-     *}
-     *```
+     * ```proto
+     * message MyDouble {
+     *   // value must be greater than or equal to 5.0 [double.gte]
+     *   double value = 1 [(buf.validate.field).double.gte = 5.0];
+     *   // value must be greater than or equal to 5.0 and less than 10.0 [double.gte_lt]
+     *   double other_value = 2 [(buf.validate.field).double = { gte: 5.0, lt: 10.0 }];
+     *   // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
+     *   double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = {</code>
      * @return float
@@ -403,16 +403,16 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be greater than or equal to 5.0 [double.gte]
-     *  double value = 1 [(buf.validate.field).double.gte = 5.0];
-     *  // value must be greater than or equal to 5.0 and less than 10.0 [double.gte_lt]
-     *  double other_value = 2 [(buf.validate.field).double = { gte: 5.0, lt: 10.0 }];
-     *  // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
-     *  double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
-     *}
-     *```
+     * ```proto
+     * message MyDouble {
+     *   // value must be greater than or equal to 5.0 [double.gte]
+     *   double value = 1 [(buf.validate.field).double.gte = 5.0];
+     *   // value must be greater than or equal to 5.0 and less than 10.0 [double.gte_lt]
+     *   double other_value = 2 [(buf.validate.field).double = { gte: 5.0, lt: 10.0 }];
+     *   // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
+     *   double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = {</code>
      * @param float $var
@@ -430,12 +430,12 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
      * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be in list [1.0, 2.0, 3.0]
-     *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     *}
-     *```
+     * ```proto
+     * message MyDouble {
+     *   // value must be in list [1.0, 2.0, 3.0]
+     *   repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -449,12 +449,12 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
      * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
-     *```proto
-     *message MyDouble {
-     *  // value must be in list [1.0, 2.0, 3.0]
-     *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     *}
-     *```
+     * ```proto
+     * message MyDouble {
+     *   // value must be in list [1.0, 2.0, 3.0]
+     *   repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = {</code>
      * @param array<float>|\Google\Protobuf\Internal\RepeatedField $var
@@ -469,15 +469,15 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must not be in list [1.0, 2.0, 3.0]
-     *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     *}
-     *```
+     * ```proto
+     * message MyDouble {
+     *   // value must not be in list [1.0, 2.0, 3.0]
+     *   repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -488,15 +488,15 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
-     *```proto
-     *message MyDouble {
-     *  // value must not be in list [1.0, 2.0, 3.0]
-     *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     *}
-     *```
+     * ```proto
+     * message MyDouble {
+     *   // value must not be in list [1.0, 2.0, 3.0]
+     *   repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = {</code>
      * @param array<float>|\Google\Protobuf\Internal\RepeatedField $var
@@ -511,7 +511,7 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`finite` requires the field value to be finite. If the field value is
+     * `finite` requires the field value to be finite. If the field value is
      * infinite or NaN, an error message is generated.
      *
      * Generated from protobuf field <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = {</code>
@@ -523,7 +523,7 @@ class DoubleRules extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`finite` requires the field value to be finite. If the field value is
+     * `finite` requires the field value to be finite. If the field value is
      * infinite or NaN, an error message is generated.
      *
      * Generated from protobuf field <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = {</code>

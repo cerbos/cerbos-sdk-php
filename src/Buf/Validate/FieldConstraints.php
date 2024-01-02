@@ -17,61 +17,72 @@ use Google\Protobuf\Internal\GPBUtil;
 class FieldConstraints extends \Google\Protobuf\Internal\Message
 {
     /**
-     * `Constraint` is a repeated field used to represent a textual expression
+     * `cel` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
-     *```proto
-     *message MyMessage {
-     *  // The field `value` must be greater than 42.
-     *  optional int32 value = 1 [(buf.validate.field).cel = {
-     *    id: "my_message.value",
-     *    message: "value must be greater than 42",
-     *    expression: "this > 42",
-     *  }];
-     *}
-     *```
+     * ```proto
+     * message MyMessage {
+     *   // The field `value` must be greater than 42.
+     *   optional int32 value = 1 [(buf.validate.field).cel = {
+     *     id: "my_message.value",
+     *     message: "value must be greater than 42",
+     *     expression: "this > 42",
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
     private $cel;
     /**
-     *`skipped` is an optional boolean attribute that specifies that the
-     *validation rules of this field should not be evaluated. If skipped is set to
-     *true, any validation rules set for the field will be ignored.
-     *```proto
-     *message MyMessage {
-     *  // The field `value` must not be set.
-     *  optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-     *}
-     *```
+     * `skipped` is an optional boolean attribute that specifies that the
+     * validation rules of this field should not be evaluated. If skipped is set to
+     * true, any validation rules set for the field will be ignored.
+     * ```proto
+     * message MyMessage {
+     *   // The field `value` must not be set.
+     *   optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool skipped = 24 [json_name = "skipped"];</code>
      */
     protected $skipped = false;
     /**
-     *`required` is an optional boolean attribute that specifies that
-     *this field must be set. If required is set to true, the field value must
-     *not be empty; otherwise, an error message will be generated.
-     *```proto
-     *message MyMessage {
-     *  // The field `value` must be set.
-     *  optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
-     *}
-     *```
+     * If `required` is true, the field must be populated. Field presence can be
+     * described as "serialized in the wire format," which follows the following rules:
+     * - the following "nullable" fields must be explicitly set to be considered present:
+     *   - singular message fields (may be their empty value)
+     *   - member fields of a oneof (may be their default value)
+     *   - proto3 optional fields (may be their default value)
+     *   - proto2 scalar fields
+     * - proto3 scalar fields must be non-zero to be considered present
+     * - repeated and map fields must be non-empty to be considered present
+     * ```proto
+     * message MyMessage {
+     *   // The field `value` must be set to a non-null value.
+     *   optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool required = 25 [json_name = "required"];</code>
      */
     protected $required = false;
     /**
-     *`ignore_empty` specifies that the validation rules of this field should be
-     *evaluated only if the field isn't empty. If the field is empty, no validation
-     *rules are applied.
-     *```proto
-     *message MyRepeated {
-     *  // The field `value` validation rules should be evaluated only if the field isn't empty.
-     *  repeated string value = 1 [(buf.validate.field).ignore_empty = true];
-     *}
-     *```
+     * If `ignore_empty` is true and applied to a non-nullable field (see
+     * `required` for more details), validation is skipped on the field if it is
+     * the default or empty value. Adding `ignore_empty` to a "nullable" field is
+     * a noop as these unset fields already skip validation (with the exception
+     * of `required`).
+     * ```proto
+     * message MyRepeated {
+     *   // The field `value` min_len rule is only applied if the field isn't empty.
+     *   repeated string value = 1 [
+     *     (buf.validate.field).ignore_empty = true,
+     *     (buf.validate.field).min_len = 5
+     *   ];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ignore_empty = 26 [json_name = "ignoreEmpty"];</code>
      */
@@ -85,49 +96,60 @@ class FieldConstraints extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type array<\Buf\Validate\Constraint>|\Google\Protobuf\Internal\RepeatedField $cel
-     *           `Constraint` is a repeated field used to represent a textual expression
+     *           `cel` is a repeated field used to represent a textual expression
      *           in the Common Expression Language (CEL) syntax. For more information on
      *           CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
-     *          ```proto
-     *          message MyMessage {
-     *            // The field `value` must be greater than 42.
-     *            optional int32 value = 1 [(buf.validate.field).cel = {
-     *              id: "my_message.value",
-     *              message: "value must be greater than 42",
-     *              expression: "this > 42",
-     *            }];
-     *          }
-     *          ```
+     *           ```proto
+     *           message MyMessage {
+     *             // The field `value` must be greater than 42.
+     *             optional int32 value = 1 [(buf.validate.field).cel = {
+     *               id: "my_message.value",
+     *               message: "value must be greater than 42",
+     *               expression: "this > 42",
+     *             }];
+     *           }
+     *           ```
      *     @type bool $skipped
-     *          `skipped` is an optional boolean attribute that specifies that the
-     *          validation rules of this field should not be evaluated. If skipped is set to
-     *          true, any validation rules set for the field will be ignored.
-     *          ```proto
-     *          message MyMessage {
-     *            // The field `value` must not be set.
-     *            optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-     *          }
-     *          ```
+     *           `skipped` is an optional boolean attribute that specifies that the
+     *           validation rules of this field should not be evaluated. If skipped is set to
+     *           true, any validation rules set for the field will be ignored.
+     *           ```proto
+     *           message MyMessage {
+     *             // The field `value` must not be set.
+     *             optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
+     *           }
+     *           ```
      *     @type bool $required
-     *          `required` is an optional boolean attribute that specifies that
-     *          this field must be set. If required is set to true, the field value must
-     *          not be empty; otherwise, an error message will be generated.
-     *          ```proto
-     *          message MyMessage {
-     *            // The field `value` must be set.
-     *            optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
-     *          }
-     *          ```
+     *           If `required` is true, the field must be populated. Field presence can be
+     *           described as "serialized in the wire format," which follows the following rules:
+     *           - the following "nullable" fields must be explicitly set to be considered present:
+     *             - singular message fields (may be their empty value)
+     *             - member fields of a oneof (may be their default value)
+     *             - proto3 optional fields (may be their default value)
+     *             - proto2 scalar fields
+     *           - proto3 scalar fields must be non-zero to be considered present
+     *           - repeated and map fields must be non-empty to be considered present
+     *           ```proto
+     *           message MyMessage {
+     *             // The field `value` must be set to a non-null value.
+     *             optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
+     *           }
+     *           ```
      *     @type bool $ignore_empty
-     *          `ignore_empty` specifies that the validation rules of this field should be
-     *          evaluated only if the field isn't empty. If the field is empty, no validation
-     *          rules are applied.
-     *          ```proto
-     *          message MyRepeated {
-     *            // The field `value` validation rules should be evaluated only if the field isn't empty.
-     *            repeated string value = 1 [(buf.validate.field).ignore_empty = true];
-     *          }
-     *          ```
+     *           If `ignore_empty` is true and applied to a non-nullable field (see
+     *           `required` for more details), validation is skipped on the field if it is
+     *           the default or empty value. Adding `ignore_empty` to a "nullable" field is
+     *           a noop as these unset fields already skip validation (with the exception
+     *           of `required`).
+     *           ```proto
+     *           message MyRepeated {
+     *             // The field `value` min_len rule is only applied if the field isn't empty.
+     *             repeated string value = 1 [
+     *               (buf.validate.field).ignore_empty = true,
+     *               (buf.validate.field).min_len = 5
+     *             ];
+     *           }
+     *           ```
      *     @type \Buf\Validate\FloatRules $float
      *           Scalar Field Types
      *     @type \Buf\Validate\DoubleRules $double
@@ -160,19 +182,19 @@ class FieldConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * `Constraint` is a repeated field used to represent a textual expression
+     * `cel` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
-     *```proto
-     *message MyMessage {
-     *  // The field `value` must be greater than 42.
-     *  optional int32 value = 1 [(buf.validate.field).cel = {
-     *    id: "my_message.value",
-     *    message: "value must be greater than 42",
-     *    expression: "this > 42",
-     *  }];
-     *}
-     *```
+     * ```proto
+     * message MyMessage {
+     *   // The field `value` must be greater than 42.
+     *   optional int32 value = 1 [(buf.validate.field).cel = {
+     *     id: "my_message.value",
+     *     message: "value must be greater than 42",
+     *     expression: "this > 42",
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -183,19 +205,19 @@ class FieldConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * `Constraint` is a repeated field used to represent a textual expression
+     * `cel` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
-     *```proto
-     *message MyMessage {
-     *  // The field `value` must be greater than 42.
-     *  optional int32 value = 1 [(buf.validate.field).cel = {
-     *    id: "my_message.value",
-     *    message: "value must be greater than 42",
-     *    expression: "this > 42",
-     *  }];
-     *}
-     *```
+     * ```proto
+     * message MyMessage {
+     *   // The field `value` must be greater than 42.
+     *   optional int32 value = 1 [(buf.validate.field).cel = {
+     *     id: "my_message.value",
+     *     message: "value must be greater than 42",
+     *     expression: "this > 42",
+     *   }];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      * @param array<\Buf\Validate\Constraint>|\Google\Protobuf\Internal\RepeatedField $var
@@ -210,15 +232,15 @@ class FieldConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`skipped` is an optional boolean attribute that specifies that the
-     *validation rules of this field should not be evaluated. If skipped is set to
-     *true, any validation rules set for the field will be ignored.
-     *```proto
-     *message MyMessage {
-     *  // The field `value` must not be set.
-     *  optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-     *}
-     *```
+     * `skipped` is an optional boolean attribute that specifies that the
+     * validation rules of this field should not be evaluated. If skipped is set to
+     * true, any validation rules set for the field will be ignored.
+     * ```proto
+     * message MyMessage {
+     *   // The field `value` must not be set.
+     *   optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool skipped = 24 [json_name = "skipped"];</code>
      * @return bool
@@ -229,15 +251,15 @@ class FieldConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`skipped` is an optional boolean attribute that specifies that the
-     *validation rules of this field should not be evaluated. If skipped is set to
-     *true, any validation rules set for the field will be ignored.
-     *```proto
-     *message MyMessage {
-     *  // The field `value` must not be set.
-     *  optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-     *}
-     *```
+     * `skipped` is an optional boolean attribute that specifies that the
+     * validation rules of this field should not be evaluated. If skipped is set to
+     * true, any validation rules set for the field will be ignored.
+     * ```proto
+     * message MyMessage {
+     *   // The field `value` must not be set.
+     *   optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool skipped = 24 [json_name = "skipped"];</code>
      * @param bool $var
@@ -252,15 +274,21 @@ class FieldConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`required` is an optional boolean attribute that specifies that
-     *this field must be set. If required is set to true, the field value must
-     *not be empty; otherwise, an error message will be generated.
-     *```proto
-     *message MyMessage {
-     *  // The field `value` must be set.
-     *  optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
-     *}
-     *```
+     * If `required` is true, the field must be populated. Field presence can be
+     * described as "serialized in the wire format," which follows the following rules:
+     * - the following "nullable" fields must be explicitly set to be considered present:
+     *   - singular message fields (may be their empty value)
+     *   - member fields of a oneof (may be their default value)
+     *   - proto3 optional fields (may be their default value)
+     *   - proto2 scalar fields
+     * - proto3 scalar fields must be non-zero to be considered present
+     * - repeated and map fields must be non-empty to be considered present
+     * ```proto
+     * message MyMessage {
+     *   // The field `value` must be set to a non-null value.
+     *   optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool required = 25 [json_name = "required"];</code>
      * @return bool
@@ -271,15 +299,21 @@ class FieldConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`required` is an optional boolean attribute that specifies that
-     *this field must be set. If required is set to true, the field value must
-     *not be empty; otherwise, an error message will be generated.
-     *```proto
-     *message MyMessage {
-     *  // The field `value` must be set.
-     *  optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
-     *}
-     *```
+     * If `required` is true, the field must be populated. Field presence can be
+     * described as "serialized in the wire format," which follows the following rules:
+     * - the following "nullable" fields must be explicitly set to be considered present:
+     *   - singular message fields (may be their empty value)
+     *   - member fields of a oneof (may be their default value)
+     *   - proto3 optional fields (may be their default value)
+     *   - proto2 scalar fields
+     * - proto3 scalar fields must be non-zero to be considered present
+     * - repeated and map fields must be non-empty to be considered present
+     * ```proto
+     * message MyMessage {
+     *   // The field `value` must be set to a non-null value.
+     *   optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool required = 25 [json_name = "required"];</code>
      * @param bool $var
@@ -294,15 +328,20 @@ class FieldConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ignore_empty` specifies that the validation rules of this field should be
-     *evaluated only if the field isn't empty. If the field is empty, no validation
-     *rules are applied.
-     *```proto
-     *message MyRepeated {
-     *  // The field `value` validation rules should be evaluated only if the field isn't empty.
-     *  repeated string value = 1 [(buf.validate.field).ignore_empty = true];
-     *}
-     *```
+     * If `ignore_empty` is true and applied to a non-nullable field (see
+     * `required` for more details), validation is skipped on the field if it is
+     * the default or empty value. Adding `ignore_empty` to a "nullable" field is
+     * a noop as these unset fields already skip validation (with the exception
+     * of `required`).
+     * ```proto
+     * message MyRepeated {
+     *   // The field `value` min_len rule is only applied if the field isn't empty.
+     *   repeated string value = 1 [
+     *     (buf.validate.field).ignore_empty = true,
+     *     (buf.validate.field).min_len = 5
+     *   ];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ignore_empty = 26 [json_name = "ignoreEmpty"];</code>
      * @return bool
@@ -313,15 +352,20 @@ class FieldConstraints extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *`ignore_empty` specifies that the validation rules of this field should be
-     *evaluated only if the field isn't empty. If the field is empty, no validation
-     *rules are applied.
-     *```proto
-     *message MyRepeated {
-     *  // The field `value` validation rules should be evaluated only if the field isn't empty.
-     *  repeated string value = 1 [(buf.validate.field).ignore_empty = true];
-     *}
-     *```
+     * If `ignore_empty` is true and applied to a non-nullable field (see
+     * `required` for more details), validation is skipped on the field if it is
+     * the default or empty value. Adding `ignore_empty` to a "nullable" field is
+     * a noop as these unset fields already skip validation (with the exception
+     * of `required`).
+     * ```proto
+     * message MyRepeated {
+     *   // The field `value` min_len rule is only applied if the field isn't empty.
+     *   repeated string value = 1 [
+     *     (buf.validate.field).ignore_empty = true,
+     *     (buf.validate.field).min_len = 5
+     *   ];
+     * }
+     * ```
      *
      * Generated from protobuf field <code>bool ignore_empty = 26 [json_name = "ignoreEmpty"];</code>
      * @param bool $var
