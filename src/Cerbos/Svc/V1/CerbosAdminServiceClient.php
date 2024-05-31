@@ -35,6 +35,20 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
     }
 
     /**
+     * @param \Cerbos\Request\V1\InspectPoliciesRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall
+     */
+    public function InspectPolicies(\Cerbos\Request\V1\InspectPoliciesRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/cerbos.svc.v1.CerbosAdminService/InspectPolicies',
+        $argument,
+        ['\Cerbos\Response\V1\InspectPoliciesResponse', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
      * @param \Cerbos\Request\V1\ListPoliciesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options

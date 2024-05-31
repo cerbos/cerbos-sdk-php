@@ -23,7 +23,7 @@ class Response
         \GPBMetadata\ProtocGenOpenapiv2\Options\Annotations::initOnce();
         $pool->internalAddGeneratedFile(
             '
-‹Z
+Àc
 !cerbos/response/v1/response.protocerbos.response.v1cerbos/effect/v1/effect.protocerbos/engine/v1/engine.protocerbos/policy/v1/policy.protocerbos/schema/v1/schema.protogoogle/protobuf/empty.proto.protoc-gen-openapiv2/options/annotations.proto"Í
 PlanResourcesResponseo
 
@@ -118,12 +118,17 @@ $2"Metadata about request evaluation.T
 ActionsEntry
 key (	Rkey.
 value (2.cerbos.effect.v1.EffectRvalue:8:2’A/
--2+Response from the check resources API call."§
+-2+Response from the check resources API call."Ë
 PlaygroundFailureC
-errors (2+.cerbos.response.v1.PlaygroundFailure.ErrorRerrors1
+errors (2+.cerbos.response.v1.PlaygroundFailure.ErrorRerrorsT
+ErrorDetails
+line (Rline
+column (Rcolumn
+context (	Rcontext
 Error
 file (	Rfile
-error (	Rerror:’A
+error (	RerrorL
+details (22.cerbos.response.v1.PlaygroundFailure.ErrorDetailsRdetails:’A
 2Playground response"è
 PlaygroundValidateResponse#
 playground_id (	RplaygroundIdA
@@ -192,7 +197,30 @@ policy_ids (	R	policyIds:3’A0
 2Disable policy response"`
 EnablePolicyResponse)
 enabled_policies (RenabledPolicies:’A
-2Enable policy response">
+2Enable policy response"Ž
+InspectPoliciesResponseR
+results (28.cerbos.response.v1.InspectPoliciesResponse.ResultsEntryRresultsÉ
+Variable=
+name (	B)’A&2$Variable name defined in the policy.RnameK
+value (	B5’A220Raw value of the variable defined in the policy.Rvalue
+kind (29.cerbos.response.v1.InspectPoliciesResponse.Variable.KindB0’A-2+Kind of the variable defined in the policy.Rkindo
+source (	BW’AT2RSource of the variable defined in the policy. Only exists if the kind is imported.RsourceE
+used (B1’A.2,Whether the variable is used in a condition.Rused"x
+Kind
+KIND_UNSPECIFIED 
+KIND_EXPORTED
+KIND_IMPORTED
+
+KIND_LOCAL
+KIND_UNDEFINED
+KIND_UNKNOWNÀ
+Result<
+actions (	B"’A2Actions defined in the policyRactionsx
+	variables (24.cerbos.response.v1.InspectPoliciesResponse.VariableB$’A!2Variables defined in the policyR	variablesn
+ResultsEntry
+key (	RkeyH
+value (22.cerbos.response.v1.InspectPoliciesResponse.ResultRvalue:8: ’A
+2Inspect policies response">
 AddOrUpdateSchemaResponse:!’A
 2Add/update schema response"U
 ListSchemasResponse

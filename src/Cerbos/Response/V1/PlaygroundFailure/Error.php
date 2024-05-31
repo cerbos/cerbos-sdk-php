@@ -21,6 +21,10 @@ class Error extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string error = 2 [json_name = "error"];</code>
      */
     protected $error = '';
+    /**
+     * Generated from protobuf field <code>.cerbos.response.v1.PlaygroundFailure.ErrorDetails details = 3 [json_name = "details"];</code>
+     */
+    protected $details = null;
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class Error extends \Google\Protobuf\Internal\Message
      *
      *     @type string $file
      *     @type string $error
+     *     @type \Cerbos\Response\V1\PlaygroundFailure\ErrorDetails $details
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,38 @@ class Error extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->error = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.response.v1.PlaygroundFailure.ErrorDetails details = 3 [json_name = "details"];</code>
+     * @return \Cerbos\Response\V1\PlaygroundFailure\ErrorDetails|null
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+
+    public function hasDetails()
+    {
+        return isset($this->details);
+    }
+
+    public function clearDetails()
+    {
+        unset($this->details);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.response.v1.PlaygroundFailure.ErrorDetails details = 3 [json_name = "details"];</code>
+     * @param \Cerbos\Response\V1\PlaygroundFailure\ErrorDetails $var
+     * @return $this
+     */
+    public function setDetails($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Response\V1\PlaygroundFailure\ErrorDetails::class);
+        $this->details = $var;
 
         return $this;
     }
