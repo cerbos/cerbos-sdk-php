@@ -9,9 +9,9 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>cerbos.request.v1.ListPoliciesRequest</code>
+ * Generated from protobuf message <code>cerbos.request.v1.InspectPoliciesRequest</code>
  */
-class ListPoliciesRequest extends \Google\Protobuf\Internal\Message
+class InspectPoliciesRequest extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>bool include_disabled = 1 [json_name = "includeDisabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
