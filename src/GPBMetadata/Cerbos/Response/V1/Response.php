@@ -23,7 +23,7 @@ class Response
         \GPBMetadata\ProtocGenOpenapiv2\Options\Annotations::initOnce();
         $pool->internalAddGeneratedFile(
             '
-¿c
+Ìh
 !cerbos/response/v1/response.protocerbos.response.v1cerbos/effect/v1/effect.protocerbos/engine/v1/engine.protocerbos/policy/v1/policy.protocerbos/schema/v1/schema.protogoogle/protobuf/empty.proto.protoc-gen-openapiv2/options/annotations.proto"Õ
 PlanResourcesResponseo
 
@@ -197,9 +197,18 @@ policy_ids (	R	policyIds:3íA0
 2Disable policy response"`
 EnablePolicyResponse)
 enabled_policies (RenabledPolicies:íA
-2Enable policy response"é
+2Enable policy response"ª
 InspectPoliciesResponseR
-results (28.cerbos.response.v1.InspectPoliciesResponse.ResultsEntryRresults…
+results (28.cerbos.response.v1.InspectPoliciesResponse.ResultsEntryRresultsÅ
+DerivedRoleA
+name (	B-íA*2(Derived role name defined in the policy.RnameÜ
+kind (2<.cerbos.response.v1.InspectPoliciesResponse.DerivedRole.KindB4íA12/Kind of the derived role defined in the policy.RkindN
+source (	B6íA321Source of the derived role defined in the policy.Rsource"V
+Kind
+KIND_UNSPECIFIED 
+KIND_UNDEFINED
+KIND_EXPORTED
+KIND_IMPORTED…
 Variable=
 name (	B)íA&2$Variable name defined in the policy.RnameK
 value (	B5íA220Raw value of the variable defined in the policy.Rvalue
@@ -213,10 +222,12 @@ policy_ids (	R	policyIds:3íA0
 
 KIND_LOCAL
 KIND_UNDEFINED
-KIND_UNKNOWN¿
-Result<
-actions (	B"íA2Actions defined in the policyRactionsx
-	variables (24.cerbos.response.v1.InspectPoliciesResponse.VariableB$íA!2Variables defined in the policyR	variablesn
+KIND_UNKNOWNÈ
+Result=
+actions (	B#íA 2Actions defined in the policy.Ractions|
+	variables (24.cerbos.response.v1.InspectPoliciesResponse.VariableB(íA%2#Variables referenced in the policy.R	variablesî
+	policy_id (	BwíAt2rFor blob, disk, and git stores policy ID is the file name. For other stores it is <kind>.<name>.<version>/<scope>.RpolicyIdä
+derived_roles (27.cerbos.response.v1.InspectPoliciesResponse.DerivedRoleB,íA)2\'Derived roles referenced in the policy.RderivedRolesn
 ResultsEntry
 key (	RkeyH
 value (22.cerbos.response.v1.InspectPoliciesResponse.ResultRvalue:8: íA

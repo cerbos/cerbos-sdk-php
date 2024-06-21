@@ -21,6 +21,14 @@ class Result extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Variable variables = 2 [json_name = "variables", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
      */
     private $variables;
+    /**
+     * Generated from protobuf field <code>string policy_id = 3 [json_name = "policyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    protected $policy_id = '';
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.DerivedRole derived_roles = 4 [json_name = "derivedRoles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    private $derived_roles;
 
     /**
      * Constructor.
@@ -30,6 +38,8 @@ class Result extends \Google\Protobuf\Internal\Message
      *
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
      *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\Variable>|\Google\Protobuf\Internal\RepeatedField $variables
+     *     @type string $policy_id
+     *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole>|\Google\Protobuf\Internal\RepeatedField $derived_roles
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +87,50 @@ class Result extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Response\V1\InspectPoliciesResponse\Variable::class);
         $this->variables = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string policy_id = 3 [json_name = "policyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return string
+     */
+    public function getPolicyId()
+    {
+        return $this->policy_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string policy_id = 3 [json_name = "policyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPolicyId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->policy_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.DerivedRole derived_roles = 4 [json_name = "derivedRoles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getDerivedRoles()
+    {
+        return $this->derived_roles;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.DerivedRole derived_roles = 4 [json_name = "derivedRoles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param array<\Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setDerivedRoles($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole::class);
+        $this->derived_roles = $arr;
 
         return $this;
     }
