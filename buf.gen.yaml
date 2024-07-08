@@ -1,7 +1,7 @@
-version: v1
+version: v2
 plugins:
-  - plugin: buf.build/protocolbuffers/php:v23.2
+  - remote: buf.build/protocolbuffers/php:v27.2
     out: ./src
 
-  - plugin: buf.build/grpc/php:v1.55.1
+  - remote: buf.build/grpc/php:v1.65.0
     out: ./src
