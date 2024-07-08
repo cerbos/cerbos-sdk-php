@@ -11,7 +11,6 @@ TMP_PROTO_DIR="$(mktemp -d -t cerbos-XXXXX)"
 
 trap 'rm -rf "$TMP_PROTO_DIR"' EXIT
 
-buf mod update
 buf export "$CERBOS_MODULE" -o "$TMP_PROTO_DIR"
 
 rm -rf protos
