@@ -29,6 +29,5 @@ test:
 
 .PHONY: generate-proto-code
 generate-proto-code:
-	./fetch_protos.sh
 	rm -rf ${SRC_DIR}/Cerbos ${SRC_DIR}/GPBMetadata
 	buf generate ${PROTOS_DIR}

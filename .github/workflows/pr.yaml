@@ -16,7 +16,6 @@ jobs:
       matrix:
         php-version: [ '8.2', '8.3' ]
         experimental: [ false ]
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,8 +27,18 @@ jobs:
           coverage: xdebug
           extensions: "grpc"
 
+      - name: Setup Buf
+        uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Generate
+        env:
+          BUF_TOKEN: ${{ secrets.BUF_TOKEN }}
+        run: make generate
 
       - name: Lint
         shell: bash
