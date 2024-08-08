@@ -30,6 +30,10 @@ class Result extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.DerivedRole derived_roles = 4 [json_name = "derivedRoles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
      */
     private $derived_roles;
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Attribute attributes = 5 [json_name = "attributes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    private $attributes;
 
     /**
      * Constructor.
@@ -41,6 +45,7 @@ class Result extends \Google\Protobuf\Internal\Message
      *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\Variable>|\Google\Protobuf\Internal\RepeatedField $variables
      *     @type string $policy_id
      *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole>|\Google\Protobuf\Internal\RepeatedField $derived_roles
+     *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\Attribute>|\Google\Protobuf\Internal\RepeatedField $attributes
      * }
      */
     public function __construct($data = NULL) {
@@ -132,6 +137,28 @@ class Result extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole::class);
         $this->derived_roles = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Attribute attributes = 5 [json_name = "attributes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Attribute attributes = 5 [json_name = "attributes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param array<\Cerbos\Response\V1\InspectPoliciesResponse\Attribute>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setAttributes($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Response\V1\InspectPoliciesResponse\Attribute::class);
+        $this->attributes = $arr;
 
         return $this;
     }

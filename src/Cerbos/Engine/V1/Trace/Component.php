@@ -37,6 +37,7 @@ class Component extends \Google\Protobuf\Internal\Message
      *     @type string $scope
      *     @type \Cerbos\Engine\V1\Trace\Component\Variable $variable
      *     @type string $output
+     *     @type string $role_policy_scope
      * }
      */
     public function __construct($data = NULL) {
@@ -332,6 +333,33 @@ class Component extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->writeOneof(11, $var);
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string role_policy_scope = 12 [json_name = "rolePolicyScope"];</code>
+     * @return string
+     */
+    public function getRolePolicyScope()
+    {
+        return $this->readOneof(12);
+    }
+
+    public function hasRolePolicyScope()
+    {
+        return $this->hasOneof(12);
+    }
+
+    /**
+     * Generated from protobuf field <code>string role_policy_scope = 12 [json_name = "rolePolicyScope"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setRolePolicyScope($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->writeOneof(12, $var);
 
         return $this;
     }
