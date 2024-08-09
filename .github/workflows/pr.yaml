@@ -137,15 +137,15 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Run docker-compose
-        run: docker-compose up -d
+      - name: Run docker compose
+        run: docker compose up -d
 
       - name: Run unit tests
         shell: bash
         run: make test
 
-      - name: Stop docker-compose
-        run: docker-compose down
+      - name: Stop docker compose
+        run: docker compose down
 
       - name: Check repo status
         shell: bash

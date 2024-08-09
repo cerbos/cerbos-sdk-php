@@ -55,6 +55,7 @@ class Policy extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Policy\V1\PrincipalPolicy $principal_policy
      *     @type \Cerbos\Policy\V1\DerivedRoles $derived_roles
      *     @type \Cerbos\Policy\V1\ExportVariables $export_variables
+     *     @type \Cerbos\Policy\V1\RolePolicy $role_policy
      *     @type array|\Google\Protobuf\Internal\MapField $variables
      *     @type string $json_schema
      * }
@@ -266,6 +267,33 @@ class Policy extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Policy\V1\ExportVariables::class);
         $this->writeOneof(10, $var);
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.RolePolicy role_policy = 11 [json_name = "rolePolicy"];</code>
+     * @return \Cerbos\Policy\V1\RolePolicy|null
+     */
+    public function getRolePolicy()
+    {
+        return $this->readOneof(11);
+    }
+
+    public function hasRolePolicy()
+    {
+        return $this->hasOneof(11);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.RolePolicy role_policy = 11 [json_name = "rolePolicy"];</code>
+     * @param \Cerbos\Policy\V1\RolePolicy $var
+     * @return $this
+     */
+    public function setRolePolicy($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\RolePolicy::class);
+        $this->writeOneof(11, $var);
 
         return $this;
     }

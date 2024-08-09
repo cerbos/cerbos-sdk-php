@@ -29,19 +29,22 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
     /**
      * Deprecated. Use method.check_resources.inputs instead.
      *
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckInput inputs = 4 [json_name = "inputs"];</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckInput inputs = 4 [json_name = "inputs", deprecated = true];</code>
+     * @deprecated
      */
     private $inputs;
     /**
      * Deprecated. Use method.check_resources.outputs instead.
      *
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckOutput outputs = 5 [json_name = "outputs"];</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckOutput outputs = 5 [json_name = "outputs", deprecated = true];</code>
+     * @deprecated
      */
     private $outputs;
     /**
      * Deprecated. Use method.check_resources.error instead.
      *
-     * Generated from protobuf field <code>string error = 6 [json_name = "error"];</code>
+     * Generated from protobuf field <code>string error = 6 [json_name = "error", deprecated = true];</code>
+     * @deprecated
      */
     protected $error = '';
     /**
@@ -169,23 +172,27 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
     /**
      * Deprecated. Use method.check_resources.inputs instead.
      *
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckInput inputs = 4 [json_name = "inputs"];</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckInput inputs = 4 [json_name = "inputs", deprecated = true];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
+     * @deprecated
      */
     public function getInputs()
     {
+        @trigger_error('inputs is deprecated.', E_USER_DEPRECATED);
         return $this->inputs;
     }
 
     /**
      * Deprecated. Use method.check_resources.inputs instead.
      *
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckInput inputs = 4 [json_name = "inputs"];</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckInput inputs = 4 [json_name = "inputs", deprecated = true];</code>
      * @param array<\Cerbos\Engine\V1\CheckInput>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
+     * @deprecated
      */
     public function setInputs($var)
     {
+        @trigger_error('inputs is deprecated.', E_USER_DEPRECATED);
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\CheckInput::class);
         $this->inputs = $arr;
 
@@ -195,23 +202,27 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
     /**
      * Deprecated. Use method.check_resources.outputs instead.
      *
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckOutput outputs = 5 [json_name = "outputs"];</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckOutput outputs = 5 [json_name = "outputs", deprecated = true];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
+     * @deprecated
      */
     public function getOutputs()
     {
+        @trigger_error('outputs is deprecated.', E_USER_DEPRECATED);
         return $this->outputs;
     }
 
     /**
      * Deprecated. Use method.check_resources.outputs instead.
      *
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckOutput outputs = 5 [json_name = "outputs"];</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckOutput outputs = 5 [json_name = "outputs", deprecated = true];</code>
      * @param array<\Cerbos\Engine\V1\CheckOutput>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
+     * @deprecated
      */
     public function setOutputs($var)
     {
+        @trigger_error('outputs is deprecated.', E_USER_DEPRECATED);
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\CheckOutput::class);
         $this->outputs = $arr;
 
@@ -221,23 +232,27 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
     /**
      * Deprecated. Use method.check_resources.error instead.
      *
-     * Generated from protobuf field <code>string error = 6 [json_name = "error"];</code>
+     * Generated from protobuf field <code>string error = 6 [json_name = "error", deprecated = true];</code>
      * @return string
+     * @deprecated
      */
     public function getError()
     {
+        @trigger_error('error is deprecated.', E_USER_DEPRECATED);
         return $this->error;
     }
 
     /**
      * Deprecated. Use method.check_resources.error instead.
      *
-     * Generated from protobuf field <code>string error = 6 [json_name = "error"];</code>
+     * Generated from protobuf field <code>string error = 6 [json_name = "error", deprecated = true];</code>
      * @param string $var
      * @return $this
+     * @deprecated
      */
     public function setError($var)
     {
+        @trigger_error('error is deprecated.', E_USER_DEPRECATED);
         GPBUtil::checkString($var, True);
         $this->error = $var;
 

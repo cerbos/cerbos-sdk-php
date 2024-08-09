@@ -26,6 +26,14 @@ class Principal extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>map<string, .google.protobuf.Value> attr = 3 [json_name = "attr"];</code>
      */
     private $attr;
+    /**
+     * Generated from protobuf field <code>string policy_version = 4 [json_name = "policyVersion"];</code>
+     */
+    protected $policy_version = '';
+    /**
+     * Generated from protobuf field <code>string scope = 5 [json_name = "scope"];</code>
+     */
+    protected $scope = '';
 
     /**
      * Constructor.
@@ -36,6 +44,8 @@ class Principal extends \Google\Protobuf\Internal\Message
      *     @type string $id
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $roles
      *     @type array|\Google\Protobuf\Internal\MapField $attr
+     *     @type string $policy_version
+     *     @type string $scope
      * }
      */
     public function __construct($data = NULL) {
@@ -105,6 +115,50 @@ class Principal extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Google\Protobuf\Value::class);
         $this->attr = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string policy_version = 4 [json_name = "policyVersion"];</code>
+     * @return string
+     */
+    public function getPolicyVersion()
+    {
+        return $this->policy_version;
+    }
+
+    /**
+     * Generated from protobuf field <code>string policy_version = 4 [json_name = "policyVersion"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPolicyVersion($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->policy_version = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string scope = 5 [json_name = "scope"];</code>
+     * @return string
+     */
+    public function getScope()
+    {
+        return $this->scope;
+    }
+
+    /**
+     * Generated from protobuf field <code>string scope = 5 [json_name = "scope"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setScope($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->scope = $var;
 
         return $this;
     }

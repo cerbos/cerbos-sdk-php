@@ -23,9 +23,9 @@ validate-composer:
 
 .PHONY: test
 test:
-	docker-compose up -d
+	docker compose up -d
 	vendor/bin/phpunit --no-coverage
-	docker-compose down
+	docker compose down
 
 .PHONY: generate-proto-code
 generate-proto-code:
