@@ -28,7 +28,7 @@ jobs:
           extensions: "grpc"
 
       - name: Setup Buf
-        uses: bufbuild/buf-setup-action@v1.41.0
+        uses: bufbuild/buf-setup-action@v1.42.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
