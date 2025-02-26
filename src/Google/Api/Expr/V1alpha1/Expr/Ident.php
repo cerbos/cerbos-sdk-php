@@ -19,7 +19,8 @@ class Ident extends \Google\Protobuf\Internal\Message
     /**
      * Required. Holds a single, unqualified identifier, possibly preceded by a
      * '.'.
-     * Qualified names are represented by the [Expr.Select][google.api.expr.v1alpha1.Expr.Select] expression.
+     * Qualified names are represented by the
+     * [Expr.Select][google.api.expr.v1alpha1.Expr.Select] expression.
      *
      * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      */
@@ -34,7 +35,8 @@ class Ident extends \Google\Protobuf\Internal\Message
      *     @type string $name
      *           Required. Holds a single, unqualified identifier, possibly preceded by a
      *           '.'.
-     *           Qualified names are represented by the [Expr.Select][google.api.expr.v1alpha1.Expr.Select] expression.
+     *           Qualified names are represented by the
+     *           [Expr.Select][google.api.expr.v1alpha1.Expr.Select] expression.
      * }
      */
     public function __construct($data = NULL) {
@@ -45,7 +47,8 @@ class Ident extends \Google\Protobuf\Internal\Message
     /**
      * Required. Holds a single, unqualified identifier, possibly preceded by a
      * '.'.
-     * Qualified names are represented by the [Expr.Select][google.api.expr.v1alpha1.Expr.Select] expression.
+     * Qualified names are represented by the
+     * [Expr.Select][google.api.expr.v1alpha1.Expr.Select] expression.
      *
      * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      * @return string
@@ -58,7 +61,8 @@ class Ident extends \Google\Protobuf\Internal\Message
     /**
      * Required. Holds a single, unqualified identifier, possibly preceded by a
      * '.'.
-     * Qualified names are represented by the [Expr.Select][google.api.expr.v1alpha1.Expr.Select] expression.
+     * Qualified names are represented by the
+     * [Expr.Select][google.api.expr.v1alpha1.Expr.Select] expression.
      *
      * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      * @param string $var

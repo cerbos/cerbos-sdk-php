@@ -15,13 +15,17 @@ use Google\Protobuf\Internal\GPBUtil;
 class RoleRule extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource"];</code>
      */
     protected $resource = '';
     /**
-     * Generated from protobuf field <code>repeated string permissible_actions = 2 [json_name = "permissibleActions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string allow_actions = 2 [json_name = "allowActions"];</code>
      */
-    private $permissible_actions;
+    private $allow_actions;
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Condition condition = 3 [json_name = "condition"];</code>
+     */
+    protected $condition = null;
 
     /**
      * Constructor.
@@ -30,7 +34,8 @@ class RoleRule extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $resource
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $permissible_actions
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $allow_actions
+     *     @type \Cerbos\Policy\V1\Condition $condition
      * }
      */
     public function __construct($data = NULL) {
@@ -39,7 +44,7 @@ class RoleRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource"];</code>
      * @return string
      */
     public function getResource()
@@ -48,7 +53,7 @@ class RoleRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource"];</code>
      * @param string $var
      * @return $this
      */
@@ -61,23 +66,55 @@ class RoleRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string permissible_actions = 2 [json_name = "permissibleActions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string allow_actions = 2 [json_name = "allowActions"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
-    public function getPermissibleActions()
+    public function getAllowActions()
     {
-        return $this->permissible_actions;
+        return $this->allow_actions;
     }
 
     /**
-     * Generated from protobuf field <code>repeated string permissible_actions = 2 [json_name = "permissibleActions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string allow_actions = 2 [json_name = "allowActions"];</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
-    public function setPermissibleActions($var)
+    public function setAllowActions($var)
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
-        $this->permissible_actions = $arr;
+        $this->allow_actions = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Condition condition = 3 [json_name = "condition"];</code>
+     * @return \Cerbos\Policy\V1\Condition|null
+     */
+    public function getCondition()
+    {
+        return $this->condition;
+    }
+
+    public function hasCondition()
+    {
+        return isset($this->condition);
+    }
+
+    public function clearCondition()
+    {
+        unset($this->condition);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Condition condition = 3 [json_name = "condition"];</code>
+     * @param \Cerbos\Policy\V1\Condition $var
+     * @return $this
+     */
+    public function setCondition($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Condition::class);
+        $this->condition = $var;
 
         return $this;
     }

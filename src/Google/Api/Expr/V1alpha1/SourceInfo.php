@@ -60,6 +60,17 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>map<int64, .google.api.expr.v1alpha1.Expr> macro_calls = 5 [json_name = "macroCalls"];</code>
      */
     private $macro_calls;
+    /**
+     * A list of tags for extensions that were used while parsing or type checking
+     * the source expression. For example, optimizations that require special
+     * runtime support may be specified.
+     * These are used to check feature support between components in separate
+     * implementations. This can be used to either skip redundant work or
+     * report an error if the extension is unsupported.
+     *
+     * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.SourceInfo.Extension extensions = 6 [json_name = "extensions"];</code>
+     */
+    private $extensions;
 
     /**
      * Constructor.
@@ -91,6 +102,13 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      *           `list.exists(e, e > 10)` translates to a comprehension expression. The key
      *           in the map corresponds to the expression id of the expanded macro, and the
      *           value is the call `Expr` that was replaced.
+     *     @type array<\Google\Api\Expr\V1alpha1\SourceInfo\Extension>|\Google\Protobuf\Internal\RepeatedField $extensions
+     *           A list of tags for extensions that were used while parsing or type checking
+     *           the source expression. For example, optimizations that require special
+     *           runtime support may be specified.
+     *           These are used to check feature support between components in separate
+     *           implementations. This can be used to either skip redundant work or
+     *           report an error if the extension is unsupported.
      * }
      */
     public function __construct($data = NULL) {
@@ -252,6 +270,42 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::INT64, \Google\Protobuf\Internal\GPBType::MESSAGE, \Google\Api\Expr\V1alpha1\Expr::class);
         $this->macro_calls = $arr;
+
+        return $this;
+    }
+
+    /**
+     * A list of tags for extensions that were used while parsing or type checking
+     * the source expression. For example, optimizations that require special
+     * runtime support may be specified.
+     * These are used to check feature support between components in separate
+     * implementations. This can be used to either skip redundant work or
+     * report an error if the extension is unsupported.
+     *
+     * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.SourceInfo.Extension extensions = 6 [json_name = "extensions"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getExtensions()
+    {
+        return $this->extensions;
+    }
+
+    /**
+     * A list of tags for extensions that were used while parsing or type checking
+     * the source expression. For example, optimizations that require special
+     * runtime support may be specified.
+     * These are used to check feature support between components in separate
+     * implementations. This can be used to either skip redundant work or
+     * report an error if the extension is unsupported.
+     *
+     * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.SourceInfo.Extension extensions = 6 [json_name = "extensions"];</code>
+     * @param array<\Google\Api\Expr\V1alpha1\SourceInfo\Extension>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setExtensions($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Google\Api\Expr\V1alpha1\SourceInfo\Extension::class);
+        $this->extensions = $arr;
 
         return $this;
     }

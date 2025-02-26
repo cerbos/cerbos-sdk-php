@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Response\V1\PlanResourcesResponse;
 
-class Meta
+final class Meta
 {
     private \Cerbos\Response\V1\PlanResourcesResponse\Meta $meta;
 

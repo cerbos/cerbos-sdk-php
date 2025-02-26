@@ -3,15 +3,24 @@
     errorLevel="2"
     threads="1"
     resolveFromConfigFile="true"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="https://getpsalm.org/schema/config"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
-    <projectFiles>
-        <directory name="src/Sdk" />
-        <directory name="tests" />
-        <ignoreFiles>
-            <directory name="vendor" />
-        </ignoreFiles>
-    </projectFiles>
+	<projectFiles>
+		<directory name="src/Sdk" />
+		<directory name="tests" />
+		<ignoreFiles>
+			<directory name="vendor" />
+			<directory name="tests/res" />
+		</ignoreFiles>
+	</projectFiles>
+	<issueHandlers>
+		<MissingOverrideAttribute errorLevel="suppress" />
+        <PossiblyUnusedMethod errorLevel="suppress" />
+        <UnusedClass errorLevel="suppress" />
+        <UnusedProperty errorLevel="suppress" />
+        <UndefinedClass errorLevel="suppress" />
+        <UnusedVariable errorLevel="suppress" />
+	</issueHandlers>
 </psalm>

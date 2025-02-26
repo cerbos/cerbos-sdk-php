@@ -10,7 +10,7 @@ namespace Cerbos\Sdk\Response\V1\CheckResourcesResponse;
 use Cerbos\Sdk\Response\V1\CheckResourcesResponse\ResultEntry\ResultEntry;
 use Exception;
 
-class CheckResourcesResponse
+final class CheckResourcesResponse
 {
     private \Cerbos\Response\V1\CheckResourcesResponse $response;
 

@@ -9,7 +9,7 @@ namespace Cerbos\Sdk\Builder;
 
 use Exception;
 
-class PlanResourcesRequest
+final class PlanResourcesRequest
 {
     private ?AuxData $auxData;
     private ?string $action;

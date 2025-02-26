@@ -15,17 +15,21 @@ use Google\Protobuf\Internal\GPBUtil;
 class DerivedRoles extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      */
     protected $name = '';
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions"];</code>
      */
     private $definitions;
     /**
      * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 3 [json_name = "variables"];</code>
      */
     protected $variables = null;
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Constants constants = 4 [json_name = "constants"];</code>
+     */
+    protected $constants = null;
 
     /**
      * Constructor.
@@ -36,6 +40,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
      *     @type string $name
      *     @type array<\Cerbos\Policy\V1\RoleDef>|\Google\Protobuf\Internal\RepeatedField $definitions
      *     @type \Cerbos\Policy\V1\Variables $variables
+     *     @type \Cerbos\Policy\V1\Constants $constants
      * }
      */
     public function __construct($data = NULL) {
@@ -44,7 +49,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      * @return string
      */
     public function getName()
@@ -53,7 +58,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      * @param string $var
      * @return $this
      */
@@ -66,7 +71,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getDefinitions()
@@ -75,7 +80,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions"];</code>
      * @param array<\Cerbos\Policy\V1\RoleDef>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -115,6 +120,38 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Variables::class);
         $this->variables = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Constants constants = 4 [json_name = "constants"];</code>
+     * @return \Cerbos\Policy\V1\Constants|null
+     */
+    public function getConstants()
+    {
+        return $this->constants;
+    }
+
+    public function hasConstants()
+    {
+        return isset($this->constants);
+    }
+
+    public function clearConstants()
+    {
+        unset($this->constants);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Constants constants = 4 [json_name = "constants"];</code>
+     * @param \Cerbos\Policy\V1\Constants $var
+     * @return $this
+     */
+    public function setConstants($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Constants::class);
+        $this->constants = $var;
 
         return $this;
     }

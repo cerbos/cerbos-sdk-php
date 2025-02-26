@@ -46,7 +46,9 @@ class Output extends \Google\Protobuf\Internal\Message
      */
     public function getExpr()
     {
-        @trigger_error('expr is deprecated.', E_USER_DEPRECATED);
+        if ($this->expr !== '') {
+            @trigger_error('expr is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->expr;
     }
 

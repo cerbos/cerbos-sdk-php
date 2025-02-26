@@ -34,18 +34,18 @@
     }
   },
   "require": {
-    "php": "^8.2 || ^8.3",
+    "php": "^8.3 || ^8.4",
     "ext-grpc": "*",
     "ext-json": "*",
-    "google/common-protos": "^4.5",
-    "google/protobuf": "^v4.26",
+    "google/common-protos": "^4.11",
+    "google/protobuf": "^4.30",
     "grpc/grpc": "^1.57",
     "ramsey/uuid": "^4.7"
   },
   "require-dev": {
-    "php-parallel-lint/php-parallel-lint": "^v1.3",
-    "phpstan/phpstan": "^2.0",
+    "php-parallel-lint/php-parallel-lint": "^1.4",
+    "phpstan/phpstan": "^2.1",
     "phpunit/phpunit": "^10.5",
-    "vimeo/psalm": "^5.19"
+    "vimeo/psalm": "^6.10"
   }
 }

@@ -15,21 +15,37 @@ use Google\Protobuf\Internal\GPBUtil;
 class Expectation extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string principal = 1 [json_name = "principal"];</code>
      */
     protected $principal = '';
     /**
-     * Generated from protobuf field <code>string resource = 2 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 2 [json_name = "resource"];</code>
      */
     protected $resource = '';
     /**
-     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions"];</code>
      */
     private $actions;
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable.OutputExpectations outputs = 4 [json_name = "outputs"];</code>
      */
     private $outputs;
+    /**
+     * Generated from protobuf field <code>repeated string principals = 5 [json_name = "principals"];</code>
+     */
+    private $principals;
+    /**
+     * Generated from protobuf field <code>repeated string resources = 6 [json_name = "resources"];</code>
+     */
+    private $resources;
+    /**
+     * Generated from protobuf field <code>repeated string principal_groups = 7 [json_name = "principalGroups"];</code>
+     */
+    private $principal_groups;
+    /**
+     * Generated from protobuf field <code>repeated string resource_groups = 8 [json_name = "resourceGroups"];</code>
+     */
+    private $resource_groups;
 
     /**
      * Constructor.
@@ -41,6 +57,10 @@ class Expectation extends \Google\Protobuf\Internal\Message
      *     @type string $resource
      *     @type array|\Google\Protobuf\Internal\MapField $actions
      *     @type array<\Cerbos\Policy\V1\TestTable\OutputExpectations>|\Google\Protobuf\Internal\RepeatedField $outputs
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $principals
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $resources
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $principal_groups
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $resource_groups
      * }
      */
     public function __construct($data = NULL) {
@@ -49,7 +69,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string principal = 1 [json_name = "principal"];</code>
      * @return string
      */
     public function getPrincipal()
@@ -58,7 +78,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string principal = 1 [json_name = "principal", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string principal = 1 [json_name = "principal"];</code>
      * @param string $var
      * @return $this
      */
@@ -71,7 +91,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 2 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 2 [json_name = "resource"];</code>
      * @return string
      */
     public function getResource()
@@ -80,7 +100,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 2 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 2 [json_name = "resource"];</code>
      * @param string $var
      * @return $this
      */
@@ -93,7 +113,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions"];</code>
      * @return \Google\Protobuf\Internal\MapField
      */
     public function getActions()
@@ -102,7 +122,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> actions = 3 [json_name = "actions"];</code>
      * @param array|\Google\Protobuf\Internal\MapField $var
      * @return $this
      */
@@ -132,6 +152,94 @@ class Expectation extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\TestTable\OutputExpectations::class);
         $this->outputs = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string principals = 5 [json_name = "principals"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getPrincipals()
+    {
+        return $this->principals;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string principals = 5 [json_name = "principals"];</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setPrincipals($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->principals = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string resources = 6 [json_name = "resources"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getResources()
+    {
+        return $this->resources;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string resources = 6 [json_name = "resources"];</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setResources($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->resources = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string principal_groups = 7 [json_name = "principalGroups"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getPrincipalGroups()
+    {
+        return $this->principal_groups;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string principal_groups = 7 [json_name = "principalGroups"];</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setPrincipalGroups($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->principal_groups = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string resource_groups = 8 [json_name = "resourceGroups"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getResourceGroups()
+    {
+        return $this->resource_groups;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string resource_groups = 8 [json_name = "resourceGroups"];</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setResourceGroups($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->resource_groups = $arr;
 
         return $this;
     }

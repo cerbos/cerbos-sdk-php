@@ -9,7 +9,7 @@ namespace Cerbos\Sdk\Builder;
 
 use Exception;
 
-class CheckResourcesRequest
+final class CheckResourcesRequest
 {
     private ?AuxData $auxData;
     private bool $includeMeta;

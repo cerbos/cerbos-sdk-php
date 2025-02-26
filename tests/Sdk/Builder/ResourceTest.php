@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @psalm-suppress PropertyNotSetInConstructor
  * @psalm-suppress PossiblyNullReference
  */
-class ResourceTest extends TestCase
+final class ResourceTest extends TestCase
 {
     private AttributeValue $listValue;
     private AttributeValue $mapValue;

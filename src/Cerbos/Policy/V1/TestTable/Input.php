@@ -15,21 +15,29 @@ use Google\Protobuf\Internal\GPBUtil;
 class Input extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>repeated string principals = 1 [json_name = "principals", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string principals = 1 [json_name = "principals"];</code>
      */
     private $principals;
     /**
-     * Generated from protobuf field <code>repeated string resources = 2 [json_name = "resources", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string resources = 2 [json_name = "resources"];</code>
      */
     private $resources;
     /**
-     * Generated from protobuf field <code>repeated string actions = 3 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 3 [json_name = "actions"];</code>
      */
     private $actions;
     /**
      * Generated from protobuf field <code>string aux_data = 4 [json_name = "auxData"];</code>
      */
     protected $aux_data = '';
+    /**
+     * Generated from protobuf field <code>repeated string principal_groups = 5 [json_name = "principalGroups"];</code>
+     */
+    private $principal_groups;
+    /**
+     * Generated from protobuf field <code>repeated string resource_groups = 6 [json_name = "resourceGroups"];</code>
+     */
+    private $resource_groups;
 
     /**
      * Constructor.
@@ -41,6 +49,8 @@ class Input extends \Google\Protobuf\Internal\Message
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $resources
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
      *     @type string $aux_data
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $principal_groups
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $resource_groups
      * }
      */
     public function __construct($data = NULL) {
@@ -49,7 +59,7 @@ class Input extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string principals = 1 [json_name = "principals", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string principals = 1 [json_name = "principals"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getPrincipals()
@@ -58,7 +68,7 @@ class Input extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string principals = 1 [json_name = "principals", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string principals = 1 [json_name = "principals"];</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -71,7 +81,7 @@ class Input extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string resources = 2 [json_name = "resources", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string resources = 2 [json_name = "resources"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getResources()
@@ -80,7 +90,7 @@ class Input extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string resources = 2 [json_name = "resources", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string resources = 2 [json_name = "resources"];</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -93,7 +103,7 @@ class Input extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string actions = 3 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 3 [json_name = "actions"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getActions()
@@ -102,7 +112,7 @@ class Input extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string actions = 3 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 3 [json_name = "actions"];</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -132,6 +142,50 @@ class Input extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->aux_data = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string principal_groups = 5 [json_name = "principalGroups"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getPrincipalGroups()
+    {
+        return $this->principal_groups;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string principal_groups = 5 [json_name = "principalGroups"];</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setPrincipalGroups($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->principal_groups = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string resource_groups = 6 [json_name = "resourceGroups"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getResourceGroups()
+    {
+        return $this->resource_groups;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string resource_groups = 6 [json_name = "resourceGroups"];</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setResourceGroups($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->resource_groups = $arr;
 
         return $this;
     }

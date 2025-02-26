@@ -165,7 +165,9 @@ class Metadata extends \Google\Protobuf\Internal\Message
      */
     public function getStoreIdentifer()
     {
-        @trigger_error('store_identifer is deprecated.', E_USER_DEPRECATED);
+        if ($this->store_identifer !== '') {
+            @trigger_error('store_identifer is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->store_identifer;
     }
 

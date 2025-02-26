@@ -34,6 +34,7 @@ class Details extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Policy\V1\TestResults\Failure $failure
      *     @type string $error
      *     @type \Cerbos\Policy\V1\TestResults\Success $success
+     *     @type string $skip_reason
      *     @type array<\Cerbos\Engine\V1\Trace>|\Google\Protobuf\Internal\RepeatedField $engine_trace
      * }
      */
@@ -141,6 +142,33 @@ class Details extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Policy\V1\TestResults\Success::class);
         $this->writeOneof(5, $var);
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string skip_reason = 6 [json_name = "skipReason"];</code>
+     * @return string
+     */
+    public function getSkipReason()
+    {
+        return $this->readOneof(6);
+    }
+
+    public function hasSkipReason()
+    {
+        return $this->hasOneof(6);
+    }
+
+    /**
+     * Generated from protobuf field <code>string skip_reason = 6 [json_name = "skipReason"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setSkipReason($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->writeOneof(6, $var);
 
         return $this;
     }

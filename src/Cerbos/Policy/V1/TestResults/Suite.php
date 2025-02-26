@@ -43,6 +43,10 @@ class Suite extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string description = 7 [json_name = "description"];</code>
      */
     protected $description = '';
+    /**
+     * Generated from protobuf field <code>string skip_reason = 8 [json_name = "skipReason"];</code>
+     */
+    protected $skip_reason = '';
 
     /**
      * Constructor.
@@ -57,6 +61,7 @@ class Suite extends \Google\Protobuf\Internal\Message
      *     @type string $error
      *     @type array<\Cerbos\Policy\V1\TestResults\TestCase>|\Google\Protobuf\Internal\RepeatedField $test_cases
      *     @type string $description
+     *     @type string $skip_reason
      * }
      */
     public function __construct($data = NULL) {
@@ -115,7 +120,9 @@ class Suite extends \Google\Protobuf\Internal\Message
      */
     public function getPrincipals()
     {
-        @trigger_error('principals is deprecated.', E_USER_DEPRECATED);
+        if ($this->principals->count() !== 0) {
+            @trigger_error('principals is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->principals;
     }
 
@@ -127,8 +134,10 @@ class Suite extends \Google\Protobuf\Internal\Message
      */
     public function setPrincipals($var)
     {
-        @trigger_error('principals is deprecated.', E_USER_DEPRECATED);
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\TestResults\Principal::class);
+        if ($arr->count() !== 0) {
+            @trigger_error('principals is deprecated.', E_USER_DEPRECATED);
+        }
         $this->principals = $arr;
 
         return $this;
@@ -228,6 +237,28 @@ class Suite extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->description = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string skip_reason = 8 [json_name = "skipReason"];</code>
+     * @return string
+     */
+    public function getSkipReason()
+    {
+        return $this->skip_reason;
+    }
+
+    /**
+     * Generated from protobuf field <code>string skip_reason = 8 [json_name = "skipReason"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setSkipReason($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->skip_reason = $var;
 
         return $this;
     }

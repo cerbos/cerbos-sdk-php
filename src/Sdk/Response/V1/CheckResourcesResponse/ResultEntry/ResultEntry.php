@@ -12,7 +12,7 @@ use Cerbos\Engine\V1\OutputEntry;
 use Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Resource;
 use Cerbos\Schema\V1\ValidationError;
 
-class ResultEntry
+final class ResultEntry
 {
     private \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry $resultEntry;
 

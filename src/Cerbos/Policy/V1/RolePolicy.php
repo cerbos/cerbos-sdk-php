@@ -15,13 +15,24 @@ use Google\Protobuf\Internal\GPBUtil;
 class RolePolicy extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string scope = 2 [json_name = "scope", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string parent_roles = 5 [json_name = "parentRoles"];</code>
+     */
+    private $parent_roles;
+    /**
+     * Generated from protobuf field <code>string scope = 2 [json_name = "scope"];</code>
      */
     protected $scope = '';
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleRule rules = 3 [json_name = "rules"];</code>
      */
     private $rules;
+    /**
+     * Deprecated: no-op.
+     *
+     * Generated from protobuf field <code>.cerbos.policy.v1.ScopePermissions scope_permissions = 4 [json_name = "scopePermissions", deprecated = true];</code>
+     * @deprecated
+     */
+    protected $scope_permissions = 0;
     protected $policy_type;
 
     /**
@@ -31,8 +42,11 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $role
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $parent_roles
      *     @type string $scope
      *     @type array<\Cerbos\Policy\V1\RoleRule>|\Google\Protobuf\Internal\RepeatedField $rules
+     *     @type int $scope_permissions
+     *           Deprecated: no-op.
      * }
      */
     public function __construct($data = NULL) {
@@ -41,7 +55,7 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string role = 1 [json_name = "role", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string role = 1 [json_name = "role"];</code>
      * @return string
      */
     public function getRole()
@@ -55,7 +69,7 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string role = 1 [json_name = "role", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string role = 1 [json_name = "role"];</code>
      * @param string $var
      * @return $this
      */
@@ -68,7 +82,29 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string scope = 2 [json_name = "scope", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string parent_roles = 5 [json_name = "parentRoles"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getParentRoles()
+    {
+        return $this->parent_roles;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string parent_roles = 5 [json_name = "parentRoles"];</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setParentRoles($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->parent_roles = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string scope = 2 [json_name = "scope"];</code>
      * @return string
      */
     public function getScope()
@@ -77,7 +113,7 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string scope = 2 [json_name = "scope", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string scope = 2 [json_name = "scope"];</code>
      * @param string $var
      * @return $this
      */
@@ -107,6 +143,38 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\RoleRule::class);
         $this->rules = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Deprecated: no-op.
+     *
+     * Generated from protobuf field <code>.cerbos.policy.v1.ScopePermissions scope_permissions = 4 [json_name = "scopePermissions", deprecated = true];</code>
+     * @return int
+     * @deprecated
+     */
+    public function getScopePermissions()
+    {
+        if ($this->scope_permissions !== 0) {
+            @trigger_error('scope_permissions is deprecated.', E_USER_DEPRECATED);
+        }
+        return $this->scope_permissions;
+    }
+
+    /**
+     * Deprecated: no-op.
+     *
+     * Generated from protobuf field <code>.cerbos.policy.v1.ScopePermissions scope_permissions = 4 [json_name = "scopePermissions", deprecated = true];</code>
+     * @param int $var
+     * @return $this
+     * @deprecated
+     */
+    public function setScopePermissions($var)
+    {
+        @trigger_error('scope_permissions is deprecated.', E_USER_DEPRECATED);
+        GPBUtil::checkEnum($var, \Cerbos\Policy\V1\ScopePermissions::class);
+        $this->scope_permissions = $var;
 
         return $this;
     }

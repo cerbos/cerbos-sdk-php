@@ -34,6 +34,10 @@ class Result extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Attribute attributes = 5 [json_name = "attributes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
      */
     private $attributes;
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Constant constants = 6 [json_name = "constants", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    private $constants;
 
     /**
      * Constructor.
@@ -46,6 +50,7 @@ class Result extends \Google\Protobuf\Internal\Message
      *     @type string $policy_id
      *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole>|\Google\Protobuf\Internal\RepeatedField $derived_roles
      *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\Attribute>|\Google\Protobuf\Internal\RepeatedField $attributes
+     *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\Constant>|\Google\Protobuf\Internal\RepeatedField $constants
      * }
      */
     public function __construct($data = NULL) {
@@ -159,6 +164,28 @@ class Result extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Response\V1\InspectPoliciesResponse\Attribute::class);
         $this->attributes = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Constant constants = 6 [json_name = "constants", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getConstants()
+    {
+        return $this->constants;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Constant constants = 6 [json_name = "constants", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param array<\Cerbos\Response\V1\InspectPoliciesResponse\Constant>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setConstants($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Response\V1\InspectPoliciesResponse\Constant::class);
+        $this->constants = $arr;
 
         return $this;
     }

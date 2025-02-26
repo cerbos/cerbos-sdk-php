@@ -9,7 +9,7 @@ namespace Cerbos\Sdk\Utility;
 
 use Ramsey\Uuid\Uuid;
 
-class RequestId
+final class RequestId
 {
     public static function generate(): string {
         return Uuid::uuid4()->toString();

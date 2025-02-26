@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Builder;
 
-class ResourceEntry
+final class ResourceEntry
 {
     private array $actions;
     private Resource $resource;

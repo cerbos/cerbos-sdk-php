@@ -15,11 +15,11 @@ use Google\Protobuf\Internal\GPBUtil;
 class OutputExpectations extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string action = 1 [json_name = "action", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string action = 1 [json_name = "action"];</code>
      */
     protected $action = '';
     /**
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry expected = 2 [json_name = "expected", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry expected = 2 [json_name = "expected"];</code>
      */
     private $expected;
 
@@ -39,7 +39,7 @@ class OutputExpectations extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string action = 1 [json_name = "action", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string action = 1 [json_name = "action"];</code>
      * @return string
      */
     public function getAction()
@@ -48,7 +48,7 @@ class OutputExpectations extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string action = 1 [json_name = "action", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string action = 1 [json_name = "action"];</code>
      * @param string $var
      * @return $this
      */
@@ -61,7 +61,7 @@ class OutputExpectations extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry expected = 2 [json_name = "expected", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry expected = 2 [json_name = "expected"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getExpected()
@@ -70,7 +70,7 @@ class OutputExpectations extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry expected = 2 [json_name = "expected", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry expected = 2 [json_name = "expected"];</code>
      * @param array<\Cerbos\Engine\V1\OutputEntry>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */

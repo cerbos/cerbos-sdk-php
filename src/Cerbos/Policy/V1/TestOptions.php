@@ -26,6 +26,10 @@ class TestOptions extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>map<string, .google.protobuf.Value> globals = 3 [json_name = "globals"];</code>
      */
     private $globals;
+    /**
+     * Generated from protobuf field <code>string default_policy_version = 4 [json_name = "defaultPolicyVersion"];</code>
+     */
+    protected $default_policy_version = '';
 
     /**
      * Constructor.
@@ -36,6 +40,7 @@ class TestOptions extends \Google\Protobuf\Internal\Message
      *     @type \Google\Protobuf\Timestamp $now
      *     @type bool $lenient_scope_search
      *     @type array|\Google\Protobuf\Internal\MapField $globals
+     *     @type string $default_policy_version
      * }
      */
     public function __construct($data = NULL) {
@@ -115,6 +120,28 @@ class TestOptions extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Google\Protobuf\Value::class);
         $this->globals = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string default_policy_version = 4 [json_name = "defaultPolicyVersion"];</code>
+     * @return string
+     */
+    public function getDefaultPolicyVersion()
+    {
+        return $this->default_policy_version;
+    }
+
+    /**
+     * Generated from protobuf field <code>string default_policy_version = 4 [json_name = "defaultPolicyVersion"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setDefaultPolicyVersion($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->default_policy_version = $var;
 
         return $this;
     }

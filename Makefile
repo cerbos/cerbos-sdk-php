@@ -1,6 +1,6 @@
-SRC_DIR := "src"
-TESTS_DIR := "tests"
-PROTOS_DIR := "protos"
+SRC_DIR := src
+TESTS_DIR := tests
+PROTOS_DIR := protos
 
 .PHONY: all
 all: generate lint static-analysis validate-composer test
@@ -29,5 +29,5 @@ test:
 
 .PHONY: generate-proto-code
 generate-proto-code:
-	rm -rf ${SRC_DIR}/Cerbos ${SRC_DIR}/GPBMetadata
+	rm -rf ${SRC_DIR}/Cerbos ${SRC_DIR}/Google ${SRC_DIR}/GPBMetadata ${SRC_DIR}/Grpc
 	buf generate ${PROTOS_DIR}
