@@ -178,7 +178,9 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      */
     public function getInputs()
     {
-        @trigger_error('inputs is deprecated.', E_USER_DEPRECATED);
+        if ($this->inputs->count() !== 0) {
+            @trigger_error('inputs is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->inputs;
     }
 
@@ -192,8 +194,10 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      */
     public function setInputs($var)
     {
-        @trigger_error('inputs is deprecated.', E_USER_DEPRECATED);
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\CheckInput::class);
+        if ($arr->count() !== 0) {
+            @trigger_error('inputs is deprecated.', E_USER_DEPRECATED);
+        }
         $this->inputs = $arr;
 
         return $this;
@@ -208,7 +212,9 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      */
     public function getOutputs()
     {
-        @trigger_error('outputs is deprecated.', E_USER_DEPRECATED);
+        if ($this->outputs->count() !== 0) {
+            @trigger_error('outputs is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->outputs;
     }
 
@@ -222,8 +228,10 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      */
     public function setOutputs($var)
     {
-        @trigger_error('outputs is deprecated.', E_USER_DEPRECATED);
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\CheckOutput::class);
+        if ($arr->count() !== 0) {
+            @trigger_error('outputs is deprecated.', E_USER_DEPRECATED);
+        }
         $this->outputs = $arr;
 
         return $this;
@@ -238,7 +246,9 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      */
     public function getError()
     {
-        @trigger_error('error is deprecated.', E_USER_DEPRECATED);
+        if ($this->error !== '') {
+            @trigger_error('error is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->error;
     }
 

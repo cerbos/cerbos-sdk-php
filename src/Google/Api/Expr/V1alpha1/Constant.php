@@ -286,13 +286,17 @@ class Constant extends \Google\Protobuf\Internal\Message
      */
     public function getDurationValue()
     {
-        @trigger_error('duration_value is deprecated.', E_USER_DEPRECATED);
+        if ($this->hasOneof(8)) {
+            @trigger_error('duration_value is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->readOneof(8);
     }
 
     public function hasDurationValue()
     {
-        @trigger_error('duration_value is deprecated.', E_USER_DEPRECATED);
+        if ($this->hasOneof(8)) {
+            @trigger_error('duration_value is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->hasOneof(8);
     }
 
@@ -324,13 +328,17 @@ class Constant extends \Google\Protobuf\Internal\Message
      */
     public function getTimestampValue()
     {
-        @trigger_error('timestamp_value is deprecated.', E_USER_DEPRECATED);
+        if ($this->hasOneof(9)) {
+            @trigger_error('timestamp_value is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->readOneof(9);
     }
 
     public function hasTimestampValue()
     {
-        @trigger_error('timestamp_value is deprecated.', E_USER_DEPRECATED);
+        if ($this->hasOneof(9)) {
+            @trigger_error('timestamp_value is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->hasOneof(9);
     }
 
