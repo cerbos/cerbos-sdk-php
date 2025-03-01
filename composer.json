@@ -45,7 +45,7 @@
   "require-dev": {
     "php-parallel-lint/php-parallel-lint": "^v1.3",
     "phpstan/phpstan": "^2.0",
-    "phpunit/phpunit": "^10.5",
+    "phpunit/phpunit": "^12.0",
     "vimeo/psalm": "^5.19"
   }
 }
