@@ -15,15 +15,15 @@ use Google\Protobuf\Internal\GPBUtil;
 class TestName extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string test_table_name = 1 [json_name = "testTableName", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string test_table_name = 1 [json_name = "testTableName"];</code>
      */
     protected $test_table_name = '';
     /**
-     * Generated from protobuf field <code>string principal_key = 2 [json_name = "principalKey", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string principal_key = 2 [json_name = "principalKey"];</code>
      */
     protected $principal_key = '';
     /**
-     * Generated from protobuf field <code>string resource_key = 3 [json_name = "resourceKey", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource_key = 3 [json_name = "resourceKey"];</code>
      */
     protected $resource_key = '';
 
@@ -44,7 +44,7 @@ class TestName extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string test_table_name = 1 [json_name = "testTableName", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string test_table_name = 1 [json_name = "testTableName"];</code>
      * @return string
      */
     public function getTestTableName()
@@ -53,7 +53,7 @@ class TestName extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string test_table_name = 1 [json_name = "testTableName", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string test_table_name = 1 [json_name = "testTableName"];</code>
      * @param string $var
      * @return $this
      */
@@ -66,7 +66,7 @@ class TestName extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string principal_key = 2 [json_name = "principalKey", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string principal_key = 2 [json_name = "principalKey"];</code>
      * @return string
      */
     public function getPrincipalKey()
@@ -75,7 +75,7 @@ class TestName extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string principal_key = 2 [json_name = "principalKey", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string principal_key = 2 [json_name = "principalKey"];</code>
      * @param string $var
      * @return $this
      */
@@ -88,7 +88,7 @@ class TestName extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource_key = 3 [json_name = "resourceKey", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource_key = 3 [json_name = "resourceKey"];</code>
      * @return string
      */
     public function getResourceKey()
@@ -97,7 +97,7 @@ class TestName extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource_key = 3 [json_name = "resourceKey", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource_key = 3 [json_name = "resourceKey"];</code>
      * @param string $var
      * @return $this
      */

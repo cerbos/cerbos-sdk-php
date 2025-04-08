@@ -9,7 +9,7 @@ namespace Cerbos\Sdk\Response\V1\CheckResourcesResponse\ResultEntry;
 
 use Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Meta\EffectMeta;
 
-class Meta
+final class Meta
 {
     private \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Meta $meta;
 

@@ -11,7 +11,7 @@ use Google\Protobuf\ListValue;
 use Google\Protobuf\Struct;
 use Google\Protobuf\Value;
 
-class AttributeValue
+final class AttributeValue
 {
     private Value $value;
 

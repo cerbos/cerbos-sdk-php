@@ -15,15 +15,15 @@ use Google\Protobuf\Internal\GPBUtil;
 class ResourcePolicy extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource"];</code>
      */
     protected $resource = '';
     /**
-     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string version = 2 [json_name = "version"];</code>
      */
     protected $version = '';
     /**
-     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles"];</code>
      */
     private $import_derived_roles;
     /**
@@ -31,7 +31,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
      */
     private $rules;
     /**
-     * Generated from protobuf field <code>string scope = 5 [json_name = "scope", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string scope = 5 [json_name = "scope"];</code>
      */
     protected $scope = '';
     /**
@@ -42,6 +42,14 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 7 [json_name = "variables"];</code>
      */
     protected $variables = null;
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.ScopePermissions scope_permissions = 8 [json_name = "scopePermissions"];</code>
+     */
+    protected $scope_permissions = 0;
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Constants constants = 9 [json_name = "constants"];</code>
+     */
+    protected $constants = null;
 
     /**
      * Constructor.
@@ -56,6 +64,8 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
      *     @type string $scope
      *     @type \Cerbos\Policy\V1\Schemas $schemas
      *     @type \Cerbos\Policy\V1\Variables $variables
+     *     @type int $scope_permissions
+     *     @type \Cerbos\Policy\V1\Constants $constants
      * }
      */
     public function __construct($data = NULL) {
@@ -64,7 +74,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource"];</code>
      * @return string
      */
     public function getResource()
@@ -73,7 +83,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource"];</code>
      * @param string $var
      * @return $this
      */
@@ -86,7 +96,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string version = 2 [json_name = "version"];</code>
      * @return string
      */
     public function getVersion()
@@ -95,7 +105,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string version = 2 [json_name = "version", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string version = 2 [json_name = "version"];</code>
      * @param string $var
      * @return $this
      */
@@ -108,7 +118,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getImportDerivedRoles()
@@ -117,7 +127,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles"];</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -152,7 +162,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string scope = 5 [json_name = "scope", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string scope = 5 [json_name = "scope"];</code>
      * @return string
      */
     public function getScope()
@@ -161,7 +171,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string scope = 5 [json_name = "scope", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string scope = 5 [json_name = "scope"];</code>
      * @param string $var
      * @return $this
      */
@@ -233,6 +243,60 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Variables::class);
         $this->variables = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.ScopePermissions scope_permissions = 8 [json_name = "scopePermissions"];</code>
+     * @return int
+     */
+    public function getScopePermissions()
+    {
+        return $this->scope_permissions;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.ScopePermissions scope_permissions = 8 [json_name = "scopePermissions"];</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setScopePermissions($var)
+    {
+        GPBUtil::checkEnum($var, \Cerbos\Policy\V1\ScopePermissions::class);
+        $this->scope_permissions = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Constants constants = 9 [json_name = "constants"];</code>
+     * @return \Cerbos\Policy\V1\Constants|null
+     */
+    public function getConstants()
+    {
+        return $this->constants;
+    }
+
+    public function hasConstants()
+    {
+        return isset($this->constants);
+    }
+
+    public function clearConstants()
+    {
+        unset($this->constants);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Constants constants = 9 [json_name = "constants"];</code>
+     * @param \Cerbos\Policy\V1\Constants $var
+     * @return $this
+     */
+    public function setConstants($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Constants::class);
+        $this->constants = $var;
 
         return $this;
     }

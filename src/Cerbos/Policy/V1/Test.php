@@ -15,7 +15,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class Test extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>.cerbos.policy.v1.Test.TestName name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.policy.v1.Test.TestName name = 1 [json_name = "name"];</code>
      */
     protected $name = null;
     /**
@@ -31,11 +31,11 @@ class Test extends \Google\Protobuf\Internal\Message
      */
     protected $skip_reason = '';
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.CheckInput input = 5 [json_name = "input", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.CheckInput input = 5 [json_name = "input"];</code>
      */
     protected $input = null;
     /**
-     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> expected = 6 [json_name = "expected", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> expected = 6 [json_name = "expected"];</code>
      */
     private $expected;
     /**
@@ -69,7 +69,7 @@ class Test extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.policy.v1.Test.TestName name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.policy.v1.Test.TestName name = 1 [json_name = "name"];</code>
      * @return \Cerbos\Policy\V1\Test\TestName|null
      */
     public function getName()
@@ -88,7 +88,7 @@ class Test extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.policy.v1.Test.TestName name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.policy.v1.Test.TestName name = 1 [json_name = "name"];</code>
      * @param \Cerbos\Policy\V1\Test\TestName $var
      * @return $this
      */
@@ -167,7 +167,7 @@ class Test extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.CheckInput input = 5 [json_name = "input", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.CheckInput input = 5 [json_name = "input"];</code>
      * @return \Cerbos\Engine\V1\CheckInput|null
      */
     public function getInput()
@@ -186,7 +186,7 @@ class Test extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.CheckInput input = 5 [json_name = "input", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.CheckInput input = 5 [json_name = "input"];</code>
      * @param \Cerbos\Engine\V1\CheckInput $var
      * @return $this
      */
@@ -199,7 +199,7 @@ class Test extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> expected = 6 [json_name = "expected", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> expected = 6 [json_name = "expected"];</code>
      * @return \Google\Protobuf\Internal\MapField
      */
     public function getExpected()
@@ -208,7 +208,7 @@ class Test extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> expected = 6 [json_name = "expected", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>map<string, .cerbos.effect.v1.Effect> expected = 6 [json_name = "expected"];</code>
      * @param array|\Google\Protobuf\Internal\MapField $var
      * @return $this
      */

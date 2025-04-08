@@ -15,7 +15,7 @@ use Cerbos\Sdk\Utility\Metadata;
 use Cerbos\Svc\V1\CerbosServiceClient;
 use Exception;
 
-class CerbosClient
+final class CerbosClient
 {
     private CerbosServiceClient $csc;
     private ?array $metadata;

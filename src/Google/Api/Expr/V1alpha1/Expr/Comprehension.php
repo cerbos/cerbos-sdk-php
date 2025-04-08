@@ -31,19 +31,56 @@ use Google\Protobuf\Internal\GPBUtil;
  * messages `has(m.x)` is defined as 'defined, but not set`. For proto3, the
  * macro tests whether the property is set to its default. For map and struct
  * types, the macro tests whether the property `x` is defined on `m`.
+ * Comprehensions for the standard environment macros evaluation can be best
+ * visualized as the following pseudocode:
+ * ```
+ * let `accu_var` = `accu_init`
+ * for (let `iter_var` in `iter_range`) {
+ *   if (!`loop_condition`) {
+ *     break
+ *   }
+ *   `accu_var` = `loop_step`
+ * }
+ * return `result`
+ * ```
+ * Comprehensions for the optional V2 macros which support map-to-map
+ * translation differ slightly from the standard environment macros in that
+ * they expose both the key or index in addition to the value for each list
+ * or map entry:
+ * ```
+ * let `accu_var` = `accu_init`
+ * for (let `iter_var`, `iter_var2` in `iter_range`) {
+ *   if (!`loop_condition`) {
+ *     break
+ *   }
+ *   `accu_var` = `loop_step`
+ * }
+ * return `result`
+ * ```
  *
  * Generated from protobuf message <code>google.api.expr.v1alpha1.Expr.Comprehension</code>
  */
 class Comprehension extends \Google\Protobuf\Internal\Message
 {
     /**
-     * The name of the iteration variable.
+     * The name of the first iteration variable.
+     * When the iter_range is a list, this variable is the list element.
+     * When the iter_range is a map, this variable is the map entry key.
      *
      * Generated from protobuf field <code>string iter_var = 1 [json_name = "iterVar"];</code>
      */
     protected $iter_var = '';
     /**
-     * The range over which var iterates.
+     * The name of the second iteration variable, empty if not set.
+     * When the iter_range is a list, this variable is the integer index.
+     * When the iter_range is a map, this variable is the map entry value.
+     * This field is only set for comprehension v2 macros.
+     *
+     * Generated from protobuf field <code>string iter_var2 = 8 [json_name = "iterVar2"];</code>
+     */
+    protected $iter_var2 = '';
+    /**
+     * The range over which the comprehension iterates.
      *
      * Generated from protobuf field <code>.google.api.expr.v1alpha1.Expr iter_range = 2 [json_name = "iterRange"];</code>
      */
@@ -61,7 +98,7 @@ class Comprehension extends \Google\Protobuf\Internal\Message
      */
     protected $accu_init = null;
     /**
-     * An expression which can contain iter_var and accu_var.
+     * An expression which can contain iter_var, iter_var2, and accu_var.
      * Returns false when the result has been computed and may be used as
      * a hint to short-circuit the remainder of the comprehension.
      *
@@ -69,7 +106,7 @@ class Comprehension extends \Google\Protobuf\Internal\Message
      */
     protected $loop_condition = null;
     /**
-     * An expression which can contain iter_var and accu_var.
+     * An expression which can contain iter_var, iter_var2, and accu_var.
      * Computes the next value of accu_var.
      *
      * Generated from protobuf field <code>.google.api.expr.v1alpha1.Expr loop_step = 6 [json_name = "loopStep"];</code>
@@ -90,19 +127,26 @@ class Comprehension extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $iter_var
-     *           The name of the iteration variable.
+     *           The name of the first iteration variable.
+     *           When the iter_range is a list, this variable is the list element.
+     *           When the iter_range is a map, this variable is the map entry key.
+     *     @type string $iter_var2
+     *           The name of the second iteration variable, empty if not set.
+     *           When the iter_range is a list, this variable is the integer index.
+     *           When the iter_range is a map, this variable is the map entry value.
+     *           This field is only set for comprehension v2 macros.
      *     @type \Google\Api\Expr\V1alpha1\Expr $iter_range
-     *           The range over which var iterates.
+     *           The range over which the comprehension iterates.
      *     @type string $accu_var
      *           The name of the variable used for accumulation of the result.
      *     @type \Google\Api\Expr\V1alpha1\Expr $accu_init
      *           The initial value of the accumulator.
      *     @type \Google\Api\Expr\V1alpha1\Expr $loop_condition
-     *           An expression which can contain iter_var and accu_var.
+     *           An expression which can contain iter_var, iter_var2, and accu_var.
      *           Returns false when the result has been computed and may be used as
      *           a hint to short-circuit the remainder of the comprehension.
      *     @type \Google\Api\Expr\V1alpha1\Expr $loop_step
-     *           An expression which can contain iter_var and accu_var.
+     *           An expression which can contain iter_var, iter_var2, and accu_var.
      *           Computes the next value of accu_var.
      *     @type \Google\Api\Expr\V1alpha1\Expr $result
      *           An expression which can contain accu_var.
@@ -115,7 +159,9 @@ class Comprehension extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * The name of the iteration variable.
+     * The name of the first iteration variable.
+     * When the iter_range is a list, this variable is the list element.
+     * When the iter_range is a map, this variable is the map entry key.
      *
      * Generated from protobuf field <code>string iter_var = 1 [json_name = "iterVar"];</code>
      * @return string
@@ -126,7 +172,9 @@ class Comprehension extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * The name of the iteration variable.
+     * The name of the first iteration variable.
+     * When the iter_range is a list, this variable is the list element.
+     * When the iter_range is a map, this variable is the map entry key.
      *
      * Generated from protobuf field <code>string iter_var = 1 [json_name = "iterVar"];</code>
      * @param string $var
@@ -141,7 +189,39 @@ class Comprehension extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * The range over which var iterates.
+     * The name of the second iteration variable, empty if not set.
+     * When the iter_range is a list, this variable is the integer index.
+     * When the iter_range is a map, this variable is the map entry value.
+     * This field is only set for comprehension v2 macros.
+     *
+     * Generated from protobuf field <code>string iter_var2 = 8 [json_name = "iterVar2"];</code>
+     * @return string
+     */
+    public function getIterVar2()
+    {
+        return $this->iter_var2;
+    }
+
+    /**
+     * The name of the second iteration variable, empty if not set.
+     * When the iter_range is a list, this variable is the integer index.
+     * When the iter_range is a map, this variable is the map entry value.
+     * This field is only set for comprehension v2 macros.
+     *
+     * Generated from protobuf field <code>string iter_var2 = 8 [json_name = "iterVar2"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setIterVar2($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->iter_var2 = $var;
+
+        return $this;
+    }
+
+    /**
+     * The range over which the comprehension iterates.
      *
      * Generated from protobuf field <code>.google.api.expr.v1alpha1.Expr iter_range = 2 [json_name = "iterRange"];</code>
      * @return \Google\Api\Expr\V1alpha1\Expr|null
@@ -162,7 +242,7 @@ class Comprehension extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * The range over which var iterates.
+     * The range over which the comprehension iterates.
      *
      * Generated from protobuf field <code>.google.api.expr.v1alpha1.Expr iter_range = 2 [json_name = "iterRange"];</code>
      * @param \Google\Api\Expr\V1alpha1\Expr $var
@@ -239,7 +319,7 @@ class Comprehension extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * An expression which can contain iter_var and accu_var.
+     * An expression which can contain iter_var, iter_var2, and accu_var.
      * Returns false when the result has been computed and may be used as
      * a hint to short-circuit the remainder of the comprehension.
      *
@@ -262,7 +342,7 @@ class Comprehension extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * An expression which can contain iter_var and accu_var.
+     * An expression which can contain iter_var, iter_var2, and accu_var.
      * Returns false when the result has been computed and may be used as
      * a hint to short-circuit the remainder of the comprehension.
      *
@@ -279,7 +359,7 @@ class Comprehension extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * An expression which can contain iter_var and accu_var.
+     * An expression which can contain iter_var, iter_var2, and accu_var.
      * Computes the next value of accu_var.
      *
      * Generated from protobuf field <code>.google.api.expr.v1alpha1.Expr loop_step = 6 [json_name = "loopStep"];</code>
@@ -301,7 +381,7 @@ class Comprehension extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * An expression which can contain iter_var and accu_var.
+     * An expression which can contain iter_var, iter_var2, and accu_var.
      * Computes the next value of accu_var.
      *
      * Generated from protobuf field <code>.google.api.expr.v1alpha1.Expr loop_step = 6 [json_name = "loopStep"];</code>

@@ -19,7 +19,7 @@ class ResourceEntry extends \Google\Protobuf\Internal\Message
      */
     private $actions;
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED];</code>
      */
     protected $resource = null;
 
@@ -61,7 +61,7 @@ class ResourceEntry extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED];</code>
      * @return \Cerbos\Engine\V1\Resource|null
      */
     public function getResource()
@@ -80,7 +80,7 @@ class ResourceEntry extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED, (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.engine.v1.Resource resource = 2 [json_name = "resource", (.google.api.field_behavior) = REQUIRED];</code>
      * @param \Cerbos\Engine\V1\Resource $var
      * @return $this
      */

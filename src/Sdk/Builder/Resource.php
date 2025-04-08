@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Builder;
 
-class Resource
+final class Resource
 {
     private string $kind;
     private string $id;

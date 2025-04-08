@@ -16,7 +16,8 @@ use Google\Protobuf\Internal\GPBUtil;
  * `google.protobuf.Value`, but richer so it can represent CEL's full range of
  * primitives.
  * Lists and structs are not included as constants as these aggregate types may
- * contain [Expr][google.api.expr.v1alpha1.Expr] elements which require evaluation and are thus not constant.
+ * contain [Expr][google.api.expr.v1alpha1.Expr] elements which require
+ * evaluation and are thus not constant.
  * Examples of literals include: `"hello"`, `b'bytes'`, `1u`, `4.2`, `-2`,
  * `true`, `null`.
  *
@@ -286,13 +287,17 @@ class Constant extends \Google\Protobuf\Internal\Message
      */
     public function getDurationValue()
     {
-        @trigger_error('duration_value is deprecated.', E_USER_DEPRECATED);
+        if ($this->hasOneof(8)) {
+            @trigger_error('duration_value is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->readOneof(8);
     }
 
     public function hasDurationValue()
     {
-        @trigger_error('duration_value is deprecated.', E_USER_DEPRECATED);
+        if ($this->hasOneof(8)) {
+            @trigger_error('duration_value is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->hasOneof(8);
     }
 
@@ -324,13 +329,17 @@ class Constant extends \Google\Protobuf\Internal\Message
      */
     public function getTimestampValue()
     {
-        @trigger_error('timestamp_value is deprecated.', E_USER_DEPRECATED);
+        if ($this->hasOneof(9)) {
+            @trigger_error('timestamp_value is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->readOneof(9);
     }
 
     public function hasTimestampValue()
     {
-        @trigger_error('timestamp_value is deprecated.', E_USER_DEPRECATED);
+        if ($this->hasOneof(9)) {
+            @trigger_error('timestamp_value is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->hasOneof(9);
     }
 

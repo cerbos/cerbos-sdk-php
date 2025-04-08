@@ -76,6 +76,10 @@ class Kind
      * Generated from protobuf enum <code>KIND_ROLE_POLICY_SCOPE = 15;</code>
      */
     const KIND_ROLE_POLICY_SCOPE = 15;
+    /**
+     * Generated from protobuf enum <code>KIND_ROLE = 16;</code>
+     */
+    const KIND_ROLE = 16;
 
     private static $valueToName = [
         self::KIND_UNSPECIFIED => 'KIND_UNSPECIFIED',
@@ -94,6 +98,7 @@ class Kind
         self::KIND_VARIABLES => 'KIND_VARIABLES',
         self::KIND_OUTPUT => 'KIND_OUTPUT',
         self::KIND_ROLE_POLICY_SCOPE => 'KIND_ROLE_POLICY_SCOPE',
+        self::KIND_ROLE => 'KIND_ROLE',
     ];
 
     public static function name($value)

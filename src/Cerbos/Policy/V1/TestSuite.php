@@ -15,7 +15,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class TestSuite extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      */
     protected $name = '';
     /**
@@ -31,7 +31,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
      */
     protected $skip_reason = '';
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests"];</code>
      */
     private $tests;
     /**
@@ -54,6 +54,14 @@ class TestSuite extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string json_schema = 10 [json_name = "$schema"];</code>
      */
     protected $json_schema = '';
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Principals> principal_groups = 11 [json_name = "principalGroups"];</code>
+     */
+    private $principal_groups;
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Resources> resource_groups = 12 [json_name = "resourceGroups"];</code>
+     */
+    private $resource_groups;
 
     /**
      * Constructor.
@@ -71,6 +79,8 @@ class TestSuite extends \Google\Protobuf\Internal\Message
      *     @type array|\Google\Protobuf\Internal\MapField $aux_data
      *     @type \Cerbos\Policy\V1\TestOptions $options
      *     @type string $json_schema
+     *     @type array|\Google\Protobuf\Internal\MapField $principal_groups
+     *     @type array|\Google\Protobuf\Internal\MapField $resource_groups
      * }
      */
     public function __construct($data = NULL) {
@@ -79,7 +89,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      * @return string
      */
     public function getName()
@@ -88,7 +98,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      * @param string $var
      * @return $this
      */
@@ -167,7 +177,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getTests()
@@ -176,7 +186,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests"];</code>
      * @param array<\Cerbos\Policy\V1\TestTable>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -304,6 +314,50 @@ class TestSuite extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->json_schema = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Principals> principal_groups = 11 [json_name = "principalGroups"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getPrincipalGroups()
+    {
+        return $this->principal_groups;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Principals> principal_groups = 11 [json_name = "principalGroups"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setPrincipalGroups($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\TestFixtureGroup\Principals::class);
+        $this->principal_groups = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Resources> resource_groups = 12 [json_name = "resourceGroups"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getResourceGroups()
+    {
+        return $this->resource_groups;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Resources> resource_groups = 12 [json_name = "resourceGroups"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setResourceGroups($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\TestFixtureGroup\Resources::class);
+        $this->resource_groups = $arr;
 
         return $this;
     }

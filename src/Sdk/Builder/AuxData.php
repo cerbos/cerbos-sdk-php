@@ -9,7 +9,7 @@ namespace Cerbos\Sdk\Builder;
 
 use Cerbos\Request\V1\AuxData\JWT;
 
-class AuxData
+final class AuxData
 {
     private \Cerbos\Request\V1\AuxData $auxData;
 

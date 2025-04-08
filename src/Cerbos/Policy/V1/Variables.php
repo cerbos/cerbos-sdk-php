@@ -15,7 +15,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class Variables extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>repeated string import = 1 [json_name = "import", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string import = 1 [json_name = "import"];</code>
      */
     private $import;
     /**
@@ -39,7 +39,7 @@ class Variables extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string import = 1 [json_name = "import", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string import = 1 [json_name = "import"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getImport()
@@ -48,7 +48,7 @@ class Variables extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string import = 1 [json_name = "import", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string import = 1 [json_name = "import"];</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */

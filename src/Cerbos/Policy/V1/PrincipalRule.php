@@ -15,11 +15,11 @@ use Google\Protobuf\Internal\GPBUtil;
 class PrincipalRule extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource"];</code>
      */
     protected $resource = '';
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.PrincipalRule.Action actions = 2 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.PrincipalRule.Action actions = 2 [json_name = "actions"];</code>
      */
     private $actions;
 
@@ -39,7 +39,7 @@ class PrincipalRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource"];</code>
      * @return string
      */
     public function getResource()
@@ -48,7 +48,7 @@ class PrincipalRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string resource = 1 [json_name = "resource", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string resource = 1 [json_name = "resource"];</code>
      * @param string $var
      * @return $this
      */
@@ -61,7 +61,7 @@ class PrincipalRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.PrincipalRule.Action actions = 2 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.PrincipalRule.Action actions = 2 [json_name = "actions"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getActions()
@@ -70,7 +70,7 @@ class PrincipalRule extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.policy.v1.PrincipalRule.Action actions = 2 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated .cerbos.policy.v1.PrincipalRule.Action actions = 2 [json_name = "actions"];</code>
      * @param array<\Cerbos\Policy\V1\PrincipalRule\Action>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */

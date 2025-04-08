@@ -22,6 +22,10 @@ class Resources extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string json_schema = 2 [json_name = "$schema"];</code>
      */
     protected $json_schema = '';
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Resources> resource_groups = 3 [json_name = "resourceGroups"];</code>
+     */
+    private $resource_groups;
 
     /**
      * Constructor.
@@ -31,6 +35,7 @@ class Resources extends \Google\Protobuf\Internal\Message
      *
      *     @type array|\Google\Protobuf\Internal\MapField $resources
      *     @type string $json_schema
+     *     @type array|\Google\Protobuf\Internal\MapField $resource_groups
      * }
      */
     public function __construct($data = NULL) {
@@ -78,6 +83,28 @@ class Resources extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->json_schema = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Resources> resource_groups = 3 [json_name = "resourceGroups"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getResourceGroups()
+    {
+        return $this->resource_groups;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Resources> resource_groups = 3 [json_name = "resourceGroups"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setResourceGroups($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\TestFixtureGroup\Resources::class);
+        $this->resource_groups = $arr;
 
         return $this;
     }

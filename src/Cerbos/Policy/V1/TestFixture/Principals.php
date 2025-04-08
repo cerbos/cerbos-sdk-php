@@ -22,6 +22,10 @@ class Principals extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string json_schema = 2 [json_name = "$schema"];</code>
      */
     protected $json_schema = '';
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Principals> principal_groups = 3 [json_name = "principalGroups"];</code>
+     */
+    private $principal_groups;
 
     /**
      * Constructor.
@@ -31,6 +35,7 @@ class Principals extends \Google\Protobuf\Internal\Message
      *
      *     @type array|\Google\Protobuf\Internal\MapField $principals
      *     @type string $json_schema
+     *     @type array|\Google\Protobuf\Internal\MapField $principal_groups
      * }
      */
     public function __construct($data = NULL) {
@@ -78,6 +83,28 @@ class Principals extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->json_schema = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Principals> principal_groups = 3 [json_name = "principalGroups"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getPrincipalGroups()
+    {
+        return $this->principal_groups;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.policy.v1.TestFixtureGroup.Principals> principal_groups = 3 [json_name = "principalGroups"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setPrincipalGroups($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\TestFixtureGroup\Principals::class);
+        $this->principal_groups = $arr;
 
         return $this;
     }

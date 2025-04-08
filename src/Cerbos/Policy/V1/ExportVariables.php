@@ -15,7 +15,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class ExportVariables extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      */
     protected $name = '';
     /**
@@ -39,7 +39,7 @@ class ExportVariables extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      * @return string
      */
     public function getName()
@@ -48,7 +48,7 @@ class ExportVariables extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      * @param string $var
      * @return $this
      */

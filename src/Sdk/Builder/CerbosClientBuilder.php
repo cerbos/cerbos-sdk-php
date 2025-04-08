@@ -15,7 +15,7 @@ use Grpc\ChannelCredentials;
 
 const playgroundInstanceHeader = "playground-instance";
 
-class CerbosClientBuilder
+final class CerbosClientBuilder
 {
     private string $hostname;
     private bool $plaintext;

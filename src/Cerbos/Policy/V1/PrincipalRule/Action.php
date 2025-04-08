@@ -15,7 +15,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class Action extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string action = 1 [json_name = "action", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string action = 1 [json_name = "action"];</code>
      */
     protected $action = '';
     /**
@@ -23,11 +23,11 @@ class Action extends \Google\Protobuf\Internal\Message
      */
     protected $condition = null;
     /**
-     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 3 [json_name = "effect", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 3 [json_name = "effect"];</code>
      */
     protected $effect = 0;
     /**
-     * Generated from protobuf field <code>string name = 4 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 4 [json_name = "name"];</code>
      */
     protected $name = '';
     /**
@@ -54,7 +54,7 @@ class Action extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string action = 1 [json_name = "action", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string action = 1 [json_name = "action"];</code>
      * @return string
      */
     public function getAction()
@@ -63,7 +63,7 @@ class Action extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string action = 1 [json_name = "action", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string action = 1 [json_name = "action"];</code>
      * @param string $var
      * @return $this
      */
@@ -108,7 +108,7 @@ class Action extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 3 [json_name = "effect", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 3 [json_name = "effect"];</code>
      * @return int
      */
     public function getEffect()
@@ -117,7 +117,7 @@ class Action extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 3 [json_name = "effect", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>.cerbos.effect.v1.Effect effect = 3 [json_name = "effect"];</code>
      * @param int $var
      * @return $this
      */
@@ -130,7 +130,7 @@ class Action extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 4 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 4 [json_name = "name"];</code>
      * @return string
      */
     public function getName()
@@ -139,7 +139,7 @@ class Action extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 4 [json_name = "name", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string name = 4 [json_name = "name"];</code>
      * @param string $var
      * @return $this
      */

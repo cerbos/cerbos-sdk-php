@@ -15,11 +15,10 @@ class Schema
         if (static::$is_initialized == true) {
           return;
         }
-        \GPBMetadata\Buf\Validate\Validate::initOnce();
         \GPBMetadata\Google\Api\FieldBehavior::initOnce();
         \GPBMetadata\ProtocGenOpenapiv2\Options\Annotations::initOnce();
         $pool->internalAddGeneratedFile(
-            "\x0A\xA0\x05\x0A\x1Dcerbos/schema/v1/schema.proto\x12\x10cerbos.schema.v1\x1A\x1Fgoogle/api/field_behavior.proto\x1A.protoc-gen-openapiv2/options/annotations.proto\"\xCE\x01\x0A\x0FValidationError\x12\x12\x0A\x04path\x18\x01 \x01(\x09R\x04path\x12\x18\x0A\x07message\x18\x02 \x01(\x09R\x07message\x12@\x0A\x06source\x18\x03 \x01(\x0E2(.cerbos.schema.v1.ValidationError.SourceR\x06source\"K\x0A\x06Source\x12\x16\x0A\x12SOURCE_UNSPECIFIED\x10\x00\x12\x14\x0A\x10SOURCE_PRINCIPAL\x10\x01\x12\x13\x0A\x0FSOURCE_RESOURCE\x10\x02\"\xD1\x01\x0A\x06Schema\x12X\x0A\x02id\x18\x01 \x01(\x09BH\x92A42 Unique identifier for the schemaJ\x10\"principal.json\"\xE2A\x01\x02\xBAH\x0Ar\x05\x10\x01\x18\xFF\x01\xC8\x01\x01R\x02id\x12m\x0A\x0Adefinition\x18\x02 \x01(\x0CBM\x92A<2\x16JSON schema definitionJ\"{\"type\":\"object\", \"properties\":{}}\xE2A\x01\x02\xBAH\x07z\x02\x10\x0A\xC8\x01\x01R\x0AdefinitionBo\x0A\x18dev.cerbos.api.v1.schemaZ<github.com/cerbos/cerbos/api/genpb/cerbos/schema/v1;schemav1\xAA\x02\x14Cerbos.Api.V1.Schemab\x06proto3"
+            "\x0A\xFD\x04\x0A\x1Dcerbos/schema/v1/schema.proto\x12\x10cerbos.schema.v1\x1A.protoc-gen-openapiv2/options/annotations.proto\"\xCE\x01\x0A\x0FValidationError\x12\x12\x0A\x04path\x18\x01 \x01(\x09R\x04path\x12\x18\x0A\x07message\x18\x02 \x01(\x09R\x07message\x12@\x0A\x06source\x18\x03 \x01(\x0E2(.cerbos.schema.v1.ValidationError.SourceR\x06source\"K\x0A\x06Source\x12\x16\x0A\x12SOURCE_UNSPECIFIED\x10\x00\x12\x14\x0A\x10SOURCE_PRINCIPAL\x10\x01\x12\x13\x0A\x0FSOURCE_RESOURCE\x10\x02\"\xCF\x01\x0A\x06Schema\x12W\x0A\x02id\x18\x01 \x01(\x09BG\x92A42 Unique identifier for the schemaJ\x10\"principal.json\"\xE0A\x02\xBAH\x0A\xC8\x01\x01r\x05\x10\x01\x18\xFF\x01R\x02id\x12l\x0A\x0Adefinition\x18\x02 \x01(\x0CBL\x92A<2\x16JSON schema definitionJ\"{\"type\":\"object\", \"properties\":{}}\xE0A\x02\xBAH\x07\xC8\x01\x01z\x02\x10\x0AR\x0AdefinitionBo\x0A\x18dev.cerbos.api.v1.schemaZ<github.com/cerbos/cerbos/api/genpb/cerbos/schema/v1;schemav1\xAA\x02\x14Cerbos.Api.V1.Schemab\x06proto3"
         , true);
 
         static::$is_initialized = true;

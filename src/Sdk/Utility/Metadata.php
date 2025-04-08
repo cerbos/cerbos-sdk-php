@@ -9,7 +9,7 @@ namespace Cerbos\Sdk\Utility;
 
 use Exception;
 
-class Metadata
+final class Metadata
 {
     /**
      * @param array|null $first

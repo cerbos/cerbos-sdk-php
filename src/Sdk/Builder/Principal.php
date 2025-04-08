@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Builder;
 
-class Principal
+final class Principal
 {
     private \Cerbos\Engine\V1\Principal $principal;
 

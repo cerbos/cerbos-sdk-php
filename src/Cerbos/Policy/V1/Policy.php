@@ -15,7 +15,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class Policy extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion"];</code>
      */
     protected $api_version = '';
     /**
@@ -56,6 +56,7 @@ class Policy extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Policy\V1\DerivedRoles $derived_roles
      *     @type \Cerbos\Policy\V1\ExportVariables $export_variables
      *     @type \Cerbos\Policy\V1\RolePolicy $role_policy
+     *     @type \Cerbos\Policy\V1\ExportConstants $export_constants
      *     @type array|\Google\Protobuf\Internal\MapField $variables
      *     @type string $json_schema
      * }
@@ -66,7 +67,7 @@ class Policy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion"];</code>
      * @return string
      */
     public function getApiVersion()
@@ -75,7 +76,7 @@ class Policy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>string api_version = 1 [json_name = "apiVersion"];</code>
      * @param string $var
      * @return $this
      */
@@ -299,13 +300,42 @@ class Policy extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.ExportConstants export_constants = 12 [json_name = "exportConstants"];</code>
+     * @return \Cerbos\Policy\V1\ExportConstants|null
+     */
+    public function getExportConstants()
+    {
+        return $this->readOneof(12);
+    }
+
+    public function hasExportConstants()
+    {
+        return $this->hasOneof(12);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.ExportConstants export_constants = 12 [json_name = "exportConstants"];</code>
+     * @param \Cerbos\Policy\V1\ExportConstants $var
+     * @return $this
+     */
+    public function setExportConstants($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\ExportConstants::class);
+        $this->writeOneof(12, $var);
+
+        return $this;
+    }
+
+    /**
      * Generated from protobuf field <code>map<string, string> variables = 8 [json_name = "variables", deprecated = true];</code>
      * @return \Google\Protobuf\Internal\MapField
      * @deprecated
      */
     public function getVariables()
     {
-        @trigger_error('variables is deprecated.', E_USER_DEPRECATED);
+        if ($this->variables->count() !== 0) {
+            @trigger_error('variables is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->variables;
     }
 
@@ -317,8 +347,10 @@ class Policy extends \Google\Protobuf\Internal\Message
      */
     public function setVariables($var)
     {
-        @trigger_error('variables is deprecated.', E_USER_DEPRECATED);
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::STRING);
+        if ($arr->count() !== 0) {
+            @trigger_error('variables is deprecated.', E_USER_DEPRECATED);
+        }
         $this->variables = $arr;
 
         return $this;

@@ -10,7 +10,7 @@ namespace Cerbos\Sdk\Response\V1\PlanResourcesResponse;
 use Cerbos\Engine\V1\PlanResourcesFilter;
 use Cerbos\Schema\V1\ValidationError;
 
-class PlanResourcesResponse
+final class PlanResourcesResponse
 {
     private \Cerbos\Response\V1\PlanResourcesResponse $response;
 

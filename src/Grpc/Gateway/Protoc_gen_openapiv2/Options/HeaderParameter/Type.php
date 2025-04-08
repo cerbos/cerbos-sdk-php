@@ -8,7 +8,7 @@ namespace Grpc\Gateway\Protoc_gen_openapiv2\Options\HeaderParameter;
 use UnexpectedValueException;
 
 /**
- * `Type` is a a supported HTTP header type.
+ * `Type` is a supported HTTP header type.
  * See https://swagger.io/specification/v2/#parameterType.
  *
  * Protobuf type <code>grpc.gateway.protoc_gen_openapiv2.options.HeaderParameter.Type</code>

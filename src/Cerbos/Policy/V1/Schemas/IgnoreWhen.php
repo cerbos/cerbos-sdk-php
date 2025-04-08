@@ -15,7 +15,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class IgnoreWhen extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions"];</code>
      */
     private $actions;
 
@@ -34,7 +34,7 @@ class IgnoreWhen extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getActions()
@@ -43,7 +43,7 @@ class IgnoreWhen extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.buf.validate.field) = {</code>
+     * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions"];</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
