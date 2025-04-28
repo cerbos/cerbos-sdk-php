@@ -19,9 +19,14 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
      */
     protected $request_id = '';
     /**
-     * Generated from protobuf field <code>string action = 2 [json_name = "action", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * Generated from protobuf field <code>string action = 2 [json_name = "action", deprecated = true];</code>
+     * @deprecated
      */
     protected $action = '';
+    /**
+     * Generated from protobuf field <code>repeated string actions = 9 [json_name = "actions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    private $actions;
     /**
      * Generated from protobuf field <code>string resource_kind = 3 [json_name = "resourceKind", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
      */
@@ -55,6 +60,7 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
      *
      *     @type string $request_id
      *     @type string $action
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
      *     @type string $resource_kind
      *     @type string $policy_version
      *     @type \Cerbos\Engine\V1\PlanResourcesFilter $filter
@@ -91,23 +97,51 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string action = 2 [json_name = "action", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * Generated from protobuf field <code>string action = 2 [json_name = "action", deprecated = true];</code>
      * @return string
+     * @deprecated
      */
     public function getAction()
     {
+        if ($this->action !== '') {
+            @trigger_error('action is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->action;
     }
 
     /**
-     * Generated from protobuf field <code>string action = 2 [json_name = "action", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * Generated from protobuf field <code>string action = 2 [json_name = "action", deprecated = true];</code>
      * @param string $var
      * @return $this
+     * @deprecated
      */
     public function setAction($var)
     {
+        @trigger_error('action is deprecated.', E_USER_DEPRECATED);
         GPBUtil::checkString($var, True);
         $this->action = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string actions = 9 [json_name = "actions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getActions()
+    {
+        return $this->actions;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string actions = 9 [json_name = "actions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setActions($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->actions = $arr;
 
         return $this;
     }

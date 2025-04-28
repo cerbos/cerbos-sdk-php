@@ -19,7 +19,8 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
      */
     protected $request_id = '';
     /**
-     * Generated from protobuf field <code>string action = 2 [json_name = "action"];</code>
+     * Generated from protobuf field <code>string action = 2 [json_name = "action", deprecated = true];</code>
+     * @deprecated
      */
     protected $action = '';
     /**
@@ -46,6 +47,14 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 8 [json_name = "validationErrors"];</code>
      */
     private $validation_errors;
+    /**
+     * Generated from protobuf field <code>repeated string actions = 9 [json_name = "actions"];</code>
+     */
+    private $actions;
+    /**
+     * Generated from protobuf field <code>map<string, string> matched_scopes = 10 [json_name = "matchedScopes"];</code>
+     */
+    private $matched_scopes;
 
     /**
      * Constructor.
@@ -61,6 +70,8 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Engine\V1\PlanResourcesFilter $filter
      *     @type string $filter_debug
      *     @type array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $validation_errors
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
+     *     @type array|\Google\Protobuf\Internal\MapField $matched_scopes
      * }
      */
     public function __construct($data = NULL) {
@@ -91,21 +102,27 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string action = 2 [json_name = "action"];</code>
+     * Generated from protobuf field <code>string action = 2 [json_name = "action", deprecated = true];</code>
      * @return string
+     * @deprecated
      */
     public function getAction()
     {
+        if ($this->action !== '') {
+            @trigger_error('action is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->action;
     }
 
     /**
-     * Generated from protobuf field <code>string action = 2 [json_name = "action"];</code>
+     * Generated from protobuf field <code>string action = 2 [json_name = "action", deprecated = true];</code>
      * @param string $var
      * @return $this
+     * @deprecated
      */
     public function setAction($var)
     {
+        @trigger_error('action is deprecated.', E_USER_DEPRECATED);
         GPBUtil::checkString($var, True);
         $this->action = $var;
 
@@ -250,6 +267,50 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Schema\V1\ValidationError::class);
         $this->validation_errors = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string actions = 9 [json_name = "actions"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getActions()
+    {
+        return $this->actions;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string actions = 9 [json_name = "actions"];</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setActions($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->actions = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, string> matched_scopes = 10 [json_name = "matchedScopes"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getMatchedScopes()
+    {
+        return $this->matched_scopes;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, string> matched_scopes = 10 [json_name = "matchedScopes"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setMatchedScopes($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->matched_scopes = $arr;
 
         return $this;
     }

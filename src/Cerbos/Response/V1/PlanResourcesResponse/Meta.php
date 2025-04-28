@@ -19,9 +19,14 @@ class Meta extends \Google\Protobuf\Internal\Message
      */
     protected $filter_debug = '';
     /**
-     * Generated from protobuf field <code>string matched_scope = 2 [json_name = "matchedScope", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * Generated from protobuf field <code>string matched_scope = 2 [json_name = "matchedScope", deprecated = true];</code>
+     * @deprecated
      */
     protected $matched_scope = '';
+    /**
+     * Generated from protobuf field <code>map<string, string> matched_scopes = 3 [json_name = "matchedScopes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    private $matched_scopes;
 
     /**
      * Constructor.
@@ -31,6 +36,7 @@ class Meta extends \Google\Protobuf\Internal\Message
      *
      *     @type string $filter_debug
      *     @type string $matched_scope
+     *     @type array|\Google\Protobuf\Internal\MapField $matched_scopes
      * }
      */
     public function __construct($data = NULL) {
@@ -61,23 +67,51 @@ class Meta extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string matched_scope = 2 [json_name = "matchedScope", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * Generated from protobuf field <code>string matched_scope = 2 [json_name = "matchedScope", deprecated = true];</code>
      * @return string
+     * @deprecated
      */
     public function getMatchedScope()
     {
+        if ($this->matched_scope !== '') {
+            @trigger_error('matched_scope is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->matched_scope;
     }
 
     /**
-     * Generated from protobuf field <code>string matched_scope = 2 [json_name = "matchedScope", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * Generated from protobuf field <code>string matched_scope = 2 [json_name = "matchedScope", deprecated = true];</code>
      * @param string $var
      * @return $this
+     * @deprecated
      */
     public function setMatchedScope($var)
     {
+        @trigger_error('matched_scope is deprecated.', E_USER_DEPRECATED);
         GPBUtil::checkString($var, True);
         $this->matched_scope = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, string> matched_scopes = 3 [json_name = "matchedScopes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getMatchedScopes()
+    {
+        return $this->matched_scopes;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, string> matched_scopes = 3 [json_name = "matchedScopes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setMatchedScopes($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->matched_scopes = $arr;
 
         return $this;
     }
