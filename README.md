@@ -107,6 +107,7 @@ if ($resultEntry->isAllowed("defer")) { // returns true if `defer` action is all
 $request = PlanResourcesRequest::newInstance()
     ->withRequestId(RequestId::generate())
     ->withAction("approve")
+    ->withActions(array("create", "delete"))
     ->withPrincipal(
         Principal::newInstance("maggie")
             ->withRole("manager")
@@ -202,6 +203,7 @@ $request = CheckResourcesRequest::newInstance()
 $request = PlanResourcesRequest::newInstance()
     ->withRequestId(RequestId::generate())
     ->withAction("approve")
+    ->withActions(array("create", "delete"))
     ->withPrincipal(
         Principal::newInstance("maggie")
             ->withRole("manager")

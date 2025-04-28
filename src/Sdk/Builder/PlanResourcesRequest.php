@@ -12,14 +12,14 @@ use Exception;
 final class PlanResourcesRequest
 {
     private ?AuxData $auxData;
-    private ?string $action;
+    private ?array $actions;
     private bool $includeMeta;
     private ?Principal $principal;
     private ?Resource $resource;
     private ?string $requestId;
 
     private function __construct() {
-        $this->action = null;
+        $this->actions = null;
         $this->auxData = null;
         $this->includeMeta = false;
         $this->principal = null;
@@ -39,7 +39,18 @@ final class PlanResourcesRequest
      * @return $this
      */
     public function withAction(string $action): PlanResourcesRequest {
-        $this->action = $action;
+        $this->actions[] = $action;
+        return $this;
+    }
+
+    /**
+     * @param array<string> $actions
+     * @return $this
+     */
+    public function withActions(array $actions): PlanResourcesRequest {
+        foreach ($actions as $action) {
+            $this->actions[] = $action;
+        }
         return $this;
     }
 
@@ -93,8 +104,8 @@ final class PlanResourcesRequest
      * @throws Exception
      */
     public function toPlanResourcesRequest(): \Cerbos\Request\V1\PlanResourcesRequest {
-        if (!isset($this->action)) {
-            throw new Exception("action is not set");
+        if (!isset($this->actions)) {
+            throw new Exception("actions is empty or not set");
         }
 
         if (!isset($this->principal)) {
@@ -114,7 +125,7 @@ final class PlanResourcesRequest
             ->setPrincipal($this->principal->toPrincipal())
             ->setRequestId($this->requestId)
             ->setResource($this->resource->toPlanResource())
-            ->setAction($this->action);
+            ->setActions($this->actions);
 
         if (isset($this->auxData)) {
             $request->setAuxData($this->auxData->toAuxData());
