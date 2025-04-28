@@ -12,14 +12,16 @@ use Exception;
 final class PlanResourcesRequest
 {
     private ?AuxData $auxData;
-    private ?array $actions;
+    private ?string $action;
+    private array $actions;
     private bool $includeMeta;
     private ?Principal $principal;
     private ?Resource $resource;
     private ?string $requestId;
 
     private function __construct() {
-        $this->actions = null;
+        $this->action = null;
+        $this->actions = array();
         $this->auxData = null;
         $this->includeMeta = false;
         $this->principal = null;
@@ -35,11 +37,13 @@ final class PlanResourcesRequest
     }
 
     /**
+     * Deprecated: Use withActions instead.
      * @param string $action
      * @return $this
+     * @deprecated
      */
     public function withAction(string $action): PlanResourcesRequest {
-        $this->actions[] = $action;
+        $this->action = $action;
         return $this;
     }
 
@@ -104,8 +108,8 @@ final class PlanResourcesRequest
      * @throws Exception
      */
     public function toPlanResourcesRequest(): \Cerbos\Request\V1\PlanResourcesRequest {
-        if (!isset($this->actions)) {
-            throw new Exception("actions is empty or not set");
+        if (!isset($this->action) && count($this->actions) == 0) {
+            throw new Exception("action(s) is empty or not set");
         }
 
         if (!isset($this->principal)) {
@@ -124,8 +128,19 @@ final class PlanResourcesRequest
             ->setIncludeMeta($this->includeMeta)
             ->setPrincipal($this->principal->toPrincipal())
             ->setRequestId($this->requestId)
-            ->setResource($this->resource->toPlanResource())
-            ->setActions($this->actions);
+            ->setResource($this->resource->toPlanResource());
+
+        if (isset($this->action) && count($this->actions) == 0) {
+            /**
+            * @psalm-suppress DeprecatedMethod
+            */
+            $request->setAction($this->action);
+        }
+        else if (!isset($this->action) && count($this->actions) != 0) {
+            $request->setActions($this->actions);
+        } else {
+            throw new Exception("either use withAction or withActions for specifying action(s)");
+        }
 
         if (isset($this->auxData)) {
             $request->setAuxData($this->auxData->toAuxData());

@@ -107,7 +107,6 @@ if ($resultEntry->isAllowed("defer")) { // returns true if `defer` action is all
 $request = PlanResourcesRequest::newInstance()
     ->withRequestId(RequestId::generate())
     ->withAction("approve")
-    ->withActions(array("create", "delete"))
     ->withPrincipal(
         Principal::newInstance("maggie")
             ->withRole("manager")
@@ -118,7 +117,7 @@ $request = PlanResourcesRequest::newInstance()
     ->withResource(
         Resource::newInstance("leave_request", "xx125")
             ->withPolicyVersion("20210210")
-    );                
+    );
 
 $planResourcesResponse = $this->client->planResources($request);
 if ($planResourcesResponse->isAlwaysAllowed()) {
@@ -131,6 +130,12 @@ else {
     // ...
 }
 ```
+
+> [!NOTE]  
+> Cerbos PDP v0.44.0 and onwards support specifying multiple actions with the following syntax: 
+> ```php
+> ->withActions(array("create", "delete"))
+> ``` 
 
 # Upgrading from `v0.1.x`
 
@@ -203,7 +208,6 @@ $request = CheckResourcesRequest::newInstance()
 $request = PlanResourcesRequest::newInstance()
     ->withRequestId(RequestId::generate())
     ->withAction("approve")
-    ->withActions(array("create", "delete"))
     ->withPrincipal(
         Principal::newInstance("maggie")
             ->withRole("manager")
