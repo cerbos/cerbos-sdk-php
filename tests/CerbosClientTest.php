@@ -204,7 +204,7 @@ final class CerbosClientTest extends TestCase
                 Resource::newInstance("leave_request", "XX125")
                     ->withPolicyVersion("20210210")
             )
-            ->withAction("approve");
+            ->withActions(array("approve"));
 
 
         try {
@@ -213,7 +213,7 @@ final class CerbosClientTest extends TestCase
             $this->fail($e->getMessage());
         }
 
-        $this->assertEquals("approve", $planResourcesResult->getAction(), "planResourcesResult action is wrong");
+        $this->assertEquals(array("approve"), $planResourcesResult->getActions(), "planResourcesResult actions is wrong");
         $this->assertEquals("20210210", $planResourcesResult->getPolicyVersion(), "planResourcesResult policy version is wrong");
         $this->assertEquals("leave_request", $planResourcesResult->getResourceKind(), "planResourcesResult resource kind is wrong");
 
@@ -253,7 +253,7 @@ final class CerbosClientTest extends TestCase
                     ->withPolicyVersion("20210210")
                     ->withAttribute("department", AttributeValue::stringValue("accounting"))
             )
-            ->withAction("approve");
+            ->withActions(array("approve"));
 
         try {
             $planResourcesResult = $this->client->planResources($request, $this->metadata);
@@ -261,7 +261,7 @@ final class CerbosClientTest extends TestCase
             $this->fail($e->getMessage());
         }
 
-        $this->assertEquals("approve", $planResourcesResult->getAction(), "planResourcesResult action is wrong");
+        $this->assertEquals(array("approve"), $planResourcesResult->getActions(), "planResourcesResult actions is wrong");
         $this->assertEquals("20210210", $planResourcesResult->getPolicyVersion(), "planResourcesResult policy version is wrong");
         $this->assertEquals("leave_request", $planResourcesResult->getResourceKind(), "planResourcesResult resource kind is wrong");
 

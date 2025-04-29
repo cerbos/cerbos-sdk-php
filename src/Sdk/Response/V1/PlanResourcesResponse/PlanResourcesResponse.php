@@ -22,10 +22,27 @@ final class PlanResourcesResponse
     }
 
     /**
+     * Deprecated: Use getActions instead.
      * @return string
+     * @deprecated
      */
     public function getAction(): string {
+        /**
+        * @psalm-suppress DeprecatedMethod
+        */
         return $this->response->getAction();
+    }
+    
+    /**
+     * @return array<string>
+     */
+    public function getActions(): array {
+        $actions = array();
+        foreach ($this->response->getActions() as $action) {
+            $actions[] = $action;
+        }
+
+        return $actions;
     }
 
     /**
