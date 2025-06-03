@@ -6,8 +6,8 @@
 namespace Cerbos\Request\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.request.v1.InspectPoliciesRequest</code>
@@ -45,7 +45,7 @@ class InspectPoliciesRequest extends \Google\Protobuf\Internal\Message
      *     @type string $name_regexp
      *     @type string $scope_regexp
      *     @type string $version_regexp
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $policy_id
+     *     @type string[] $policy_id
      * }
      */
     public function __construct($data = NULL) {
@@ -143,7 +143,7 @@ class InspectPoliciesRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string policy_id = 5 [json_name = "policyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getPolicyId()
     {
@@ -152,7 +152,7 @@ class InspectPoliciesRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string policy_id = 5 [json_name = "policyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setPolicyId($var)

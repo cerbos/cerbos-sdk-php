@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1\SourceInfo;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * An extension that was requested for the source expression.
@@ -46,7 +46,7 @@ class Extension extends \Google\Protobuf\Internal\Message
      *
      *     @type string $id
      *           Identifier for the extension. Example: constant_folding
-     *     @type array<int>|\Google\Protobuf\Internal\RepeatedField $affected_components
+     *     @type int[] $affected_components
      *           If set, the listed components must understand the extension for the
      *           expression to evaluate correctly.
      *           This field has set semantics, repeated values should be deduplicated.
@@ -92,7 +92,7 @@ class Extension extends \Google\Protobuf\Internal\Message
      * This field has set semantics, repeated values should be deduplicated.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.SourceInfo.Extension.Component affected_components = 2 [json_name = "affectedComponents"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<int>
      */
     public function getAffectedComponents()
     {
@@ -105,7 +105,7 @@ class Extension extends \Google\Protobuf\Internal\Message
      * This field has set semantics, repeated values should be deduplicated.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.SourceInfo.Extension.Component affected_components = 2 [json_name = "affectedComponents"];</code>
-     * @param array<int>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param int[] $var
      * @return $this
      */
     public function setAffectedComponents($var)

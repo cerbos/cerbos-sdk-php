@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.response.v1.PlanResourcesResponse</code>
@@ -60,12 +60,12 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
      *
      *     @type string $request_id
      *     @type string $action
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
+     *     @type string[] $actions
      *     @type string $resource_kind
      *     @type string $policy_version
      *     @type \Cerbos\Engine\V1\PlanResourcesFilter $filter
      *     @type \Cerbos\Response\V1\PlanResourcesResponse\Meta $meta
-     *     @type array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $validation_errors
+     *     @type \Cerbos\Schema\V1\ValidationError[] $validation_errors
      *     @type string $cerbos_call_id
      * }
      */
@@ -126,7 +126,7 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 9 [json_name = "actions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getActions()
     {
@@ -135,7 +135,7 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 9 [json_name = "actions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setActions($var)
@@ -256,7 +256,7 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 7 [json_name = "validationErrors", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Schema\V1\ValidationError>
      */
     public function getValidationErrors()
     {
@@ -265,7 +265,7 @@ class PlanResourcesResponse extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 7 [json_name = "validationErrors", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Schema\V1\ValidationError[] $var
      * @return $this
      */
     public function setValidationErrors($var)

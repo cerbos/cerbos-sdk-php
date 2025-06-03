@@ -6,8 +6,8 @@
 namespace Cerbos\Engine\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.engine.v1.CheckOutput</code>
@@ -48,9 +48,9 @@ class CheckOutput extends \Google\Protobuf\Internal\Message
      *     @type string $request_id
      *     @type string $resource_id
      *     @type array|\Google\Protobuf\Internal\MapField $actions
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $effective_derived_roles
-     *     @type array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $validation_errors
-     *     @type array<\Cerbos\Engine\V1\OutputEntry>|\Google\Protobuf\Internal\RepeatedField $outputs
+     *     @type string[] $effective_derived_roles
+     *     @type \Cerbos\Schema\V1\ValidationError[] $validation_errors
+     *     @type \Cerbos\Engine\V1\OutputEntry[] $outputs
      * }
      */
     public function __construct($data = NULL) {
@@ -126,7 +126,7 @@ class CheckOutput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string effective_derived_roles = 4 [json_name = "effectiveDerivedRoles"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getEffectiveDerivedRoles()
     {
@@ -135,7 +135,7 @@ class CheckOutput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string effective_derived_roles = 4 [json_name = "effectiveDerivedRoles"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setEffectiveDerivedRoles($var)
@@ -148,7 +148,7 @@ class CheckOutput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 5 [json_name = "validationErrors"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Schema\V1\ValidationError>
      */
     public function getValidationErrors()
     {
@@ -157,7 +157,7 @@ class CheckOutput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 5 [json_name = "validationErrors"];</code>
-     * @param array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Schema\V1\ValidationError[] $var
      * @return $this
      */
     public function setValidationErrors($var)
@@ -170,7 +170,7 @@ class CheckOutput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry outputs = 6 [json_name = "outputs"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\OutputEntry>
      */
     public function getOutputs()
     {
@@ -179,7 +179,7 @@ class CheckOutput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry outputs = 6 [json_name = "outputs"];</code>
-     * @param array<\Cerbos\Engine\V1\OutputEntry>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\OutputEntry[] $var
      * @return $this
      */
     public function setOutputs($var)

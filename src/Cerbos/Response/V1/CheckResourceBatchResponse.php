@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Deprecated. See CheckResourcesResponse.
@@ -32,7 +32,7 @@ class CheckResourceBatchResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $request_id
-     *     @type array<\Cerbos\Response\V1\CheckResourceBatchResponse\ActionEffectMap>|\Google\Protobuf\Internal\RepeatedField $results
+     *     @type \Cerbos\Response\V1\CheckResourceBatchResponse\ActionEffectMap[] $results
      * }
      */
     public function __construct($data = NULL) {
@@ -64,7 +64,7 @@ class CheckResourceBatchResponse extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.CheckResourceBatchResponse.ActionEffectMap results = 2 [json_name = "results", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Response\V1\CheckResourceBatchResponse\ActionEffectMap>
      */
     public function getResults()
     {
@@ -73,7 +73,7 @@ class CheckResourceBatchResponse extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.CheckResourceBatchResponse.ActionEffectMap results = 2 [json_name = "results", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Response\V1\CheckResourceBatchResponse\ActionEffectMap>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Response\V1\CheckResourceBatchResponse\ActionEffectMap[] $var
      * @return $this
      */
     public function setResults($var)

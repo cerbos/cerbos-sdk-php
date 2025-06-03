@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.RoleDef</code>
@@ -34,7 +34,7 @@ class RoleDef extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $name
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $parent_roles
+     *     @type string[] $parent_roles
      *     @type \Cerbos\Policy\V1\Condition $condition
      * }
      */
@@ -67,7 +67,7 @@ class RoleDef extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string parent_roles = 2 [json_name = "parentRoles"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getParentRoles()
     {
@@ -76,7 +76,7 @@ class RoleDef extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string parent_roles = 2 [json_name = "parentRoles"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setParentRoles($var)

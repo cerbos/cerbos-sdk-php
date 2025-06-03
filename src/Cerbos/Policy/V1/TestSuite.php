@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestSuite</code>
@@ -73,7 +73,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
      *     @type string $description
      *     @type bool $skip
      *     @type string $skip_reason
-     *     @type array<\Cerbos\Policy\V1\TestTable>|\Google\Protobuf\Internal\RepeatedField $tests
+     *     @type \Cerbos\Policy\V1\TestTable[] $tests
      *     @type array|\Google\Protobuf\Internal\MapField $principals
      *     @type array|\Google\Protobuf\Internal\MapField $resources
      *     @type array|\Google\Protobuf\Internal\MapField $aux_data
@@ -178,7 +178,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\TestTable>
      */
     public function getTests()
     {
@@ -187,7 +187,7 @@ class TestSuite extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable tests = 5 [json_name = "tests"];</code>
-     * @param array<\Cerbos\Policy\V1\TestTable>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\TestTable[] $var
      * @return $this
      */
     public function setTests($var)

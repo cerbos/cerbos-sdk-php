@@ -6,8 +6,8 @@
 namespace Cerbos\Engine\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.engine.v1.CheckInput</code>
@@ -44,7 +44,7 @@ class CheckInput extends \Google\Protobuf\Internal\Message
      *     @type string $request_id
      *     @type \Cerbos\Engine\V1\Resource $resource
      *     @type \Cerbos\Engine\V1\Principal $principal
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
+     *     @type string[] $actions
      *     @type \Cerbos\Engine\V1\AuxData $aux_data
      * }
      */
@@ -141,7 +141,7 @@ class CheckInput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 4 [json_name = "actions", (.google.api.field_behavior) = REQUIRED];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getActions()
     {
@@ -150,7 +150,7 @@ class CheckInput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 4 [json_name = "actions", (.google.api.field_behavior) = REQUIRED];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setActions($var)

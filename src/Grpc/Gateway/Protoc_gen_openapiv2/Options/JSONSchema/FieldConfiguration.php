@@ -6,8 +6,8 @@
 namespace Grpc\Gateway\Protoc_gen_openapiv2\Options\JSONSchema;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * 'FieldConfiguration' provides additional field level properties used when generating the OpenAPI v2 file.

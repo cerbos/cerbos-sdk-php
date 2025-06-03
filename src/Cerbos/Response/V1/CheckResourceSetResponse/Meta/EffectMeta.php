@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1\CheckResourceSetResponse\Meta;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.response.v1.CheckResourceSetResponse.Meta.EffectMeta</code>

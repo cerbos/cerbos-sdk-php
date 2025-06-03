@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1\Expr;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * A call expression, including calls to predefined functions and operators.
@@ -48,7 +48,7 @@ class Call extends \Google\Protobuf\Internal\Message
      *           `x.f()`.
      *     @type string $function
      *           Required. The name of the function or method being called.
-     *     @type array<\Google\Api\Expr\V1alpha1\Expr>|\Google\Protobuf\Internal\RepeatedField $args
+     *     @type \Google\Api\Expr\V1alpha1\Expr[] $args
      *           The arguments.
      * }
      */
@@ -125,7 +125,7 @@ class Call extends \Google\Protobuf\Internal\Message
      * The arguments.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Expr args = 3 [json_name = "args"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\Expr\V1alpha1\Expr>
      */
     public function getArgs()
     {
@@ -136,7 +136,7 @@ class Call extends \Google\Protobuf\Internal\Message
      * The arguments.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Expr args = 3 [json_name = "args"];</code>
-     * @param array<\Google\Api\Expr\V1alpha1\Expr>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\Expr\V1alpha1\Expr[] $var
      * @return $this
      */
     public function setArgs($var)

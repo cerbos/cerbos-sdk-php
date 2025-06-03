@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1\TestResults;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestResults.Failure</code>
@@ -35,7 +35,7 @@ class Failure extends \Google\Protobuf\Internal\Message
      *
      *     @type int $expected
      *     @type int $actual
-     *     @type array<\Cerbos\Policy\V1\TestResults\OutputFailure>|\Google\Protobuf\Internal\RepeatedField $outputs
+     *     @type \Cerbos\Policy\V1\TestResults\OutputFailure[] $outputs
      * }
      */
     public function __construct($data = NULL) {
@@ -89,7 +89,7 @@ class Failure extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.OutputFailure outputs = 3 [json_name = "outputs"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\TestResults\OutputFailure>
      */
     public function getOutputs()
     {
@@ -98,7 +98,7 @@ class Failure extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.OutputFailure outputs = 3 [json_name = "outputs"];</code>
-     * @param array<\Cerbos\Policy\V1\TestResults\OutputFailure>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\TestResults\OutputFailure[] $var
      * @return $this
      */
     public function setOutputs($var)

@@ -6,8 +6,8 @@
 namespace Cerbos\Audit\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.audit.v1.AccessLogEntry</code>
@@ -38,10 +38,6 @@ class AccessLogEntry extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>uint32 status_code = 6 [json_name = "statusCode"];</code>
      */
     protected $status_code = 0;
-    /**
-     * Generated from protobuf field <code>bool oversized = 7 [json_name = "oversized"];</code>
-     */
-    protected $oversized = false;
 
     /**
      * Constructor.
@@ -55,7 +51,6 @@ class AccessLogEntry extends \Google\Protobuf\Internal\Message
      *     @type array|\Google\Protobuf\Internal\MapField $metadata
      *     @type string $method
      *     @type int $status_code
-     *     @type bool $oversized
      * }
      */
     public function __construct($data = NULL) {
@@ -211,28 +206,6 @@ class AccessLogEntry extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkUint32($var);
         $this->status_code = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>bool oversized = 7 [json_name = "oversized"];</code>
-     * @return bool
-     */
-    public function getOversized()
-    {
-        return $this->oversized;
-    }
-
-    /**
-     * Generated from protobuf field <code>bool oversized = 7 [json_name = "oversized"];</code>
-     * @param bool $var
-     * @return $this
-     */
-    public function setOversized($var)
-    {
-        GPBUtil::checkBool($var);
-        $this->oversized = $var;
 
         return $this;
     }

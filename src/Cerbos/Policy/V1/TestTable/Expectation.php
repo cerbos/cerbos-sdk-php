@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1\TestTable;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestTable.Expectation</code>
@@ -56,11 +56,11 @@ class Expectation extends \Google\Protobuf\Internal\Message
      *     @type string $principal
      *     @type string $resource
      *     @type array|\Google\Protobuf\Internal\MapField $actions
-     *     @type array<\Cerbos\Policy\V1\TestTable\OutputExpectations>|\Google\Protobuf\Internal\RepeatedField $outputs
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $principals
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $resources
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $principal_groups
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $resource_groups
+     *     @type \Cerbos\Policy\V1\TestTable\OutputExpectations[] $outputs
+     *     @type string[] $principals
+     *     @type string[] $resources
+     *     @type string[] $principal_groups
+     *     @type string[] $resource_groups
      * }
      */
     public function __construct($data = NULL) {
@@ -136,7 +136,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable.OutputExpectations outputs = 4 [json_name = "outputs"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\TestTable\OutputExpectations>
      */
     public function getOutputs()
     {
@@ -145,7 +145,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestTable.OutputExpectations outputs = 4 [json_name = "outputs"];</code>
-     * @param array<\Cerbos\Policy\V1\TestTable\OutputExpectations>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\TestTable\OutputExpectations[] $var
      * @return $this
      */
     public function setOutputs($var)
@@ -158,7 +158,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string principals = 5 [json_name = "principals"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getPrincipals()
     {
@@ -167,7 +167,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string principals = 5 [json_name = "principals"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setPrincipals($var)
@@ -180,7 +180,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string resources = 6 [json_name = "resources"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getResources()
     {
@@ -189,7 +189,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string resources = 6 [json_name = "resources"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setResources($var)
@@ -202,7 +202,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string principal_groups = 7 [json_name = "principalGroups"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getPrincipalGroups()
     {
@@ -211,7 +211,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string principal_groups = 7 [json_name = "principalGroups"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setPrincipalGroups($var)
@@ -224,7 +224,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string resource_groups = 8 [json_name = "resourceGroups"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getResourceGroups()
     {
@@ -233,7 +233,7 @@ class Expectation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string resource_groups = 8 [json_name = "resourceGroups"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setResourceGroups($var)

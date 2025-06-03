@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.RoleRule</code>
@@ -34,7 +34,7 @@ class RoleRule extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $resource
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $allow_actions
+     *     @type string[] $allow_actions
      *     @type \Cerbos\Policy\V1\Condition $condition
      * }
      */
@@ -67,7 +67,7 @@ class RoleRule extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string allow_actions = 2 [json_name = "allowActions"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getAllowActions()
     {
@@ -76,7 +76,7 @@ class RoleRule extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string allow_actions = 2 [json_name = "allowActions"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setAllowActions($var)

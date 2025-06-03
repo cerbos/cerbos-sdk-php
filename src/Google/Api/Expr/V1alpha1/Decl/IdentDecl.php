@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1\Decl;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Identifier declaration which specifies its type and optional `Expr` value.

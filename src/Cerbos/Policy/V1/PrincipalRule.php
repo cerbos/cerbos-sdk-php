@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.PrincipalRule</code>
@@ -30,7 +30,7 @@ class PrincipalRule extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $resource
-     *     @type array<\Cerbos\Policy\V1\PrincipalRule\Action>|\Google\Protobuf\Internal\RepeatedField $actions
+     *     @type \Cerbos\Policy\V1\PrincipalRule\Action[] $actions
      * }
      */
     public function __construct($data = NULL) {
@@ -62,7 +62,7 @@ class PrincipalRule extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.PrincipalRule.Action actions = 2 [json_name = "actions"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\PrincipalRule\Action>
      */
     public function getActions()
     {
@@ -71,7 +71,7 @@ class PrincipalRule extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.PrincipalRule.Action actions = 2 [json_name = "actions"];</code>
-     * @param array<\Cerbos\Policy\V1\PrincipalRule\Action>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\PrincipalRule\Action[] $var
      * @return $this
      */
     public function setActions($var)

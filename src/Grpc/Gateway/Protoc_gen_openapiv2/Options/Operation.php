@@ -6,8 +6,8 @@
 namespace Grpc\Gateway\Protoc_gen_openapiv2\Options;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * `Operation` is a representation of OpenAPI v2 specification's Operation object.
@@ -143,7 +143,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $tags
+     *     @type string[] $tags
      *           A list of tags for API documentation control. Tags can be used for logical
      *           grouping of operations by resources or any other qualifier.
      *     @type string $summary
@@ -159,25 +159,25 @@ class Operation extends \Google\Protobuf\Internal\Message
      *           all operations described in the API. Tools and libraries MAY use the
      *           operationId to uniquely identify an operation, therefore, it is recommended
      *           to follow common programming naming conventions.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $consumes
+     *     @type string[] $consumes
      *           A list of MIME types the operation can consume. This overrides the consumes
      *           definition at the OpenAPI Object. An empty value MAY be used to clear the
      *           global definition. Value MUST be as described under Mime Types.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $produces
+     *     @type string[] $produces
      *           A list of MIME types the operation can produce. This overrides the produces
      *           definition at the OpenAPI Object. An empty value MAY be used to clear the
      *           global definition. Value MUST be as described under Mime Types.
      *     @type array|\Google\Protobuf\Internal\MapField $responses
      *           The list of possible responses as they are returned from executing this
      *           operation.
-     *     @type array<int>|\Google\Protobuf\Internal\RepeatedField $schemes
+     *     @type int[] $schemes
      *           The transfer protocol for the operation. Values MUST be from the list:
      *           "http", "https", "ws", "wss". The value overrides the OpenAPI Object
      *           schemes definition.
      *     @type bool $deprecated
      *           Declares this operation to be deprecated. Usage of the declared operation
      *           should be refrained. Default value is false.
-     *     @type array<\Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement>|\Google\Protobuf\Internal\RepeatedField $security
+     *     @type \Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement[] $security
      *           A declaration of which security schemes are applied for this operation. The
      *           list of values describes alternative security schemes that can be used
      *           (that is, there is a logical OR between the security requirements). This
@@ -203,7 +203,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * grouping of operations by resources or any other qualifier.
      *
      * Generated from protobuf field <code>repeated string tags = 1 [json_name = "tags"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getTags()
     {
@@ -215,7 +215,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * grouping of operations by resources or any other qualifier.
      *
      * Generated from protobuf field <code>repeated string tags = 1 [json_name = "tags"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setTags($var)
@@ -356,7 +356,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * global definition. Value MUST be as described under Mime Types.
      *
      * Generated from protobuf field <code>repeated string consumes = 6 [json_name = "consumes"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getConsumes()
     {
@@ -369,7 +369,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * global definition. Value MUST be as described under Mime Types.
      *
      * Generated from protobuf field <code>repeated string consumes = 6 [json_name = "consumes"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setConsumes($var)
@@ -386,7 +386,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * global definition. Value MUST be as described under Mime Types.
      *
      * Generated from protobuf field <code>repeated string produces = 7 [json_name = "produces"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getProduces()
     {
@@ -399,7 +399,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * global definition. Value MUST be as described under Mime Types.
      *
      * Generated from protobuf field <code>repeated string produces = 7 [json_name = "produces"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setProduces($var)
@@ -444,7 +444,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * schemes definition.
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.Scheme schemes = 10 [json_name = "schemes"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<int>
      */
     public function getSchemes()
     {
@@ -457,7 +457,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * schemes definition.
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.Scheme schemes = 10 [json_name = "schemes"];</code>
-     * @param array<int>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param int[] $var
      * @return $this
      */
     public function setSchemes($var)
@@ -504,7 +504,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * security declaration, an empty array can be used.
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.SecurityRequirement security = 12 [json_name = "security"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement>
      */
     public function getSecurity()
     {
@@ -519,7 +519,7 @@ class Operation extends \Google\Protobuf\Internal\Message
      * security declaration, an empty array can be used.
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.SecurityRequirement security = 12 [json_name = "security"];</code>
-     * @param array<\Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement[] $var
      * @return $this
      */
     public function setSecurity($var)

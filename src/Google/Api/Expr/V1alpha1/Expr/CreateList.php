@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1\Expr;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * A list creation expression.
@@ -41,9 +41,9 @@ class CreateList extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Google\Api\Expr\V1alpha1\Expr>|\Google\Protobuf\Internal\RepeatedField $elements
+     *     @type \Google\Api\Expr\V1alpha1\Expr[] $elements
      *           The elements part of the list.
-     *     @type array<int>|\Google\Protobuf\Internal\RepeatedField $optional_indices
+     *     @type int[] $optional_indices
      *           The indices within the elements list which are marked as optional
      *           elements.
      *           When an optional-typed value is present, the value it contains
@@ -60,7 +60,7 @@ class CreateList extends \Google\Protobuf\Internal\Message
      * The elements part of the list.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Expr elements = 1 [json_name = "elements"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\Expr\V1alpha1\Expr>
      */
     public function getElements()
     {
@@ -71,7 +71,7 @@ class CreateList extends \Google\Protobuf\Internal\Message
      * The elements part of the list.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Expr elements = 1 [json_name = "elements"];</code>
-     * @param array<\Google\Api\Expr\V1alpha1\Expr>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\Expr\V1alpha1\Expr[] $var
      * @return $this
      */
     public function setElements($var)
@@ -90,7 +90,7 @@ class CreateList extends \Google\Protobuf\Internal\Message
      * element is omitted from the CreateList result.
      *
      * Generated from protobuf field <code>repeated int32 optional_indices = 2 [json_name = "optionalIndices"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<int>
      */
     public function getOptionalIndices()
     {
@@ -105,7 +105,7 @@ class CreateList extends \Google\Protobuf\Internal\Message
      * element is omitted from the CreateList result.
      *
      * Generated from protobuf field <code>repeated int32 optional_indices = 2 [json_name = "optionalIndices"];</code>
-     * @param array<int>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param int[] $var
      * @return $this
      */
     public function setOptionalIndices($var)

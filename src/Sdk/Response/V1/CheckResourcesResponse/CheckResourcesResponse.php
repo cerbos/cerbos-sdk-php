@@ -28,7 +28,8 @@ final class CheckResourcesResponse
      */
     public function find(string $id): ResultEntry {
         foreach ($this->response->getResults()->getIterator() as $resultEntry) {
-            if ($resultEntry->getResource()->getId() == $id) {
+            $resource = $resultEntry->getResource();
+            if (isset($resource) && $resource->getId() == $id) {
                 return new ResultEntry($resultEntry);
             }
         }

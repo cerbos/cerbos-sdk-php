@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1\Expr;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * A map or message creation expression.
@@ -42,7 +42,7 @@ class CreateStruct extends \Google\Protobuf\Internal\Message
      *     @type string $message_name
      *           The type name of the message to be created, empty when creating map
      *           literals.
-     *     @type array<\Google\Api\Expr\V1alpha1\Expr\CreateStruct\Entry>|\Google\Protobuf\Internal\RepeatedField $entries
+     *     @type \Google\Api\Expr\V1alpha1\Expr\CreateStruct\Entry[] $entries
      *           The entries in the creation expression.
      * }
      */
@@ -83,7 +83,7 @@ class CreateStruct extends \Google\Protobuf\Internal\Message
      * The entries in the creation expression.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Expr.CreateStruct.Entry entries = 2 [json_name = "entries"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\Expr\V1alpha1\Expr\CreateStruct\Entry>
      */
     public function getEntries()
     {
@@ -94,7 +94,7 @@ class CreateStruct extends \Google\Protobuf\Internal\Message
      * The entries in the creation expression.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Expr.CreateStruct.Entry entries = 2 [json_name = "entries"];</code>
-     * @param array<\Google\Api\Expr\V1alpha1\Expr\CreateStruct\Entry>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\Expr\V1alpha1\Expr\CreateStruct\Entry[] $var
      * @return $this
      */
     public function setEntries($var)

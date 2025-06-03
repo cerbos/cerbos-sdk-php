@@ -6,8 +6,8 @@
 namespace Grpc\Gateway\Protoc_gen_openapiv2\Options;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * `Parameters` is a representation of OpenAPI v2 specification's parameters object.
@@ -34,7 +34,7 @@ class Parameters extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Grpc\Gateway\Protoc_gen_openapiv2\Options\HeaderParameter>|\Google\Protobuf\Internal\RepeatedField $headers
+     *     @type \Grpc\Gateway\Protoc_gen_openapiv2\Options\HeaderParameter[] $headers
      *           `Headers` is one or more HTTP header parameter.
      *           See: https://swagger.io/docs/specification/2-0/describing-parameters/#header-parameters
      * }
@@ -49,7 +49,7 @@ class Parameters extends \Google\Protobuf\Internal\Message
      * See: https://swagger.io/docs/specification/2-0/describing-parameters/#header-parameters
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.HeaderParameter headers = 1 [json_name = "headers"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Grpc\Gateway\Protoc_gen_openapiv2\Options\HeaderParameter>
      */
     public function getHeaders()
     {
@@ -61,7 +61,7 @@ class Parameters extends \Google\Protobuf\Internal\Message
      * See: https://swagger.io/docs/specification/2-0/describing-parameters/#header-parameters
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.HeaderParameter headers = 1 [json_name = "headers"];</code>
-     * @param array<\Grpc\Gateway\Protoc_gen_openapiv2\Options\HeaderParameter>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Grpc\Gateway\Protoc_gen_openapiv2\Options\HeaderParameter[] $var
      * @return $this
      */
     public function setHeaders($var)

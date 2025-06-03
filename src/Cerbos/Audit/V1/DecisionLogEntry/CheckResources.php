@@ -6,8 +6,8 @@
 namespace Cerbos\Audit\V1\DecisionLogEntry;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.audit.v1.DecisionLogEntry.CheckResources</code>
@@ -33,8 +33,8 @@ class CheckResources extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Cerbos\Engine\V1\CheckInput>|\Google\Protobuf\Internal\RepeatedField $inputs
-     *     @type array<\Cerbos\Engine\V1\CheckOutput>|\Google\Protobuf\Internal\RepeatedField $outputs
+     *     @type \Cerbos\Engine\V1\CheckInput[] $inputs
+     *     @type \Cerbos\Engine\V1\CheckOutput[] $outputs
      *     @type string $error
      * }
      */
@@ -45,7 +45,7 @@ class CheckResources extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckInput inputs = 1 [json_name = "inputs"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\CheckInput>
      */
     public function getInputs()
     {
@@ -54,7 +54,7 @@ class CheckResources extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckInput inputs = 1 [json_name = "inputs"];</code>
-     * @param array<\Cerbos\Engine\V1\CheckInput>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\CheckInput[] $var
      * @return $this
      */
     public function setInputs($var)
@@ -67,7 +67,7 @@ class CheckResources extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckOutput outputs = 2 [json_name = "outputs"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\CheckOutput>
      */
     public function getOutputs()
     {
@@ -76,7 +76,7 @@ class CheckResources extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckOutput outputs = 2 [json_name = "outputs"];</code>
-     * @param array<\Cerbos\Engine\V1\CheckOutput>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\CheckOutput[] $var
      * @return $this
      */
     public function setOutputs($var)

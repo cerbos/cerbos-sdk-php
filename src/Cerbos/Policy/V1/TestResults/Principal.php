@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1\TestResults;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestResults.Principal</code>
@@ -30,7 +30,7 @@ class Principal extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $name
-     *     @type array<\Cerbos\Policy\V1\TestResults\Resource>|\Google\Protobuf\Internal\RepeatedField $resources
+     *     @type \Cerbos\Policy\V1\TestResults\Resource[] $resources
      * }
      */
     public function __construct($data = NULL) {
@@ -62,7 +62,7 @@ class Principal extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.Resource resources = 2 [json_name = "resources"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\TestResults\Resource>
      */
     public function getResources()
     {
@@ -71,7 +71,7 @@ class Principal extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.Resource resources = 2 [json_name = "resources"];</code>
-     * @param array<\Cerbos\Policy\V1\TestResults\Resource>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\TestResults\Resource[] $var
      * @return $this
      */
     public function setResources($var)

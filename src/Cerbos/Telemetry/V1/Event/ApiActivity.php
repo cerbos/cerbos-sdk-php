@@ -6,8 +6,8 @@
 namespace Cerbos\Telemetry\V1\Event;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.telemetry.v1.Event.ApiActivity</code>
@@ -39,8 +39,8 @@ class ApiActivity extends \Google\Protobuf\Internal\Message
      *
      *     @type string $version
      *     @type \Google\Protobuf\Duration $uptime
-     *     @type array<\Cerbos\Telemetry\V1\Event\CountStat>|\Google\Protobuf\Internal\RepeatedField $method_calls
-     *     @type array<\Cerbos\Telemetry\V1\Event\CountStat>|\Google\Protobuf\Internal\RepeatedField $user_agents
+     *     @type \Cerbos\Telemetry\V1\Event\CountStat[] $method_calls
+     *     @type \Cerbos\Telemetry\V1\Event\CountStat[] $user_agents
      * }
      */
     public function __construct($data = NULL) {
@@ -104,7 +104,7 @@ class ApiActivity extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.telemetry.v1.Event.CountStat method_calls = 3 [json_name = "methodCalls"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Telemetry\V1\Event\CountStat>
      */
     public function getMethodCalls()
     {
@@ -113,7 +113,7 @@ class ApiActivity extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.telemetry.v1.Event.CountStat method_calls = 3 [json_name = "methodCalls"];</code>
-     * @param array<\Cerbos\Telemetry\V1\Event\CountStat>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Telemetry\V1\Event\CountStat[] $var
      * @return $this
      */
     public function setMethodCalls($var)
@@ -126,7 +126,7 @@ class ApiActivity extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.telemetry.v1.Event.CountStat user_agents = 4 [json_name = "userAgents"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Telemetry\V1\Event\CountStat>
      */
     public function getUserAgents()
     {
@@ -135,7 +135,7 @@ class ApiActivity extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.telemetry.v1.Event.CountStat user_agents = 4 [json_name = "userAgents"];</code>
-     * @param array<\Cerbos\Telemetry\V1\Event\CountStat>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Telemetry\V1\Event\CountStat[] $var
      * @return $this
      */
     public function setUserAgents($var)

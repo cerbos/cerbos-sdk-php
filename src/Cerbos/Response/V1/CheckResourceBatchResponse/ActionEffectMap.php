@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1\CheckResourceBatchResponse;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.response.v1.CheckResourceBatchResponse.ActionEffectMap</code>
@@ -35,7 +35,7 @@ class ActionEffectMap extends \Google\Protobuf\Internal\Message
      *
      *     @type string $resource_id
      *     @type array|\Google\Protobuf\Internal\MapField $actions
-     *     @type array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $validation_errors
+     *     @type \Cerbos\Schema\V1\ValidationError[] $validation_errors
      * }
      */
     public function __construct($data = NULL) {
@@ -89,7 +89,7 @@ class ActionEffectMap extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 3 [json_name = "validationErrors", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Schema\V1\ValidationError>
      */
     public function getValidationErrors()
     {
@@ -98,7 +98,7 @@ class ActionEffectMap extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 3 [json_name = "validationErrors", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Schema\V1\ValidationError[] $var
      * @return $this
      */
     public function setValidationErrors($var)

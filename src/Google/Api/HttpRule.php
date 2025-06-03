@@ -6,8 +6,8 @@
 namespace Google\Api;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * gRPC Transcoding
@@ -307,7 +307,7 @@ class HttpRule extends \Google\Protobuf\Internal\Message
      *           as the HTTP response body.
      *           NOTE: The referred field must be present at the top-level of the response
      *           message type.
-     *     @type array<\Google\Api\HttpRule>|\Google\Protobuf\Internal\RepeatedField $additional_bindings
+     *     @type \Google\Api\HttpRule[] $additional_bindings
      *           Additional HTTP bindings for the selector. Nested bindings must
      *           not contain an `additional_bindings` field themselves (that is,
      *           the nesting may only be one level deep).
@@ -616,7 +616,7 @@ class HttpRule extends \Google\Protobuf\Internal\Message
      * the nesting may only be one level deep).
      *
      * Generated from protobuf field <code>repeated .google.api.HttpRule additional_bindings = 11 [json_name = "additionalBindings"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\HttpRule>
      */
     public function getAdditionalBindings()
     {
@@ -629,7 +629,7 @@ class HttpRule extends \Google\Protobuf\Internal\Message
      * the nesting may only be one level deep).
      *
      * Generated from protobuf field <code>repeated .google.api.HttpRule additional_bindings = 11 [json_name = "additionalBindings"];</code>
-     * @param array<\Google\Api\HttpRule>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\HttpRule[] $var
      * @return $this
      */
     public function setAdditionalBindings($var)

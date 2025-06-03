@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1\Type;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Map type with parameterized key and value types, e.g. `map<string, int>`.

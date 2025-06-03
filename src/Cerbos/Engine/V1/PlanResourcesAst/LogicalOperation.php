@@ -6,8 +6,8 @@
 namespace Cerbos\Engine\V1\PlanResourcesAst;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.engine.v1.PlanResourcesAst.LogicalOperation</code>
@@ -30,7 +30,7 @@ class LogicalOperation extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int $operator
-     *     @type array<\Cerbos\Engine\V1\PlanResourcesAst\Node>|\Google\Protobuf\Internal\RepeatedField $nodes
+     *     @type \Cerbos\Engine\V1\PlanResourcesAst\Node[] $nodes
      * }
      */
     public function __construct($data = NULL) {
@@ -62,7 +62,7 @@ class LogicalOperation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.PlanResourcesAst.Node nodes = 2 [json_name = "nodes"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\PlanResourcesAst\Node>
      */
     public function getNodes()
     {
@@ -71,7 +71,7 @@ class LogicalOperation extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.PlanResourcesAst.Node nodes = 2 [json_name = "nodes"];</code>
-     * @param array<\Cerbos\Engine\V1\PlanResourcesAst\Node>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\PlanResourcesAst\Node[] $var
      * @return $this
      */
     public function setNodes($var)

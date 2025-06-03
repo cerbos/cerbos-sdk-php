@@ -6,8 +6,8 @@
 namespace Cerbos\Engine\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Data from the runtime, provided to expressions as the top-level `runtime` variable.
@@ -27,7 +27,7 @@ class Runtime extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $effective_derived_roles
+     *     @type string[] $effective_derived_roles
      * }
      */
     public function __construct($data = NULL) {
@@ -37,7 +37,7 @@ class Runtime extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string effective_derived_roles = 1 [json_name = "effectiveDerivedRoles"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getEffectiveDerivedRoles()
     {
@@ -46,7 +46,7 @@ class Runtime extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string effective_derived_roles = 1 [json_name = "effectiveDerivedRoles"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setEffectiveDerivedRoles($var)

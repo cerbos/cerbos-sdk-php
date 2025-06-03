@@ -6,8 +6,8 @@
 namespace Cerbos\Engine\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.engine.v1.Trace</code>
@@ -29,7 +29,7 @@ class Trace extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Cerbos\Engine\V1\Trace\Component>|\Google\Protobuf\Internal\RepeatedField $components
+     *     @type \Cerbos\Engine\V1\Trace\Component[] $components
      *     @type \Cerbos\Engine\V1\Trace\Event $event
      * }
      */
@@ -40,7 +40,7 @@ class Trace extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.Trace.Component components = 1 [json_name = "components"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\Trace\Component>
      */
     public function getComponents()
     {
@@ -49,7 +49,7 @@ class Trace extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.Trace.Component components = 1 [json_name = "components"];</code>
-     * @param array<\Cerbos\Engine\V1\Trace\Component>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\Trace\Component[] $var
      * @return $this
      */
     public function setComponents($var)

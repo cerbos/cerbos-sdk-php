@@ -6,8 +6,8 @@
 namespace Cerbos\Engine\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.engine.v1.PlanResourcesOutput</code>
@@ -69,8 +69,8 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
      *     @type string $scope
      *     @type \Cerbos\Engine\V1\PlanResourcesFilter $filter
      *     @type string $filter_debug
-     *     @type array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $validation_errors
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
+     *     @type \Cerbos\Schema\V1\ValidationError[] $validation_errors
+     *     @type string[] $actions
      *     @type array|\Google\Protobuf\Internal\MapField $matched_scopes
      * }
      */
@@ -251,7 +251,7 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 8 [json_name = "validationErrors"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Schema\V1\ValidationError>
      */
     public function getValidationErrors()
     {
@@ -260,7 +260,7 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 8 [json_name = "validationErrors"];</code>
-     * @param array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Schema\V1\ValidationError[] $var
      * @return $this
      */
     public function setValidationErrors($var)
@@ -273,7 +273,7 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 9 [json_name = "actions"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getActions()
     {
@@ -282,7 +282,7 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 9 [json_name = "actions"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setActions($var)

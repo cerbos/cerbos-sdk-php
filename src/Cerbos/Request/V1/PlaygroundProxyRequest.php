@@ -6,8 +6,8 @@
 namespace Cerbos\Request\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.request.v1.PlaygroundProxyRequest</code>
@@ -31,7 +31,7 @@ class PlaygroundProxyRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $playground_id
-     *     @type array<\Cerbos\Request\V1\File>|\Google\Protobuf\Internal\RepeatedField $files
+     *     @type \Cerbos\Request\V1\File[] $files
      *     @type \Cerbos\Request\V1\CheckResourceSetRequest $check_resource_set
      *     @type \Cerbos\Request\V1\CheckResourceBatchRequest $check_resource_batch
      *     @type \Cerbos\Request\V1\PlanResourcesRequest $plan_resources
@@ -67,7 +67,7 @@ class PlaygroundProxyRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.request.v1.File files = 2 [json_name = "files", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Request\V1\File>
      */
     public function getFiles()
     {
@@ -76,7 +76,7 @@ class PlaygroundProxyRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.request.v1.File files = 2 [json_name = "files", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Request\V1\File>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Request\V1\File[] $var
      * @return $this
      */
     public function setFiles($var)

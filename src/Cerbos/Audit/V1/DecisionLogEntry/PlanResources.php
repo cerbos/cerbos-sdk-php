@@ -6,8 +6,8 @@
 namespace Cerbos\Audit\V1\DecisionLogEntry;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.audit.v1.DecisionLogEntry.PlanResources</code>

@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1\PlaygroundEvaluateResponse;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.response.v1.PlaygroundEvaluateResponse.EvalResultList</code>
@@ -37,10 +37,10 @@ class EvalResultList extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Cerbos\Response\V1\PlaygroundEvaluateResponse\EvalResult>|\Google\Protobuf\Internal\RepeatedField $results
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $effective_derived_roles
-     *     @type array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $validation_errors
-     *     @type array<\Cerbos\Engine\V1\OutputEntry>|\Google\Protobuf\Internal\RepeatedField $outputs
+     *     @type \Cerbos\Response\V1\PlaygroundEvaluateResponse\EvalResult[] $results
+     *     @type string[] $effective_derived_roles
+     *     @type \Cerbos\Schema\V1\ValidationError[] $validation_errors
+     *     @type \Cerbos\Engine\V1\OutputEntry[] $outputs
      * }
      */
     public function __construct($data = NULL) {
@@ -50,7 +50,7 @@ class EvalResultList extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.PlaygroundEvaluateResponse.EvalResult results = 1 [json_name = "results"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Response\V1\PlaygroundEvaluateResponse\EvalResult>
      */
     public function getResults()
     {
@@ -59,7 +59,7 @@ class EvalResultList extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.PlaygroundEvaluateResponse.EvalResult results = 1 [json_name = "results"];</code>
-     * @param array<\Cerbos\Response\V1\PlaygroundEvaluateResponse\EvalResult>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Response\V1\PlaygroundEvaluateResponse\EvalResult[] $var
      * @return $this
      */
     public function setResults($var)
@@ -72,7 +72,7 @@ class EvalResultList extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string effective_derived_roles = 2 [json_name = "effectiveDerivedRoles"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getEffectiveDerivedRoles()
     {
@@ -81,7 +81,7 @@ class EvalResultList extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string effective_derived_roles = 2 [json_name = "effectiveDerivedRoles"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setEffectiveDerivedRoles($var)
@@ -94,7 +94,7 @@ class EvalResultList extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 3 [json_name = "validationErrors"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Schema\V1\ValidationError>
      */
     public function getValidationErrors()
     {
@@ -103,7 +103,7 @@ class EvalResultList extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 3 [json_name = "validationErrors"];</code>
-     * @param array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Schema\V1\ValidationError[] $var
      * @return $this
      */
     public function setValidationErrors($var)
@@ -116,7 +116,7 @@ class EvalResultList extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry outputs = 4 [json_name = "outputs"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\OutputEntry>
      */
     public function getOutputs()
     {
@@ -125,7 +125,7 @@ class EvalResultList extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry outputs = 4 [json_name = "outputs"];</code>
-     * @param array<\Cerbos\Engine\V1\OutputEntry>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\OutputEntry[] $var
      * @return $this
      */
     public function setOutputs($var)

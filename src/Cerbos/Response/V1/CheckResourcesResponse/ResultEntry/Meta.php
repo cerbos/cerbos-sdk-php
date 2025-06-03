@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1\CheckResourcesResponse\ResultEntry;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.response.v1.CheckResourcesResponse.ResultEntry.Meta</code>
@@ -30,7 +30,7 @@ class Meta extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type array|\Google\Protobuf\Internal\MapField $actions
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $effective_derived_roles
+     *     @type string[] $effective_derived_roles
      * }
      */
     public function __construct($data = NULL) {
@@ -62,7 +62,7 @@ class Meta extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string effective_derived_roles = 2 [json_name = "effectiveDerivedRoles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getEffectiveDerivedRoles()
     {
@@ -71,7 +71,7 @@ class Meta extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string effective_derived_roles = 2 [json_name = "effectiveDerivedRoles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setEffectiveDerivedRoles($var)

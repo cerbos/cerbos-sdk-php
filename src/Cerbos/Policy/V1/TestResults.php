@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestResults</code>
@@ -29,7 +29,7 @@ class TestResults extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Cerbos\Policy\V1\TestResults\Suite>|\Google\Protobuf\Internal\RepeatedField $suites
+     *     @type \Cerbos\Policy\V1\TestResults\Suite[] $suites
      *     @type \Cerbos\Policy\V1\TestResults\Summary $summary
      * }
      */
@@ -40,7 +40,7 @@ class TestResults extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.Suite suites = 1 [json_name = "suites"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\TestResults\Suite>
      */
     public function getSuites()
     {
@@ -49,7 +49,7 @@ class TestResults extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.Suite suites = 1 [json_name = "suites"];</code>
-     * @param array<\Cerbos\Policy\V1\TestResults\Suite>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\TestResults\Suite[] $var
      * @return $this
      */
     public function setSuites($var)

@@ -6,8 +6,8 @@
 namespace Cerbos\Request\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Deprecated. See CheckResourcesRequest.
@@ -41,7 +41,7 @@ class CheckResourceBatchRequest extends \Google\Protobuf\Internal\Message
      *
      *     @type string $request_id
      *     @type \Cerbos\Engine\V1\Principal $principal
-     *     @type array<\Cerbos\Request\V1\CheckResourceBatchRequest\BatchEntry>|\Google\Protobuf\Internal\RepeatedField $resources
+     *     @type \Cerbos\Request\V1\CheckResourceBatchRequest\BatchEntry[] $resources
      *     @type \Cerbos\Request\V1\AuxData $aux_data
      * }
      */
@@ -106,7 +106,7 @@ class CheckResourceBatchRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.request.v1.CheckResourceBatchRequest.BatchEntry resources = 3 [json_name = "resources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Request\V1\CheckResourceBatchRequest\BatchEntry>
      */
     public function getResources()
     {
@@ -115,7 +115,7 @@ class CheckResourceBatchRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.request.v1.CheckResourceBatchRequest.BatchEntry resources = 3 [json_name = "resources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Request\V1\CheckResourceBatchRequest\BatchEntry>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Request\V1\CheckResourceBatchRequest\BatchEntry[] $var
      * @return $this
      */
     public function setResources($var)
