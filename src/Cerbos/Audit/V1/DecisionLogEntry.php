@@ -55,6 +55,10 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.cerbos.audit.v1.AuditTrail audit_trail = 16 [json_name = "auditTrail"];</code>
      */
     protected $audit_trail = null;
+    /**
+     * Generated from protobuf field <code>bool oversized = 17 [json_name = "oversized"];</code>
+     */
+    protected $oversized = false;
     protected $method;
 
     /**
@@ -76,6 +80,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Audit\V1\DecisionLogEntry\PlanResources $plan_resources
      *     @type array|\Google\Protobuf\Internal\MapField $metadata
      *     @type \Cerbos\Audit\V1\AuditTrail $audit_trail
+     *     @type bool $oversized
      * }
      */
     public function __construct($data = NULL) {
@@ -373,6 +378,28 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Audit\V1\AuditTrail::class);
         $this->audit_trail = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool oversized = 17 [json_name = "oversized"];</code>
+     * @return bool
+     */
+    public function getOversized()
+    {
+        return $this->oversized;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool oversized = 17 [json_name = "oversized"];</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setOversized($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->oversized = $var;
 
         return $this;
     }
