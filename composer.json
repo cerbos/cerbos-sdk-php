@@ -37,10 +37,10 @@
     "php": "^8.3 || ^8.4",
     "ext-grpc": "*",
     "ext-json": "*",
-    "google/common-protos": "^4.11",
-    "google/protobuf": "^4.30",
+    "google/common-protos": "^4.12",
+    "google/protobuf": "^4.31",
     "grpc/grpc": "^1.57",
-    "ramsey/uuid": "^4.7"
+    "ramsey/uuid": "^4.8"
   },
   "require-dev": {
     "php-parallel-lint/php-parallel-lint": "^1.4",
