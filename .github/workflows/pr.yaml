@@ -8,8 +8,8 @@ on:
       - 'v*'
 
 jobs:
-  lint:
-    name: Run linters
+  validate-lint-statically-analyze-and-unit-test:
+    name: Run validation, linters, static analysis and unit tests
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -33,6 +35,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           setup_only: true
           token: ${{ secrets.BUF_TOKEN }}
+      
+      - name: Validate
+        shell: bash
+        run: make validate-composer
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
@@ -46,40 +52,7 @@ jobs:
         shell: bash
         run: make lint
 
-      - name: Check repo status
-        shell: bash
-        run: |
-          repo_status=$(git status --porcelain)
-          if [[ ! -z "${repo_status}" ]]; then
-            echo "::error::Uncommitted changes detected"
-            echo "${repo_status}"
-            git status -vv
-            exit 1
-          fi
-
-  static-analysis:
-    name: Run static analysis
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version: [ '8.3', '8.4' ]
-        experimental: [ false ]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-version }}
-          coverage: xdebug
-          extensions: "grpc"
-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
-
-      - name: Statically analyze code
+      - name: Static analysis
         shell: bash
         run: make static-analysis
 
@@ -94,68 +67,17 @@ jobs:
             exit 1
           fi
 
-  validate-composer:
-    name: composer.json validation
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Validate
-        shell: bash
-        run: make validate-composer
-
-      - name: Check repo status
-        shell: bash
-        run: |
-          repo_status=$(git status --porcelain)
-          if [[ ! -z "${repo_status}" ]]; then
-            echo "::error::Uncommitted changes detected"
-            echo "${repo_status}"
-            git status -vv
-            exit 1
-          fi
-
-  unit-tests:
-    name: Run unit tests
-    needs: [ "lint" ]
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version: [ '8.3', '8.4' ]
-        experimental: [ false ]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-version }}
-          coverage: xdebug
-          extensions: "grpc"
-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
-
-      - name: Run docker compose
+      - name: Run cerbos service
         run: docker compose up -d
 
       - name: Run unit tests
         shell: bash
+        env:
+          CERBOS_HUB_API_ENDPOINT: "${{ secrets.CERBOS_HUB_API_ENDPOINT }}"
+          CERBOS_HUB_CLIENT_ID: "${{ secrets.CERBOS_HUB_CLIENT_ID }}"
+          CERBOS_HUB_CLIENT_SECRET: "${{ secrets.CERBOS_HUB_CLIENT_SECRET }}"
+          CERBOS_HUB_STORE_ID: "${{ secrets.CERBOS_HUB_STORE_ID }}"
         run: make test
 
-      - name: Stop docker compose
+      - name: Stop cerbos service
         run: docker compose down
-
-      - name: Check repo status
-        shell: bash
-        run: |
-          repo_status=$(git status --porcelain)
-          if [[ ! -z "${repo_status}" ]]; then
-            echo "::error::Uncommitted changes detected"
-            echo "${repo_status}"
-            git status -vv
-            exit 1
-          fi
