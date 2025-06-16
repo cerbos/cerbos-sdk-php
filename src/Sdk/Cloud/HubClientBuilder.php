@@ -8,14 +8,15 @@ declare(strict_types=1);
 namespace Cerbos\Sdk\Cloud;
 
 use Cerbos\Sdk\Cloud\Apikey\V1\ApiKeyClient;
+use Cerbos\Sdk\Cloud\Store\V1\StoreClient;
 use Exception;
-use Grpc\ChannelCredentials;
 
 final class HubClientBuilder
 {
     private string $hostname;
     private bool $plaintext;
     private ?string $caCertificate;
+    private ?Credentials $credentials;
 
     /**
      * @param string $hostname
@@ -24,6 +25,7 @@ final class HubClientBuilder
         $this->hostname = $hostname;
         $this->plaintext = false;
         $this->caCertificate = null;
+        $this->credentials = null;
     }
 
     /**
@@ -53,15 +55,29 @@ final class HubClientBuilder
     }
 
     /**
+     * @param string $clientId
+     * @param string $clientSecret
+     * @return $this
+     */
+    public function withCredentials(string $clientId, string $clientSecret): HubClientBuilder {
+        $this->credentials = new Credentials($clientId, $clientSecret);
+        return $this;
+    }
+
+    /**
      * @return HubClient
      * @throws Exception
      */
     public function build(): HubClient {
+        if (is_null($this->credentials)) {
+            throw new Exception("credentials must be specified");
+        }
+
         if ($this->plaintext) {
-            $credentials = ChannelCredentials::createInsecure();
+            $credentials = \Grpc\ChannelCredentials::createInsecure();
         }
         else if (!is_null($this->caCertificate)) {
-            $credentials = ChannelCredentials::createSsl(
+            $credentials = \Grpc\ChannelCredentials::createSsl(
                 $this->caCertificate
             );
         }
@@ -69,18 +85,34 @@ final class HubClientBuilder
             /**
              * @psalm-suppress TooFewArguments
              */
-            $credentials = ChannelCredentials::createSsl();
+            $credentials = \Grpc\ChannelCredentials::createSsl();
         }
 
+        $channel = new \Grpc\Channel(
+            $this->hostname,
+            [
+                'credentials' => $credentials
+            ]
+        );
+        
         $apiKeyClient = new ApiKeyClient(
             new \Cerbos\Cloud\Apikey\V1\ApiKeyServiceClient(
                 $this->hostname,
-                [
-                    'credentials' => $credentials,
-                ]
+                [],
+                $channel
             )
         );
 
-        return new HubClient($apiKeyClient);
+        $channelWithAuthInterceptor = \Grpc\Interceptor::intercept($channel, new AuthInterceptor($apiKeyClient, $this->credentials));
+        return new HubClient(
+            $apiKeyClient,
+            new StoreClient(
+                new \Cerbos\Cloud\Store\V1\CerbosStoreServiceClient(
+                    $this->hostname,
+                    [],
+                    $channelWithAuthInterceptor->intercept()
+                )
+            )
+        );
     }
 }

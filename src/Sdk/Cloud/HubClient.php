@@ -8,24 +8,36 @@ declare(strict_types=1);
 namespace Cerbos\Sdk\Cloud;
 
 use Cerbos\Sdk\Cloud\Apikey\V1\ApiKeyClient;
+use Cerbos\Sdk\Cloud\Store\V1\StoreClient;
 use Exception;
 
 final class HubClient
 {
     private ApiKeyClient $apiKeyClient;
+    private StoreClient $storeClient;
 
     /**
      * @param ApiKeyClient $apiKeyClient
+     * @param StoreClient $storeClient
      */
-    public function __construct(ApiKeyClient $apiKeyClient) {
+    public function __construct(ApiKeyClient $apiKeyClient, StoreClient $storeClient) {
         $this->apiKeyClient = $apiKeyClient;
+        $this->storeClient = $storeClient;
     }
 
     /**
      * @return ApiKeyClient
      * @throws Exception
      */
-    public function ApiKeyClient(): ApiKeyClient {
+    public function apiKeyClient(): ApiKeyClient {
         return $this->apiKeyClient;
+    }
+
+    /**
+     * @return StoreClient
+     * @throws Exception
+     */
+    public function storeClient(): StoreClient {
+        return $this->storeClient;
     }
 }
