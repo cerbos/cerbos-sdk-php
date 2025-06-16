@@ -20,10 +20,10 @@ final class GetFilesResponse {
     }
 
     /**
-     * @return int|string
+     * @return int
      */
-    public function getStoreVersion(): int|string {
-        return $this->response->getStoreVersion();
+    public function getStoreVersion(): int {
+        return (int)$this->response->getStoreVersion();
     }
 
     /**

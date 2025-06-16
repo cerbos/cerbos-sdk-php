@@ -11,6 +11,8 @@ use Cerbos\Sdk\Cloud\Store\V1\GetFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\GetFilesResponse;
 use Cerbos\Sdk\Cloud\Store\V1\ListFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\ListFilesResponse;
+use Cerbos\Sdk\Cloud\Store\V1\ModifyFilesRequest;
+use Cerbos\Sdk\Cloud\Store\V1\ModifyFilesResponse;
 use Exception;
 
 final class StoreClient
@@ -46,6 +48,30 @@ final class StoreClient
         $this->handleError($status);
 
         return new ListFilesResponse($response);
+    }
+
+    /**
+     * @param ModifyFilesRequest $request
+     * @return ModifyFilesResponse
+     * @throws Exception
+     */
+    public function modifyFiles(ModifyFilesRequest $request): ModifyFilesResponse {
+        list($response, $status) = $this->client->ModifyFiles($request->toModifyFilesRequest())->wait();
+        $this->handleError($status);
+
+        return new ModifyFilesResponse($response);
+    }
+
+    /**
+     * @param ReplaceFilesRequest $request
+     * @return ReplaceFilesResponse
+     * @throws Exception
+     */
+    public function replaceFiles(ReplaceFilesRequest $request): ReplaceFilesResponse {
+        list($response, $status) = $this->client->ReplaceFiles($request->toReplaceFilesRequest())->wait();
+        $this->handleError($status);
+
+        return new ReplaceFilesResponse($response);
     }
 
     /**
