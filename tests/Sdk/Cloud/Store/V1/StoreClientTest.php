@@ -6,6 +6,7 @@
 namespace Cerbos\Test\Sdk\Cloud\Store\V1;
 
 use Cerbos\Sdk\Cloud\Store\V1\GetFilesRequest;
+use Cerbos\Sdk\Cloud\Store\V1\ListFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\StoreClient;
 use Exception;
 
@@ -105,5 +106,19 @@ final class StoreClientTest extends TestCase
         }
 
         $this->assertEquals($this->expectedFiles[0], $response->getFiles()[0], "invalid files");
+    }
+
+    public function testListFiles(): void
+    {
+        $request = ListFilesRequest::newInstance()
+            ->withStoreId($this->storeId);
+
+        try {
+            $response = $this->client->listFiles($request);
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
+
+        $this->assertEquals($this->expectedFiles, $response->getFiles(), "invalid files");
     }
 }

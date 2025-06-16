@@ -9,6 +9,8 @@ namespace Cerbos\Sdk\Cloud\Store\V1;
 
 use Cerbos\Sdk\Cloud\Store\V1\GetFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\GetFilesResponse;
+use Cerbos\Sdk\Cloud\Store\V1\ListFilesRequest;
+use Cerbos\Sdk\Cloud\Store\V1\ListFilesResponse;
 use Exception;
 
 final class StoreClient
@@ -32,6 +34,18 @@ final class StoreClient
         $this->handleError($status);
 
         return new GetFilesResponse($response);
+    }
+
+    /**
+     * @param ListFilesRequest $request
+     * @return ListFilesResponse
+     * @throws Exception
+     */
+    public function listFiles(ListFilesRequest $request): ListFilesResponse {
+        list($response, $status) = $this->client->ListFiles($request->toListFilesRequest())->wait();
+        $this->handleError($status);
+
+        return new ListFilesResponse($response);
     }
 
     /**
