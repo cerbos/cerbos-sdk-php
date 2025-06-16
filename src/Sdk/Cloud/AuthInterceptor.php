@@ -20,7 +20,7 @@ final class AuthInterceptor extends \Grpc\Interceptor {
      * @param ApiKeyClient $apiKeyClient
      * @param Credentials $credentials
      */
-    private function __construct(ApiKeyClient $apiKeyClient, Credentials $credentials) {
+    public function __construct(ApiKeyClient $apiKeyClient, Credentials $credentials) {
         $this->accessToken = "";
         $this->apiKeyClient = $apiKeyClient;
         $this->credentials = $credentials;
