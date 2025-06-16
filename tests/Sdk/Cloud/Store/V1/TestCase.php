@@ -50,6 +50,8 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         }
         $this->storeId = $storeId;
 
+        echo $apiEndpoint;
+
         $this->hubClient = HubClientBuilder::newInstance($apiEndpoint)
             ->withCredentials($clientId, $clientSecret)
             ->build();

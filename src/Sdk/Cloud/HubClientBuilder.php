@@ -67,6 +67,7 @@ final class HubClientBuilder
     /**
      * @return HubClient
      * @throws Exception
+     * @psalm-suppress InvalidArgument
      */
     public function build(): HubClient {
         if (is_null($this->credentials)) {
@@ -110,7 +111,7 @@ final class HubClientBuilder
                 new \Cerbos\Cloud\Store\V1\CerbosStoreServiceClient(
                     $this->hostname,
                     [],
-                    $channelWithAuthInterceptor->intercept()
+                    $channelWithAuthInterceptor
                 )
             )
         );
