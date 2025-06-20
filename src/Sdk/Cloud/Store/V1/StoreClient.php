@@ -13,6 +13,7 @@ use Cerbos\Sdk\Cloud\Store\V1\ListFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\ListFilesResponse;
 use Cerbos\Sdk\Cloud\Store\V1\ModifyFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\ModifyFilesResponse;
+use Cerbos\Sdk\RpcException;
 use Exception;
 
 final class StoreClient
@@ -29,11 +30,12 @@ final class StoreClient
     /**
      * @param GetFilesRequest $request
      * @return GetFilesResponse
+     * @throws RpcException
      * @throws Exception
      */
     public function getFiles(GetFilesRequest $request): GetFilesResponse {
         list($response, $status) = $this->client->GetFiles($request->toGetFilesRequest())->wait();
-        $this->handleError($status);
+        RpcException::fromStatus($status);
 
         return new GetFilesResponse($response);
     }
@@ -41,11 +43,12 @@ final class StoreClient
     /**
      * @param ListFilesRequest $request
      * @return ListFilesResponse
+     * @throws RpcException
      * @throws Exception
      */
     public function listFiles(ListFilesRequest $request): ListFilesResponse {
         list($response, $status) = $this->client->ListFiles($request->toListFilesRequest())->wait();
-        $this->handleError($status);
+        RpcException::fromStatus($status);
 
         return new ListFilesResponse($response);
     }
@@ -53,11 +56,12 @@ final class StoreClient
     /**
      * @param ModifyFilesRequest $request
      * @return ModifyFilesResponse
+     * @throws RpcException
      * @throws Exception
      */
     public function modifyFiles(ModifyFilesRequest $request): ModifyFilesResponse {
         list($response, $status) = $this->client->ModifyFiles($request->toModifyFilesRequest())->wait();
-        $this->handleError($status);
+        RpcException::fromStatus($status);
 
         return new ModifyFilesResponse($response);
     }
@@ -65,29 +69,13 @@ final class StoreClient
     /**
      * @param ReplaceFilesRequest $request
      * @return ReplaceFilesResponse
+     * @throws RpcException
      * @throws Exception
      */
     public function replaceFiles(ReplaceFilesRequest $request): ReplaceFilesResponse {
         list($response, $status) = $this->client->ReplaceFiles($request->toReplaceFilesRequest())->wait();
-        $this->handleError($status);
+        RpcException::fromStatus($status);
 
         return new ReplaceFilesResponse($response);
-    }
-
-    /**
-     * @param object $status
-     * @throws Exception
-     */
-    private function handleError(object $status): void
-    {
-        if ($status->code != 0) {
-            throw new Exception(
-                sprintf(
-                    'gRPC request failed: error code: %s, details: %s',
-                    $status->code,
-                    $status->details
-                )
-            );
-        }
     }
 }

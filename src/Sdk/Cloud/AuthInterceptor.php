@@ -83,10 +83,7 @@ final class AuthInterceptor extends \Grpc\Interceptor {
     private function issueAccessToken() : void {
         // TODO(oguzhan): Check expiresIn to decide
 
-        $response = $this->apiKeyClient->issueAccessToken(
-            $this->credentials->toIssueAccessTokenRequest()
-        );
-
+        $response = $this->apiKeyClient->issueAccessToken($this->credentials->toIssueAccessTokenRequest());
         $this->accessToken = $response->getAccessToken();
     }
 }

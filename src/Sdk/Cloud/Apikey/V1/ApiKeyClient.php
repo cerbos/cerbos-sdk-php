@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Apikey\V1;
 
+use Cerbos\Sdk\RpcException;
 use Exception;
 
 final class ApiKeyClient
@@ -23,29 +24,13 @@ final class ApiKeyClient
     /**
      * @param IssueAccessTokenRequest $request
      * @return IssueAccessTokenResponse
+     * @throws RpcException
      * @throws Exception
      */
     public function issueAccessToken(IssueAccessTokenRequest $request): IssueAccessTokenResponse {
         list($response, $status) = $this->client->IssueAccessToken($request->toIssueAccessTokenRequest())->wait();
-        $this->handleError($status);
+        RpcException::fromStatus($status);
 
         return new IssueAccessTokenResponse($response);
-    }
-
-    /**
-     * @param object $status
-     * @throws Exception
-     */
-    private function handleError(object $status): void
-    {
-        if ($status->code != 0) {
-            throw new Exception(
-                sprintf(
-                    'gRPC request failed: error code: %s, details: %s',
-                    $status->code,
-                    $status->details
-                )
-            );
-        }
     }
 }
