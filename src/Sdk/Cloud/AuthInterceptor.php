@@ -9,8 +9,12 @@ namespace Cerbos\Sdk\Cloud;
 
 use Cerbos\Sdk\Cloud\Apikey\V1\ApiKeyClient;
 
-const authTokenHeader = "x-cerbos-auth";
+const AUTH_TOKEN_HEADER = "x-cerbos-auth";
 
+/**
+* @psalm-suppress MissingParamType
+* @psalm-suppress MissingReturnType
+*/
 final class AuthInterceptor extends \Grpc\Interceptor {
     private ApiKeyClient $apiKeyClient;
     private Credentials $credentials;
@@ -27,16 +31,53 @@ final class AuthInterceptor extends \Grpc\Interceptor {
     }
 
     public function interceptUnaryUnary(
-        mixed $method,
-        mixed $argument,
-        mixed $deserialize,
-        mixed $continuation,
+        $method,
+        $argument,
+        $deserialize,
+        $continuation,
         array $metadata = [],
         array $options = []
-    ) : mixed {
+    ) {
         $this->issueAccessToken();
-        $metadata[authTokenHeader] = $this->accessToken;
+        $metadata[AUTH_TOKEN_HEADER] = [$this->accessToken];
         return $continuation($method, $argument, $metadata, $options);
+    }
+
+    public function interceptStreamUnary(
+        $method,
+        $deserialize,
+        $continuation,
+        array $metadata = [],
+        array $options = []
+    ) {
+        $this->issueAccessToken();
+        $metadata[AUTH_TOKEN_HEADER] = [$this->accessToken];
+        return $continuation($method, $deserialize, $metadata, $options);
+    }
+
+    public function interceptUnaryStream(
+        $method,
+        $argument,
+        $deserialize,
+        $continuation,
+        array $metadata = [],
+        array $options = []
+    ) {
+        $this->issueAccessToken();
+        $metadata[AUTH_TOKEN_HEADER] = [$this->accessToken];
+        return $continuation($method, $argument, $deserialize, $metadata, $options);
+    }
+
+    public function interceptStreamStream(
+        $method,
+        $deserialize,
+        $continuation,
+        array $metadata = [],
+        array $options = []
+    ) {
+        $this->issueAccessToken();
+        $metadata[AUTH_TOKEN_HEADER] = [$this->accessToken];
+        return $continuation($method, $deserialize, $metadata, $options);
     }
 
     private function issueAccessToken() : void {
