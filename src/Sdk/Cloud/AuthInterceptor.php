@@ -8,6 +8,10 @@ declare(strict_types=1);
 namespace Cerbos\Sdk\Cloud;
 
 use Cerbos\Sdk\Cloud\Apikey\V1\ApiKeyClient;
+use Cerbos\Sdk\ResourceExhaustedException;
+use Cerbos\Sdk\RpcException;
+use Cerbos\Sdk\UnauthenticatedException;
+use Cerbos\Sdk\Utility\Metadata;
 
 const AUTH_TOKEN_HEADER = "x-cerbos-auth";
 
@@ -19,6 +23,10 @@ final class AuthInterceptor extends \Grpc\Interceptor {
     private ApiKeyClient $apiKeyClient;
     private Credentials $credentials;
     private string $accessToken;
+    private int $expiresAt;
+    private ?RpcException $lastException;
+    
+    private const earlyExpireInSeconds = 300;
 
     /**
      * @param ApiKeyClient $apiKeyClient
@@ -28,6 +36,8 @@ final class AuthInterceptor extends \Grpc\Interceptor {
         $this->accessToken = "";
         $this->apiKeyClient = $apiKeyClient;
         $this->credentials = $credentials;
+        $this->expiresAt = 0;
+        $this->lastException = null;
     }
 
     public function interceptUnaryUnary(
@@ -38,9 +48,20 @@ final class AuthInterceptor extends \Grpc\Interceptor {
         array $metadata = [],
         array $options = []
     ) {
-        $this->issueAccessToken();
-        $metadata[AUTH_TOKEN_HEADER] = [$this->accessToken];
-        return $continuation($method, $argument, $metadata, $options);
+        $this->throwIfUnauthenticated();
+
+        if ($this->expired()) {
+            $this->issueToken();
+        }
+
+        $combinedMetadata = Metadata::merge(
+            $metadata,
+            [
+                AUTH_TOKEN_HEADER => [ $this->accessToken ]
+            ]
+        );
+
+        return $continuation($method, $argument, $combinedMetadata, $options);
     }
 
     public function interceptStreamUnary(
@@ -50,9 +71,20 @@ final class AuthInterceptor extends \Grpc\Interceptor {
         array $metadata = [],
         array $options = []
     ) {
-        $this->issueAccessToken();
-        $metadata[AUTH_TOKEN_HEADER] = [$this->accessToken];
-        return $continuation($method, $deserialize, $metadata, $options);
+        $this->throwIfUnauthenticated();
+
+        if ($this->expired()) {
+            $this->issueToken();
+        }
+
+        $combinedMetadata = Metadata::merge(
+            $metadata,
+            [
+                AUTH_TOKEN_HEADER => [ $this->accessToken ]
+            ]
+        );
+
+        return $continuation($method, $deserialize, $combinedMetadata, $options);
     }
 
     public function interceptUnaryStream(
@@ -63,9 +95,20 @@ final class AuthInterceptor extends \Grpc\Interceptor {
         array $metadata = [],
         array $options = []
     ) {
-        $this->issueAccessToken();
-        $metadata[AUTH_TOKEN_HEADER] = [$this->accessToken];
-        return $continuation($method, $argument, $deserialize, $metadata, $options);
+        $this->throwIfUnauthenticated();
+
+        if ($this->expired()) {
+            $this->issueToken();
+        }
+
+        $combinedMetadata = Metadata::merge(
+            $metadata,
+            [
+                AUTH_TOKEN_HEADER => [ $this->accessToken ]
+            ]
+        );
+
+        return $continuation($method, $argument, $deserialize, $combinedMetadata, $options);
     }
 
     public function interceptStreamStream(
@@ -75,15 +118,51 @@ final class AuthInterceptor extends \Grpc\Interceptor {
         array $metadata = [],
         array $options = []
     ) {
-        $this->issueAccessToken();
-        $metadata[AUTH_TOKEN_HEADER] = [$this->accessToken];
-        return $continuation($method, $deserialize, $metadata, $options);
+        $this->throwIfUnauthenticated();
+
+        if ($this->expired()) {
+            $this->issueToken();
+        }
+
+        $combinedMetadata = Metadata::merge(
+            $metadata,
+            [
+                AUTH_TOKEN_HEADER => [ $this->accessToken ]
+            ]
+        );
+
+        return $continuation($method, $deserialize, $combinedMetadata, $options);
     }
 
-    private function issueAccessToken() : void {
-        // TODO(oguzhan): Check expiresIn to decide
+    private function issueToken() : void {
+         try {
+            $response = $this->apiKeyClient->issueAccessToken($this->credentials->toIssueAccessTokenRequest());
+        } 
+        catch(ResourceExhaustedException $e) {
+            // TODO: Backoff
+            $this->lastException = $e;
+            throw $e;
+        } 
+        catch(UnauthenticatedException $e) {
+            $this->lastException = $e;
+            throw $e;
+        }
 
-        $response = $this->apiKeyClient->issueAccessToken($this->credentials->toIssueAccessTokenRequest());
         $this->accessToken = $response->getAccessToken();
+        $this->expiresAt = time() + (int)$response->getExpiresIn()->getSeconds();
+    }
+
+    private function throwIfUnauthenticated() : void {
+        if ($this->lastException instanceof UnauthenticatedException) {
+            throw $this->lastException;
+        }
+    }
+
+    private function expired() : bool {
+        if ($this->expiresAt == 0) {
+            return true;
+        }
+
+        return time() > ($this->expiresAt - self::earlyExpireInSeconds);
     }
 }
