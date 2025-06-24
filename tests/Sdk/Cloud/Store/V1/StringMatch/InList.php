@@ -21,24 +21,12 @@ final class InListTest extends TestCase
         parent::setUp();
     }
 
-    public function testWithValue(): void {
-        $inList = InList::newInstance()
-            ->withValue(self::in)
-            ->withValue(self::in)
-            ->toInList();
+    public function testAll(): void {
+        $inList = InList::newInstance([
+            'values' => [self::in, self::in]
+        ])->toInList();
 
         $this->assertEquals(self::in, $inList->getValues()[0], "invalid first value");
         $this->assertEquals(self::in, $inList->getValues()[1], "invalid second value");
-    }
-
-    public function testWithValues(): void {
-        $inList = InList::newInstance()
-            ->withValues(array(self::in, self::in))
-            ->withValues(array(self::in))
-            ->toInList();
-
-        $this->assertEquals(self::in, $inList->getValues()[0], "invalid first value");
-        $this->assertEquals(self::in, $inList->getValues()[1], "invalid second value");
-        $this->assertEquals(self::in, $inList->getValues()[2], "invalid third value");
     }
 }

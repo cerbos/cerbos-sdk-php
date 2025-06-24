@@ -10,25 +10,23 @@ namespace Cerbos\Sdk\Cloud\Store\V1\ChangeDetails;
 final class Internal {
     private \Cerbos\Cloud\Store\V1\ChangeDetails\Internal $internal;
 
-    private function __construct() {
-        $this->internal = new \Cerbos\Cloud\Store\V1\ChangeDetails\Internal();
+    /**
+     * @param array $data {
+     *     @type string $source
+     * }
+     */
+    private function __construct(array $data) {
+        $this->internal = new \Cerbos\Cloud\Store\V1\ChangeDetails\Internal($data);
     }
 
     /**
+     * @param array $data {
+     *     @type string $source
+     * }
      * @return Internal
      */
-    public static function newInstance(): Internal {
-        return new Internal();
-    }
-
-    /**
-     * @param string $source
-     * @return $this
-     */
-    public function withSource($source): Internal
-    {
-        $this->internal->setSource($source);
-        return $this;
+    public static function newInstance(array $data): Internal {
+        return new Internal($data);
     }
 
     /**

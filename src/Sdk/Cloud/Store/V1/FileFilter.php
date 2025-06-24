@@ -12,24 +12,23 @@ use \Cerbos\Sdk\Cloud\Store\V1\StringMatch;
 final class FileFilter {
     private \Cerbos\Cloud\Store\V1\FileFilter $fileFilter;
 
-    private function __construct() {
-        $this->fileFilter = new \Cerbos\Cloud\Store\V1\FileFilter();
+    /**
+     * @param array $data {
+     *     @type \Cerbos\Cloud\Store\V1\StringMatch $path
+     * }
+     */
+    private function __construct(array $data) {
+        $this->fileFilter = new \Cerbos\Cloud\Store\V1\FileFilter($data);
     }
 
     /**
+     * @param array $data {
+     *     @type \Cerbos\Cloud\Store\V1\StringMatch $path
+     * }
      * @return FileFilter
      */
-    public static function newInstance(): FileFilter {
-        return new FileFilter();
-    }
-
-    /**
-     * @param StringMatch $path
-     * @return $this
-     */
-    public function withPath($path): FileFilter{    
-        $this->fileFilter->setPath($path->toStringMatch());
-        return $this;
+    public static function newInstance(array $data): FileFilter {
+        return new FileFilter($data);
     }
 
     /**

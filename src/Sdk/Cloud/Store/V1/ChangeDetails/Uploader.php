@@ -10,25 +10,23 @@ namespace Cerbos\Sdk\Cloud\Store\V1\ChangeDetails;
 final class Uploader {
     private \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader $uploader;
 
-    private function __construct() {
-        $this->uploader = new \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader();
+    /**
+     * @param array $data {
+     *     @type string $name
+     * }
+     */
+    private function __construct(array $data) {
+        $this->uploader = new \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader($data);
     }
 
     /**
+     * @param array $data {
+     *     @type string $name
+     * }
      * @return Uploader
      */
-    public static function newInstance(): Uploader {
-        return new Uploader();
-    }
-
-    /**
-     * @param string $name
-     * @return $this
-     */
-    public function withName($name): Uploader
-    {
-        $this->uploader->setName($name);
-        return $this;
+    public static function newInstance(array $data): Uploader {
+        return new Uploader($data);
     }
 
     /**

@@ -32,8 +32,9 @@ final class InternalTest extends TestCase
     }
 
     public function testWithMetadata(): void {
-        $internal = Internal::newInstance()
-            ->withSource(self::source)
+        $internal = Internal::newInstance([
+            'source' => self::source
+        ])
             ->withMetadata(self::key1, $this->value1)
             ->withMetadata(self::key2, $this->value2)
             ->toInternal();
@@ -46,8 +47,9 @@ final class InternalTest extends TestCase
     }
 
     public function testWithMetadatas(): void {
-        $internal = Internal::newInstance()
-            ->withSource(self::source)
+        $internal = Internal::newInstance([
+            'source' => self::source
+        ])
             ->withMetadatas(
                 array(
                     self::key1 => $this->value1,
@@ -70,10 +72,10 @@ final class InternalTest extends TestCase
         $this->assertEquals(3, $internal->getMetadata()->offsetGet(self::key3)->getNumberValue(), "invalid metadata number value");
     }
 
-    public function testWithSource(): void {
-        $internal = Internal::newInstance()
-            ->withSource(self::source)
-            ->toInternal();
+    public function testOptional(): void {
+        $internal = Internal::newInstance([
+            'source' => self::source
+        ])->toInternal();
 
         $this->assertEquals(self::source, $internal->getSource(), "invalid source");
     }

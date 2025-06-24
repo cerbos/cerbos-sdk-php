@@ -22,9 +22,9 @@ final class FileFilterTest extends TestCase
         $stringMatch = StringMatch::newInstance()
             ->withEquals(self::equals);
 
-        $fileFilter = FileFilter::newInstance()
-            ->withPath($stringMatch)
-            ->toFileFilter();
+        $fileFilter = FileFilter::newInstance([
+            'path' => $stringMatch
+        ])->toFileFilter();
 
         $this->assertEquals(self::path, $fileFilter->getPath(), "invalid path");
     }

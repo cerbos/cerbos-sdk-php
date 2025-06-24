@@ -12,25 +12,36 @@ use Cerbos\Sdk\Cloud\Store\V1\ModifyFilesRequest\Condition;
 final class ModifyFilesRequest {
     private \Cerbos\Cloud\Store\V1\ModifyFilesRequest $request;
 
-    private function __construct() {
-        $this->request = new \Cerbos\Cloud\Store\V1\ModifyFilesRequest();
+    /**
+     * @param array $data {
+     *     @type string $store_id
+     *     @type FileOp[] $operations
+     * }
+     */
+    private function __construct(array $data) {
+        $this->request = new \Cerbos\Cloud\Store\V1\ModifyFilesRequest([
+            'store_id' => $data['store_id']
+        ]);
+
+        if (isset($data['operations'])) {
+            $fileOperations = array();
+            foreach ($data['operations'] as $operation) {
+                $fileOperations[] = $operation->toFileOp();
+            }
+
+            $this->request->setOperations($fileOperations);
+        }
     }
 
     /**
+     * @param array $data {
+     *     @type string $store_id
+     *     @type FileOp[] $operations
+     * }
      * @return ModifyFilesRequest
      */
-    public static function newInstance(): ModifyFilesRequest {
-        return new ModifyFilesRequest();
-    }
-
-    /**
-     * @param string $storeId
-     * @return $this
-     */
-    public function withStoreId($storeId): ModifyFilesRequest
-    {
-        $this->request->setStoreId($storeId);
-        return $this;
+    public static function newInstance(array $data): ModifyFilesRequest {
+        return new ModifyFilesRequest($data);
     }
 
     /**
@@ -50,21 +61,6 @@ final class ModifyFilesRequest {
     public function withChangeDetails($changeDetails): ModifyFilesRequest
     {
         $this->request->setChangeDetails($changeDetails->toChangeDetails());
-        return $this;
-    }
-
-    /**
-     * @param array<FileOp> $operations
-     * @return $this
-     */
-    public function withOperations($operations): ModifyFilesRequest
-    {
-        $fileOperations = array();
-        foreach ($operations as $operation) {
-            $fileOperations[] = $operation->toFileOp();
-        }
-        $this->request->setOperations($fileOperations);
-        
         return $this;
     }
 

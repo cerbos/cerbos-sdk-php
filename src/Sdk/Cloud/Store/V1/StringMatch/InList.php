@@ -8,44 +8,31 @@ declare(strict_types=1);
 namespace Cerbos\Sdk\Cloud\Store\V1\StringMatch;
 
 final class InList {
-    private array $values;
+    private \Cerbos\Cloud\Store\V1\StringMatch\InList $inList;
 
-    private function __construct() {
-        $this->values = array();
+    /**
+     * @param array $data {
+     *     @type string[] $values
+     * }
+     */
+    private function __construct(?array $data) {
+        $this->inList = new \Cerbos\Cloud\Store\V1\StringMatch\InList($data);
     }
 
     /**
+     * @param array $data {
+     *     @type string[] $values
+     * }
      * @return InList
      */
-    public static function newInstance(): InList {
-        return new InList();
-    }
-
-    /**
-     * @param string $value
-     * @return $this
-     */
-    public function withValue(string $value): InList {
-        $this->values[] = $value;
-        return $this;
-    }
-
-    /**
-     * @param array<string> $values
-     * @return $this
-     */
-    public function withValues(array $values): InList {
-        foreach ($values as $value) {
-            $this->values[] = $value;
-        }
-        return $this;
+    public static function newInstance(?array $data): InList {
+        return new InList($data);
     }
 
     /**
      * @return \Cerbos\Cloud\Store\V1\StringMatch\InList
      */
     public function toInList(): \Cerbos\Cloud\Store\V1\StringMatch\InList {
-        return (new \Cerbos\Cloud\Store\V1\StringMatch\InList())
-            ->setValues($this->values);
+        return $this->inList;
     }
 }

@@ -19,9 +19,10 @@ final class FileOpTest extends TestCase
     private const string path = "path";
 
     public function testWithAddOrUpdate(): void {
-        $file = File::newInstance()
-            ->withContents(self::contents)
-            ->withPath(self::path);
+        $file = File::newInstance([
+            'path' => self::path,
+            'contents' => self::contents
+        ]);
 
         $fileOp = FileOp::newInstance()
             ->withAddOrUpdate($file)

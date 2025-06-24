@@ -10,35 +10,25 @@ namespace Cerbos\Sdk\Cloud\Store\V1;
 final class GetFilesRequest {
     private \Cerbos\Cloud\Store\V1\GetFilesRequest $request;
 
-    private function __construct() {
-        $this->request = new \Cerbos\Cloud\Store\V1\GetFilesRequest();
+    /**
+     * @param array $data {
+     *     @type string $store_id
+     *     @type string[] $files
+     * }
+     */
+    private function __construct(array $data) {
+        $this->request = new \Cerbos\Cloud\Store\V1\GetFilesRequest($data);
     }
 
     /**
+     * @param array $data {
+     *     @type string $store_id
+     *     @type string[] $files
+     * }
      * @return GetFilesRequest
      */
-    public static function newInstance(): GetFilesRequest {
-        return new GetFilesRequest();
-    }
-
-    /**
-     * @param string $storeId
-     * @return $this
-     */
-    public function withStoreId($storeId): GetFilesRequest
-    {
-        $this->request->setStoreId($storeId);
-        return $this;
-    }
-
-    /**
-     * @param array<string> $files
-     * @return $this
-     */
-    public function withFiles($files): GetFilesRequest
-    {
-        $this->request->setFiles($files);
-        return $this;
+    public static function newInstance(array $data): GetFilesRequest {
+        return new GetFilesRequest($data);
     }
 
     /**

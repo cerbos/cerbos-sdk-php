@@ -10,38 +10,19 @@ namespace Cerbos\Sdk\Cloud\Store\V1;
 final class File {
     private \Cerbos\Cloud\Store\V1\File $file;
 
-    public function __construct(?\Cerbos\Cloud\Store\V1\File $file) {
-        if (!isset($file)) {
-            $this->file = new \Cerbos\Cloud\Store\V1\File();
-            return;
-        }
-
+    public function __construct(\Cerbos\Cloud\Store\V1\File $file) {
         $this->file = $file;
     }
 
     /**
+     * @param array $data {
+     *     @type string $path
+     *     @type string $contents
+     * }
      * @return File
      */
-    public static function newInstance(): File {
-        return new File(null);
-    }
-
-    /**
-     * @param string $path
-     * @return $this
-     */
-    public function withPath($path): File{
-        $this->file->setPath($path);
-        return $this;
-    }
-
-    /**
-     * @param string $contents
-     * @return $this
-     */
-    public function withContents($contents): File {
-        $this->file->setContents($contents);
-        return $this;
+    public static function newInstance(array $data): File {
+        return new File(new \Cerbos\Cloud\Store\V1\File($data));
     }
 
     /**

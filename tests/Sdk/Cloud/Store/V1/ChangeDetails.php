@@ -48,22 +48,25 @@ final class ChangeDetailsTest extends TestCase
     }
 
     public function testWithGit(): void {
-        $uploader = Uploader::newInstance()
-            ->withName(self::name);
+        $uploader = Uploader::newInstance([
+            'name' => self::name
+        ]);
 
-        $git = Git::newInstance()
-            ->withAuthor(self::author)
-            ->withCommitter(self::committer)
-            ->withHash(self::hash)
-            ->withMessage(self::message)
-            ->withRepo(self::repo)
-            ->withRef(self::ref)
-            ->withAuthorDate($this->authorDate)
-            ->withCommitDate($this->commitDate);
+        $git = Git::newInstance([
+            'author' => self::author,
+            'committer' => self::committer,
+            'hash' => self::hash,
+            'message' => self::message,
+            'repo' => self::repo,
+            'ref' => self::ref,
+            'author_date' => $this->authorDate,
+            'commit_date' => $this->commitDate
+        ]);
 
-        $changeDetails = ChangeDetails::newInstance()
-            ->withDescription(self::description)
-            ->withUploader($uploader)
+        $changeDetails = ChangeDetails::newInstance([
+            'description' => self::description,
+            'uploader' => $uploader
+        ])
             ->withGit($git)
             ->toChangeDetails();
 
@@ -82,17 +85,20 @@ final class ChangeDetailsTest extends TestCase
     }
 
     public function testWithInternal(): void {
-        $uploader = Uploader::newInstance()
-            ->withName(self::name);
+        $uploader = Uploader::newInstance([
+            'name' => self::name
+        ]);
 
-        $internal = Internal::newInstance()
-            ->withSource(self::source)
+        $internal = Internal::newInstance([
+            'source' => self::source
+        ])
             ->withMetadata(self::key1, $this->value1)
             ->withMetadata(self::key2, $this->value2);
 
-        $changeDetails = ChangeDetails::newInstance()
-            ->withDescription(self::description)
-            ->withUploader($uploader)
+        $changeDetails = ChangeDetails::newInstance([
+            'description' => self::description,
+            'uploader' => $uploader
+        ])
             ->withInternal($internal)
             ->toChangeDetails();
 

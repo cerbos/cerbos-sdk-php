@@ -9,40 +9,29 @@ namespace Cerbos\Sdk\Cloud\Store\V1;
 
 use \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Git;
 use \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Internal;
-use \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Uploader;
 
 final class ChangeDetails {
     private \Cerbos\Cloud\Store\V1\ChangeDetails $changeDetails;
 
-    private function __construct() {
-        $this->changeDetails = new \Cerbos\Cloud\Store\V1\ChangeDetails();
+    /**
+     * @param array $data {
+     *     @type string $description
+     *     @type \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader $uploader
+     * }
+     */
+    private function __construct(array $data) {
+        $this->changeDetails = new \Cerbos\Cloud\Store\V1\ChangeDetails($data);
     }
 
     /**
+     * @param array $data {
+     *     @type string $description
+     *     @type \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader $uploader
+     * }
      * @return ChangeDetails
      */
-    public static function newInstance(): ChangeDetails {
-        return new ChangeDetails();
-    }
-
-    /**
-     * @param string $description
-     * @return $this
-     */
-    public function withDescription($description): ChangeDetails
-    {
-        $this->changeDetails->setDescription($description);
-        return $this;
-    }
-
-    /**
-     * @param Uploader $uploader
-     * @return $this
-     */
-    public function withUploader($uploader): ChangeDetails
-    {
-        $this->changeDetails->setUploader($uploader->toUploader());
-        return $this;
+    public static function newInstance(array $data): ChangeDetails {
+        return new ChangeDetails($data);
     }
 
     /**

@@ -42,32 +42,36 @@ final class ReplaceFilesRequestTest extends TestCase
     }
 
     public function testAll(): void {
-        $uploader = Uploader::newInstance()
-            ->withName(self::name);
+        $uploader = Uploader::newInstance([
+            'name' => self::name
+        ]);
 
-        $git = Git::newInstance()
-            ->withAuthor(self::author)
-            ->withCommitter(self::committer)
-            ->withHash(self::hash)
-            ->withMessage(self::message)
-            ->withRepo(self::repo)
-            ->withRef(self::ref)
-            ->withAuthorDate($this->authorDate)
-            ->withCommitDate($this->commitDate);
+        $git = Git::newInstance([
+            'author' => self::author,
+            'committer' => self::committer,
+            'hash' => self::hash,
+            'message' => self::message,
+            'repo' => self::repo,
+            'ref' => self::ref,
+            'author_date' => $this->authorDate,
+            'commit_date' => $this->commitDate
+        ]);
 
-        $changeDetails = ChangeDetails::newInstance()
-            ->withDescription(self::description)
-            ->withUploader($uploader)
-            ->withGit($git);
+        $changeDetails = ChangeDetails::newInstance([
+            'description' => self::description,
+            'uploader' => $uploader
+        ])->withGit($git);
 
-        $condition = Condition::newInstance()
-            ->withStoreVersionMustEqual(1);
+        $condition = Condition::newInstance([
+            'store_version_must_equal' => 1
+        ]);
 
-        $request = ReplaceFilesRequest::newInstance()
-            ->withStoreId(self::storeId)
+        $request = ReplaceFilesRequest::newInstance([
+            'store_id' => self::storeId,
+            'zipped_contents' => self::contents
+        ])
             ->withChangeDetails($changeDetails)
             ->withCondition($condition)
-            ->withZippedContents(self::contents)
             ->toReplaceFilesRequest();
 
         $this->assertEquals(self::storeId, $request->getStoreId(), "invalid storeId");
@@ -77,10 +81,10 @@ final class ReplaceFilesRequestTest extends TestCase
     }
 
     public function testOptional(): void {
-        $request = ReplaceFilesRequest::newInstance()
-            ->withStoreId(self::storeId)
-            ->withZippedContents(self::contents)
-            ->toReplaceFilesRequest();
+        $request = ReplaceFilesRequest::newInstance([
+            'store_id' => self::storeId,
+            'zipped_contents' => self::contents
+        ])->toReplaceFilesRequest();
 
         $this->assertEquals(self::storeId, $request->getStoreId(), "invalid storeId");
     }

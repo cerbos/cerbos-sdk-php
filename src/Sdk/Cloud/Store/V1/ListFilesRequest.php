@@ -10,25 +10,23 @@ namespace Cerbos\Sdk\Cloud\Store\V1;
 final class ListFilesRequest {
     private \Cerbos\Cloud\Store\V1\ListFilesRequest $request;
 
-    private function __construct() {
-        $this->request = new \Cerbos\Cloud\Store\V1\ListFilesRequest();
+    /**
+     * @param array $data {
+     *     @type string $store_id
+     * }
+     */
+    private function __construct(array $data) {
+        $this->request = new \Cerbos\Cloud\Store\V1\ListFilesRequest($data);
     }
 
     /**
+     * @param array $data {
+     *     @type string $store_id
+     * }
      * @return ListFilesRequest
      */
-    public static function newInstance(): ListFilesRequest {
-        return new ListFilesRequest();
-    }
-
-    /**
-     * @param string $storeId
-     * @return $this
-     */
-    public function withStoreId($storeId): ListFilesRequest
-    {
-        $this->request->setStoreId($storeId);
-        return $this;
+    public static function newInstance(array $data): ListFilesRequest {
+        return new ListFilesRequest($data);
     }
 
     /**

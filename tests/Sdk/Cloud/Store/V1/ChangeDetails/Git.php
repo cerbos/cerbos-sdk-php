@@ -31,16 +31,16 @@ final class GitTest extends TestCase
     }
 
     public function testAll(): void {
-        $git = Git::newInstance()
-            ->withAuthor(self::author)
-            ->withCommitter(self::committer)
-            ->withHash(self::hash)
-            ->withMessage(self::message)
-            ->withRepo(self::repo)
-            ->withRef(self::ref)
-            ->withAuthorDate($this->authorDate)
-            ->withCommitDate($this->commitDate)
-            ->toGit();
+        $git = Git::newInstance([
+            'author' => self::author,
+            'committer' => self::committer,
+            'hash' => self::hash,
+            'message' => self::message,
+            'repo' => self::repo,
+            'ref' => self::ref,
+            'author_date' => $this->authorDate,
+            'commit_date' => $this->commitDate
+        ])->toGit();
 
         $this->assertEquals(self::author, $git->getAuthor(), "invalid author");
         $this->assertEquals(self::committer, $git->getCommitter(), "invalid committer");

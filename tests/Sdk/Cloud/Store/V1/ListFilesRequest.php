@@ -23,11 +23,13 @@ final class ListFilesRequestTest extends TestCase
         $stringMatch = StringMatch::newInstance()
             ->withEquals(self::equals);
 
-        $fileFilter = FileFilter::newInstance()
-            ->withPath($stringMatch);
+        $fileFilter = FileFilter::newInstance([
+            'path' => $stringMatch
+        ]);
 
-        $request = ListFilesRequest::newInstance()
-            ->withStoreId(self::storeId)
+        $request = ListFilesRequest::newInstance([
+            'store_id' => self::storeId
+        ])
             ->withFilter($fileFilter)
             ->toListFilesRequest();
 
@@ -36,9 +38,9 @@ final class ListFilesRequestTest extends TestCase
     }
 
     public function testOptional(): void {
-        $request = ListFilesRequest::newInstance()
-            ->withStoreId(self::storeId)
-            ->toListFilesRequest();
+        $request = ListFilesRequest::newInstance([
+            'store_id' => self::storeId
+        ])->toListFilesRequest();
 
         $this->assertEquals(self::storeId, $request->getStoreId(), "invalid storeId");
     }

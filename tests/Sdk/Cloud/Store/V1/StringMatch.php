@@ -33,9 +33,9 @@ final class StringMatchTest extends TestCase
     }
 
     public function testWithIn(): void {
-        $inList = InList::newInstance()
-            ->withValue(self::in)
-            ->withValue(self::in);
+        $inList = InList::newInstance([
+            'values' => [self::in, self::in]
+        ]);
 
         $stringMatch = StringMatch::newInstance()
             ->withIn($inList)

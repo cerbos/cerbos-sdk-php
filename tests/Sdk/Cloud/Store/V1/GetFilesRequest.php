@@ -19,10 +19,10 @@ final class GetFilesRequestTest extends TestCase
     private const string file1 = "policy1.yaml";
 
     public function testAll(): void {
-        $request = GetFilesRequest::newInstance()
-            ->withStoreId(self::storeId)
-            ->withFiles([self::file, self::file1])
-            ->toGetFilesRequest();
+        $request = GetFilesRequest::newInstance([
+            'store_id' => self::storeId,
+            'files' => [self::file, self::file1]
+        ])->toGetFilesRequest();
 
         $this->assertEquals(self::storeId, $request->getStoreId(), "invalid storeId");
         $this->assertEquals(self::file, $request->getFiles()[0], "invalid files[0]");
