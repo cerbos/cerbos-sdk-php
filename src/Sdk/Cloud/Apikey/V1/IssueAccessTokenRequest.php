@@ -9,6 +9,9 @@ namespace Cerbos\Sdk\Cloud\Apikey\V1;
 
 use Exception;
 
+/**
+ * @internal
+ */
 final class IssueAccessTokenRequest
 {
     private ?string $clientId;

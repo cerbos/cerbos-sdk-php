@@ -10,6 +10,9 @@ namespace Cerbos\Sdk\Cloud\Apikey\V1;
 use Cerbos\Sdk\RpcException;
 use Exception;
 
+/**
+ * @internal
+ */
 final class ApiKeyClient
 {
     private \Cerbos\Cloud\Apikey\V1\ApiKeyServiceClient $client;

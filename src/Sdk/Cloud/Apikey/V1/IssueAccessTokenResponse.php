@@ -7,6 +7,9 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Apikey\V1;
 
+/**
+ * @internal
+ */
 final class IssueAccessTokenResponse
 {
     private \Cerbos\Cloud\Apikey\V1\IssueAccessTokenResponse $response;

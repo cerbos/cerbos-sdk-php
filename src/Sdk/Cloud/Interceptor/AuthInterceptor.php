@@ -5,9 +5,10 @@
 
 declare(strict_types=1);
 
-namespace Cerbos\Sdk\Cloud;
+namespace Cerbos\Sdk\Cloud\Interceptor;
 
 use Cerbos\Sdk\Cloud\Apikey\V1\ApiKeyClient;
+use Cerbos\Sdk\Cloud\Credentials;
 use Cerbos\Sdk\ResourceExhaustedException;
 use Cerbos\Sdk\RpcException;
 use Cerbos\Sdk\UnauthenticatedException;
