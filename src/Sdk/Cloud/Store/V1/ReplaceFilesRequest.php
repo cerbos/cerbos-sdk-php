@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace Cerbos\Sdk\Cloud\Store\V1;
 
 use Cerbos\Sdk\Cloud\Store\V1\ReplaceFilesRequest\Condition;
+use Cerbos\Sdk\Cloud\Store\V1\ReplaceFilesRequest\Files;
 
 final class ReplaceFilesRequest {
     private \Cerbos\Cloud\Store\V1\ReplaceFilesRequest $request;
@@ -15,7 +16,6 @@ final class ReplaceFilesRequest {
     /**
      * @param array $data {
      *     @type string $store_id
-     *     @type string $zipped_contents
      * }
      */
     private function __construct(array $data) {
@@ -25,7 +25,6 @@ final class ReplaceFilesRequest {
     /**
      * @param array $data {
      *     @type string $store_id
-     *     @type string $zipped_contents
      * }
      * @return ReplaceFilesRequest
      */
@@ -50,6 +49,26 @@ final class ReplaceFilesRequest {
     public function withChangeDetails($changeDetails): ReplaceFilesRequest
     {
         $this->request->setChangeDetails($changeDetails->toChangeDetails());
+        return $this;
+    }
+
+    /**
+     * @param Files $files
+     * @return $this
+     */
+    public function withFiles($files): ReplaceFilesRequest
+    {
+        $this->request->setFiles($files->toFiles());
+        return $this;
+    }
+
+    /**
+     * @param string $zippedContents
+     * @return $this
+     */
+    public function withZippedContents($zippedContents): ReplaceFilesRequest
+    {
+        $this->request->setZippedContents($zippedContents);
         return $this;
     }
 

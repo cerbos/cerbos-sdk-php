@@ -23,13 +23,10 @@ class ReplaceFilesRequest extends \Google\Protobuf\Internal\Message
      */
     protected $condition = null;
     /**
-     * Generated from protobuf field <code>bytes zipped_contents = 3 [json_name = "zippedContents"];</code>
-     */
-    protected $zipped_contents = '';
-    /**
      * Generated from protobuf field <code>optional .cerbos.cloud.store.v1.ChangeDetails change_details = 4 [json_name = "changeDetails"];</code>
      */
     protected $change_details = null;
+    protected $contents;
 
     /**
      * Constructor.
@@ -40,6 +37,7 @@ class ReplaceFilesRequest extends \Google\Protobuf\Internal\Message
      *     @type string $store_id
      *     @type \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Condition $condition
      *     @type string $zipped_contents
+     *     @type \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Files $files
      *     @type \Cerbos\Cloud\Store\V1\ChangeDetails $change_details
      * }
      */
@@ -108,7 +106,12 @@ class ReplaceFilesRequest extends \Google\Protobuf\Internal\Message
      */
     public function getZippedContents()
     {
-        return $this->zipped_contents;
+        return $this->readOneof(3);
+    }
+
+    public function hasZippedContents()
+    {
+        return $this->hasOneof(3);
     }
 
     /**
@@ -119,7 +122,34 @@ class ReplaceFilesRequest extends \Google\Protobuf\Internal\Message
     public function setZippedContents($var)
     {
         GPBUtil::checkString($var, False);
-        $this->zipped_contents = $var;
+        $this->writeOneof(3, $var);
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.cloud.store.v1.ReplaceFilesRequest.Files files = 5 [json_name = "files"];</code>
+     * @return \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Files|null
+     */
+    public function getFiles()
+    {
+        return $this->readOneof(5);
+    }
+
+    public function hasFiles()
+    {
+        return $this->hasOneof(5);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.cloud.store.v1.ReplaceFilesRequest.Files files = 5 [json_name = "files"];</code>
+     * @param \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Files $var
+     * @return $this
+     */
+    public function setFiles($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Files::class);
+        $this->writeOneof(5, $var);
 
         return $this;
     }
@@ -154,6 +184,14 @@ class ReplaceFilesRequest extends \Google\Protobuf\Internal\Message
         $this->change_details = $var;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContents()
+    {
+        return $this->whichOneof("contents");
     }
 
 }

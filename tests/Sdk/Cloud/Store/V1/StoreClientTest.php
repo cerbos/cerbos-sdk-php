@@ -207,8 +207,7 @@ final class StoreClientTest extends TestCase
         }
 
         $request = ReplaceFilesRequest::newInstance([
-            'store_id' => $this->storeId,
-            'zipped_contents' => $temporaryContents
+            'store_id' => $this->storeId
         ])
             ->withChangeDetails(
                 ChangeDetails::newInstance([
@@ -216,7 +215,8 @@ final class StoreClientTest extends TestCase
                     'uploader' => Uploader::newInstance(['name' => 'cerbos-sdk-php'])
                 ])
                 ->withInternal(Internal::newInstance(['source' => 'sdk']))
-            );
+            )
+            ->withZippedContents($temporaryContents);
 
         try {
             $response = $this->client->replaceFiles($request);
@@ -232,8 +232,7 @@ final class StoreClientTest extends TestCase
         }
 
         $request = ReplaceFilesRequest::newInstance([
-            'store_id' => $this->storeId,
-            'zipped_contents' => $storeContents
+            'store_id' => $this->storeId
         ])
             ->withChangeDetails(
                 ChangeDetails::newInstance([
@@ -241,7 +240,8 @@ final class StoreClientTest extends TestCase
                     'uploader' => Uploader::newInstance(['name' => 'cerbos-sdk-php'])
                 ])
                 ->withInternal(Internal::newInstance(['source' => 'sdk']))
-            );
+            )
+            ->withZippedContents($storeContents);
 
         try {
             $response = $this->client->replaceFiles($request);
