@@ -15,8 +15,6 @@ use Exception;
 final class HubClientBuilder
 {
     private string $hostname;
-    private bool $plaintext;
-    private ?string $caCertificate;
     private ?Credentials $credentials;
 
     /**
@@ -24,8 +22,6 @@ final class HubClientBuilder
      */
     private function __construct(string $hostname) {
         $this->hostname = $hostname;
-        $this->plaintext = false;
-        $this->caCertificate = null;
         $this->credentials = null;
     }
 
@@ -35,24 +31,6 @@ final class HubClientBuilder
      */
     public static function newInstance(string $hostname): HubClientBuilder {
         return new HubClientBuilder($hostname);
-    }
-
-    /**
-     * @param bool $plaintext
-     * @return HubClientBuilder
-     */
-    public function withPlaintext(bool $plaintext): HubClientBuilder {
-        $this->plaintext = $plaintext;
-        return $this;
-    }
-
-    /**
-     * @param string $caCertificate
-     * @return $this
-     */
-    public function withCaCertificate(string $caCertificate): HubClientBuilder {
-        $this->caCertificate = $caCertificate;
-        return $this;
     }
 
     /**
@@ -75,25 +53,13 @@ final class HubClientBuilder
             throw new Exception("credentials must be specified");
         }
 
-        if ($this->plaintext) {
-            $credentials = \Grpc\ChannelCredentials::createInsecure();
-        }
-        else if (!is_null($this->caCertificate)) {
-            $credentials = \Grpc\ChannelCredentials::createSsl(
-                $this->caCertificate
-            );
-        }
-        else {
-            /**
-             * @psalm-suppress TooFewArguments
-             */
-            $credentials = \Grpc\ChannelCredentials::createSsl();
-        }
-
+        /**
+         * @psalm-suppress TooFewArguments
+         */
         $channel = new \Grpc\Channel(
             $this->hostname,
             [
-                'credentials' => $credentials
+                'credentials' => \Grpc\ChannelCredentials::createSsl()
             ]
         );
         
