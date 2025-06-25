@@ -14,37 +14,27 @@ use Exception;
  */
 final class IssueAccessTokenRequest
 {
-    private ?string $clientId;
-    private ?string $clientSecret;
+    private \Cerbos\Cloud\Apikey\V1\IssueAccessTokenRequest $request;
 
-    private function __construct() {
-        $this->clientId = null;
-        $this->clientSecret = null;
+    /**
+     * @param array $data {
+     *     @type string $client_id
+     *     @type string $client_secret
+     * }
+     */
+    private function __construct(array $data) {
+        $this->request = new \Cerbos\Cloud\Apikey\V1\IssueAccessTokenRequest($data);
     }
 
     /**
+     * @param array $data {
+     *     @type string $client_id
+     *     @type string $client_secret
+     * }
      * @return IssueAccessTokenRequest
      */
-    public static function newInstance(): IssueAccessTokenRequest {
-        return new IssueAccessTokenRequest();
-    }
-
-    /**
-     * @param string $clientId
-     * @return $this
-     */
-    public function withClientId(string $clientId): IssueAccessTokenRequest {
-        $this->clientId = $clientId;
-        return $this;
-    }
-
-    /**
-     * @param string $clientSecret
-     * @return $this
-     */
-    public function withClientSecret(string $clientSecret): IssueAccessTokenRequest {
-        $this->clientSecret = $clientSecret;
-        return $this;
+    public static function newInstance(array $data): IssueAccessTokenRequest {
+        return new IssueAccessTokenRequest($data);
     }
 
     /**
@@ -52,18 +42,6 @@ final class IssueAccessTokenRequest
      * @throws Exception
      */
     public function toIssueAccessTokenRequest(): \Cerbos\Cloud\Apikey\V1\IssueAccessTokenRequest {
-        if (!isset($this->clientId)) {
-            throw new Exception("client id is not set");
-        }
-
-        if (!isset($this->clientSecret)) {
-            throw new Exception("client secret is not set");
-        }
-
-        $request = (new \Cerbos\Cloud\Apikey\V1\IssueAccessTokenRequest())
-            ->setClientId($this->clientId)
-            ->setClientSecret($this->clientSecret);
-
-        return $request;
+        return $this->request;
     }
 }

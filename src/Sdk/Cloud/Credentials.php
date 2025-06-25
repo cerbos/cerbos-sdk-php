@@ -27,9 +27,10 @@ final class Credentials {
      * @throws Exception
      */
     public function toIssueAccessTokenRequest(): IssueAccessTokenRequest {
-        $request = IssueAccessTokenRequest::newInstance()
-            ->withClientId($this->clientId)
-            ->withClientSecret($this->clientSecret);
+        $request = IssueAccessTokenRequest::newInstance([
+            'client_id' => $this->clientId,
+            'client_secret' => $this->clientSecret
+        ]);
 
         return $request;
     }
