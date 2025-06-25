@@ -73,7 +73,6 @@ final class HubClientBuilder
 
         $channelWithAuthInterceptor = \Grpc\Interceptor::intercept($channel, new AuthInterceptor($apiKeyClient, $this->credentials));
         return new HubClient(
-            $apiKeyClient,
             new StoreClient(
                 new \Cerbos\Cloud\Store\V1\CerbosStoreServiceClient(
                     $this->hostname,

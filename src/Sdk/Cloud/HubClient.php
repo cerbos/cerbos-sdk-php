@@ -13,24 +13,13 @@ use Exception;
 
 final class HubClient
 {
-    private ApiKeyClient $apiKeyClient;
     private StoreClient $storeClient;
 
     /**
-     * @param ApiKeyClient $apiKeyClient
      * @param StoreClient $storeClient
      */
-    public function __construct(ApiKeyClient $apiKeyClient, StoreClient $storeClient) {
-        $this->apiKeyClient = $apiKeyClient;
+    public function __construct(StoreClient $storeClient) {
         $this->storeClient = $storeClient;
-    }
-
-    /**
-     * @return ApiKeyClient
-     * @throws Exception
-     */
-    public function apiKeyClient(): ApiKeyClient {
-        return $this->apiKeyClient;
     }
 
     /**
