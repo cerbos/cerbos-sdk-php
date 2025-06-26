@@ -128,7 +128,7 @@ final class StoreClientTest extends TestCase
             $this->fail($e->getMessage());
         }
 
-        $this->assertEquals($this->expectedFiles[0], $response->getFiles()[0], "invalid files");
+        $this->assertEquals($this->expectedFiles[0], $response->getFiles()[0]->getPath(), "invalid files");
     }
 
     public function testListFiles(): void

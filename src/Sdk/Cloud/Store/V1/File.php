@@ -26,6 +26,22 @@ final class File {
     }
 
     /**
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->file->getPath();
+    }
+
+    /**
+     * @return string
+     */
+    public function getContents()
+    {
+        return $this->file->getContents();
+    }
+
+    /**
      * @return \Cerbos\Cloud\Store\V1\File
      */
     public function toFile(): \Cerbos\Cloud\Store\V1\File {
