@@ -93,15 +93,18 @@ final class StoreClientTest extends TestCase
         "tests/policy_05_test.yaml",
     ];
 
-    private const string pathToTemporaryPolicyFile = "./../../../res/cloud/v1/temporary.yaml";
-    private const string pathToStoreContents = "./../../../res/cloud/v1/store.zip";
-    private const string pathToTemporaryContents = "./../../../res/cloud/v1/temporary.zip";
+    private string $pathToTemporaryPolicyFile;
+    private string $pathToStoreContents;
+    private string $pathToTemporaryContents;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->client = $this->hubClient->storeClient();
+        $this->pathToTemporaryPolicyFile = realpath(__DIR__ . "/../../../../res/cloud/v1/temporary.yaml");
+        $this->pathToStoreContents = realpath(__DIR__ . "/../../../../res/cloud/v1/store.zip");
+        $this->pathToTemporaryContents = realpath(__DIR__ . "/../../../../res/cloud/v1/temporary.zip");
     }
 
     public function testGetFiles(): void
@@ -141,9 +144,9 @@ final class StoreClientTest extends TestCase
             'store_id' => $this->storeId,
         ])))->getStoreVersion();
 
-        $fileContents = file_get_contents(self::pathToTemporaryPolicyFile);
+        $fileContents = file_get_contents($this->pathToTemporaryPolicyFile);
         if($fileContents == false) {
-            $this->fail("failed to read file from " . self::pathToTemporaryPolicyFile);
+            $this->fail("failed to read file from " . $this->pathToTemporaryPolicyFile);
         }
 
         $request = ModifyFilesRequest::newInstance([
@@ -201,9 +204,9 @@ final class StoreClientTest extends TestCase
             'store_id' => $this->storeId,
         ])))->getStoreVersion();
 
-        $temporaryContents = file_get_contents(self::pathToTemporaryContents);
+        $temporaryContents = file_get_contents($this->pathToTemporaryContents);
         if($temporaryContents == false) {
-            $this->fail("failed to read file from " . self::pathToTemporaryContents);
+            $this->fail("failed to read file from " . $this->pathToTemporaryContents);
         }
 
         $request = ReplaceFilesRequest::newInstance([
@@ -226,9 +229,9 @@ final class StoreClientTest extends TestCase
 
         $this->assertEquals($initialStoreVersion + 1, $response->getNewStoreVersion(), "invalid store version");
 
-        $storeContents = file_get_contents(self::pathToStoreContents);
+        $storeContents = file_get_contents($this->pathToStoreContents);
         if($storeContents == false) {
-            $this->fail("failed to read file from " . self::pathToStoreContents);
+            $this->fail("failed to read file from " . $this->pathToStoreContents);
         }
 
         $request = ReplaceFilesRequest::newInstance([
