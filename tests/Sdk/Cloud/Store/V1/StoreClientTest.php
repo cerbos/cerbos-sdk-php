@@ -102,9 +102,17 @@ final class StoreClientTest extends TestCase
         parent::setUp();
 
         $this->client = $this->hubClient->storeClient();
-        $this->pathToTemporaryPolicyFile = realpath(__DIR__ . "/../../../../res/cloud/v1/temporary.yaml");
-        $this->pathToStoreContents = realpath(__DIR__ . "/../../../../res/cloud/v1/store.zip");
-        $this->pathToTemporaryContents = realpath(__DIR__ . "/../../../../res/cloud/v1/temporary.zip");
+        
+        $pathToTemporaryPolicyFile = realpath(__DIR__ . "/../../../../res/cloud/v1/temporary.yaml");
+        $pathToStoreContents = realpath(__DIR__ . "/../../../../res/cloud/v1/store.zip");
+        $pathToTemporaryContents = realpath(__DIR__ . "/../../../../res/cloud/v1/temporary.zip");
+        if ($pathToTemporaryPolicyFile === false || $pathToStoreContents === false || $pathToTemporaryContents === false) {
+            $this->fail('at least one path is false');
+        }
+
+        $this->pathToTemporaryPolicyFile = $pathToTemporaryPolicyFile;
+        $this->pathToStoreContents = $pathToStoreContents;
+        $this->pathToTemporaryContents = $pathToTemporaryContents;
     }
 
     public function testGetFiles(): void
