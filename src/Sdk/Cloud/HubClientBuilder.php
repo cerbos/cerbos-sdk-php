@@ -8,7 +8,7 @@ declare(strict_types=1);
 namespace Cerbos\Sdk\Cloud;
 
 use Cerbos\Sdk\Cloud\Apikey\V1\ApiKeyClient;
-use Cerbos\Sdk\Cloud\Interceptor\AuthInterceptor;
+use Cerbos\Sdk\Cloud\Apikey\V1\Authenticator;
 use Cerbos\Sdk\Cloud\Store\V1\StoreClient;
 use Exception;
 
@@ -46,16 +46,12 @@ final class HubClientBuilder
     /**
      * @return HubClient
      * @throws Exception
-     * @psalm-suppress InvalidArgument
      */
     public function build(): HubClient {
         if (is_null($this->credentials)) {
             throw new Exception("credentials must be specified");
         }
 
-        /**
-         * @psalm-suppress TooFewArguments
-         */
         $channel = new \Grpc\Channel(
             $this->hostname,
             [
@@ -71,14 +67,16 @@ final class HubClientBuilder
             )
         );
 
-        $channelWithAuthInterceptor = \Grpc\Interceptor::intercept($channel, new AuthInterceptor($apiKeyClient, $this->credentials));
+        $authenticator = new Authenticator($apiKeyClient, $this->credentials);
+
         return new HubClient(
             new StoreClient(
                 new \Cerbos\Cloud\Store\V1\CerbosStoreServiceClient(
                     $this->hostname,
                     [],
-                    $channelWithAuthInterceptor
-                )
+                    $channel
+                ),
+                $authenticator
             )
         );
     }
