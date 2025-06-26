@@ -16,17 +16,20 @@ final class ChangeDetails {
     /**
      * @param array $data {
      *     @type string $description
-     *     @type \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader $uploader
+     *     @type \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Uploader $uploader
      * }
      */
     private function __construct(array $data) {
-        $this->changeDetails = new \Cerbos\Cloud\Store\V1\ChangeDetails($data);
+        $this->changeDetails = new \Cerbos\Cloud\Store\V1\ChangeDetails([
+            'description' => $data['description'],
+            'uploader' => $data['uploader']->toUploader()
+        ]);
     }
 
     /**
      * @param array $data {
      *     @type string $description
-     *     @type \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader $uploader
+     *     @type \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Uploader $uploader
      * }
      * @return ChangeDetails
      */

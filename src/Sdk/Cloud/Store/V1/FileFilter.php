@@ -7,18 +7,18 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1;
 
-use \Cerbos\Sdk\Cloud\Store\V1\StringMatch;
-
 final class FileFilter {
     private \Cerbos\Cloud\Store\V1\FileFilter $fileFilter;
 
     /**
      * @param array $data {
-     *     @type \Cerbos\Cloud\Store\V1\StringMatch $path
+     *     @type \Cerbos\Sdk\Cloud\Store\V1\StringMatch $path
      * }
      */
     private function __construct(array $data) {
-        $this->fileFilter = new \Cerbos\Cloud\Store\V1\FileFilter($data);
+        $this->fileFilter = new \Cerbos\Cloud\Store\V1\FileFilter([
+            'path' => $data['path']->toStringMatch()
+        ]);
     }
 
     /**

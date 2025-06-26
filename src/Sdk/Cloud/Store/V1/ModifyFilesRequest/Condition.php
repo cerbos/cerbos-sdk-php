@@ -12,16 +12,18 @@ final class Condition {
 
     /**
      * @param array $data {
-     *     @type int|string $store_version_must_equal
+     *     @type int $store_version_must_equal
      * }
      */
     private function __construct(array $data) {
-        $this->condition = new \Cerbos\Cloud\Store\V1\ModifyFilesRequest\Condition($data);
+        $this->condition = new \Cerbos\Cloud\Store\V1\ModifyFilesRequest\Condition([
+            'store_version_must_equal' => (int)$data['store_version_must_equal']
+        ]);
     }
 
     /**
      * @param array $data {
-     *     @type int|string $store_version_must_equal
+     *     @type int $store_version_must_equal
      * }
      * @return Condition
      */
