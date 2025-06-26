@@ -9,7 +9,7 @@
 >
 	<projectFiles>
 		<directory name="src/Sdk" />
-		<directory name="tests" />
+		<directory name="tests/Sdk" />
 		<ignoreFiles>
 			<directory name="vendor" />
 			<directory name="tests/res" />
