@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud;
 
-use Cerbos\Sdk\Cloud\Apikey\V1\ApiKeyClient;
 use Cerbos\Sdk\Cloud\Store\V1\StoreClient;
 use Exception;
 
