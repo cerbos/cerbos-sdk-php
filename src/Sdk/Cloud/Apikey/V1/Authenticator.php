@@ -9,7 +9,6 @@ namespace Cerbos\Sdk\Cloud\Apikey\V1;
 
 use Cerbos\Sdk\Cloud\Apikey\V1\ApiKeyClient;
 use Cerbos\Sdk\Cloud\Credentials;
-use Cerbos\Sdk\RpcException;
 use Cerbos\Sdk\UnauthenticatedException;
 use Cerbos\Sdk\Utility\Metadata;
 
@@ -22,7 +21,7 @@ final class Authenticator {
 
     private static string $accessToken = "";
     private static int $expiresAt = 0;
-    private static ?RpcException $lastException = null;
+    private static bool $unauthenticated = false;
 
     /**
      * @param ApiKeyClient $apiKeyClient
@@ -59,7 +58,7 @@ final class Authenticator {
             $response = $this->apiKeyClient->issueAccessToken($this->credentials->toIssueAccessTokenRequest());
         } 
         catch(UnauthenticatedException $e) {
-            Authenticator::$lastException = $e;
+            $this->unauthenticated = true;
             throw $e;
         }
 
@@ -68,8 +67,8 @@ final class Authenticator {
     }
 
     private function throwIfUnauthenticated() : void {
-        if (Authenticator::$lastException instanceof UnauthenticatedException) {
-            throw Authenticator::$lastException;
+        if ($this->unauthenticated) {
+            throw new UnauthenticatedException('gRPC request failed: RpcException: Unauthenticated');
         }
     }
 
