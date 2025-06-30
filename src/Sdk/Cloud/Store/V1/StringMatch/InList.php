@@ -11,7 +11,7 @@ final class InList {
     private \Cerbos\Cloud\Store\V1\StringMatch\InList $inList;
 
     /**
-     * @param array $data {
+     * @param array|null $data {
      *     @type string[] $values
      * }
      */
@@ -20,7 +20,7 @@ final class InList {
     }
 
     /**
-     * @param array $data {
+     * @param array|null $data {
      *     @type string[] $values
      * }
      * @return InList

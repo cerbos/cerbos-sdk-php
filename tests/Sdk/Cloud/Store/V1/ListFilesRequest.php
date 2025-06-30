@@ -7,7 +7,6 @@ namespace Cerbos\Test\Sdk\Cloud\Store\V1;
 
 use Cerbos\Sdk\Cloud\Store\V1\FileFilter;
 use Cerbos\Sdk\Cloud\Store\V1\ListFilesRequest;
-use Cerbos\Sdk\Cloud\Store\V1\StringMatch;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,12 +19,7 @@ final class ListFilesRequestTest extends TestCase
     private const string storeId = "MD1LAP5BJNA9";
 
     public function testAll(): void {
-        $stringMatch = StringMatch::newInstance()
-            ->withEquals(self::equals);
-
-        $fileFilter = FileFilter::newInstance([
-            'path' => $stringMatch
-        ]);
+        $fileFilter = FileFilter::pathEquals(self::equals);
 
         $request = ListFilesRequest::newInstance([
             'store_id' => self::storeId

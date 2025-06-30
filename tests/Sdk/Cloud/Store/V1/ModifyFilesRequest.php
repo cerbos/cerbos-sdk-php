@@ -68,8 +68,7 @@ final class ModifyFilesRequestTest extends TestCase
         ]);
 
         $fileOps = [
-            FileOp::newInstance()
-                ->withDelete(self::file)
+            FileOp::delete(self::file)
         ];
 
         $request = ModifyFilesRequest::newInstance([
@@ -88,8 +87,7 @@ final class ModifyFilesRequestTest extends TestCase
 
     public function testOptional(): void {
         $fileOps = [
-            FileOp::newInstance()
-                ->withDelete(self::file)
+            FileOp::delete(self::file)
         ];
 
         $request = ModifyFilesRequest::newInstance([

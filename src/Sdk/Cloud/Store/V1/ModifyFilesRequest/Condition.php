@@ -32,6 +32,16 @@ final class Condition {
     }
 
     /**
+     * @param int $store_version_must_equal
+     * @return Condition
+     */
+    public static function storeVersionMustEqual(int $store_version_must_equal): Condition {
+        return new Condition([
+            'store_version_must_equal' => $store_version_must_equal
+        ]);
+    }
+    
+    /**
      * @return \Cerbos\Cloud\Store\V1\ModifyFilesRequest\Condition
      */
     public function toCondition(): \Cerbos\Cloud\Store\V1\ModifyFilesRequest\Condition {

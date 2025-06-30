@@ -19,24 +19,17 @@ final class FileOpTest extends TestCase
     private const string path = "path";
 
     public function testWithAddOrUpdate(): void {
-        $file = File::newInstance([
+        $fileOp = FileOp::addOrUpdate([
             'path' => self::path,
             'contents' => self::contents
-        ]);
-
-        $fileOp = FileOp::newInstance()
-            ->withAddOrUpdate($file)
-            ->toFileOp();
+        ])->toFileOp();
 
         $this->assertEquals(self::contents, $fileOp->getAddOrUpdate()->getContents(), "invalid contents");
         $this->assertEquals(self::path, $fileOp->getAddOrUpdate()->getPath(), "invalid path");
     }
 
     public function testWithDelete(): void {
-        $fileOp = FileOp::newInstance()
-            ->withDelete(self::path)
-            ->toFileOp();
-
+        $fileOp = FileOp::delete(self::path)->toFileOp();
         $this->assertEquals(self::path, $fileOp->getDelete(), "invalid delete");
     }
 }

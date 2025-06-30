@@ -6,7 +6,6 @@
 namespace Cerbos\Test\Sdk\Cloud\Store\V1;
 
 use Cerbos\Sdk\Cloud\Store\V1\FileFilter;
-use Cerbos\Sdk\Cloud\Store\V1\StringMatch;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -19,12 +18,7 @@ final class FileFilterTest extends TestCase
     private const string path = "path";
 
     public function testAll(): void {
-        $stringMatch = StringMatch::newInstance()
-            ->withEquals(self::equals);
-
-        $fileFilter = FileFilter::newInstance([
-            'path' => $stringMatch
-        ])->toFileFilter();
+        $fileFilter = FileFilter::pathEquals(self::equals)->toFileFilter();
 
         $this->assertEquals(self::path, $fileFilter->getPath(), "invalid path");
     }

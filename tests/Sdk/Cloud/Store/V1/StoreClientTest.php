@@ -160,13 +160,10 @@ final class StoreClientTest extends TestCase
         $request = ModifyFilesRequest::newInstance([
             'store_id' => $this->storeId,
             'operations' => [
-                FileOp::newInstance()
-                    ->withAddOrUpdate(
-                        File::newInstance([
-                            'path' => 'temporary_policies/temporary.yaml',
-                            'contents' => $fileContents
-                        ])
-                    )
+                FileOp::addOrUpdate([
+                    'path' => 'temporary_policies/temporary.yaml',
+                    'contents' => $fileContents
+                ])
             ]
         ])
             ->withChangeDetails(
@@ -187,7 +184,7 @@ final class StoreClientTest extends TestCase
         $request = ModifyFilesRequest::newInstance([
             'store_id' => $this->storeId,
             'operations' => [
-                FileOp::newInstance()->withDelete("temporary_policies/temporary.yaml")
+                FileOp::delete("temporary_policies/temporary.yaml")
             ]
         ])
             ->withChangeDetails(

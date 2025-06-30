@@ -10,33 +10,37 @@ namespace Cerbos\Sdk\Cloud\Store\V1;
 final class FileOp {
     private \Cerbos\Cloud\Store\V1\FileOp $fileOp;
 
-    private function __construct() {
-        $this->fileOp = new \Cerbos\Cloud\Store\V1\FileOp();
+    /**
+     * @param array $data {
+     *     @type \Cerbos\Cloud\Store\V1\File $add_or_update
+     *     @type string $delete
+     * }
+     */
+    private function __construct($data) {
+        $this->fileOp = new \Cerbos\Cloud\Store\V1\FileOp($data);
     }
 
     /**
+     * @param array $data {
+     *     @type string $path
+     *     @type string $contents
+     * }
      * @return FileOp
      */
-    public static function newInstance(): FileOp {
-        return new FileOp();
-    }
-
-    /**
-     * @param File $file
-     * @return $this
-     */
-    public function withAddOrUpdate($file): FileOp {
-        $this->fileOp->setAddOrUpdate($file->toFile());
-        return $this;
+    public static function addOrUpdate($data): FileOp {
+        return new FileOp([
+            'add_or_update' => File::newInstance($data)->toFile()
+        ]);
     }
 
     /**
      * @param string $delete
-     * @return $this
+     * @return FileOp
      */
-    public function withDelete($delete): FileOp {
-        $this->fileOp->setDelete($delete);
-        return $this;
+    public static function delete($delete): FileOp {
+        return new FileOp([
+            'delete' => $delete
+        ]);
     }
 
     /**

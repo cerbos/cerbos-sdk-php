@@ -12,23 +12,53 @@ final class FileFilter {
 
     /**
      * @param array $data {
-     *     @type \Cerbos\Sdk\Cloud\Store\V1\StringMatch $path
+     *     @type \Cerbos\Cloud\Store\V1\StringMatch $path
      * }
      */
     private function __construct(array $data) {
-        $this->fileFilter = new \Cerbos\Cloud\Store\V1\FileFilter([
-            'path' => $data['path']->toStringMatch()
+        $this->fileFilter = new \Cerbos\Cloud\Store\V1\FileFilter($data);
+    }
+
+    /**
+     * @param string $equals
+     * @return FileFilter
+     */
+    public static function pathEquals($equals): FileFilter
+    {
+        $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
+            'equals' => $equals
+        ]);
+        return new FileFilter([
+            'path' => $stringMatch
         ]);
     }
 
     /**
-     * @param array $data {
-     *     @type \Cerbos\Cloud\Store\V1\StringMatch $path
-     * }
+     * @param InList $inList
      * @return FileFilter
      */
-    public static function newInstance(array $data): FileFilter {
-        return new FileFilter($data);
+    public static function pathIn($inList): FileFilter
+    {
+        $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
+            'in' => $inList->toInList()
+        ]);
+        return new FileFilter([
+            'path' => $stringMatch
+        ]);
+    }
+
+    /**
+     * @param string $like
+     * @return FileFilter
+     */
+    public static function pathLike($like): FileFilter
+    {
+        $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
+            'like' => $like
+        ]);
+        return new FileFilter([
+            'path' => $stringMatch
+        ]);
     }
 
     /**
