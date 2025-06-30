@@ -11,36 +11,50 @@ final class FileOp {
     private \Cerbos\Cloud\Store\V1\FileOp $fileOp;
 
     /**
-     * @param array $data {
-     *     @type \Cerbos\Cloud\Store\V1\File $add_or_update
-     *     @type string $delete
-     * }
+     * @param File|null $addOrUpdate
+     * @param string|null $delete
      */
-    private function __construct($data) {
-        $this->fileOp = new \Cerbos\Cloud\Store\V1\FileOp($data);
+    private function __construct(
+        ?File $addOrUpdate = null,
+        ?string $delete = null
+    ) {
+        if (isset($addOrUpdate)) {
+            $this->fileOp = new \Cerbos\Cloud\Store\V1\FileOp([
+                'add_or_update' => $addOrUpdate->toFile(),
+            ]);
+        }
+        elseif(isset($delete)) {
+            $this->fileOp = new \Cerbos\Cloud\Store\V1\FileOp([
+                'delete' => $delete
+            ]);
+        }
+        else {
+            throw new \Exception("addOrUpdate or delete must be specified");
+        }
     }
 
     /**
-     * @param array $data {
-     *     @type string $path
-     *     @type string $contents
-     * }
+     * @param string $path
+     * @param string $contents
      * @return FileOp
      */
-    public static function addOrUpdate($data): FileOp {
-        return new FileOp([
-            'add_or_update' => File::newInstance($data)->toFile()
-        ]);
+    public static function addOrUpdate(
+        string $path,
+        string $contents
+    ): FileOp {
+        return new FileOp(
+            addOrUpdate: File::newInstance($path, $contents)
+        );
     }
 
     /**
      * @param string $delete
      * @return FileOp
      */
-    public static function delete($delete): FileOp {
-        return new FileOp([
-            'delete' => $delete
-        ]);
+    public static function delete(
+        $delete
+    ): FileOp {
+        return new FileOp(delete: $delete);
     }
 
     /**

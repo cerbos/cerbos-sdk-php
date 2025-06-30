@@ -11,32 +11,43 @@ final class ListFilesRequest {
     private \Cerbos\Cloud\Store\V1\ListFilesRequest $request;
 
     /**
-     * @param array $data {
-     *     @type string $store_id
-     * }
+     * @param string $storeId
+     * @param FileFilter|null $filter
      */
-    private function __construct(array $data) {
-        $this->request = new \Cerbos\Cloud\Store\V1\ListFilesRequest($data);
+    private function __construct(
+        string $storeId,
+        ?FileFilter $filter = null
+    ) {
+        $this->request = new \Cerbos\Cloud\Store\V1\ListFilesRequest([
+            'store_id' => $storeId
+        ]);
+
+        if (isset($filter)) {
+            $this->request->setFilter($filter->toFileFilter());
+        }
     }
 
     /**
-     * @param array $data {
-     *     @type string $store_id
-     * }
+     * @param string $storeId
      * @return ListFilesRequest
      */
-    public static function newInstance(array $data): ListFilesRequest {
-        return new ListFilesRequest($data);
+    public static function newInstance(
+        string $storeId
+    ): ListFilesRequest {
+        return new ListFilesRequest($storeId);
     }
 
     /**
-     * @param FileFilter $fileFilter
-     * @return $this
+     * @param string $storeId
+     * @param FileFilter $filter
+     * @return ListFilesRequest
      */
-    public function withFilter($fileFilter): ListFilesRequest
+    public static function withFilter(
+        string $storeId,
+        FileFilter $filter
+    ): ListFilesRequest
     {
-        $this->request->setFilter($fileFilter->toFileFilter());
-        return $this;
+        return new ListFilesRequest($storeId, $filter);
     }
 
     /**

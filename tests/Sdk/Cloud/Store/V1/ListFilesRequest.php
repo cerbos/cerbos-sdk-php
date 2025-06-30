@@ -19,23 +19,16 @@ final class ListFilesRequestTest extends TestCase
     private const string storeId = "MD1LAP5BJNA9";
 
     public function testAll(): void {
-        $fileFilter = FileFilter::pathEquals(self::equals);
+        $request = ListFilesRequest::newInstance(self::storeId)->toListFilesRequest();
 
-        $request = ListFilesRequest::newInstance([
-            'store_id' => self::storeId
-        ])
-            ->withFilter($fileFilter)
-            ->toListFilesRequest();
+        $this->assertEquals(self::storeId, $request->getStoreId(), "invalid storeId");
+    }
+
+    public function testWithFilter(): void {
+        $fileFilter = FileFilter::pathEquals(self::equals);
+        $request = ListFilesRequest::withFilter(self::storeId, $fileFilter)->toListFilesRequest();
 
         $this->assertEquals(self::storeId, $request->getStoreId(), "invalid storeId");
         $this->assertEquals(self::equals, $request->getFilter()->getPath()->getEquals(), "invalid equals");
-    }
-
-    public function testOptional(): void {
-        $request = ListFilesRequest::newInstance([
-            'store_id' => self::storeId
-        ])->toListFilesRequest();
-
-        $this->assertEquals(self::storeId, $request->getStoreId(), "invalid storeId");
     }
 }

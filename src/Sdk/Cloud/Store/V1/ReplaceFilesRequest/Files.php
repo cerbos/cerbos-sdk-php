@@ -7,34 +7,34 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1\ReplaceFilesRequest;
 
+use Cerbos\Sdk\Cloud\Store\V1\File;
+
 final class Files {
     private \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Files $files;
 
     /**
-     * @param array $data {
-     *     @type \Cerbos\Sdk\Cloud\Store\V1\File[] $files
-     * }
+     * @param File[] $files
      */
-    private function __construct(array $data) {
+    private function __construct(
+        File ...$files
+    ) {
         $this->files = new \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Files();
-        if (isset($data['files'])) {
-            $files = array();
-            foreach ($data['files'] as $file) {
-                $files[] = $file->toFile();
-            }
-
-            $this->files->setFiles($files);
+        $newFiles = array();
+        foreach ($files as $file) {
+            $newFiles[] = $file->toFile();
         }
+
+        $this->files->setFiles($newFiles);
     }
 
     /**
-     * @param array $data {
-     *     @type \Cerbos\Sdk\Cloud\Store\V1\File[] $files
-     * }
+     * @param File[] $files
      * @return Files
      */
-    public static function newInstance(array $data): Files {
-        return new Files($data);
+    public static function newInstance(
+        File ...$files
+    ): Files {
+        return new Files(...$files);
     }
 
     /**

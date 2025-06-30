@@ -22,9 +22,7 @@ final class InListTest extends TestCase
     }
 
     public function testAll(): void {
-        $inList = InList::newInstance([
-            'values' => [self::in, self::in]
-        ])->toInList();
+        $inList = InList::newInstance(self::in, self::in)->toInList();
 
         $this->assertEquals(self::in, $inList->getValues()[0], "invalid first value");
         $this->assertEquals(self::in, $inList->getValues()[1], "invalid second value");

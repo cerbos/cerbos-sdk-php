@@ -11,22 +11,24 @@ final class Internal {
     private \Cerbos\Cloud\Store\V1\ChangeDetails\Internal $internal;
 
     /**
-     * @param array $data {
-     *     @type string $source
-     * }
+     * @param string $source
      */
-    private function __construct(array $data) {
-        $this->internal = new \Cerbos\Cloud\Store\V1\ChangeDetails\Internal($data);
+    private function __construct(
+        string $source
+    ) {
+        $this->internal = new \Cerbos\Cloud\Store\V1\ChangeDetails\Internal([
+            'source' => $source
+        ]);
     }
 
     /**
-     * @param array $data {
-     *     @type string $source
-     * }
+     * @param string $source
      * @return Internal
      */
-    public static function newInstance(array $data): Internal {
-        return new Internal($data);
+    public static function newInstance(
+        string $source
+    ): Internal {
+        return new Internal($source);
     }
 
     /**

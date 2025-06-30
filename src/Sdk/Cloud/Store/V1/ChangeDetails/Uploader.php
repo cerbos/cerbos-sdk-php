@@ -11,22 +11,24 @@ final class Uploader {
     private \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader $uploader;
 
     /**
-     * @param array $data {
-     *     @type string $name
-     * }
+     * @param string $name
      */
-    private function __construct(array $data) {
-        $this->uploader = new \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader($data);
+    private function __construct(
+        string $name
+    ) {
+        $this->uploader = new \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader([
+            'name' => $name
+        ]);
     }
 
     /**
-     * @param array $data {
-     *     @type string $name
-     * }
+     * @param string $name
      * @return Uploader
      */
-    public static function newInstance(array $data): Uploader {
-        return new Uploader($data);
+    public static function newInstance(
+        string $name
+    ): Uploader {
+        return new Uploader($name);
     }
 
     /**

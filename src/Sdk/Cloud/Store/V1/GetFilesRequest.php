@@ -11,24 +11,29 @@ final class GetFilesRequest {
     private \Cerbos\Cloud\Store\V1\GetFilesRequest $request;
 
     /**
-     * @param array $data {
-     *     @type string $store_id
-     *     @type string[] $files
-     * }
+     * @param string $storeId
+     * @param string[] $files
      */
-    private function __construct(array $data) {
-        $this->request = new \Cerbos\Cloud\Store\V1\GetFilesRequest($data);
+    private function __construct(
+        string $storeId,
+        string ...$files
+    ) {
+        $this->request = new \Cerbos\Cloud\Store\V1\GetFilesRequest([
+            'store_id' => $storeId,
+            'files' => $files
+        ]);
     }
 
     /**
-     * @param array $data {
-     *     @type string $store_id
-     *     @type string[] $files
-     * }
+     * @param string $storeId
+     * @param string[] $files
      * @return GetFilesRequest
      */
-    public static function newInstance(array $data): GetFilesRequest {
-        return new GetFilesRequest($data);
+    public static function newInstance(
+        string $storeId,
+        string ...$files
+    ): GetFilesRequest {
+        return new GetFilesRequest($storeId, ...$files);
     }
 
     /**

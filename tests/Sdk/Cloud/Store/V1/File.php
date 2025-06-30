@@ -18,10 +18,7 @@ final class FileTest extends TestCase
     private const string path = "path";
 
     public function testAll(): void {
-        $file = File::newInstance([
-            'path' => self::path,
-            'contents' => self::contents
-        ])->toFile();
+        $file = File::newInstance(self::path, self::contents)->toFile();
 
         $this->assertEquals(self::contents, $file->getContents(), "invalid contents");
         $this->assertEquals(self::path, $file->getPath(), "invalid path");

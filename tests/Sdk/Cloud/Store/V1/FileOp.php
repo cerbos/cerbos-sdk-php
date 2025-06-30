@@ -19,10 +19,7 @@ final class FileOpTest extends TestCase
     private const string path = "path";
 
     public function testWithAddOrUpdate(): void {
-        $fileOp = FileOp::addOrUpdate([
-            'path' => self::path,
-            'contents' => self::contents
-        ])->toFileOp();
+        $fileOp = FileOp::addOrUpdate(self::path, self::contents)->toFileOp();
 
         $this->assertEquals(self::contents, $fileOp->getAddOrUpdate()->getContents(), "invalid contents");
         $this->assertEquals(self::path, $fileOp->getAddOrUpdate()->getPath(), "invalid path");

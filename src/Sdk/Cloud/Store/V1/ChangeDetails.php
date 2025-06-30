@@ -9,52 +9,79 @@ namespace Cerbos\Sdk\Cloud\Store\V1;
 
 use \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Git;
 use \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Internal;
+use \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Uploader;
 
 final class ChangeDetails {
     private \Cerbos\Cloud\Store\V1\ChangeDetails $changeDetails;
 
     /**
-     * @param array $data {
-     *     @type string $description
-     *     @type \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Uploader $uploader
-     * }
+     * @param string $description
+     * @param Uploader $uploader
+     * @param Git|null $git
+     * @param Internal|null $internal
+     * @throws Exception when both $git and $internal parameters are not set
      */
-    private function __construct(array $data) {
-        $this->changeDetails = new \Cerbos\Cloud\Store\V1\ChangeDetails([
-            'description' => $data['description'],
-            'uploader' => $data['uploader']->toUploader()
-        ]);
+    private function __construct(
+        string $description,
+        Uploader $uploader,
+        ?Git $git = null,
+        ?Internal $internal = null,
+    ) {
+        if (isset($git)) {
+            $this->changeDetails = new \Cerbos\Cloud\Store\V1\ChangeDetails([
+                'description' => $description,
+                'uploader' => $uploader->toUploader(),
+                'git' => $git->toGit(),
+            ]);
+        }
+        elseif(isset($internal)) {
+            $this->changeDetails = new \Cerbos\Cloud\Store\V1\ChangeDetails([
+                'description' => $description,
+                'uploader' => $uploader->toUploader(),
+                'internal' => $internal->toInternal(),
+            ]);
+        }
+        else {
+            throw new \Exception("Git or internal must be specified");
+        }
     }
 
     /**
-     * @param array $data {
-     *     @type string $description
-     *     @type \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Uploader $uploader
-     * }
+     * @param string $description
+     * @param Uploader $uploader
+     * @param Git $git
      * @return ChangeDetails
      */
-    public static function newInstance(array $data): ChangeDetails {
-        return new ChangeDetails($data);
-    }
-
-    /**
-     * @param Git $git
-     * @return $this
-     */
-    public function withGit($git): ChangeDetails
+    public static function git(
+        string $description,
+        Uploader $uploader,
+        Git $git
+    ): ChangeDetails
     {
-        $this->changeDetails->setGit($git->toGit());
-        return $this;
+        return new ChangeDetails(
+            description: $description,
+            uploader: $uploader,
+            git: $git
+        );
     }
 
     /**
+     * @param string $description
+     * @param Uploader $uploader
      * @param Internal $internal
-     * @return $this
+     * @return ChangeDetails
      */
-    public function withInternal($internal): ChangeDetails
+    public static function internal(
+        string $description,
+        Uploader $uploader,
+        Internal $internal
+    ): ChangeDetails
     {
-        $this->changeDetails->setInternal($internal->toInternal());
-        return $this;
+        return new ChangeDetails(
+            description: $description,
+            uploader: $uploader,
+            internal: $internal
+        );
     }
 
     /**

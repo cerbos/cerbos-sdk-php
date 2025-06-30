@@ -117,10 +117,7 @@ final class StoreClientTest extends TestCase
 
     public function testGetFiles(): void
     {
-        $request = GetFilesRequest::newInstance([
-            'store_id' => $this->storeId,
-            'files' => [$this->expectedFiles[0]]
-        ]);
+        $request = GetFilesRequest::newInstance($this->storeId, $this->expectedFiles[0]);
 
         try {
             $response = $this->client->getFiles($request);
@@ -133,9 +130,7 @@ final class StoreClientTest extends TestCase
 
     public function testListFiles(): void
     {
-        $request = ListFilesRequest::newInstance([
-            'store_id' => $this->storeId,
-        ]);
+        $request = ListFilesRequest::newInstance($this->storeId);
 
         try {
             $response = $this->client->listFiles($request);
@@ -148,30 +143,22 @@ final class StoreClientTest extends TestCase
 
     public function testModifyFiles(): void
     {
-        $initialStoreVersion = ($this->client->ListFiles(ListFilesRequest::newInstance([
-            'store_id' => $this->storeId,
-        ])))->getStoreVersion();
+        $initialStoreVersion = ($this->client->ListFiles(ListFilesRequest::newInstance($this->storeId)))->getStoreVersion();
 
         $fileContents = file_get_contents($this->pathToTemporaryPolicyFile);
         if($fileContents == false) {
             $this->fail("failed to read file from " . $this->pathToTemporaryPolicyFile);
         }
 
-        $request = ModifyFilesRequest::newInstance([
-            'store_id' => $this->storeId,
-            'operations' => [
-                FileOp::addOrUpdate([
-                    'path' => 'temporary_policies/temporary.yaml',
-                    'contents' => $fileContents
-                ])
-            ]
-        ])
-            ->withChangeDetails(
-                 ChangeDetails::newInstance([
-                    'description' => 'cerbos-sdk-php/ModifyFiles/Op=AddOrUpdate',
-                    'uploader' => Uploader::newInstance(['name' => 'cerbos-sdk-php'])
-                ])->withInternal(Internal::newInstance(['source' => 'sdk']))
-            );
+        $request = ModifyFilesRequest::withChangeDetails(
+            $this->storeId,
+            ChangeDetails::internal(
+                'cerbos-sdk-php/ModifyFiles/Op=AddOrUpdate',
+                Uploader::newInstance('cerbos-sdk-php'),
+                Internal::newInstance('sdk')
+            ),
+            FileOp::addOrUpdate('temporary_policies/temporary.yaml', $fileContents)
+        );
 
         try {
             $response = $this->client->modifyFiles($request);
@@ -181,18 +168,15 @@ final class StoreClientTest extends TestCase
 
         $this->assertEquals($initialStoreVersion + 1, $response->getNewStoreVersion(), "invalid store version");
 
-        $request = ModifyFilesRequest::newInstance([
-            'store_id' => $this->storeId,
-            'operations' => [
-                FileOp::delete("temporary_policies/temporary.yaml")
-            ]
-        ])
-            ->withChangeDetails(
-                ChangeDetails::newInstance([
-                    'description' => 'cerbos-sdk-php/ModifyFiles/Op=Delete',
-                    'uploader' => Uploader::newInstance(['name' => 'cerbos-sdk-php'])
-                ])->withInternal(Internal::newInstance(['source' => 'sdk']))
-            );
+        $request = ModifyFilesRequest::withChangeDetails(
+            $this->storeId,
+            ChangeDetails::internal(
+                'cerbos-sdk-php/ModifyFiles/Op=Delete',
+                Uploader::newInstance('cerbos-sdk-php'),
+                Internal::newInstance('sdk')
+            ),
+            FileOp::delete("temporary_policies/temporary.yaml")
+        );
 
         try {
             $response = $this->client->modifyFiles($request);
@@ -205,26 +189,23 @@ final class StoreClientTest extends TestCase
 
     public function testReplaceFiles(): void
     {
-        $initialStoreVersion = ($this->client->ListFiles(ListFilesRequest::newInstance([
-            'store_id' => $this->storeId,
-        ])))->getStoreVersion();
+        $initialStoreVersion = ($this->client->ListFiles(ListFilesRequest::newInstance($this->storeId)))->getStoreVersion();
 
         $temporaryContents = file_get_contents($this->pathToTemporaryContents);
         if($temporaryContents == false) {
             $this->fail("failed to read file from " . $this->pathToTemporaryContents);
         }
 
-        $request = ReplaceFilesRequest::newInstance([
-            'store_id' => $this->storeId
-        ])
-            ->withChangeDetails(
-                ChangeDetails::newInstance([
-                    'description' => 'cerbos-sdk-php/ReplaceFiles/With=AddOrUpdate',
-                    'uploader' => Uploader::newInstance(['name' => 'cerbos-sdk-php'])
-                ])
-                ->withInternal(Internal::newInstance(['source' => 'sdk']))
+        $request = ReplaceFilesRequest::withZippedContents(
+            $this->storeId,
+            $temporaryContents,
+            null,
+            ChangeDetails::internal(
+                'cerbos-sdk-php/ReplaceFiles/With=temporary.zip',
+                Uploader::newInstance('cerbos-sdk-php'),
+                Internal::newInstance('sdk')
             )
-            ->withZippedContents($temporaryContents);
+        );
 
         try {
             $response = $this->client->replaceFiles($request);
@@ -239,17 +220,16 @@ final class StoreClientTest extends TestCase
             $this->fail("failed to read file from " . $this->pathToStoreContents);
         }
 
-        $request = ReplaceFilesRequest::newInstance([
-            'store_id' => $this->storeId
-        ])
-            ->withChangeDetails(
-                ChangeDetails::newInstance([
-                    'description' => 'cerbos-sdk-php/ReplaceFiles/With=store.zip',
-                    'uploader' => Uploader::newInstance(['name' => 'cerbos-sdk-php'])
-                ])
-                ->withInternal(Internal::newInstance(['source' => 'sdk']))
+        $request = ReplaceFilesRequest::withZippedContents(
+            $this->storeId,
+            $storeContents,
+            null,
+            ChangeDetails::internal(
+                'cerbos-sdk-php/ReplaceFiles/With=store.zip',
+                Uploader::newInstance('cerbos-sdk-php'),
+                Internal::newInstance('sdk')
             )
-            ->withZippedContents($storeContents);
+        );
 
         try {
             $response = $this->client->replaceFiles($request);

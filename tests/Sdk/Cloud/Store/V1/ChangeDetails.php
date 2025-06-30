@@ -48,27 +48,20 @@ final class ChangeDetailsTest extends TestCase
     }
 
     public function testWithGit(): void {
-        $uploader = Uploader::newInstance([
-            'name' => self::name
-        ]);
+        $uploader = Uploader::newInstance(self::name);
 
-        $git = Git::newInstance([
-            'author' => self::author,
-            'committer' => self::committer,
-            'hash' => self::hash,
-            'message' => self::message,
-            'repo' => self::repo,
-            'ref' => self::ref,
-            'author_date' => $this->authorDate,
-            'commit_date' => $this->commitDate
-        ]);
+        $git = Git::newInstance(
+            author: self::author,
+            committer: self::committer,
+            hash: self::hash,
+            message: self::message,
+            repo: self::repo,
+            ref: self::ref,
+            authorDate: $this->authorDate,
+            commitDate: $this->commitDate
+        );
 
-        $changeDetails = ChangeDetails::newInstance([
-            'description' => self::description,
-            'uploader' => $uploader
-        ])
-            ->withGit($git)
-            ->toChangeDetails();
+        $changeDetails = ChangeDetails::git(self::description, $uploader, $git)->toChangeDetails();
 
         $this->assertEquals(self::description, $changeDetails->getDescription(), "invalid description");
 
@@ -85,21 +78,13 @@ final class ChangeDetailsTest extends TestCase
     }
 
     public function testWithInternal(): void {
-        $uploader = Uploader::newInstance([
-            'name' => self::name
-        ]);
+        $uploader = Uploader::newInstance(self::name);
 
-        $internal = Internal::newInstance([
-            'source' => self::source
-        ])
+        $internal = Internal::newInstance(self::source)
             ->withMetadata(self::key1, $this->value1)
             ->withMetadata(self::key2, $this->value2);
 
-        $changeDetails = ChangeDetails::newInstance([
-            'description' => self::description,
-            'uploader' => $uploader
-        ])
-            ->withInternal($internal)
+        $changeDetails = ChangeDetails::internal(self::description, $uploader, $internal)
             ->toChangeDetails();
 
         $this->assertEquals(self::description, $changeDetails->getDescription(), "invalid description");

@@ -15,14 +15,17 @@ final class File {
     }
 
     /**
-     * @param array $data {
-     *     @type string $path
-     *     @type string $contents
-     * }
+     * @param string $path 
+     * @param string $contents
      * @return File
      */
-    public static function newInstance(array $data): File {
-        return new File(new \Cerbos\Cloud\Store\V1\File($data));
+    public static function newInstance(string $path, string $contents): File {
+        return new File(
+            new \Cerbos\Cloud\Store\V1\File([
+                'path' => $path,
+                'contents' => $contents
+            ])
+        );
     }
 
     /**

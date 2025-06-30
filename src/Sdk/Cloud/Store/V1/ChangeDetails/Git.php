@@ -11,36 +11,59 @@ final class Git {
     private \Cerbos\Cloud\Store\V1\ChangeDetails\Git $git;
 
     /**
-     * @param array $data {
-     *     @type string $repo
-     *     @type string $ref
-     *     @type string $hash
-     *     @type string $message
-     *     @type string $committer
-     *     @type \Google\Protobuf\Timestamp $commit_date
-     *     @type string $author
-     *     @type \Google\Protobuf\Timestamp $author_date
-     * }
+     * @param string $repo
+     * @param string $ref
+     * @param string $hash
+     * @param string $message
+     * @param string $committer
+     * @param \Google\Protobuf\Timestamp $commitDate
+     * @param string $author
+     * @param \Google\Protobuf\Timestamp $authorDate
      */
-    private function __construct(array $data) {
-        $this->git = new \Cerbos\Cloud\Store\V1\ChangeDetails\Git($data);
+    private function __construct(
+        string $repo,
+        string $ref,
+        string $hash,
+        string $message,
+        string $committer,
+        \Google\Protobuf\Timestamp $commitDate,
+        string $author,
+        \Google\Protobuf\Timestamp $authorDate
+    ) {
+        $this->git = new \Cerbos\Cloud\Store\V1\ChangeDetails\Git([
+            'repo' => $repo,
+            'ref' => $ref,
+            'hash' => $hash,
+            'message' => $message,
+            'committer' => $committer,
+            'commit_date' => $commitDate,
+            'author' => $author,
+            'author_date' => $authorDate
+        ]);
     }
 
     /**
-     * @param array $data {
-     *     @type string $repo
-     *     @type string $ref
-     *     @type string $hash
-     *     @type string $message
-     *     @type string $committer
-     *     @type \Google\Protobuf\Timestamp $commit_date
-     *     @type string $author
-     *     @type \Google\Protobuf\Timestamp $author_date
-     * }
+     * @param string $repo
+     * @param string $ref
+     * @param string $hash
+     * @param string $message
+     * @param string $committer
+     * @param \Google\Protobuf\Timestamp $commitDate
+     * @param string $author
+     * @param \Google\Protobuf\Timestamp $authorDate
      * @return Git
      */
-    public static function newInstance(array $data): Git {
-        return new Git($data);
+    public static function newInstance(
+        string $repo,
+        string $ref,
+        string $hash,
+        string $message,
+        string $committer,
+        \Google\Protobuf\Timestamp $commitDate,
+        string $author,
+        \Google\Protobuf\Timestamp $authorDate
+    ): Git {
+        return new Git($repo, $ref, $hash, $message, $committer, $commitDate, $author, $authorDate);
     }
 
     /**

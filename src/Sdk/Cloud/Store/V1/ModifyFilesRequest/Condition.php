@@ -11,34 +11,24 @@ final class Condition {
     private \Cerbos\Cloud\Store\V1\ModifyFilesRequest\Condition $condition;
 
     /**
-     * @param array $data {
-     *     @type int $store_version_must_equal
-     * }
+     * @param int $storeVersionMustEqual
      */
-    private function __construct(array $data) {
+    private function __construct(
+        int $storeVersionMustEqual
+    ) {
         $this->condition = new \Cerbos\Cloud\Store\V1\ModifyFilesRequest\Condition([
-            'store_version_must_equal' => (int)$data['store_version_must_equal']
+            'store_version_must_equal' => $storeVersionMustEqual
         ]);
     }
 
     /**
-     * @param array $data {
-     *     @type int $store_version_must_equal
-     * }
+     * @param int $storeVersionMustEqual
      * @return Condition
      */
-    public static function newInstance(array $data): Condition {
-        return new Condition($data);
-    }
-
-    /**
-     * @param int $store_version_must_equal
-     * @return Condition
-     */
-    public static function storeVersionMustEqual(int $store_version_must_equal): Condition {
-        return new Condition([
-            'store_version_must_equal' => $store_version_must_equal
-        ]);
+    public static function storeVersionMustEqual(
+        int $storeVersionMustEqual
+    ): Condition {
+        return new Condition($storeVersionMustEqual);
     }
     
     /**

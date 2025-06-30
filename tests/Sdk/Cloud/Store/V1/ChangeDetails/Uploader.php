@@ -32,9 +32,7 @@ final class UploaderTest extends TestCase
     }
 
     public function testWithMetadata(): void {
-        $uploader = Uploader::newInstance([
-            'name' => self::name,
-        ])
+        $uploader = Uploader::newInstance(self::name)
             ->withMetadata(self::key1, $this->value1)
             ->withMetadata(self::key2, $this->value2)
             ->toUploader();
@@ -47,9 +45,7 @@ final class UploaderTest extends TestCase
     }
 
     public function testWithMetadatas(): void {
-        $uploader = Uploader::newInstance([
-            'name' => self::name,
-        ])
+        $uploader = Uploader::newInstance(self::name)
             ->withMetadatas(
                 array(
                     self::key1 => $this->value1,
@@ -73,9 +69,7 @@ final class UploaderTest extends TestCase
     }
 
     public function testOptional(): void {
-        $uploader = Uploader::newInstance([
-            'name' => self::name,
-        ])
+        $uploader = Uploader::newInstance(self::name)
             ->toUploader();
 
         $this->assertEquals(self::name, $uploader->getName(), "invalid name");

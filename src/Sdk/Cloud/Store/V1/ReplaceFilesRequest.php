@@ -14,62 +14,84 @@ final class ReplaceFilesRequest {
     private \Cerbos\Cloud\Store\V1\ReplaceFilesRequest $request;
 
     /**
-     * @param array $data {
-     *     @type string $store_id
-     * }
+     * @param string $storeId
+     * @param Condition|null $condition
+     * @param string|null $zippedContents
+     * @param Files|null $files 
+     * @param ChangeDetails|null $changeDetails
      */
-    private function __construct(array $data) {
-        $this->request = new \Cerbos\Cloud\Store\V1\ReplaceFilesRequest($data);
+    private function __construct(
+        string $storeId,
+        ?Condition $condition = null,
+        ?string $zippedContents = null,
+        ?Files $files = null,
+        ?ChangeDetails $changeDetails = null
+    ) {
+        $this->request = new \Cerbos\Cloud\Store\V1\ReplaceFilesRequest([
+            'store_id' => $storeId,
+        ]);
+
+        if(isset($condition)) {
+            $this->request->setCondition($condition->toCondition());
+        }
+
+        if(isset($changeDetails)) {
+            $this->request->setChangeDetails($changeDetails->toChangeDetails());
+        }
+
+        if (isset($files)) {
+            $this->request->setFiles($files->toFiles());
+        }
+        elseif(isset($zippedContents)) {
+            $this->request->setZippedContents($zippedContents);
+        }
+        else {
+            throw new \Exception("files or zippedContents must be specified");
+        }
     }
 
     /**
-     * @param array $data {
-     *     @type string $store_id
-     * }
+     * @param string $storeId
+     * @param Files $files 
+     * @param Condition|null $condition
+     * @param ChangeDetails|null $changeDetails
      * @return ReplaceFilesRequest
      */
-    public static function newInstance(array $data): ReplaceFilesRequest {
-        return new ReplaceFilesRequest($data);
-    }
-
-    /**
-     * @param Condition $condition
-     * @return $this
-     */
-    public function withCondition($condition): ReplaceFilesRequest
+    public static function withFiles(
+        string $storeId,
+        Files $files,
+        ?Condition $condition = null,
+        ?ChangeDetails $changeDetails = null
+    ): ReplaceFilesRequest
     {
-        $this->request->setCondition($condition->toCondition());
-        return $this;
+        return new ReplaceFilesRequest(
+            storeId: $storeId,
+            files: $files,
+            condition: $condition,
+            changeDetails: $changeDetails
+        );
     }
 
     /**
-     * @param ChangeDetails $changeDetails
-     * @return $this
-     */
-    public function withChangeDetails($changeDetails): ReplaceFilesRequest
-    {
-        $this->request->setChangeDetails($changeDetails->toChangeDetails());
-        return $this;
-    }
-
-    /**
-     * @param Files $files
-     * @return $this
-     */
-    public function withFiles($files): ReplaceFilesRequest
-    {
-        $this->request->setFiles($files->toFiles());
-        return $this;
-    }
-
-    /**
+     * @param string $storeId
      * @param string $zippedContents
-     * @return $this
+     * @param Condition|null $condition
+     * @param ChangeDetails|null $changeDetails
+     * @return ReplaceFilesRequest
      */
-    public function withZippedContents($zippedContents): ReplaceFilesRequest
+    public static function withZippedContents(
+        string $storeId,
+        string $zippedContents,
+        ?Condition $condition = null,
+        ?ChangeDetails $changeDetails = null
+    ): ReplaceFilesRequest
     {
-        $this->request->setZippedContents($zippedContents);
-        return $this;
+        return new ReplaceFilesRequest(
+            storeId: $storeId,
+            zippedContents: $zippedContents,
+            condition: $condition,
+            changeDetails: $changeDetails
+        );
     }
 
     /**

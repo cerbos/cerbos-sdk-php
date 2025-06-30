@@ -11,22 +11,24 @@ final class InList {
     private \Cerbos\Cloud\Store\V1\StringMatch\InList $inList;
 
     /**
-     * @param array|null $data {
-     *     @type string[] $values
-     * }
+     * @param string[] $values
      */
-    private function __construct(?array $data) {
-        $this->inList = new \Cerbos\Cloud\Store\V1\StringMatch\InList($data);
+    private function __construct(
+        string ...$values
+    ) {
+        $this->inList = new \Cerbos\Cloud\Store\V1\StringMatch\InList([
+            'values' => $values
+        ]);
     }
 
     /**
-     * @param array|null $data {
-     *     @type string[] $values
-     * }
+     * @param string[] $values
      * @return InList
      */
-    public static function newInstance(?array $data): InList {
-        return new InList($data);
+    public static function newInstance(
+        string ...$values
+    ): InList {
+        return new InList(...$values);
     }
 
     /**

@@ -7,58 +7,65 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1;
 
+use Cerbos\Sdk\Cloud\Store\V1\StringMatch\InList;
+
 final class FileFilter {
     private \Cerbos\Cloud\Store\V1\FileFilter $fileFilter;
 
     /**
-     * @param array $data {
-     *     @type \Cerbos\Cloud\Store\V1\StringMatch $path
-     * }
+     * @param \Cerbos\Cloud\Store\V1\StringMatch $path
      */
-    private function __construct(array $data) {
-        $this->fileFilter = new \Cerbos\Cloud\Store\V1\FileFilter($data);
+    private function __construct(
+        \Cerbos\Cloud\Store\V1\StringMatch $path
+    ) {
+        $this->fileFilter = new \Cerbos\Cloud\Store\V1\FileFilter([
+            'path' => $path
+        ]);
     }
 
     /**
      * @param string $equals
      * @return FileFilter
      */
-    public static function pathEquals($equals): FileFilter
+    public static function pathEquals(
+        string $equals
+    ): FileFilter
     {
         $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
             'equals' => $equals
         ]);
-        return new FileFilter([
-            'path' => $stringMatch
-        ]);
+
+        return new FileFilter($stringMatch);
     }
 
     /**
      * @param InList $inList
      * @return FileFilter
      */
-    public static function pathIn($inList): FileFilter
+    public static function pathIn(
+        InList $inList
+    ): FileFilter
     {
         $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
             'in' => $inList->toInList()
         ]);
-        return new FileFilter([
-            'path' => $stringMatch
-        ]);
+
+        return new FileFilter($stringMatch);
     }
 
     /**
      * @param string $like
      * @return FileFilter
      */
-    public static function pathLike($like): FileFilter
+    public static function pathLike(
+        string $like
+    ): FileFilter
     {
         $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
             'like' => $like
         ]);
-        return new FileFilter([
-            'path' => $stringMatch
-        ]);
+
+        return new FileFilter($stringMatch);
     }
 
     /**

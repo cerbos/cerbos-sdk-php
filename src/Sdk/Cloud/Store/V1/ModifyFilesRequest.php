@@ -13,55 +13,78 @@ final class ModifyFilesRequest {
     private \Cerbos\Cloud\Store\V1\ModifyFilesRequest $request;
 
     /**
-     * @param array $data {
-     *     @type string $store_id
-     *     @type FileOp[] $operations
-     * }
+     * @param string $storeId
+     * @param Condition|null $condition
+     * @param ChangeDetails|null $changeDetails
+     * @param FileOp[] $operations
      */
-    private function __construct(array $data) {
+    private function __construct(
+        string $storeId,
+        ?Condition $condition = null,
+        ?ChangeDetails $changeDetails = null,
+        FileOp ...$operations
+    ) {
+        $fileOperations = array();
+        foreach ($operations as $operation) {
+            $fileOperations[] = $operation->toFileOp();
+        }
+
         $this->request = new \Cerbos\Cloud\Store\V1\ModifyFilesRequest([
-            'store_id' => $data['store_id']
+            'store_id' => $storeId,
+            'operations' => $fileOperations
         ]);
 
-        if (isset($data['operations'])) {
-            $fileOperations = array();
-            foreach ($data['operations'] as $operation) {
-                $fileOperations[] = $operation->toFileOp();
-            }
+        if(isset($condition)) {
+            $this->request->setCondition($condition->toCondition());
+        }
 
-            $this->request->setOperations($fileOperations);
+        if(isset($changeDetails)) {
+            $this->request->setChangeDetails($changeDetails->toChangeDetails());
         }
     }
 
     /**
-     * @param array $data {
-     *     @type string $store_id
-     *     @type FileOp[] $operations
-     * }
+     * @param string $storeId
+     * @param Condition|null $condition
+     * @param ChangeDetails|null $changeDetails
+     * @param FileOp[] $operations
      * @return ModifyFilesRequest
      */
-    public static function newInstance(array $data): ModifyFilesRequest {
-        return new ModifyFilesRequest($data);
+    public static function newInstance(
+        string $storeId,
+        ?Condition $condition,
+        ?ChangeDetails $changeDetails,
+        FileOp ...$operations
+    ): ModifyFilesRequest {
+        return new ModifyFilesRequest($storeId, $condition, $changeDetails, ...$operations);
     }
 
     /**
+     * @param string $storeId
      * @param Condition $condition
-     * @return $this
+     * @param FileOp[] $operations
+     * @return ModifyFilesRequest
      */
-    public function withCondition($condition): ModifyFilesRequest
-    {
-        $this->request->setCondition($condition->toCondition());
-        return $this;
+    public static function withCondition(
+        string $storeId,
+        Condition $condition,
+        FileOp ...$operations,
+    ): ModifyFilesRequest {
+        return new ModifyFilesRequest($storeId, $condition, null, ...$operations);
     }
 
     /**
+     * @param string $storeId
      * @param ChangeDetails $changeDetails
-     * @return $this
+     * @param FileOp[] $operations
+     * @return ModifyFilesRequest
      */
-    public function withChangeDetails($changeDetails): ModifyFilesRequest
-    {
-        $this->request->setChangeDetails($changeDetails->toChangeDetails());
-        return $this;
+    public static function withChangeDetails(
+        string $storeId,
+        ChangeDetails $changeDetails,
+        FileOp ...$operations,
+    ): ModifyFilesRequest {
+        return new ModifyFilesRequest($storeId, null, $changeDetails, ...$operations);
     }
 
     /**
