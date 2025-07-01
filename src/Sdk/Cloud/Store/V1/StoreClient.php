@@ -34,11 +34,10 @@ final class StoreClient
     /**
      * @param GetFilesRequest $request
      * @return GetFilesResponse
-     * @throws RpcException
-     * @throws Exception
      */
     public function getFiles(GetFilesRequest $request): GetFilesResponse {
         list($response, $status) = $this->client->GetFiles($request->toGetFilesRequest(), $this->authenticator->authenticate(null))->wait();
+        ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
 
         return new GetFilesResponse($response);
@@ -47,11 +46,10 @@ final class StoreClient
     /**
      * @param ListFilesRequest $request
      * @return ListFilesResponse
-     * @throws RpcException
-     * @throws Exception
      */
     public function listFiles(ListFilesRequest $request): ListFilesResponse {
         list($response, $status) = $this->client->ListFiles($request->toListFilesRequest(), $this->authenticator->authenticate(null))->wait();
+        ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
 
         return new ListFilesResponse($response);
@@ -60,11 +58,10 @@ final class StoreClient
     /**
      * @param ModifyFilesRequest $request
      * @return ModifyFilesResponse
-     * @throws RpcException
-     * @throws Exception
      */
     public function modifyFiles(ModifyFilesRequest $request): ModifyFilesResponse {
         list($response, $status) = $this->client->ModifyFiles($request->toModifyFilesRequest(), $this->authenticator->authenticate(null))->wait();
+        ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
 
         return new ModifyFilesResponse($response);
@@ -73,11 +70,10 @@ final class StoreClient
     /**
      * @param ReplaceFilesRequest $request
      * @return ReplaceFilesResponse
-     * @throws RpcException
-     * @throws Exception
      */
     public function replaceFiles(ReplaceFilesRequest $request): ReplaceFilesResponse {
         list($response, $status) = $this->client->ReplaceFiles($request->toReplaceFilesRequest(), $this->authenticator->authenticate(null))->wait();
+        ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
 
         return new ReplaceFilesResponse($response);

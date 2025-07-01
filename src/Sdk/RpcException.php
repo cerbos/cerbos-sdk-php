@@ -46,8 +46,6 @@ final class RpcException extends Exception
     /**
      * @param object $status
      * @throws RpcException
-     * @throws TypeError
-     * @throws ValueError
      */
     public static function fromStatus(object $status) : void {
         $grpcStatus = GrpcStatus::from($status->code);

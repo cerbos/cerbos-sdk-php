@@ -16,7 +16,7 @@ final class HubClientBuilder
 {
     private string $hostname;
     private Credentials $credentials;
-    private const string defaultHostname = "api.cerbos.cloud";
+    private const string DEFAULT_HOSTNAME = "api.cerbos.cloud";
 
     /**
      * @param string $hostname
@@ -41,7 +41,7 @@ final class HubClientBuilder
      * @throws Exception when clientId or clientSecret is not specified
      */
     public static function fromEnv(): HubClientBuilder {
-        $hostname = HubClientBuilder::getEnvOrDefault("CERBOS_HUB_API_ENDPOINT", self::defaultHostname);
+        $hostname = HubClientBuilder::getEnvOrDefault("CERBOS_HUB_API_ENDPOINT", self::DEFAULT_HOSTNAME);
         $clientId = HubClientBuilder::getEnvOrDefault("CERBOS_HUB_CLIENT_ID", "");
         $clientSecret = HubClientBuilder::getEnvOrDefault("CERBOS_HUB_CLIENT_SECRET", "");
 
@@ -54,7 +54,7 @@ final class HubClientBuilder
      * @return $this
      */
     public static function fromCredentials(string $clientId, string $clientSecret): HubClientBuilder {
-        $hostname = HubClientBuilder::getEnvOrDefault("CERBOS_HUB_API_ENDPOINT", self::defaultHostname);
+        $hostname = HubClientBuilder::getEnvOrDefault("CERBOS_HUB_API_ENDPOINT", self::DEFAULT_HOSTNAME);
 
         return new HubClientBuilder($hostname, $clientId, $clientSecret);
     }

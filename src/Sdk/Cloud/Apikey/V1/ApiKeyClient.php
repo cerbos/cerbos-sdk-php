@@ -8,7 +8,6 @@ declare(strict_types=1);
 namespace Cerbos\Sdk\Cloud\Apikey\V1;
 
 use Cerbos\Sdk\RpcException;
-use Exception;
 
 /**
  * @internal
@@ -27,8 +26,6 @@ final class ApiKeyClient
     /**
      * @param IssueAccessTokenRequest $request
      * @return IssueAccessTokenResponse
-     * @throws RpcException
-     * @throws Exception
      */
     public function issueAccessToken(IssueAccessTokenRequest $request): IssueAccessTokenResponse {
         list($response, $status) = $this->client->IssueAccessToken($request->toIssueAccessTokenRequest())->wait();
