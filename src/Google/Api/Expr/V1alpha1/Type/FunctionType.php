@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1\Type;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Function type with result and arg types.
@@ -37,7 +37,7 @@ class FunctionType extends \Google\Protobuf\Internal\Message
      *
      *     @type \Google\Api\Expr\V1alpha1\Type $result_type
      *           Result type of the function.
-     *     @type array<\Google\Api\Expr\V1alpha1\Type>|\Google\Protobuf\Internal\RepeatedField $arg_types
+     *     @type \Google\Api\Expr\V1alpha1\Type[] $arg_types
      *           Argument types of the function.
      * }
      */
@@ -86,7 +86,7 @@ class FunctionType extends \Google\Protobuf\Internal\Message
      * Argument types of the function.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Type arg_types = 2 [json_name = "argTypes"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\Expr\V1alpha1\Type>
      */
     public function getArgTypes()
     {
@@ -97,7 +97,7 @@ class FunctionType extends \Google\Protobuf\Internal\Message
      * Argument types of the function.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Type arg_types = 2 [json_name = "argTypes"];</code>
-     * @param array<\Google\Api\Expr\V1alpha1\Type>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\Expr\V1alpha1\Type[] $var
      * @return $this
      */
     public function setArgTypes($var)

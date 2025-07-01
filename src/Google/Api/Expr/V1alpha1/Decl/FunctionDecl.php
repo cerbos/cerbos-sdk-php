@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1\Decl;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Function declaration specifies one or more overloads which indicate the
@@ -32,7 +32,7 @@ class FunctionDecl extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Google\Api\Expr\V1alpha1\Decl\FunctionDecl\Overload>|\Google\Protobuf\Internal\RepeatedField $overloads
+     *     @type \Google\Api\Expr\V1alpha1\Decl\FunctionDecl\Overload[] $overloads
      *           Required. List of function overloads, must contain at least one overload.
      * }
      */
@@ -45,7 +45,7 @@ class FunctionDecl extends \Google\Protobuf\Internal\Message
      * Required. List of function overloads, must contain at least one overload.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Decl.FunctionDecl.Overload overloads = 1 [json_name = "overloads"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\Expr\V1alpha1\Decl\FunctionDecl\Overload>
      */
     public function getOverloads()
     {
@@ -56,7 +56,7 @@ class FunctionDecl extends \Google\Protobuf\Internal\Message
      * Required. List of function overloads, must contain at least one overload.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Decl.FunctionDecl.Overload overloads = 1 [json_name = "overloads"];</code>
-     * @param array<\Google\Api\Expr\V1alpha1\Decl\FunctionDecl\Overload>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\Expr\V1alpha1\Decl\FunctionDecl\Overload[] $var
      * @return $this
      */
     public function setOverloads($var)

@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.ResourceRule</code>
@@ -49,9 +49,9 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $derived_roles
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $roles
+     *     @type string[] $actions
+     *     @type string[] $derived_roles
+     *     @type string[] $roles
      *     @type \Cerbos\Policy\V1\Condition $condition
      *     @type int $effect
      *     @type string $name
@@ -65,7 +65,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getActions()
     {
@@ -74,7 +74,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setActions($var)
@@ -87,7 +87,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string derived_roles = 2 [json_name = "derivedRoles"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getDerivedRoles()
     {
@@ -96,7 +96,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string derived_roles = 2 [json_name = "derivedRoles"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setDerivedRoles($var)
@@ -109,7 +109,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string roles = 3 [json_name = "roles"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getRoles()
     {
@@ -118,7 +118,7 @@ class ResourceRule extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string roles = 3 [json_name = "roles"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setRoles($var)

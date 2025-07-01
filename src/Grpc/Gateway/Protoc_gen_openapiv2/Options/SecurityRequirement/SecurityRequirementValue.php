@@ -6,8 +6,8 @@
 namespace Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * If the security scheme is of type "oauth2", then the value is a list of
@@ -29,7 +29,7 @@ class SecurityRequirementValue extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $scope
+     *     @type string[] $scope
      * }
      */
     public function __construct($data = NULL) {
@@ -39,7 +39,7 @@ class SecurityRequirementValue extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string scope = 1 [json_name = "scope"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getScope()
     {
@@ -48,7 +48,7 @@ class SecurityRequirementValue extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string scope = 1 [json_name = "scope"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setScope($var)

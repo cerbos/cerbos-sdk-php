@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.response.v1.PlaygroundFailure</code>
@@ -25,7 +25,7 @@ class PlaygroundFailure extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Cerbos\Response\V1\PlaygroundFailure\Error>|\Google\Protobuf\Internal\RepeatedField $errors
+     *     @type \Cerbos\Response\V1\PlaygroundFailure\Error[] $errors
      * }
      */
     public function __construct($data = NULL) {
@@ -35,7 +35,7 @@ class PlaygroundFailure extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.PlaygroundFailure.Error errors = 1 [json_name = "errors"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Response\V1\PlaygroundFailure\Error>
      */
     public function getErrors()
     {
@@ -44,7 +44,7 @@ class PlaygroundFailure extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.PlaygroundFailure.Error errors = 1 [json_name = "errors"];</code>
-     * @param array<\Cerbos\Response\V1\PlaygroundFailure\Error>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Response\V1\PlaygroundFailure\Error[] $var
      * @return $this
      */
     public function setErrors($var)

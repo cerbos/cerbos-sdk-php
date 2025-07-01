@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1\PBMatch;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.Match.ExprList</code>
@@ -25,7 +25,7 @@ class ExprList extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Cerbos\Policy\V1\PBMatch>|\Google\Protobuf\Internal\RepeatedField $of
+     *     @type \Cerbos\Policy\V1\PBMatch[] $of
      * }
      */
     public function __construct($data = NULL) {
@@ -35,7 +35,7 @@ class ExprList extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.Match of = 1 [json_name = "of"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\PBMatch>
      */
     public function getOf()
     {
@@ -44,7 +44,7 @@ class ExprList extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.Match of = 1 [json_name = "of"];</code>
-     * @param array<\Cerbos\Policy\V1\PBMatch>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\PBMatch[] $var
      * @return $this
      */
     public function setOf($var)

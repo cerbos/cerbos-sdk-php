@@ -6,8 +6,8 @@
 namespace Cerbos\Request\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Structure of the request for the check resources API call.
@@ -46,7 +46,7 @@ class CheckResourcesRequest extends \Google\Protobuf\Internal\Message
      *     @type string $request_id
      *     @type bool $include_meta
      *     @type \Cerbos\Engine\V1\Principal $principal
-     *     @type array<\Cerbos\Request\V1\CheckResourcesRequest\ResourceEntry>|\Google\Protobuf\Internal\RepeatedField $resources
+     *     @type \Cerbos\Request\V1\CheckResourcesRequest\ResourceEntry[] $resources
      *     @type \Cerbos\Request\V1\AuxData $aux_data
      * }
      */
@@ -133,7 +133,7 @@ class CheckResourcesRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.request.v1.CheckResourcesRequest.ResourceEntry resources = 4 [json_name = "resources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Request\V1\CheckResourcesRequest\ResourceEntry>
      */
     public function getResources()
     {
@@ -142,7 +142,7 @@ class CheckResourcesRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.request.v1.CheckResourcesRequest.ResourceEntry resources = 4 [json_name = "resources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Request\V1\CheckResourcesRequest\ResourceEntry>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Request\V1\CheckResourcesRequest\ResourceEntry[] $var
      * @return $this
      */
     public function setResources($var)

@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1\TestTable;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestTable.Input</code>
@@ -45,12 +45,12 @@ class Input extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $principals
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $resources
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
+     *     @type string[] $principals
+     *     @type string[] $resources
+     *     @type string[] $actions
      *     @type string $aux_data
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $principal_groups
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $resource_groups
+     *     @type string[] $principal_groups
+     *     @type string[] $resource_groups
      * }
      */
     public function __construct($data = NULL) {
@@ -60,7 +60,7 @@ class Input extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string principals = 1 [json_name = "principals"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getPrincipals()
     {
@@ -69,7 +69,7 @@ class Input extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string principals = 1 [json_name = "principals"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setPrincipals($var)
@@ -82,7 +82,7 @@ class Input extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string resources = 2 [json_name = "resources"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getResources()
     {
@@ -91,7 +91,7 @@ class Input extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string resources = 2 [json_name = "resources"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setResources($var)
@@ -104,7 +104,7 @@ class Input extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 3 [json_name = "actions"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getActions()
     {
@@ -113,7 +113,7 @@ class Input extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 3 [json_name = "actions"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setActions($var)
@@ -148,7 +148,7 @@ class Input extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string principal_groups = 5 [json_name = "principalGroups"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getPrincipalGroups()
     {
@@ -157,7 +157,7 @@ class Input extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string principal_groups = 5 [json_name = "principalGroups"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setPrincipalGroups($var)
@@ -170,7 +170,7 @@ class Input extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string resource_groups = 6 [json_name = "resourceGroups"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getResourceGroups()
     {
@@ -179,7 +179,7 @@ class Input extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string resource_groups = 6 [json_name = "resourceGroups"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setResourceGroups($var)

@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1\TestResults;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestResults.Suite</code>
@@ -56,10 +56,10 @@ class Suite extends \Google\Protobuf\Internal\Message
      *
      *     @type string $file
      *     @type string $name
-     *     @type array<\Cerbos\Policy\V1\TestResults\Principal>|\Google\Protobuf\Internal\RepeatedField $principals
+     *     @type \Cerbos\Policy\V1\TestResults\Principal[] $principals
      *     @type \Cerbos\Policy\V1\TestResults\Summary $summary
      *     @type string $error
-     *     @type array<\Cerbos\Policy\V1\TestResults\TestCase>|\Google\Protobuf\Internal\RepeatedField $test_cases
+     *     @type \Cerbos\Policy\V1\TestResults\TestCase[] $test_cases
      *     @type string $description
      *     @type string $skip_reason
      * }
@@ -115,7 +115,7 @@ class Suite extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.Principal principals = 3 [json_name = "principals", deprecated = true];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\TestResults\Principal>
      * @deprecated
      */
     public function getPrincipals()
@@ -128,7 +128,7 @@ class Suite extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.Principal principals = 3 [json_name = "principals", deprecated = true];</code>
-     * @param array<\Cerbos\Policy\V1\TestResults\Principal>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\TestResults\Principal[] $var
      * @return $this
      * @deprecated
      */
@@ -199,7 +199,7 @@ class Suite extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.TestCase test_cases = 6 [json_name = "testCases"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\TestResults\TestCase>
      */
     public function getTestCases()
     {
@@ -208,7 +208,7 @@ class Suite extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.TestCase test_cases = 6 [json_name = "testCases"];</code>
-     * @param array<\Cerbos\Policy\V1\TestResults\TestCase>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\TestResults\TestCase[] $var
      * @return $this
      */
     public function setTestCases($var)

@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1\Decl\FunctionDecl;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * An overload indicates a function's parameter types and return type, and
@@ -90,7 +90,7 @@ class Overload extends \Google\Protobuf\Internal\Message
      *           This will be used by a [Reference][google.api.expr.v1alpha1.Reference]
      *           to indicate the `overload_id` that was resolved for the function
      *           `name`.
-     *     @type array<\Google\Api\Expr\V1alpha1\Type>|\Google\Protobuf\Internal\RepeatedField $params
+     *     @type \Google\Api\Expr\V1alpha1\Type[] $params
      *           List of function parameter [Type][google.api.expr.v1alpha1.Type]
      *           values.
      *           Param types are disjoint after generic type parameters have been
@@ -100,7 +100,7 @@ class Overload extends \Google\Protobuf\Internal\Message
      *           `map<string, string>` is not disjoint from `map<K, V>`.
      *           When the `result_type` of a function is a generic type param, the
      *           type param name also appears as the `type` of on at least one params.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $type_params
+     *     @type string[] $type_params
      *           The type param names associated with the function declaration.
      *           For example, `function ex<K,V>(K key, map<K, V> map) : V` would yield
      *           the type params of `K, V`.
@@ -167,7 +167,7 @@ class Overload extends \Google\Protobuf\Internal\Message
      * type param name also appears as the `type` of on at least one params.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Type params = 2 [json_name = "params"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\Expr\V1alpha1\Type>
      */
     public function getParams()
     {
@@ -186,7 +186,7 @@ class Overload extends \Google\Protobuf\Internal\Message
      * type param name also appears as the `type` of on at least one params.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Type params = 2 [json_name = "params"];</code>
-     * @param array<\Google\Api\Expr\V1alpha1\Type>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\Expr\V1alpha1\Type[] $var
      * @return $this
      */
     public function setParams($var)
@@ -203,7 +203,7 @@ class Overload extends \Google\Protobuf\Internal\Message
      * the type params of `K, V`.
      *
      * Generated from protobuf field <code>repeated string type_params = 3 [json_name = "typeParams"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getTypeParams()
     {
@@ -216,7 +216,7 @@ class Overload extends \Google\Protobuf\Internal\Message
      * the type params of `K, V`.
      *
      * Generated from protobuf field <code>repeated string type_params = 3 [json_name = "typeParams"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setTypeParams($var)

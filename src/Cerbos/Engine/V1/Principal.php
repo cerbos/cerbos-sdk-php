@@ -6,8 +6,8 @@
 namespace Cerbos\Engine\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.engine.v1.Principal</code>
@@ -43,7 +43,7 @@ class Principal extends \Google\Protobuf\Internal\Message
      *
      *     @type string $id
      *     @type string $policy_version
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $roles
+     *     @type string[] $roles
      *     @type array|\Google\Protobuf\Internal\MapField $attr
      *     @type string $scope
      * }
@@ -99,7 +99,7 @@ class Principal extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string roles = 3 [json_name = "roles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getRoles()
     {
@@ -108,7 +108,7 @@ class Principal extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string roles = 3 [json_name = "roles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setRoles($var)

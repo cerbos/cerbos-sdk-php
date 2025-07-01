@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1\TestResults;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestResults.TestCase</code>
@@ -30,7 +30,7 @@ class TestCase extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $name
-     *     @type array<\Cerbos\Policy\V1\TestResults\Principal>|\Google\Protobuf\Internal\RepeatedField $principals
+     *     @type \Cerbos\Policy\V1\TestResults\Principal[] $principals
      * }
      */
     public function __construct($data = NULL) {
@@ -62,7 +62,7 @@ class TestCase extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.Principal principals = 2 [json_name = "principals"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\TestResults\Principal>
      */
     public function getPrincipals()
     {
@@ -71,7 +71,7 @@ class TestCase extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.Principal principals = 2 [json_name = "principals"];</code>
-     * @param array<\Cerbos\Policy\V1\TestResults\Principal>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\TestResults\Principal[] $var
      * @return $this
      */
     public function setPrincipals($var)

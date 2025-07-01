@@ -6,8 +6,8 @@
 namespace Cerbos\Telemetry\V1\ServerLaunch\Features\Storage;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.telemetry.v1.ServerLaunch.Features.Storage.Git</code>

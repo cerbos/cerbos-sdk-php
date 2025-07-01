@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.RolePolicy</code>
@@ -42,9 +42,9 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $role
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $parent_roles
+     *     @type string[] $parent_roles
      *     @type string $scope
-     *     @type array<\Cerbos\Policy\V1\RoleRule>|\Google\Protobuf\Internal\RepeatedField $rules
+     *     @type \Cerbos\Policy\V1\RoleRule[] $rules
      *     @type int $scope_permissions
      *           Deprecated: no-op.
      * }
@@ -83,7 +83,7 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string parent_roles = 5 [json_name = "parentRoles"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getParentRoles()
     {
@@ -92,7 +92,7 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string parent_roles = 5 [json_name = "parentRoles"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setParentRoles($var)
@@ -127,7 +127,7 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleRule rules = 3 [json_name = "rules"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\RoleRule>
      */
     public function getRules()
     {
@@ -136,7 +136,7 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleRule rules = 3 [json_name = "rules"];</code>
-     * @param array<\Cerbos\Policy\V1\RoleRule>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\RoleRule[] $var
      * @return $this
      */
     public function setRules($var)

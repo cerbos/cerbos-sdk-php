@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1\Type;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Application defined abstract type.
@@ -37,7 +37,7 @@ class AbstractType extends \Google\Protobuf\Internal\Message
      *
      *     @type string $name
      *           The fully qualified name of this abstract type.
-     *     @type array<\Google\Api\Expr\V1alpha1\Type>|\Google\Protobuf\Internal\RepeatedField $parameter_types
+     *     @type \Google\Api\Expr\V1alpha1\Type[] $parameter_types
      *           Parameter types for this abstract type.
      * }
      */
@@ -76,7 +76,7 @@ class AbstractType extends \Google\Protobuf\Internal\Message
      * Parameter types for this abstract type.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Type parameter_types = 2 [json_name = "parameterTypes"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\Expr\V1alpha1\Type>
      */
     public function getParameterTypes()
     {
@@ -87,7 +87,7 @@ class AbstractType extends \Google\Protobuf\Internal\Message
      * Parameter types for this abstract type.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.Type parameter_types = 2 [json_name = "parameterTypes"];</code>
-     * @param array<\Google\Api\Expr\V1alpha1\Type>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\Expr\V1alpha1\Type[] $var
      * @return $this
      */
     public function setParameterTypes($var)

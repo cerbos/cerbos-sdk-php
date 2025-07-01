@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1\InspectPoliciesResponse;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.response.v1.InspectPoliciesResponse.Result</code>
@@ -45,12 +45,12 @@ class Result extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
-     *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\Variable>|\Google\Protobuf\Internal\RepeatedField $variables
+     *     @type string[] $actions
+     *     @type \Cerbos\Response\V1\InspectPoliciesResponse\Variable[] $variables
      *     @type string $policy_id
-     *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole>|\Google\Protobuf\Internal\RepeatedField $derived_roles
-     *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\Attribute>|\Google\Protobuf\Internal\RepeatedField $attributes
-     *     @type array<\Cerbos\Response\V1\InspectPoliciesResponse\Constant>|\Google\Protobuf\Internal\RepeatedField $constants
+     *     @type \Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole[] $derived_roles
+     *     @type \Cerbos\Response\V1\InspectPoliciesResponse\Attribute[] $attributes
+     *     @type \Cerbos\Response\V1\InspectPoliciesResponse\Constant[] $constants
      * }
      */
     public function __construct($data = NULL) {
@@ -60,7 +60,7 @@ class Result extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getActions()
     {
@@ -69,7 +69,7 @@ class Result extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 1 [json_name = "actions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setActions($var)
@@ -82,7 +82,7 @@ class Result extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Variable variables = 2 [json_name = "variables", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Response\V1\InspectPoliciesResponse\Variable>
      */
     public function getVariables()
     {
@@ -91,7 +91,7 @@ class Result extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Variable variables = 2 [json_name = "variables", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Response\V1\InspectPoliciesResponse\Variable>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Response\V1\InspectPoliciesResponse\Variable[] $var
      * @return $this
      */
     public function setVariables($var)
@@ -126,7 +126,7 @@ class Result extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.DerivedRole derived_roles = 4 [json_name = "derivedRoles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole>
      */
     public function getDerivedRoles()
     {
@@ -135,7 +135,7 @@ class Result extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.DerivedRole derived_roles = 4 [json_name = "derivedRoles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Response\V1\InspectPoliciesResponse\DerivedRole[] $var
      * @return $this
      */
     public function setDerivedRoles($var)
@@ -148,7 +148,7 @@ class Result extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Attribute attributes = 5 [json_name = "attributes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Response\V1\InspectPoliciesResponse\Attribute>
      */
     public function getAttributes()
     {
@@ -157,7 +157,7 @@ class Result extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Attribute attributes = 5 [json_name = "attributes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Response\V1\InspectPoliciesResponse\Attribute>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Response\V1\InspectPoliciesResponse\Attribute[] $var
      * @return $this
      */
     public function setAttributes($var)
@@ -170,7 +170,7 @@ class Result extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Constant constants = 6 [json_name = "constants", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Response\V1\InspectPoliciesResponse\Constant>
      */
     public function getConstants()
     {
@@ -179,7 +179,7 @@ class Result extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.InspectPoliciesResponse.Constant constants = 6 [json_name = "constants", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Response\V1\InspectPoliciesResponse\Constant>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Response\V1\InspectPoliciesResponse\Constant[] $var
      * @return $this
      */
     public function setConstants($var)

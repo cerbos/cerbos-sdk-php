@@ -3,7 +3,7 @@
 // Copyright 2021-2025 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-namespace Cerbos\Test;
+namespace Cerbos\Test\Sdk;
 
 use Cerbos\Sdk\Builder\AttributeValue;
 use Cerbos\Sdk\Builder\AuxData;

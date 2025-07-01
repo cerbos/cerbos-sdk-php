@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1\PlaygroundEvaluateResponse;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.response.v1.PlaygroundEvaluateResponse.EvalResult</code>
@@ -46,8 +46,8 @@ class EvalResult extends \Google\Protobuf\Internal\Message
      *     @type string $action
      *     @type int $effect
      *     @type string $policy
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $effective_derived_roles
-     *     @type array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $validation_errors
+     *     @type string[] $effective_derived_roles
+     *     @type \Cerbos\Schema\V1\ValidationError[] $validation_errors
      * }
      */
     public function __construct($data = NULL) {
@@ -123,7 +123,7 @@ class EvalResult extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string effective_derived_roles = 4 [json_name = "effectiveDerivedRoles", deprecated = true];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      * @deprecated
      */
     public function getEffectiveDerivedRoles()
@@ -136,7 +136,7 @@ class EvalResult extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string effective_derived_roles = 4 [json_name = "effectiveDerivedRoles", deprecated = true];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      * @deprecated
      */
@@ -153,7 +153,7 @@ class EvalResult extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 5 [json_name = "validationErrors", deprecated = true];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Schema\V1\ValidationError>
      * @deprecated
      */
     public function getValidationErrors()
@@ -166,7 +166,7 @@ class EvalResult extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 5 [json_name = "validationErrors", deprecated = true];</code>
-     * @param array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Schema\V1\ValidationError[] $var
      * @return $this
      * @deprecated
      */

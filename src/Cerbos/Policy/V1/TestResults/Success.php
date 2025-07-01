@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1\TestResults;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestResults.Success</code>
@@ -30,7 +30,7 @@ class Success extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int $effect
-     *     @type array<\Cerbos\Engine\V1\OutputEntry>|\Google\Protobuf\Internal\RepeatedField $outputs
+     *     @type \Cerbos\Engine\V1\OutputEntry[] $outputs
      * }
      */
     public function __construct($data = NULL) {
@@ -62,7 +62,7 @@ class Success extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry outputs = 2 [json_name = "outputs"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\OutputEntry>
      */
     public function getOutputs()
     {
@@ -71,7 +71,7 @@ class Success extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry outputs = 2 [json_name = "outputs"];</code>
-     * @param array<\Cerbos\Engine\V1\OutputEntry>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\OutputEntry[] $var
      * @return $this
      */
     public function setOutputs($var)

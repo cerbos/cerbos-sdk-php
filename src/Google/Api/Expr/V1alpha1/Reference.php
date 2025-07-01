@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Describes a resolved reference to a declaration.
@@ -50,7 +50,7 @@ class Reference extends \Google\Protobuf\Internal\Message
      *
      *     @type string $name
      *           The fully qualified name of the declaration.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $overload_id
+     *     @type string[] $overload_id
      *           For references to functions, this is a list of `Overload.overload_id`
      *           values which match according to typing rules.
      *           If the list has more than one element, overload resolution among the
@@ -104,7 +104,7 @@ class Reference extends \Google\Protobuf\Internal\Message
      * [Decl.FunctionDecl][google.api.expr.v1alpha1.Decl.FunctionDecl].
      *
      * Generated from protobuf field <code>repeated string overload_id = 3 [json_name = "overloadId"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getOverloadId()
     {
@@ -121,7 +121,7 @@ class Reference extends \Google\Protobuf\Internal\Message
      * [Decl.FunctionDecl][google.api.expr.v1alpha1.Decl.FunctionDecl].
      *
      * Generated from protobuf field <code>repeated string overload_id = 3 [json_name = "overloadId"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setOverloadId($var)

@@ -5,7 +5,7 @@
 
 declare(strict_types=1);
 
-namespace Cerbos\Test;
+namespace Cerbos\Test\Sdk;
 
 use Cerbos\Sdk\Builder\CerbosClientBuilder;
 use Cerbos\Sdk\CerbosClient;

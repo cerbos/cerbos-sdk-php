@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.Constants</code>
@@ -29,7 +29,7 @@ class Constants extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $import
+     *     @type string[] $import
      *     @type array|\Google\Protobuf\Internal\MapField $local
      * }
      */
@@ -40,7 +40,7 @@ class Constants extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string import = 1 [json_name = "import"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getImport()
     {
@@ -49,7 +49,7 @@ class Constants extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string import = 1 [json_name = "import"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setImport($var)

@@ -6,8 +6,8 @@
 namespace Grpc\Gateway\Protoc_gen_openapiv2\Options;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * `Swagger` is a representation of OpenAPI v2 specification's Swagger object.
@@ -171,15 +171,15 @@ class Swagger extends \Google\Protobuf\Internal\Message
      *           with relatively generated OpenAPI paths, the `base_path` prefix must be
      *           manually removed from your `google.api.http` paths and your code changed to
      *           serve the API from the `base_path`.
-     *     @type array<int>|\Google\Protobuf\Internal\RepeatedField $schemes
+     *     @type int[] $schemes
      *           The transfer protocol of the API. Values MUST be from the list: "http",
      *           "https", "ws", "wss". If the schemes is not included, the default scheme to
      *           be used is the one used to access the OpenAPI definition itself.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $consumes
+     *     @type string[] $consumes
      *           A list of MIME types the APIs can consume. This is global to all APIs but
      *           can be overridden on specific API calls. Value MUST be as described under
      *           Mime Types.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $produces
+     *     @type string[] $produces
      *           A list of MIME types the APIs can produce. This is global to all APIs but
      *           can be overridden on specific API calls. Value MUST be as described under
      *           Mime Types.
@@ -188,12 +188,12 @@ class Swagger extends \Google\Protobuf\Internal\Message
      *           property does not define global responses for all operations.
      *     @type \Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityDefinitions $security_definitions
      *           Security scheme definitions that can be used across the specification.
-     *     @type array<\Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement>|\Google\Protobuf\Internal\RepeatedField $security
+     *     @type \Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement[] $security
      *           A declaration of which security schemes are applied for the API as a whole.
      *           The list of values describes alternative security schemes that can be used
      *           (that is, there is a logical OR between the security requirements).
      *           Individual operations can override this definition.
-     *     @type array<\Grpc\Gateway\Protoc_gen_openapiv2\Options\Tag>|\Google\Protobuf\Internal\RepeatedField $tags
+     *     @type \Grpc\Gateway\Protoc_gen_openapiv2\Options\Tag[] $tags
      *           A list of tags for API documentation control. Tags can be used for logical
      *           grouping of operations by resources or any other qualifier.
      *     @type \Grpc\Gateway\Protoc_gen_openapiv2\Options\ExternalDocumentation $external_docs
@@ -357,7 +357,7 @@ class Swagger extends \Google\Protobuf\Internal\Message
      * be used is the one used to access the OpenAPI definition itself.
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.Scheme schemes = 5 [json_name = "schemes"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<int>
      */
     public function getSchemes()
     {
@@ -370,7 +370,7 @@ class Swagger extends \Google\Protobuf\Internal\Message
      * be used is the one used to access the OpenAPI definition itself.
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.Scheme schemes = 5 [json_name = "schemes"];</code>
-     * @param array<int>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param int[] $var
      * @return $this
      */
     public function setSchemes($var)
@@ -387,7 +387,7 @@ class Swagger extends \Google\Protobuf\Internal\Message
      * Mime Types.
      *
      * Generated from protobuf field <code>repeated string consumes = 6 [json_name = "consumes"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getConsumes()
     {
@@ -400,7 +400,7 @@ class Swagger extends \Google\Protobuf\Internal\Message
      * Mime Types.
      *
      * Generated from protobuf field <code>repeated string consumes = 6 [json_name = "consumes"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setConsumes($var)
@@ -417,7 +417,7 @@ class Swagger extends \Google\Protobuf\Internal\Message
      * Mime Types.
      *
      * Generated from protobuf field <code>repeated string produces = 7 [json_name = "produces"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getProduces()
     {
@@ -430,7 +430,7 @@ class Swagger extends \Google\Protobuf\Internal\Message
      * Mime Types.
      *
      * Generated from protobuf field <code>repeated string produces = 7 [json_name = "produces"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setProduces($var)
@@ -512,7 +512,7 @@ class Swagger extends \Google\Protobuf\Internal\Message
      * Individual operations can override this definition.
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.SecurityRequirement security = 12 [json_name = "security"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement>
      */
     public function getSecurity()
     {
@@ -526,7 +526,7 @@ class Swagger extends \Google\Protobuf\Internal\Message
      * Individual operations can override this definition.
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.SecurityRequirement security = 12 [json_name = "security"];</code>
-     * @param array<\Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Grpc\Gateway\Protoc_gen_openapiv2\Options\SecurityRequirement[] $var
      * @return $this
      */
     public function setSecurity($var)
@@ -542,7 +542,7 @@ class Swagger extends \Google\Protobuf\Internal\Message
      * grouping of operations by resources or any other qualifier.
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.Tag tags = 13 [json_name = "tags"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Grpc\Gateway\Protoc_gen_openapiv2\Options\Tag>
      */
     public function getTags()
     {
@@ -554,7 +554,7 @@ class Swagger extends \Google\Protobuf\Internal\Message
      * grouping of operations by resources or any other qualifier.
      *
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.Tag tags = 13 [json_name = "tags"];</code>
-     * @param array<\Grpc\Gateway\Protoc_gen_openapiv2\Options\Tag>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Grpc\Gateway\Protoc_gen_openapiv2\Options\Tag[] $var
      * @return $this
      */
     public function setTags($var)

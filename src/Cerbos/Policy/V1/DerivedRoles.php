@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.DerivedRoles</code>
@@ -38,7 +38,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $name
-     *     @type array<\Cerbos\Policy\V1\RoleDef>|\Google\Protobuf\Internal\RepeatedField $definitions
+     *     @type \Cerbos\Policy\V1\RoleDef[] $definitions
      *     @type \Cerbos\Policy\V1\Variables $variables
      *     @type \Cerbos\Policy\V1\Constants $constants
      * }
@@ -72,7 +72,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\RoleDef>
      */
     public function getDefinitions()
     {
@@ -81,7 +81,7 @@ class DerivedRoles extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.RoleDef definitions = 2 [json_name = "definitions"];</code>
-     * @param array<\Cerbos\Policy\V1\RoleDef>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\RoleDef[] $var
      * @return $this
      */
     public function setDefinitions($var)

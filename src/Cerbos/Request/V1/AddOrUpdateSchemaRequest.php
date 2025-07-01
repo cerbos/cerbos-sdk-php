@@ -6,8 +6,8 @@
 namespace Cerbos\Request\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.request.v1.AddOrUpdateSchemaRequest</code>
@@ -25,7 +25,7 @@ class AddOrUpdateSchemaRequest extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Cerbos\Schema\V1\Schema>|\Google\Protobuf\Internal\RepeatedField $schemas
+     *     @type \Cerbos\Schema\V1\Schema[] $schemas
      * }
      */
     public function __construct($data = NULL) {
@@ -35,7 +35,7 @@ class AddOrUpdateSchemaRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.Schema schemas = 1 [json_name = "schemas", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Schema\V1\Schema>
      */
     public function getSchemas()
     {
@@ -44,7 +44,7 @@ class AddOrUpdateSchemaRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.Schema schemas = 1 [json_name = "schemas", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Schema\V1\Schema>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Schema\V1\Schema[] $var
      * @return $this
      */
     public function setSchemas($var)

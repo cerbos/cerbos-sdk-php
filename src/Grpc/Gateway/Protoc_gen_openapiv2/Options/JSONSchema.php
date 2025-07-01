@@ -6,8 +6,8 @@
 namespace Grpc\Gateway\Protoc_gen_openapiv2\Options;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * `JSONSchema` represents properties from JSON Schema taken, and as used, in
@@ -214,13 +214,13 @@ class JSONSchema extends \Google\Protobuf\Internal\Message
      *     @type bool $unique_items
      *     @type int|string $max_properties
      *     @type int|string $min_properties
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $required
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $array
+     *     @type string[] $required
+     *     @type string[] $array
      *           Items in 'array' must be unique.
-     *     @type array<int>|\Google\Protobuf\Internal\RepeatedField $type
+     *     @type int[] $type
      *     @type string $format
      *           `Format`
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $enum
+     *     @type string[] $enum
      *           Items in `enum` must be unique https://tools.ietf.org/html/draft-fge-json-schema-validation-00#section-5.5.1
      *     @type \Grpc\Gateway\Protoc_gen_openapiv2\Options\JSONSchema\FieldConfiguration $field_configuration
      *           Additional field level properties used when generating the OpenAPI v2 file.
@@ -697,7 +697,7 @@ class JSONSchema extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string required = 26 [json_name = "required"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getRequired()
     {
@@ -706,7 +706,7 @@ class JSONSchema extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string required = 26 [json_name = "required"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setRequired($var)
@@ -721,7 +721,7 @@ class JSONSchema extends \Google\Protobuf\Internal\Message
      * Items in 'array' must be unique.
      *
      * Generated from protobuf field <code>repeated string array = 34 [json_name = "array"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getArray()
     {
@@ -732,7 +732,7 @@ class JSONSchema extends \Google\Protobuf\Internal\Message
      * Items in 'array' must be unique.
      *
      * Generated from protobuf field <code>repeated string array = 34 [json_name = "array"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setArray($var)
@@ -745,7 +745,7 @@ class JSONSchema extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.JSONSchema.JSONSchemaSimpleTypes type = 35 [json_name = "type"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<int>
      */
     public function getType()
     {
@@ -754,7 +754,7 @@ class JSONSchema extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.JSONSchema.JSONSchemaSimpleTypes type = 35 [json_name = "type"];</code>
-     * @param array<int>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param int[] $var
      * @return $this
      */
     public function setType($var)
@@ -795,7 +795,7 @@ class JSONSchema extends \Google\Protobuf\Internal\Message
      * Items in `enum` must be unique https://tools.ietf.org/html/draft-fge-json-schema-validation-00#section-5.5.1
      *
      * Generated from protobuf field <code>repeated string enum = 46 [json_name = "enum"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getEnum()
     {
@@ -806,7 +806,7 @@ class JSONSchema extends \Google\Protobuf\Internal\Message
      * Items in `enum` must be unique https://tools.ietf.org/html/draft-fge-json-schema-validation-00#section-5.5.1
      *
      * Generated from protobuf field <code>repeated string enum = 46 [json_name = "enum"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setEnum($var)

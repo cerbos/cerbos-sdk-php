@@ -6,8 +6,8 @@
 namespace Cerbos\Request\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.request.v1.PlaygroundEvaluateRequest</code>
@@ -46,10 +46,10 @@ class PlaygroundEvaluateRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $playground_id
-     *     @type array<\Cerbos\Request\V1\File>|\Google\Protobuf\Internal\RepeatedField $files
+     *     @type \Cerbos\Request\V1\File[] $files
      *     @type \Cerbos\Engine\V1\Principal $principal
      *     @type \Cerbos\Engine\V1\Resource $resource
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $actions
+     *     @type string[] $actions
      *     @type \Cerbos\Request\V1\AuxData $aux_data
      * }
      */
@@ -82,7 +82,7 @@ class PlaygroundEvaluateRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.request.v1.File files = 2 [json_name = "files", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Request\V1\File>
      */
     public function getFiles()
     {
@@ -91,7 +91,7 @@ class PlaygroundEvaluateRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.request.v1.File files = 2 [json_name = "files", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Request\V1\File>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Request\V1\File[] $var
      * @return $this
      */
     public function setFiles($var)
@@ -168,7 +168,7 @@ class PlaygroundEvaluateRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 5 [json_name = "actions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getActions()
     {
@@ -177,7 +177,7 @@ class PlaygroundEvaluateRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string actions = 5 [json_name = "actions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setActions($var)

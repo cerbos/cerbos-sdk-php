@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1\TestResults;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestResults.Details</code>
@@ -35,7 +35,7 @@ class Details extends \Google\Protobuf\Internal\Message
      *     @type string $error
      *     @type \Cerbos\Policy\V1\TestResults\Success $success
      *     @type string $skip_reason
-     *     @type array<\Cerbos\Engine\V1\Trace>|\Google\Protobuf\Internal\RepeatedField $engine_trace
+     *     @type \Cerbos\Engine\V1\Trace[] $engine_trace
      * }
      */
     public function __construct($data = NULL) {
@@ -175,7 +175,7 @@ class Details extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.Trace engine_trace = 4 [json_name = "engineTrace"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\Trace>
      */
     public function getEngineTrace()
     {
@@ -184,7 +184,7 @@ class Details extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.Trace engine_trace = 4 [json_name = "engineTrace"];</code>
-     * @param array<\Cerbos\Engine\V1\Trace>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\Trace[] $var
      * @return $this
      */
     public function setEngineTrace($var)

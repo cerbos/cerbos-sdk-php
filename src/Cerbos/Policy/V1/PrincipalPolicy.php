@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.PrincipalPolicy</code>
@@ -51,7 +51,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
      *
      *     @type string $principal
      *     @type string $version
-     *     @type array<\Cerbos\Policy\V1\PrincipalRule>|\Google\Protobuf\Internal\RepeatedField $rules
+     *     @type \Cerbos\Policy\V1\PrincipalRule[] $rules
      *     @type string $scope
      *     @type \Cerbos\Policy\V1\Variables $variables
      *     @type int $scope_permissions
@@ -109,7 +109,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.PrincipalRule rules = 3 [json_name = "rules"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\PrincipalRule>
      */
     public function getRules()
     {
@@ -118,7 +118,7 @@ class PrincipalPolicy extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.PrincipalRule rules = 3 [json_name = "rules"];</code>
-     * @param array<\Cerbos\Policy\V1\PrincipalRule>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\PrincipalRule[] $var
      * @return $this
      */
     public function setRules($var)

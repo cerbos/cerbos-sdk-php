@@ -6,8 +6,8 @@
 namespace Google\Api\Expr\V1alpha1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Source information collected at parse time.
@@ -85,7 +85,7 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      *           relative to this location.
      *           The location could be a file, UI element, or similar. For example,
      *           `acme/app/AnvilPolicy.cel`.
-     *     @type array<int>|\Google\Protobuf\Internal\RepeatedField $line_offsets
+     *     @type int[] $line_offsets
      *           Monotonically increasing list of code point offsets where newlines
      *           `\n` appear.
      *           The line number of a given position is the index `i` where for a given
@@ -102,7 +102,7 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      *           `list.exists(e, e > 10)` translates to a comprehension expression. The key
      *           in the map corresponds to the expression id of the expanded macro, and the
      *           value is the call `Expr` that was replaced.
-     *     @type array<\Google\Api\Expr\V1alpha1\SourceInfo\Extension>|\Google\Protobuf\Internal\RepeatedField $extensions
+     *     @type \Google\Api\Expr\V1alpha1\SourceInfo\Extension[] $extensions
      *           A list of tags for extensions that were used while parsing or type checking
      *           the source expression. For example, optimizations that require special
      *           runtime support may be specified.
@@ -182,7 +182,7 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      * column may be derivd from `id_positions[id] - line_offsets[i]`.
      *
      * Generated from protobuf field <code>repeated int32 line_offsets = 3 [json_name = "lineOffsets"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<int>
      */
     public function getLineOffsets()
     {
@@ -197,7 +197,7 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      * column may be derivd from `id_positions[id] - line_offsets[i]`.
      *
      * Generated from protobuf field <code>repeated int32 line_offsets = 3 [json_name = "lineOffsets"];</code>
-     * @param array<int>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param int[] $var
      * @return $this
      */
     public function setLineOffsets($var)
@@ -283,7 +283,7 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      * report an error if the extension is unsupported.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.SourceInfo.Extension extensions = 6 [json_name = "extensions"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\Expr\V1alpha1\SourceInfo\Extension>
      */
     public function getExtensions()
     {
@@ -299,7 +299,7 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      * report an error if the extension is unsupported.
      *
      * Generated from protobuf field <code>repeated .google.api.expr.v1alpha1.SourceInfo.Extension extensions = 6 [json_name = "extensions"];</code>
-     * @param array<\Google\Api\Expr\V1alpha1\SourceInfo\Extension>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\Expr\V1alpha1\SourceInfo\Extension[] $var
      * @return $this
      */
     public function setExtensions($var)

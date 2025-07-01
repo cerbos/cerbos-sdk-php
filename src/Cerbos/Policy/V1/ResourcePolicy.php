@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.ResourcePolicy</code>
@@ -59,8 +59,8 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
      *
      *     @type string $resource
      *     @type string $version
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $import_derived_roles
-     *     @type array<\Cerbos\Policy\V1\ResourceRule>|\Google\Protobuf\Internal\RepeatedField $rules
+     *     @type string[] $import_derived_roles
+     *     @type \Cerbos\Policy\V1\ResourceRule[] $rules
      *     @type string $scope
      *     @type \Cerbos\Policy\V1\Schemas $schemas
      *     @type \Cerbos\Policy\V1\Variables $variables
@@ -119,7 +119,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getImportDerivedRoles()
     {
@@ -128,7 +128,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated string import_derived_roles = 3 [json_name = "importDerivedRoles"];</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setImportDerivedRoles($var)
@@ -141,7 +141,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.ResourceRule rules = 4 [json_name = "rules"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\ResourceRule>
      */
     public function getRules()
     {
@@ -150,7 +150,7 @@ class ResourcePolicy extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.ResourceRule rules = 4 [json_name = "rules"];</code>
-     * @param array<\Cerbos\Policy\V1\ResourceRule>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\ResourceRule[] $var
      * @return $this
      */
     public function setRules($var)

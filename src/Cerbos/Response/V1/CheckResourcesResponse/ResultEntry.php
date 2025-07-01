@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1\CheckResourcesResponse;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.response.v1.CheckResourcesResponse.ResultEntry</code>
@@ -43,9 +43,9 @@ class ResultEntry extends \Google\Protobuf\Internal\Message
      *
      *     @type \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Resource $resource
      *     @type array|\Google\Protobuf\Internal\MapField $actions
-     *     @type array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $validation_errors
+     *     @type \Cerbos\Schema\V1\ValidationError[] $validation_errors
      *     @type \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Meta $meta
-     *     @type array<\Cerbos\Engine\V1\OutputEntry>|\Google\Protobuf\Internal\RepeatedField $outputs
+     *     @type \Cerbos\Engine\V1\OutputEntry[] $outputs
      * }
      */
     public function __construct($data = NULL) {
@@ -109,7 +109,7 @@ class ResultEntry extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 3 [json_name = "validationErrors", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Schema\V1\ValidationError>
      */
     public function getValidationErrors()
     {
@@ -118,7 +118,7 @@ class ResultEntry extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.schema.v1.ValidationError validation_errors = 3 [json_name = "validationErrors", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Schema\V1\ValidationError>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Schema\V1\ValidationError[] $var
      * @return $this
      */
     public function setValidationErrors($var)
@@ -163,7 +163,7 @@ class ResultEntry extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry outputs = 5 [json_name = "outputs", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\OutputEntry>
      */
     public function getOutputs()
     {
@@ -172,7 +172,7 @@ class ResultEntry extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry outputs = 5 [json_name = "outputs", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Engine\V1\OutputEntry>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\OutputEntry[] $var
      * @return $this
      */
     public function setOutputs($var)

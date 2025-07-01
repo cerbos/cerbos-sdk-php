@@ -6,8 +6,8 @@
 namespace Cerbos\Engine\V1\PlanResourcesFilter;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.engine.v1.PlanResourcesFilter.Expression</code>
@@ -30,7 +30,7 @@ class Expression extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $operator
-     *     @type array<\Cerbos\Engine\V1\PlanResourcesFilter\Expression\Operand>|\Google\Protobuf\Internal\RepeatedField $operands
+     *     @type \Cerbos\Engine\V1\PlanResourcesFilter\Expression\Operand[] $operands
      * }
      */
     public function __construct($data = NULL) {
@@ -62,7 +62,7 @@ class Expression extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.PlanResourcesFilter.Expression.Operand operands = 2 [json_name = "operands"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\PlanResourcesFilter\Expression\Operand>
      */
     public function getOperands()
     {
@@ -71,7 +71,7 @@ class Expression extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.PlanResourcesFilter.Expression.Operand operands = 2 [json_name = "operands"];</code>
-     * @param array<\Cerbos\Engine\V1\PlanResourcesFilter\Expression\Operand>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\PlanResourcesFilter\Expression\Operand[] $var
      * @return $this
      */
     public function setOperands($var)

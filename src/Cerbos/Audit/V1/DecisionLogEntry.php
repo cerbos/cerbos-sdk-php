@@ -6,8 +6,8 @@
 namespace Cerbos\Audit\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.audit.v1.DecisionLogEntry</code>
@@ -55,6 +55,10 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.cerbos.audit.v1.AuditTrail audit_trail = 16 [json_name = "auditTrail"];</code>
      */
     protected $audit_trail = null;
+    /**
+     * Generated from protobuf field <code>bool oversized = 17 [json_name = "oversized"];</code>
+     */
+    protected $oversized = false;
     protected $method;
 
     /**
@@ -66,9 +70,9 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      *     @type string $call_id
      *     @type \Google\Protobuf\Timestamp $timestamp
      *     @type \Cerbos\Audit\V1\Peer $peer
-     *     @type array<\Cerbos\Engine\V1\CheckInput>|\Google\Protobuf\Internal\RepeatedField $inputs
+     *     @type \Cerbos\Engine\V1\CheckInput[] $inputs
      *           Deprecated. Use method.check_resources.inputs instead.
-     *     @type array<\Cerbos\Engine\V1\CheckOutput>|\Google\Protobuf\Internal\RepeatedField $outputs
+     *     @type \Cerbos\Engine\V1\CheckOutput[] $outputs
      *           Deprecated. Use method.check_resources.outputs instead.
      *     @type string $error
      *           Deprecated. Use method.check_resources.error instead.
@@ -76,6 +80,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Audit\V1\DecisionLogEntry\PlanResources $plan_resources
      *     @type array|\Google\Protobuf\Internal\MapField $metadata
      *     @type \Cerbos\Audit\V1\AuditTrail $audit_trail
+     *     @type bool $oversized
      * }
      */
     public function __construct($data = NULL) {
@@ -173,7 +178,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      * Deprecated. Use method.check_resources.inputs instead.
      *
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckInput inputs = 4 [json_name = "inputs", deprecated = true];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\CheckInput>
      * @deprecated
      */
     public function getInputs()
@@ -188,7 +193,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      * Deprecated. Use method.check_resources.inputs instead.
      *
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckInput inputs = 4 [json_name = "inputs", deprecated = true];</code>
-     * @param array<\Cerbos\Engine\V1\CheckInput>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\CheckInput[] $var
      * @return $this
      * @deprecated
      */
@@ -207,7 +212,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      * Deprecated. Use method.check_resources.outputs instead.
      *
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckOutput outputs = 5 [json_name = "outputs", deprecated = true];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Engine\V1\CheckOutput>
      * @deprecated
      */
     public function getOutputs()
@@ -222,7 +227,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      * Deprecated. Use method.check_resources.outputs instead.
      *
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.CheckOutput outputs = 5 [json_name = "outputs", deprecated = true];</code>
-     * @param array<\Cerbos\Engine\V1\CheckOutput>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Engine\V1\CheckOutput[] $var
      * @return $this
      * @deprecated
      */
@@ -373,6 +378,28 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Audit\V1\AuditTrail::class);
         $this->audit_trail = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool oversized = 17 [json_name = "oversized"];</code>
+     * @return bool
+     */
+    public function getOversized()
+    {
+        return $this->oversized;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool oversized = 17 [json_name = "oversized"];</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setOversized($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->oversized = $var;
 
         return $this;
     }

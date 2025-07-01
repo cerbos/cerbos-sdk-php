@@ -6,8 +6,8 @@
 namespace Cerbos\Policy\V1\TestResults;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.policy.v1.TestResults.Summary</code>
@@ -35,7 +35,7 @@ class Summary extends \Google\Protobuf\Internal\Message
      *
      *     @type int $overall_result
      *     @type int $tests_count
-     *     @type array<\Cerbos\Policy\V1\TestResults\Tally>|\Google\Protobuf\Internal\RepeatedField $result_counts
+     *     @type \Cerbos\Policy\V1\TestResults\Tally[] $result_counts
      * }
      */
     public function __construct($data = NULL) {
@@ -89,7 +89,7 @@ class Summary extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.Tally result_counts = 3 [json_name = "resultCounts"];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Policy\V1\TestResults\Tally>
      */
     public function getResultCounts()
     {
@@ -98,7 +98,7 @@ class Summary extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.policy.v1.TestResults.Tally result_counts = 3 [json_name = "resultCounts"];</code>
-     * @param array<\Cerbos\Policy\V1\TestResults\Tally>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Policy\V1\TestResults\Tally[] $var
      * @return $this
      */
     public function setResultCounts($var)

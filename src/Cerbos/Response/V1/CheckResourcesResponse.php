@@ -6,8 +6,8 @@
 namespace Cerbos\Response\V1;
 
 use Google\Protobuf\Internal\GPBType;
-use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Generated from protobuf message <code>cerbos.response.v1.CheckResourcesResponse</code>
@@ -34,7 +34,7 @@ class CheckResourcesResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $request_id
-     *     @type array<\Cerbos\Response\V1\CheckResourcesResponse\ResultEntry>|\Google\Protobuf\Internal\RepeatedField $results
+     *     @type \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry[] $results
      *     @type string $cerbos_call_id
      * }
      */
@@ -67,7 +67,7 @@ class CheckResourcesResponse extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.CheckResourcesResponse.ResultEntry results = 2 [json_name = "results", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Cerbos\Response\V1\CheckResourcesResponse\ResultEntry>
      */
     public function getResults()
     {
@@ -76,7 +76,7 @@ class CheckResourcesResponse extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .cerbos.response.v1.CheckResourcesResponse.ResultEntry results = 2 [json_name = "results", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
-     * @param array<\Cerbos\Response\V1\CheckResourcesResponse\ResultEntry>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry[] $var
      * @return $this
      */
     public function setResults($var)

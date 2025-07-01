@@ -16,7 +16,7 @@ class Visibility
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\xD3\x02\x0A\x1Bgoogle/api/visibility.proto\x12\x0Agoogle.api\x1A google/protobuf/descriptor.proto\">\x0A\x0AVisibility\x120\x0A\x05rules\x18\x01 \x03(\x0B2\x1A.google.api.VisibilityRuleR\x05rules\"N\x0A\x0EVisibilityRule\x12\x1A\x0A\x08selector\x18\x01 \x01(\x09R\x08selector\x12 \x0A\x0Brestriction\x18\x02 \x01(\x09R\x0BrestrictionBn\x0A\x0Ecom.google.apiB\x0FVisibilityProtoP\x01Z?google.golang.org/genproto/googleapis/api/visibility;visibility\xF8\x01\x01\xA2\x02\x04GAPIb\x06proto3"
+            "\x0A\xD0\x02\x0A\x1Bgoogle/api/visibility.proto\x12\x0Agoogle.api\x1A google/protobuf/descriptor.proto\">\x0A\x0AVisibility\x120\x0A\x05rules\x18\x01 \x03(\x0B2\x1A.google.api.VisibilityRuleR\x05rules\"N\x0A\x0EVisibilityRule\x12\x1A\x0A\x08selector\x18\x01 \x01(\x09R\x08selector\x12 \x0A\x0Brestriction\x18\x02 \x01(\x09R\x0BrestrictionBk\x0A\x0Ecom.google.apiB\x0FVisibilityProtoP\x01Z?google.golang.org/genproto/googleapis/api/visibility;visibility\xA2\x02\x04GAPIb\x06proto3"
         , true);
 
         static::$is_initialized = true;
