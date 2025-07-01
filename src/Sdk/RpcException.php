@@ -78,10 +78,10 @@ final class RpcException extends Exception
      */
     private static function message(GrpcStatus $grpcStatus, ?string $details) : string {
         if (isset($details)) {
-            return sprintf('gRPC request failed: RpcException: %s: code: %d, details: %s', GrpcStatus::toString($grpcStatus), $grpcStatus->value, $details);
+            return sprintf('RpcException: %s: code: %d, details: %s', GrpcStatus::toString($grpcStatus), $grpcStatus->value, $details);
         }
 
-        return sprintf('gRPC request failed: RpcException: %s: code: %d', GrpcStatus::toString($grpcStatus), $grpcStatus->value);
+        return sprintf('RpcException: %s: code: %d', GrpcStatus::toString($grpcStatus), $grpcStatus->value);
     }
 }
 

@@ -8,7 +8,6 @@ namespace Cerbos\Test\Sdk\Cloud\Store\V1;
 use Cerbos\Sdk\Cloud\Store\V1\ChangeDetails;
 use Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Internal;
 use Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Uploader;
-use Cerbos\Sdk\Cloud\Store\V1\File;
 use Cerbos\Sdk\Cloud\Store\V1\FileOp;
 use Cerbos\Sdk\Cloud\Store\V1\GetFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\ListFilesRequest;
