@@ -23,7 +23,6 @@ final class HubClient
 
     /**
      * @return StoreClient
-     * @throws Exception
      */
     public function storeClient(): StoreClient {
         return $this->storeClient;

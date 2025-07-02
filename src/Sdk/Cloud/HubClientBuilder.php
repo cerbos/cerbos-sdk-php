@@ -15,22 +15,37 @@ use Exception;
 final class HubClientBuilder
 {
     private string $hostname;
-    private ?Credentials $credentials;
+    private Credentials $credentials;
+    private const string defaultHostname = "api.cerbos.cloud";
 
     /**
      * @param string $hostname
+     * @param string $clientId
+     * @param string $clientSecret
      */
-    private function __construct(string $hostname) {
+    private function __construct(string $hostname, string $clientId, string $clientSecret) {
+        if (empty($hostname)) {
+            throw new Exception("hostname must be specified");
+        }
+
+        if (empty($clientId) || empty($clientSecret)) {
+            throw new Exception("clientId and clientSecret must be specified");
+        }
+
         $this->hostname = $hostname;
-        $this->credentials = null;
+        $this->credentials = new Credentials($clientId, $clientSecret);
     }
 
     /**
-     * @param string $hostname
      * @return HubClientBuilder
+     * @throws Exception when clientId or clientSecret is not specified
      */
-    public static function newInstance(string $hostname): HubClientBuilder {
-        return new HubClientBuilder($hostname);
+    public static function fromEnv(): HubClientBuilder {
+        $hostname = HubClientBuilder::getEnvOrDefault("CERBOS_HUB_API_ENDPOINT", self::defaultHostname);
+        $clientId = HubClientBuilder::getEnvOrDefault("CERBOS_HUB_CLIENT_ID", "");
+        $clientSecret = HubClientBuilder::getEnvOrDefault("CERBOS_HUB_CLIENT_SECRET", "");
+
+        return new HubClientBuilder($hostname, $clientId, $clientSecret);
     }
 
     /**
@@ -38,9 +53,24 @@ final class HubClientBuilder
      * @param string $clientSecret
      * @return $this
      */
-    public function withCredentials(string $clientId, string $clientSecret): HubClientBuilder {
-        $this->credentials = new Credentials($clientId, $clientSecret);
-        return $this;
+    public static function fromCredentials(string $clientId, string $clientSecret): HubClientBuilder {
+        $hostname = HubClientBuilder::getEnvOrDefault("CERBOS_HUB_API_ENDPOINT", self::defaultHostname);
+
+        return new HubClientBuilder($hostname, $clientId, $clientSecret);
+    }
+
+    /**
+     * @param string $environment environment variable name
+     * @param string $default default value to be returned if the environment variable is not set
+     * @return string
+     */
+    public static function getEnvOrDefault(string $environment, string $default): string {
+        $value = getenv($environment);
+        if (is_string($value) && !empty($value)) {
+            return $value;
+        }
+
+        return $default;
     }
 
     /**
@@ -48,10 +78,6 @@ final class HubClientBuilder
      * @throws Exception
      */
     public function build(): HubClient {
-        if (is_null($this->credentials)) {
-            throw new Exception("credentials must be specified");
-        }
-
         $channel = new \Grpc\Channel(
             $this->hostname,
             [
