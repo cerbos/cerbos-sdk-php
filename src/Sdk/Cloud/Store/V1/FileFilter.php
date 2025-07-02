@@ -24,6 +24,21 @@ final class FileFilter {
     }
 
     /**
+     * @param string $contains
+     * @return FileFilter
+     */
+    public static function pathContains(
+        string $contains
+    ): FileFilter
+    {
+        $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
+            'contains' => $contains
+        ]);
+
+        return new FileFilter($stringMatch);
+    }
+
+    /**
      * @param string $equals
      * @return FileFilter
      */
@@ -48,21 +63,6 @@ final class FileFilter {
     {
         $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
             'in' => $inList->toInList()
-        ]);
-
-        return new FileFilter($stringMatch);
-    }
-
-    /**
-     * @param string $like
-     * @return FileFilter
-     */
-    public static function pathLike(
-        string $like
-    ): FileFilter
-    {
-        $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
-            'like' => $like
         ]);
 
         return new FileFilter($stringMatch);

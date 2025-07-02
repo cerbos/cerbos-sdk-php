@@ -18,6 +18,10 @@ class ErrDetailOperationDiscarded extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int64 current_store_version = 1 [json_name = "currentStoreVersion"];</code>
      */
     protected $current_store_version = 0;
+    /**
+     * Generated from protobuf field <code>repeated string ignored_files = 2 [json_name = "ignoredFiles"];</code>
+     */
+    private $ignored_files;
 
     /**
      * Constructor.
@@ -26,6 +30,7 @@ class ErrDetailOperationDiscarded extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int|string $current_store_version
+     *     @type string[] $ignored_files
      * }
      */
     public function __construct($data = NULL) {
@@ -51,6 +56,28 @@ class ErrDetailOperationDiscarded extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt64($var);
         $this->current_store_version = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string ignored_files = 2 [json_name = "ignoredFiles"];</code>
+     * @return RepeatedField<string>
+     */
+    public function getIgnoredFiles()
+    {
+        return $this->ignored_files;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string ignored_files = 2 [json_name = "ignoredFiles"];</code>
+     * @param string[] $var
+     * @return $this
+     */
+    public function setIgnoredFiles($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->ignored_files = $arr;
 
         return $this;
     }
