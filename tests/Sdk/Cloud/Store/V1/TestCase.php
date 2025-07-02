@@ -24,34 +24,39 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     {
         parent::setUp();
 
-        $apiEndpoint = getenv("CERBOS_HUB_API_ENDPOINT");
-        $clientId = getenv("CERBOS_HUB_CLIENT_ID");
-        $clientSecret = getenv("CERBOS_HUB_CLIENT_SECRET");
+        $envApiEndpoint = getenv("CERBOS_HUB_API_ENDPOINT");
+        $envClientId = getenv("CERBOS_HUB_CLIENT_ID");
+        $envClientSecret = getenv("CERBOS_HUB_CLIENT_SECRET");
+
+        if (
+            !is_string($envApiEndpoint)
+            || !is_string($envClientId)
+            || !is_string($envClientSecret)
+        ) {
+            $this->markTestSkipped("Skipping the test because CERBOS_HUB_API_ENDPOINT, CERBOS_HUB_CLIENT_ID or CERBOS_HUB_CLIENT_SECRET environment variables must be specified.");
+        }
+
+        if (
+            empty($envApiEndpoint)
+            || empty($envClientId)
+            || empty($envClientSecret)
+        ) {
+            $this->markTestSkipped("Skipping the test because value of the CERBOS_HUB_API_ENDPOINT, CERBOS_HUB_CLIENT_ID or CERBOS_HUB_CLIENT_SECRET environment variables length must be greater than zero.");
+        }
+
+        $this->hubClient = HubClientBuilder::fromEnv()->build();
+
         $storeId = getenv("CERBOS_HUB_STORE_ID");
-
-        if (!is_string($apiEndpoint))
-        {
-            $this->markTestSkipped("Skipping the test, CERBOS_HUB_API_ENDPOINT environment variable is not set!");
-        }
-
-        if (!is_string($clientId))
-        {
-            $this->markTestSkipped("Skipping the test, CERBOS_HUB_CLIENT_ID environment variable is not set!");
-        }
-
-        if (!is_string($clientSecret))
-        {
-            $this->markTestSkipped("Skipping the test, CERBOS_HUB_CLIENT_SECRET environment variable is not set!");
-        }
-
         if (!is_string($storeId))
         {
-            $this->markTestSkipped("Skipping the test, CERBOS_HUB_STORE_ID environment variable is not set!");
+            $this->markTestSkipped("Skipping the test because CERBOS_HUB_STORE_ID environment variable must be specified.");
         }
-        $this->storeId = $storeId;
 
-        $this->hubClient = HubClientBuilder::newInstance($apiEndpoint)
-            ->withCredentials($clientId, $clientSecret)
-            ->build();
+        if (empty($storeId))
+        {
+            $this->markTestSkipped("Skipping the test because value of the CERBOS_HUB_STORE_ID environment variable must be greater than zero.");
+        }
+
+        $this->storeId = $storeId;
     }
 }
