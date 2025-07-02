@@ -23,7 +23,7 @@ class StringMatch extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $equals
-     *     @type string $like
+     *     @type string $contains
      *     @type \Cerbos\Cloud\Store\V1\StringMatch\InList $in
      * }
      */
@@ -60,25 +60,25 @@ class StringMatch extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string like = 2 [json_name = "like"];</code>
+     * Generated from protobuf field <code>string contains = 2 [json_name = "contains"];</code>
      * @return string
      */
-    public function getLike()
+    public function getContains()
     {
         return $this->readOneof(2);
     }
 
-    public function hasLike()
+    public function hasContains()
     {
         return $this->hasOneof(2);
     }
 
     /**
-     * Generated from protobuf field <code>string like = 2 [json_name = "like"];</code>
+     * Generated from protobuf field <code>string contains = 2 [json_name = "contains"];</code>
      * @param string $var
      * @return $this
      */
-    public function setLike($var)
+    public function setContains($var)
     {
         GPBUtil::checkString($var, True);
         $this->writeOneof(2, $var);
