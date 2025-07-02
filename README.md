@@ -18,7 +18,9 @@ composer require cerbos/cerbos-sdk-php
 
 # Examples
 
-## Creating a gRPC client
+## Cerbos
+
+### Creating a gRPC client
 
 ```php
 $client = CerbosClientBuilder::newInstance($this->host)
@@ -26,7 +28,7 @@ $client = CerbosClientBuilder::newInstance($this->host)
     ->build();
 ```
 
-## Check a single principal and resource
+### Check a single principal and resource
 
 ```php
 $request = CheckResourcesRequest::newInstance()
@@ -59,7 +61,7 @@ if ($resultEntry->isAllowed("approve")) { // returns true if `approve` action is
 }
 ```
 
-## Check a single principal and multiple resource & action pairs
+### Check a single principal and multiple resource & action pairs
 
 ```php
 $request = CheckResourcesRequest::newInstance()
@@ -101,7 +103,7 @@ if ($resultEntry->isAllowed("defer")) { // returns true if `defer` action is all
 }
 ```
 
-## Plan Resources API
+### Plan Resources API
 
 ```php
 $request = PlanResourcesRequest::newInstance()
@@ -137,89 +139,109 @@ else {
 > ->withActions(array("create", "delete"))
 > ``` 
 
-# Upgrading from `v0.1.x`
+## Cerbos Hub
 
-Newer versions of the library make use of gRPC libraries. This is in order to make the integration with Cerbos easier to manage. This change requires existing users of 0.1.x versions to perform some migration steps.
+### Creating a gRPC client
 
-## gRPC
-
-
-This library requires the `gRPC` extension to be installed. Follow the [instructions for your environment](https://cloud.google.com/php/grpc#installing_the_grpc_extension) to install the extension.
-
-## Differences between SDK API v0.1.x
-
-### PHP version requirements
-
-The minimum supported version of PHP is `8.3`.
-
-### Simpler `CerbosClientBuilder`
-
-`CerbosClientBuilder` is simpler and only expects `hostname` as a parameter.
 ```php
-$client = CerbosClientBuilder::newInstance("localhost:3593")
-    ->withPlaintext(true)
+use Cerbos\Sdk\Cloud\HubClientBuilder;
+
+$hubClient = HubClientBuilder::fromEnv() // Gets clientId and clientSecret from environment variables CERBOS_HUB_CLIENT_ID and CERBOS_HUB_CLIENT_SECRET.
     ->build();
+
+$storeClient = $hubClient->storeClient();
 ```
 
-### Renamed `ResourceAction` to `ResourceEntry`
+### GetFiles API
 
-The `ResourceAction` class has been renamed to `ResourceEntry`.
-
-### New `AttributeValue` builder class
-
-Principal and resource attributes must be created using the `AttributeValue` builder class.
-
-Creating a bool value;
 ```php
-$val = AttributeValue::boolValue(true);
+use Cerbos\Sdk\Cloud\Store\V1\GetFilesRequest;
+
+$request = GetFilesRequest::newInstance(
+    $storeId,
+    "resource_policies/leave_request.yaml",
+    "resource_policies/purchase_order.yaml"
+);
+
+$response = $storeClient->getFiles($request);
 ```
 
-Creating a string value;
+### ListFiles API
+
 ```php
-$val = AttributeValue::stringValue("marketing");
+use Cerbos\Sdk\Cloud\Store\V1\FileFilter;
+use Cerbos\Sdk\Cloud\Store\V1\ListFilesRequest;
+
+$request = ListFilesRequest::newInstance($storeId);
+
+$requestWithFilter = ListFilesRequest::withFilter(
+    $storeId,
+    FileFilter::pathContains(self::something)
+);
+
+$response = $storeClient->listFiles($request);
+$filteredResponse = $storeClient->listFiles($requestWithFilter);
 ```
 
-### New `CheckResourcesRequest` and `PlanResourcesRequest` builder classes
+### ModifyFiles API
 
-Use the new builder classes to construct `CheckResources` and `PlanResources` requests.
 ```php
-$request = CheckResourcesRequest::newInstance()
-    ->withRequestId(RequestId::generate())
-    ->withPrincipal(
-        Principal::newInstance("john")
-            ->withRole("employee")
-            ->withPolicyVersion("20210210")
-            ->withAttribute("department", "marketing")
+use Cerbos\Sdk\Cloud\Store\V1\ChangeDetails;
+use Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Internal;
+use Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Uploader;
+use Cerbos\Sdk\Cloud\Store\V1\FileOp;
+use Cerbos\Sdk\Cloud\Store\V1\ModifyFilesRequest;
+
+$path = __DIR__ . "./cerbos/policies/leave_request.yaml";
+$realPath = realpath($path);
+$fileContents = file_get_contents($realPath);
+
+$requestAddOrUpdate = ModifyFilesRequest::withChangeDetails(
+    $storeId,
+    ChangeDetails::internal(
+        'myApp/ModifyFiles/Op=AddOrUpdate',
+        Uploader::newInstance('myApp'),
+        Internal::newInstance('sdk')
+    ),
+    FileOp::addOrUpdate('policies/leave_request.yaml', $fileContents)
+);
+
+$requestDelete = ModifyFilesRequest::withChangeDetails(
+    $storeId,
+    ChangeDetails::internal(
+        'myApp/ModifyFiles/Op=Delete',
+        Uploader::newInstance('myApp'),
+        Internal::newInstance('sdk')
+    ),
+    FileOp::delete('policies/leave_request.yaml')
+);
+
+$responseAddOrUpdate = $storeClient->modifyFiles($requestAddOrUpdate);
+$responseDelete = $storeClient->modifyFiles($requestDelete);
+```
+
+### ReplaceFiles API
+
+```php
+use Cerbos\Sdk\Cloud\Store\V1\ChangeDetails;
+use Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Internal;
+use Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Uploader;
+use Cerbos\Sdk\Cloud\Store\V1\ReplaceFilesRequest;
+
+$path = __DIR__ . "./cerbos/policies.zip";
+$realPath = realpath($path);
+$fileContents = file_get_contents($realPath);
+
+$request = ReplaceFilesRequest::withZippedContents(
+    $storeId,
+    $fileContents,
+    null,
+    ChangeDetails::internal(
+        'myApp/ReplaceFiles/With=policies.zip',
+        Uploader::newInstance('myApp'),
+        Internal::newInstance('sdk')
     )
-    ->withResourceEntries(
-        array(
-            ResourceEntry::newInstance("leave_request", "xx125")
-                ->withAction("approve")
-                ->withAttribute("department", AttributeValue::stringValue("marketing")),
+);
 
-            ResourceEntry::newInstance("leave_request", "xx225")
-                ->withAction("defer")
-                ->withAttribute("department", AttributeValue::stringValue("marketing"))
-        )
-    );
+$response = $storeClient->replaceFiles($request);
 ```
-
-```php
-$request = PlanResourcesRequest::newInstance()
-    ->withRequestId(RequestId::generate())
-    ->withAction("approve")
-    ->withPrincipal(
-        Principal::newInstance("maggie")
-            ->withRole("manager")
-            ->withAttribute("department", AttributeValue::stringValue("marketing"))
-    )
-    ->withResource(
-        Resource::newInstance("leave_request", "xx125")
-            ->withAttribute("department", AttributeValue::stringValue("marketing"))
-    );
-```
-
-### Simpler `CerbosClient`
-
-The `checkResources` and `planResources` methods on the `CerbosClient` now accepts only a `CheckResourcesRequest` or 
-`PlanResourcesRequest` object respectively.
