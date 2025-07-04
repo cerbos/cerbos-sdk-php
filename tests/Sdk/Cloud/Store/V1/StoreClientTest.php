@@ -12,6 +12,7 @@ use Cerbos\Sdk\Cloud\Store\V1\FileOp;
 use Cerbos\Sdk\Cloud\Store\V1\GetFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\ListFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\ModifyFilesRequest;
+use Cerbos\Sdk\Cloud\Store\V1\OperationDiscardedException;
 use Cerbos\Sdk\Cloud\Store\V1\ReplaceFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\StoreClient;
 use Exception;
@@ -237,5 +238,8 @@ final class StoreClientTest extends TestCase
         }
 
         $this->assertEquals($initialStoreVersion + 2, $response->getNewStoreVersion(), "invalid store version");
+
+        $this->expectException(OperationDiscardedException::class);
+        $response = $this->client->replaceFiles($request);
     }
 }

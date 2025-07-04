@@ -13,7 +13,6 @@ use Cerbos\Sdk\Response\V1\CheckResourcesResponse\CheckResourcesResponse;
 use Cerbos\Sdk\Response\V1\PlanResourcesResponse\PlanResourcesResponse;
 use Cerbos\Sdk\Utility\Metadata;
 use Cerbos\Svc\V1\CerbosServiceClient;
-use Exception;
 
 final class CerbosClient
 {
@@ -33,8 +32,6 @@ final class CerbosClient
      * @param CheckResourcesRequest $request
      * @param array<string, array> $headers
      * @return CheckResourcesResponse
-     * @throws RpcException
-     * @throws Exception
      */
     public function checkResources(CheckResourcesRequest $request, $headers = null): CheckResourcesResponse {
         list($checkResourcesResponse, $status) = $this->csc->CheckResources($request->toCheckResourcesRequest(), Metadata::merge($this->metadata, $headers))->wait();
@@ -47,8 +44,6 @@ final class CerbosClient
      * @param PlanResourcesRequest $request
      * @param array<string, array> $headers
      * @return PlanResourcesResponse
-     * @throws RpcException
-     * @throws Exception
      */
     public function planResources(PlanResourcesRequest $request, $headers = null): PlanResourcesResponse {
         list($planResourcesResponse, $status) = $this->csc->PlanResources($request->toPlanResourcesRequest(), Metadata::merge($this->metadata, $headers))->wait();

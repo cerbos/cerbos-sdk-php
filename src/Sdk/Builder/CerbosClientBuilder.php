@@ -13,8 +13,6 @@ use Cerbos\Svc\V1\CerbosServiceClient;
 use Exception;
 use Grpc\ChannelCredentials;
 
-const playgroundInstanceHeader = "playground-instance";
-
 final class CerbosClientBuilder
 {
     private string $hostname;
@@ -24,6 +22,8 @@ final class CerbosClientBuilder
     private ?string $tlsCertificate;
     private ?string $tlsKey;
     private ?array $metadata;
+
+    private const PLAYGROUND_INSTANCE_HEADER = "playground-instance";
 
     /**
      * @param string $hostname
@@ -145,7 +145,7 @@ final class CerbosClientBuilder
             $combined = Metadata::merge(
                 $this->metadata,
                 [
-                    playgroundInstanceHeader => [ $this->playgroundInstanceId ]
+                    self::PLAYGROUND_INSTANCE_HEADER => [ $this->playgroundInstanceId ]
                 ]
             );
         }
