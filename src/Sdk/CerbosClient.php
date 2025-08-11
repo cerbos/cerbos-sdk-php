@@ -32,10 +32,13 @@ final class CerbosClient
      * @param CheckResourcesRequest $request
      * @param array<string, array> $headers
      * @return CheckResourcesResponse
+     * @psalm-suppress ArgumentTypeCoercion
+     * @psalm-suppress PossiblyNullArgument
      */
     public function checkResources(CheckResourcesRequest $request, $headers = null): CheckResourcesResponse {
         list($checkResourcesResponse, $status) = $this->csc->CheckResources($request->toCheckResourcesRequest(), Metadata::merge($this->metadata, $headers))->wait();
         RpcException::fromStatus($status);
+        NullResponseException::fromResponse($checkResourcesResponse);
 
         return new CheckResourcesResponse($checkResourcesResponse);
     }
@@ -44,10 +47,13 @@ final class CerbosClient
      * @param PlanResourcesRequest $request
      * @param array<string, array> $headers
      * @return PlanResourcesResponse
+     * @psalm-suppress ArgumentTypeCoercion
+     * @psalm-suppress PossiblyNullArgument
      */
     public function planResources(PlanResourcesRequest $request, $headers = null): PlanResourcesResponse {
         list($planResourcesResponse, $status) = $this->csc->PlanResources($request->toPlanResourcesRequest(), Metadata::merge($this->metadata, $headers))->wait();
         RpcException::fromStatus($status);
+        NullResponseException::fromResponse($planResourcesResponse);
 
         return new PlanResourcesResponse($planResourcesResponse);
     }

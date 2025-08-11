@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Apikey\V1;
 
+use Cerbos\Sdk\NullResponseException;
 use Cerbos\Sdk\RpcException;
 
 /**
@@ -26,10 +27,13 @@ final class ApiKeyClient
     /**
      * @param IssueAccessTokenRequest $request
      * @return IssueAccessTokenResponse
+     * @psalm-suppress ArgumentTypeCoercion
+     * @psalm-suppress PossiblyNullArgument
      */
     public function issueAccessToken(IssueAccessTokenRequest $request): IssueAccessTokenResponse {
         list($response, $status) = $this->client->IssueAccessToken($request->toIssueAccessTokenRequest())->wait();
         RpcException::fromStatus($status);
+        NullResponseException::fromResponse($response);
 
         return new IssueAccessTokenResponse($response);
     }
