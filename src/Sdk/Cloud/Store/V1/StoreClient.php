@@ -14,8 +14,8 @@ use Cerbos\Sdk\Cloud\Store\V1\ListFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\ListFilesResponse;
 use Cerbos\Sdk\Cloud\Store\V1\ModifyFilesRequest;
 use Cerbos\Sdk\Cloud\Store\V1\ModifyFilesResponse;
+use Cerbos\Sdk\NullResponseException;
 use Cerbos\Sdk\RpcException;
-use Exception;
 
 final class StoreClient
 {
@@ -34,11 +34,14 @@ final class StoreClient
     /**
      * @param GetFilesRequest $request
      * @return GetFilesResponse
+     * @psalm-suppress ArgumentTypeCoercion
+     * @psalm-suppress PossiblyNullArgument
      */
     public function getFiles(GetFilesRequest $request): GetFilesResponse {
         list($response, $status) = $this->client->GetFiles($request->toGetFilesRequest(), $this->authenticator->authenticate(null))->wait();
         ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
+        NullResponseException::fromResponse($response);
 
         return new GetFilesResponse($response);
     }
@@ -46,11 +49,14 @@ final class StoreClient
     /**
      * @param ListFilesRequest $request
      * @return ListFilesResponse
+     * @psalm-suppress ArgumentTypeCoercion
+     * @psalm-suppress PossiblyNullArgument
      */
     public function listFiles(ListFilesRequest $request): ListFilesResponse {
         list($response, $status) = $this->client->ListFiles($request->toListFilesRequest(), $this->authenticator->authenticate(null))->wait();
         ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
+        NullResponseException::fromResponse($response);
 
         return new ListFilesResponse($response);
     }
@@ -58,11 +64,14 @@ final class StoreClient
     /**
      * @param ModifyFilesRequest $request
      * @return ModifyFilesResponse
+     * @psalm-suppress ArgumentTypeCoercion
+     * @psalm-suppress PossiblyNullArgument
      */
     public function modifyFiles(ModifyFilesRequest $request): ModifyFilesResponse {
         list($response, $status) = $this->client->ModifyFiles($request->toModifyFilesRequest(), $this->authenticator->authenticate(null))->wait();
         ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
+        NullResponseException::fromResponse($response);
 
         return new ModifyFilesResponse($response);
     }
@@ -70,11 +79,14 @@ final class StoreClient
     /**
      * @param ReplaceFilesRequest $request
      * @return ReplaceFilesResponse
+     * @psalm-suppress ArgumentTypeCoercion
+     * @psalm-suppress PossiblyNullArgument
      */
     public function replaceFiles(ReplaceFilesRequest $request): ReplaceFilesResponse {
         list($response, $status) = $this->client->ReplaceFiles($request->toReplaceFilesRequest(), $this->authenticator->authenticate(null))->wait();
         ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
+        NullResponseException::fromResponse($response);
 
         return new ReplaceFilesResponse($response);
     }
