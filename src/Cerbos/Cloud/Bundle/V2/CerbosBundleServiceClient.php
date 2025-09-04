@@ -24,7 +24,7 @@ class CerbosBundleServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Cloud\Bundle\V2\GetBundleRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Cloud\Bundle\V2\GetBundleResponse>
      */
     public function GetBundle(\Cerbos\Cloud\Bundle\V2\GetBundleRequest $argument,
       $metadata = [], $options = []) {

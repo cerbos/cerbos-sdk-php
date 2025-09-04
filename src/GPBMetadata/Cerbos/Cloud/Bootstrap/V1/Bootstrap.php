@@ -18,7 +18,7 @@ class Bootstrap
         \GPBMetadata\Cerbos\Cloud\Bundle\V1\Bundle::initOnce();
         \GPBMetadata\Google\Protobuf\Timestamp::initOnce();
         $pool->internalAddGeneratedFile(
-            "\x0A\x95\x04\x0A)cerbos/cloud/bootstrap/v1/bootstrap.proto\x12\x19cerbos.cloud.bootstrap.v1\x1A\x1Fgoogle/protobuf/timestamp.proto\"\x94\x02\x0A\x09PDPConfig\x12E\x0A\x04meta\x18\x01 \x01(\x0B2).cerbos.cloud.bootstrap.v1.PDPConfig.MetaB\x06\xBAH\x03\xC8\x01\x01R\x04meta\x12K\x0A\x0Bbundle_info\x18\x02 \x01(\x0B2\".cerbos.cloud.bundle.v1.BundleInfoB\x06\xBAH\x03\xC8\x01\x01R\x0AbundleInfo\x1As\x0A\x04Meta\x12A\x0A\x0Acreated_at\x18\x01 \x01(\x0B2\x1A.google.protobuf.TimestampB\x06\xBAH\x03\xC8\x01\x01R\x09createdAt\x12(\x0A\x0Bcommit_hash\x18\x02 \x01(\x09B\x07\xBAH\x04r\x02\x10\x01R\x0AcommitHashB\x8C\x01\x0A!dev.cerbos.api.cloud.v1.bootstrapZGgithub.com/cerbos/cloud-api/genpb/cerbos/cloud/bootstrap/v1;bootstrapv1\xAA\x02\x1DCerbos.Api.Cloud.V1.Bootstrapb\x06proto3"
+            "\x0A\xF4\x03\x0A)cerbos/cloud/bootstrap/v1/bootstrap.proto\x12\x19cerbos.cloud.bootstrap.v1\x1A\x1Fgoogle/protobuf/timestamp.proto\"\xF3\x01\x0A\x09PDPConfig\x12=\x0A\x04meta\x18\x01 \x01(\x0B2).cerbos.cloud.bootstrap.v1.PDPConfig.MetaR\x04meta\x12C\x0A\x0Bbundle_info\x18\x02 \x01(\x0B2\".cerbos.cloud.bundle.v1.BundleInfoR\x0AbundleInfo\x1Ab\x0A\x04Meta\x129\x0A\x0Acreated_at\x18\x01 \x01(\x0B2\x1A.google.protobuf.TimestampR\x09createdAt\x12\x1F\x0A\x0Bcommit_hash\x18\x02 \x01(\x09R\x0AcommitHashB\x8C\x01\x0A!dev.cerbos.api.cloud.v1.bootstrapZGgithub.com/cerbos/cloud-api/genpb/cerbos/cloud/bootstrap/v1;bootstrapv1\xAA\x02\x1DCerbos.Api.Cloud.V1.Bootstrapb\x06proto3"
         , true);
 
         static::$is_initialized = true;

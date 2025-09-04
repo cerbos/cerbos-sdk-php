@@ -24,7 +24,7 @@ class CerbosStoreServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Cloud\Store\V1\ListFilesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Cloud\Store\V1\ListFilesResponse>
      */
     public function ListFiles(\Cerbos\Cloud\Store\V1\ListFilesRequest $argument,
       $metadata = [], $options = []) {
@@ -38,7 +38,7 @@ class CerbosStoreServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Cloud\Store\V1\GetFilesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Cloud\Store\V1\GetFilesResponse>
      */
     public function GetFiles(\Cerbos\Cloud\Store\V1\GetFilesRequest $argument,
       $metadata = [], $options = []) {
@@ -52,7 +52,7 @@ class CerbosStoreServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Cloud\Store\V1\ModifyFilesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Cloud\Store\V1\ModifyFilesResponse>
      */
     public function ModifyFiles(\Cerbos\Cloud\Store\V1\ModifyFilesRequest $argument,
       $metadata = [], $options = []) {
@@ -66,7 +66,7 @@ class CerbosStoreServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Cloud\Store\V1\ReplaceFilesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Cloud\Store\V1\ReplaceFilesResponse>
      */
     public function ReplaceFiles(\Cerbos\Cloud\Store\V1\ReplaceFilesRequest $argument,
       $metadata = [], $options = []) {

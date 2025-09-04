@@ -333,7 +333,7 @@ class Policy extends \Google\Protobuf\Internal\Message
      */
     public function getVariables()
     {
-        if ($this->variables->count() !== 0) {
+        if (count($this->variables) !== 0) {
             @trigger_error('variables is deprecated.', E_USER_DEPRECATED);
         }
         return $this->variables;
@@ -348,7 +348,7 @@ class Policy extends \Google\Protobuf\Internal\Message
     public function setVariables($var)
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::STRING);
-        if ($arr->count() !== 0) {
+        if (count($arr) !== 0) {
             @trigger_error('variables is deprecated.', E_USER_DEPRECATED);
         }
         $this->variables = $arr;

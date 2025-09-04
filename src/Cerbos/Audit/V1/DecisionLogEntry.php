@@ -59,6 +59,10 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>bool oversized = 17 [json_name = "oversized"];</code>
      */
     protected $oversized = false;
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource policy_source = 18 [json_name = "policySource"];</code>
+     */
+    protected $policy_source = null;
     protected $method;
 
     /**
@@ -81,6 +85,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      *     @type array|\Google\Protobuf\Internal\MapField $metadata
      *     @type \Cerbos\Audit\V1\AuditTrail $audit_trail
      *     @type bool $oversized
+     *     @type \Cerbos\Audit\V1\PolicySource $policy_source
      * }
      */
     public function __construct($data = NULL) {
@@ -183,7 +188,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      */
     public function getInputs()
     {
-        if ($this->inputs->count() !== 0) {
+        if (count($this->inputs) !== 0) {
             @trigger_error('inputs is deprecated.', E_USER_DEPRECATED);
         }
         return $this->inputs;
@@ -200,7 +205,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
     public function setInputs($var)
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\CheckInput::class);
-        if ($arr->count() !== 0) {
+        if (count($arr) !== 0) {
             @trigger_error('inputs is deprecated.', E_USER_DEPRECATED);
         }
         $this->inputs = $arr;
@@ -217,7 +222,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
      */
     public function getOutputs()
     {
-        if ($this->outputs->count() !== 0) {
+        if (count($this->outputs) !== 0) {
             @trigger_error('outputs is deprecated.', E_USER_DEPRECATED);
         }
         return $this->outputs;
@@ -234,7 +239,7 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
     public function setOutputs($var)
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\CheckOutput::class);
-        if ($arr->count() !== 0) {
+        if (count($arr) !== 0) {
             @trigger_error('outputs is deprecated.', E_USER_DEPRECATED);
         }
         $this->outputs = $arr;
@@ -400,6 +405,38 @@ class DecisionLogEntry extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkBool($var);
         $this->oversized = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource policy_source = 18 [json_name = "policySource"];</code>
+     * @return \Cerbos\Audit\V1\PolicySource|null
+     */
+    public function getPolicySource()
+    {
+        return $this->policy_source;
+    }
+
+    public function hasPolicySource()
+    {
+        return isset($this->policy_source);
+    }
+
+    public function clearPolicySource()
+    {
+        unset($this->policy_source);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource policy_source = 18 [json_name = "policySource"];</code>
+     * @param \Cerbos\Audit\V1\PolicySource $var
+     * @return $this
+     */
+    public function setPolicySource($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Audit\V1\PolicySource::class);
+        $this->policy_source = $var;
 
         return $this;
     }

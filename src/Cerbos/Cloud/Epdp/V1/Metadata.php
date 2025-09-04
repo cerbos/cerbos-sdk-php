@@ -83,7 +83,7 @@ class Metadata extends \Google\Protobuf\Internal\Message
      */
     public function getPolicies()
     {
-        if ($this->policies->count() !== 0) {
+        if (count($this->policies) !== 0) {
             @trigger_error('policies is deprecated.', E_USER_DEPRECATED);
         }
         return $this->policies;
@@ -98,7 +98,7 @@ class Metadata extends \Google\Protobuf\Internal\Message
     public function setPolicies($var)
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
-        if ($arr->count() !== 0) {
+        if (count($arr) !== 0) {
             @trigger_error('policies is deprecated.', E_USER_DEPRECATED);
         }
         $this->policies = $arr;

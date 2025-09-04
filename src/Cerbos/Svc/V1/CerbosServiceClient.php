@@ -24,7 +24,7 @@ class CerbosServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\CheckResourceSetRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\CheckResourceSetResponse>
      */
     public function CheckResourceSet(\Cerbos\Request\V1\CheckResourceSetRequest $argument,
       $metadata = [], $options = []) {
@@ -38,7 +38,7 @@ class CerbosServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\CheckResourceBatchRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\CheckResourceBatchResponse>
      */
     public function CheckResourceBatch(\Cerbos\Request\V1\CheckResourceBatchRequest $argument,
       $metadata = [], $options = []) {
@@ -52,7 +52,7 @@ class CerbosServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\CheckResourcesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\CheckResourcesResponse>
      */
     public function CheckResources(\Cerbos\Request\V1\CheckResourcesRequest $argument,
       $metadata = [], $options = []) {
@@ -66,7 +66,7 @@ class CerbosServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\ServerInfoRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\ServerInfoResponse>
      */
     public function ServerInfo(\Cerbos\Request\V1\ServerInfoRequest $argument,
       $metadata = [], $options = []) {
@@ -80,7 +80,7 @@ class CerbosServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\PlanResourcesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\PlanResourcesResponse>
      */
     public function PlanResources(\Cerbos\Request\V1\PlanResourcesRequest $argument,
       $metadata = [], $options = []) {

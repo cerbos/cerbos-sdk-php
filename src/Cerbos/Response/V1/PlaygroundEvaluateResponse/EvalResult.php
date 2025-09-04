@@ -128,7 +128,7 @@ class EvalResult extends \Google\Protobuf\Internal\Message
      */
     public function getEffectiveDerivedRoles()
     {
-        if ($this->effective_derived_roles->count() !== 0) {
+        if (count($this->effective_derived_roles) !== 0) {
             @trigger_error('effective_derived_roles is deprecated.', E_USER_DEPRECATED);
         }
         return $this->effective_derived_roles;
@@ -143,7 +143,7 @@ class EvalResult extends \Google\Protobuf\Internal\Message
     public function setEffectiveDerivedRoles($var)
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
-        if ($arr->count() !== 0) {
+        if (count($arr) !== 0) {
             @trigger_error('effective_derived_roles is deprecated.', E_USER_DEPRECATED);
         }
         $this->effective_derived_roles = $arr;
@@ -158,7 +158,7 @@ class EvalResult extends \Google\Protobuf\Internal\Message
      */
     public function getValidationErrors()
     {
-        if ($this->validation_errors->count() !== 0) {
+        if (count($this->validation_errors) !== 0) {
             @trigger_error('validation_errors is deprecated.', E_USER_DEPRECATED);
         }
         return $this->validation_errors;
@@ -173,7 +173,7 @@ class EvalResult extends \Google\Protobuf\Internal\Message
     public function setValidationErrors($var)
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Schema\V1\ValidationError::class);
-        if ($arr->count() !== 0) {
+        if (count($arr) !== 0) {
             @trigger_error('validation_errors is deprecated.', E_USER_DEPRECATED);
         }
         $this->validation_errors = $arr;

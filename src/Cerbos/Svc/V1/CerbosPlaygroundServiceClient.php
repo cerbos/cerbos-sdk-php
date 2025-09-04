@@ -24,7 +24,7 @@ class CerbosPlaygroundServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\PlaygroundValidateRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\PlaygroundValidateResponse>
      */
     public function PlaygroundValidate(\Cerbos\Request\V1\PlaygroundValidateRequest $argument,
       $metadata = [], $options = []) {
@@ -38,7 +38,7 @@ class CerbosPlaygroundServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\PlaygroundTestRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\PlaygroundTestResponse>
      */
     public function PlaygroundTest(\Cerbos\Request\V1\PlaygroundTestRequest $argument,
       $metadata = [], $options = []) {
@@ -52,7 +52,7 @@ class CerbosPlaygroundServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\PlaygroundEvaluateRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\PlaygroundEvaluateResponse>
      */
     public function PlaygroundEvaluate(\Cerbos\Request\V1\PlaygroundEvaluateRequest $argument,
       $metadata = [], $options = []) {
@@ -66,7 +66,7 @@ class CerbosPlaygroundServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\PlaygroundProxyRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\PlaygroundProxyResponse>
      */
     public function PlaygroundProxy(\Cerbos\Request\V1\PlaygroundProxyRequest $argument,
       $metadata = [], $options = []) {
