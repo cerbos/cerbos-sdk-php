@@ -24,7 +24,7 @@ class ApiKeyServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Cloud\Apikey\V1\IssueAccessTokenRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Cloud\Apikey\V1\IssueAccessTokenResponse>
      */
     public function IssueAccessToken(\Cerbos\Cloud\Apikey\V1\IssueAccessTokenRequest $argument,
       $metadata = [], $options = []) {

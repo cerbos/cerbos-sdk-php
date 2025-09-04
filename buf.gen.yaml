@@ -1,12 +1,12 @@
 version: v2
 
 plugins:
-  - remote: buf.build/protocolbuffers/php:v31.1
+  - remote: buf.build/protocolbuffers/php:v32.0
     out: ./src
     exclude_types:
       - buf.validate
 
-  - remote: buf.build/grpc/php:v1.72.1
+  - remote: buf.build/grpc/php:v1.74.1
     out: ./src
     exclude_types:
       - buf.validate

@@ -24,7 +24,7 @@ class CerbosLogsServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Cloud\Logs\V1\IngestRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Cloud\Logs\V1\IngestResponse>
      */
     public function Ingest(\Cerbos\Cloud\Logs\V1\IngestRequest $argument,
       $metadata = [], $options = []) {

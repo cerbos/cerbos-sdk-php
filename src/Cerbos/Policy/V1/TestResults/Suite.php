@@ -120,7 +120,7 @@ class Suite extends \Google\Protobuf\Internal\Message
      */
     public function getPrincipals()
     {
-        if ($this->principals->count() !== 0) {
+        if (count($this->principals) !== 0) {
             @trigger_error('principals is deprecated.', E_USER_DEPRECATED);
         }
         return $this->principals;
@@ -135,7 +135,7 @@ class Suite extends \Google\Protobuf\Internal\Message
     public function setPrincipals($var)
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Policy\V1\TestResults\Principal::class);
-        if ($arr->count() !== 0) {
+        if (count($arr) !== 0) {
             @trigger_error('principals is deprecated.', E_USER_DEPRECATED);
         }
         $this->principals = $arr;

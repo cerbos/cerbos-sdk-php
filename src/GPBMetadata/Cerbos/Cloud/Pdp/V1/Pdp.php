@@ -16,7 +16,7 @@ class Pdp
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\x88\x02\x0A\x1Dcerbos/cloud/pdp/v1/pdp.proto\x12\x13cerbos.cloud.pdp.v1\"T\x0A\x0AIdentifier\x12#\x0A\x08instance\x18\x01 \x01(\x09B\x07\xBAH\x04r\x02\x10\x01R\x08instance\x12!\x0A\x07version\x18\x02 \x01(\x09B\x07\xBAH\x04r\x02\x10\x01R\x07versionBt\x0A\x1Bdev.cerbos.api.cloud.v1.pdpZ;github.com/cerbos/cloud-api/genpb/cerbos/cloud/pdp/v1;pdpv1\xAA\x02\x17Cerbos.Api.Cloud.V1.Pdpb\x06proto3"
+            "\x0A\xF6\x01\x0A\x1Dcerbos/cloud/pdp/v1/pdp.proto\x12\x13cerbos.cloud.pdp.v1\"B\x0A\x0AIdentifier\x12\x1A\x0A\x08instance\x18\x01 \x01(\x09R\x08instance\x12\x18\x0A\x07version\x18\x02 \x01(\x09R\x07versionBt\x0A\x1Bdev.cerbos.api.cloud.v1.pdpZ;github.com/cerbos/cloud-api/genpb/cerbos/cloud/pdp/v1;pdpv1\xAA\x02\x17Cerbos.Api.Cloud.V1.Pdpb\x06proto3"
         , true);
 
         static::$is_initialized = true;

@@ -42,6 +42,10 @@ class AccessLogEntry extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>bool oversized = 7 [json_name = "oversized"];</code>
      */
     protected $oversized = false;
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource policy_source = 8 [json_name = "policySource"];</code>
+     */
+    protected $policy_source = null;
 
     /**
      * Constructor.
@@ -56,6 +60,7 @@ class AccessLogEntry extends \Google\Protobuf\Internal\Message
      *     @type string $method
      *     @type int $status_code
      *     @type bool $oversized
+     *     @type \Cerbos\Audit\V1\PolicySource $policy_source
      * }
      */
     public function __construct($data = NULL) {
@@ -233,6 +238,38 @@ class AccessLogEntry extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkBool($var);
         $this->oversized = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource policy_source = 8 [json_name = "policySource"];</code>
+     * @return \Cerbos\Audit\V1\PolicySource|null
+     */
+    public function getPolicySource()
+    {
+        return $this->policy_source;
+    }
+
+    public function hasPolicySource()
+    {
+        return isset($this->policy_source);
+    }
+
+    public function clearPolicySource()
+    {
+        unset($this->policy_source);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource policy_source = 8 [json_name = "policySource"];</code>
+     * @param \Cerbos\Audit\V1\PolicySource $var
+     * @return $this
+     */
+    public function setPolicySource($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Audit\V1\PolicySource::class);
+        $this->policy_source = $var;
 
         return $this;
     }

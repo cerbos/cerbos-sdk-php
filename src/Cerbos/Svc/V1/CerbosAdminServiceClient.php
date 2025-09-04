@@ -24,7 +24,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\AddOrUpdatePolicyRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\AddOrUpdatePolicyResponse>
      */
     public function AddOrUpdatePolicy(\Cerbos\Request\V1\AddOrUpdatePolicyRequest $argument,
       $metadata = [], $options = []) {
@@ -38,7 +38,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\InspectPoliciesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\InspectPoliciesResponse>
      */
     public function InspectPolicies(\Cerbos\Request\V1\InspectPoliciesRequest $argument,
       $metadata = [], $options = []) {
@@ -52,7 +52,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\ListPoliciesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\ListPoliciesResponse>
      */
     public function ListPolicies(\Cerbos\Request\V1\ListPoliciesRequest $argument,
       $metadata = [], $options = []) {
@@ -66,7 +66,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\GetPolicyRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\GetPolicyResponse>
      */
     public function GetPolicy(\Cerbos\Request\V1\GetPolicyRequest $argument,
       $metadata = [], $options = []) {
@@ -80,7 +80,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\DisablePolicyRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\DisablePolicyResponse>
      */
     public function DisablePolicy(\Cerbos\Request\V1\DisablePolicyRequest $argument,
       $metadata = [], $options = []) {
@@ -94,7 +94,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\EnablePolicyRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\EnablePolicyResponse>
      */
     public function EnablePolicy(\Cerbos\Request\V1\EnablePolicyRequest $argument,
       $metadata = [], $options = []) {
@@ -122,7 +122,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\AddOrUpdateSchemaRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\AddOrUpdateSchemaResponse>
      */
     public function AddOrUpdateSchema(\Cerbos\Request\V1\AddOrUpdateSchemaRequest $argument,
       $metadata = [], $options = []) {
@@ -136,7 +136,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\ListSchemasRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\ListSchemasResponse>
      */
     public function ListSchemas(\Cerbos\Request\V1\ListSchemasRequest $argument,
       $metadata = [], $options = []) {
@@ -150,7 +150,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\GetSchemaRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\GetSchemaResponse>
      */
     public function GetSchema(\Cerbos\Request\V1\GetSchemaRequest $argument,
       $metadata = [], $options = []) {
@@ -164,7 +164,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\DeleteSchemaRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\DeleteSchemaResponse>
      */
     public function DeleteSchema(\Cerbos\Request\V1\DeleteSchemaRequest $argument,
       $metadata = [], $options = []) {
@@ -178,7 +178,7 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
      * @param \Cerbos\Request\V1\ReloadStoreRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
-     * @return \Grpc\UnaryCall
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\ReloadStoreResponse>
      */
     public function ReloadStore(\Cerbos\Request\V1\ReloadStoreRequest $argument,
       $metadata = [], $options = []) {
