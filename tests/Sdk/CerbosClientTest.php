@@ -226,8 +226,8 @@ final class CerbosClientTest extends TestCase
         $this->assertNotNull($planResourcesResult->getFilter()->getCondition(), "planResourcesResult filter > condition is null");
         $this->assertNotNull($planResourcesResult->getFilter()->getCondition()->getExpression(), "planResourcesResult filter > condition > expression is null");
         $this->assertNotNull($planResourcesResult->getFilter()->getCondition()->getExpression()->getOperands(), "planResourcesResult filter > condition > expression > operands is null");
-        $this->assertArrayHasKey(0, $planResourcesResult->getFilter()->getCondition()->getExpression()->getOperands(), "planResourcesResult filter > condition > expression > operands[0] is null");
-        $this->assertArrayHasKey(1, $planResourcesResult->getFilter()->getCondition()->getExpression()->getOperands(), "planResourcesResult filter > condition > expression > operands[1] is null");
+        $this->assertArrayHasKey(0, iterator_to_array($planResourcesResult->getFilter()->getCondition()->getExpression()->getOperands()), "planResourcesResult filter > condition > expression > operands[0] is null");
+        $this->assertArrayHasKey(1, iterator_to_array($planResourcesResult->getFilter()->getCondition()->getExpression()->getOperands()), "planResourcesResult filter > condition > expression > operands[1] is null");
 
         $this->assertEquals("and", $planResourcesResult->getFilter()->getCondition()->getExpression()->getOperator(), "planResourcesResult expression's operator is not 'and'");
         $this->assertEquals("eq", $planResourcesResult->getFilter()->getCondition()->getExpression()->getOperands()[0]->getExpression()->getOperator(), "planResourcesResult operand is not 'eq'");
