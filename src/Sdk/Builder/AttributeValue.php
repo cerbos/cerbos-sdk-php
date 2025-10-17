@@ -15,7 +15,8 @@ final class AttributeValue
 {
     private Value $value;
 
-    private function __construct(Value $value) {
+    private function __construct(Value $value)
+    {
         $this->value = $value;
     }
 
@@ -23,7 +24,8 @@ final class AttributeValue
      * @param bool $value
      * @return AttributeValue
      */
-    public static function boolValue(bool $value): AttributeValue {
+    public static function boolValue(bool $value): AttributeValue
+    {
         return new AttributeValue((new Value())->setBoolValue($value));
     }
 
@@ -31,7 +33,8 @@ final class AttributeValue
      * @param float $value
      * @return AttributeValue
      */
-    public static function floatValue(float $value): AttributeValue {
+    public static function floatValue(float $value): AttributeValue
+    {
         return new AttributeValue((new Value())->setNumberValue($value));
     }
 
@@ -39,7 +42,8 @@ final class AttributeValue
      * @param int $value
      * @return AttributeValue
      */
-    public static function intValue(int $value): AttributeValue {
+    public static function intValue(int $value): AttributeValue
+    {
         return new AttributeValue((new Value())->setNumberValue($value));
     }
 
@@ -47,7 +51,8 @@ final class AttributeValue
      * @param array<AttributeValue> $values
      * @return AttributeValue
      */
-    public static function listValue(array $values): AttributeValue {
+    public static function listValue(array $values): AttributeValue
+    {
         $v = array();
         foreach ($values as $value) {
             $v[] = $value->toValue();
@@ -60,7 +65,8 @@ final class AttributeValue
      * @param array<string, AttributeValue> $values
      * @return AttributeValue
      */
-    public static function mapValue(array $values): AttributeValue {
+    public static function mapValue(array $values): AttributeValue
+    {
         $v = array();
         foreach ($values as $key => $value) {
             $v[$key] = $value->toValue();
@@ -73,14 +79,16 @@ final class AttributeValue
      * @param string $value
      * @return AttributeValue
      */
-    public static function stringValue(string $value): AttributeValue {
+    public static function stringValue(string $value): AttributeValue
+    {
         return new AttributeValue((new Value())->setStringValue($value));
     }
 
     /**
      * @return Value
      */
-    public function toValue(): Value {
+    public function toValue(): Value
+    {
         return $this->value;
     }
 }

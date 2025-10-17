@@ -33,7 +33,8 @@ final class Resource
      * @param string $id
      * @return Resource
      */
-    public static function newInstance(string $kind, string $id): Resource {
+    public static function newInstance(string $kind, string $id): Resource
+    {
         return new Resource($kind, $id);
     }
 
@@ -41,7 +42,8 @@ final class Resource
      * @param string $id
      * @return $this
      */
-    public function withId(string $id): Resource {
+    public function withId(string $id): Resource
+    {
         $this->id = $id;
         return $this;
     }
@@ -50,7 +52,8 @@ final class Resource
      * @param string $kind
      * @return $this
      */
-    public function withKind(string $kind): Resource {
+    public function withKind(string $kind): Resource
+    {
         $this->kind = $kind;
         return $this;
     }
@@ -59,7 +62,8 @@ final class Resource
      * @param string $policyVersion
      * @return $this
      */
-    public function withPolicyVersion(string $policyVersion): Resource {
+    public function withPolicyVersion(string $policyVersion): Resource
+    {
         $this->policyVersion = $policyVersion;
         return $this;
     }
@@ -70,7 +74,8 @@ final class Resource
      * @param AttributeValue $value
      * @return $this
      */
-    public function withAttribute(string $key, AttributeValue $value): Resource {
+    public function withAttribute(string $key, AttributeValue $value): Resource
+    {
         $this->attr[$key] = $value->toValue();
         return $this;
     }
@@ -79,7 +84,8 @@ final class Resource
      * @param array<string, AttributeValue> $attributes
      * @return $this
      */
-    public function withAttributes(array $attributes): Resource {
+    public function withAttributes(array $attributes): Resource
+    {
         foreach ($attributes as $k => $v) {
             $this->attr[$k] = $v->toValue();
         }
@@ -91,7 +97,8 @@ final class Resource
      * @param string $scope
      * @return $this
      */
-    public function withScope(string $scope): Resource {
+    public function withScope(string $scope): Resource
+    {
         $this->scope = $scope;
         return $this;
     }
@@ -99,7 +106,8 @@ final class Resource
     /**
      * @return \Cerbos\Engine\V1\Resource
      */
-    public function toResource(): \Cerbos\Engine\V1\Resource {
+    public function toResource(): \Cerbos\Engine\V1\Resource
+    {
         return (new \Cerbos\Engine\V1\Resource())
             ->setKind($this->kind)
             ->setId($this->id)
@@ -111,7 +119,8 @@ final class Resource
     /**
      * @return \Cerbos\Engine\V1\PlanResourcesInput\Resource
      */
-    public function toPlanResource(): \Cerbos\Engine\V1\PlanResourcesInput\Resource {
+    public function toPlanResource(): \Cerbos\Engine\V1\PlanResourcesInput\Resource
+    {
         return (new \Cerbos\Engine\V1\PlanResourcesInput\Resource())
             ->setKind($this->kind)
             ->setPolicyVersion($this->policyVersion)

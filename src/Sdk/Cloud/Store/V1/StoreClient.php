@@ -26,7 +26,8 @@ final class StoreClient
      * @param \Cerbos\Cloud\Store\V1\CerbosStoreServiceClient $client
      * @param Authenticator $authenticator
      */
-    public function __construct(\Cerbos\Cloud\Store\V1\CerbosStoreServiceClient $client, Authenticator $authenticator) {
+    public function __construct(\Cerbos\Cloud\Store\V1\CerbosStoreServiceClient $client, Authenticator $authenticator)
+    {
         $this->client = $client;
         $this->authenticator = $authenticator;
     }
@@ -37,7 +38,8 @@ final class StoreClient
      * @psalm-suppress ArgumentTypeCoercion
      * @psalm-suppress PossiblyNullArgument
      */
-    public function getFiles(GetFilesRequest $request): GetFilesResponse {
+    public function getFiles(GetFilesRequest $request): GetFilesResponse
+    {
         list($response, $status) = $this->client->GetFiles($request->toGetFilesRequest(), $this->authenticator->authenticate(null))->wait();
         ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
@@ -52,7 +54,8 @@ final class StoreClient
      * @psalm-suppress ArgumentTypeCoercion
      * @psalm-suppress PossiblyNullArgument
      */
-    public function listFiles(ListFilesRequest $request): ListFilesResponse {
+    public function listFiles(ListFilesRequest $request): ListFilesResponse
+    {
         list($response, $status) = $this->client->ListFiles($request->toListFilesRequest(), $this->authenticator->authenticate(null))->wait();
         ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
@@ -67,7 +70,8 @@ final class StoreClient
      * @psalm-suppress ArgumentTypeCoercion
      * @psalm-suppress PossiblyNullArgument
      */
-    public function modifyFiles(ModifyFilesRequest $request): ModifyFilesResponse {
+    public function modifyFiles(ModifyFilesRequest $request): ModifyFilesResponse
+    {
         list($response, $status) = $this->client->ModifyFiles($request->toModifyFilesRequest(), $this->authenticator->authenticate(null))->wait();
         ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);
@@ -82,7 +86,8 @@ final class StoreClient
      * @psalm-suppress ArgumentTypeCoercion
      * @psalm-suppress PossiblyNullArgument
      */
-    public function replaceFiles(ReplaceFilesRequest $request): ReplaceFilesResponse {
+    public function replaceFiles(ReplaceFilesRequest $request): ReplaceFilesResponse
+    {
         list($response, $status) = $this->client->ReplaceFiles($request->toReplaceFilesRequest(), $this->authenticator->authenticate(null))->wait();
         ErrorDetailException::fromStatus($status);
         RpcException::fromStatus($status);

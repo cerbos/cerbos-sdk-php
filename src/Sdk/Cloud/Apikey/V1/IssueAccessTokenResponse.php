@@ -17,23 +17,26 @@ final class IssueAccessTokenResponse
     /**
      * @param \Cerbos\Cloud\Apikey\V1\IssueAccessTokenResponse $response
      */
-    public function __construct(\Cerbos\Cloud\Apikey\V1\IssueAccessTokenResponse $response) {
+    public function __construct(\Cerbos\Cloud\Apikey\V1\IssueAccessTokenResponse $response)
+    {
         $this->response = $response;
     }
 
     /**
      * @return string
      */
-    public function getAccessToken(): string {
+    public function getAccessToken(): string
+    {
         return $this->response->getAccessToken();
     }
 
     /**
      * @return \Google\Protobuf\Duration
      */
-    public function getExpiresIn(): \Google\Protobuf\Duration {
+    public function getExpiresIn(): \Google\Protobuf\Duration
+    {
         $expiresIn = $this->response->getExpiresIn();
-        if(!isset($expiresIn)) {
+        if (!isset($expiresIn)) {
             throw new \Exception("expiresIn is not set");
         }
 
@@ -43,7 +46,8 @@ final class IssueAccessTokenResponse
     /**
      * @return \Cerbos\Cloud\Apikey\V1\IssueAccessTokenResponse
      */
-    public function toIssueAccessTokenResponse(): \Cerbos\Cloud\Apikey\V1\IssueAccessTokenResponse {
+    public function toIssueAccessTokenResponse(): \Cerbos\Cloud\Apikey\V1\IssueAccessTokenResponse
+    {
         return $this->response;
     }
 }

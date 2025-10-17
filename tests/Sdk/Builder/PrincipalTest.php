@@ -39,32 +39,37 @@ final class PrincipalTest extends TestCase
         );
     }
 
-    public function testConstructor(): void {
+    public function testConstructor(): void
+    {
         $principal = Principal::newInstance("john")->toPrincipal();
 
         $this->assertEquals("john", $principal->getId(), "invalid id");
     }
 
-    public function testWithId(): void {
+    public function testWithId(): void
+    {
         $principal = Principal::newInstance("alex")->withId("john")->toPrincipal();
 
         $this->assertEquals("john", $principal->getId(), "invalid id");
     }
 
-    public function testWithPolicyVersion(): void {
+    public function testWithPolicyVersion(): void
+    {
         $principal = Principal::newInstance("john")->withPolicyVersion("20210210")->toPrincipal();
 
         $this->assertEquals("20210210", $principal->getPolicyVersion(), "invalid policyVersion");
     }
 
-    public function testWithRole(): void {
+    public function testWithRole(): void
+    {
         $principal = Principal::newInstance("john")->withRole("employee")->withRole("manager")->toPrincipal();
 
         $this->assertEquals("employee", $principal->getRoles()[0], "missing role employee");
         $this->assertEquals("manager", $principal->getRoles()[1], "missing role manager");
     }
 
-    public function testWithRoles(): void {
+    public function testWithRoles(): void
+    {
         $principal = Principal::newInstance("john")->withRoles(array("employee", "manager"))->withRoles(array("admin"))->toPrincipal();
 
         $this->assertEquals("employee", $principal->getRoles()[0], "missing role employee");
@@ -72,7 +77,8 @@ final class PrincipalTest extends TestCase
         $this->assertEquals("admin", $principal->getRoles()[2], "missing role admin");
     }
 
-    public function testWithAttribute(): void {
+    public function testWithAttribute(): void
+    {
         $principal = Principal::newInstance("john")
             ->withAttribute("boolAttr", AttributeValue::boolValue(true))
             ->withAttribute("floatAttr", AttributeValue::floatValue(1.2))
@@ -92,7 +98,8 @@ final class PrincipalTest extends TestCase
         $this->assertEquals(2, $principal->getAttr()->offsetGet("intAttr")->getNumberValue(), "invalid int attr value");
     }
 
-    public function testWithAttributes(): void {
+    public function testWithAttributes(): void
+    {
         $principal = Principal::newInstance("john")
             ->withAttributes(
                 array(
@@ -120,7 +127,8 @@ final class PrincipalTest extends TestCase
         $this->assertEquals(2, $principal->getAttr()->offsetGet("intAttr")->getNumberValue(), "invalid int attr value");
     }
 
-    public function testWithScope(): void {
+    public function testWithScope(): void
+    {
         $principal = Principal::newInstance("john")->withScope("acme")->toPrincipal();
 
         $this->assertEquals("acme", $principal->getScope(), "invalid scope");

@@ -22,7 +22,7 @@ final class UploaderTest extends TestCase
     private MetadataValue $value1;
     private MetadataValue $value2;
     private MetadataValue $value3;
-    
+
     public function setUp(): void
     {
         parent::setUp();
@@ -31,7 +31,8 @@ final class UploaderTest extends TestCase
         $this->value2 = MetadataValue::intValue(3);
     }
 
-    public function testWithMetadata(): void {
+    public function testWithMetadata(): void
+    {
         $uploader = Uploader::newInstance(self::name)
             ->withMetadata(self::key1, $this->value1)
             ->withMetadata(self::key2, $this->value2)
@@ -39,12 +40,13 @@ final class UploaderTest extends TestCase
 
         $this->assertArrayHasKey(self::key1, $uploader->getMetadata(), "missing metadata key1");
         $this->assertArrayHasKey(self::key2, $uploader->getMetadata(), "missing metadata key2");
-        
+
         $this->assertTrue((bool)$uploader->getMetadata()->offsetGet(self::key1)->getBoolValue(), "invalid metadata bool value");
         $this->assertEquals("stringValue", $uploader->getMetadata()->offsetGet(self::key2)->getStringValue(), "invalid metadata string value");
     }
 
-    public function testWithMetadatas(): void {
+    public function testWithMetadatas(): void
+    {
         $uploader = Uploader::newInstance(self::name)
             ->withMetadatas(
                 array(
@@ -62,13 +64,14 @@ final class UploaderTest extends TestCase
         $this->assertArrayHasKey(self::key1, $uploader->getMetadata(), "missing metadata key1");
         $this->assertArrayHasKey(self::key2, $uploader->getMetadata(), "missing metadata key2");
         $this->assertArrayHasKey(self::key3, $uploader->getMetadata(), "missing metadata key3");
-        
+
         $this->assertTrue((bool)$uploader->getMetadata()->offsetGet(self::key1)->getBoolValue(), "invalid metadata bool value");
         $this->assertEquals("stringValue", $uploader->getMetadata()->offsetGet(self::key2)->getStringValue(), "invalid metadata string value");
         $this->assertEquals(3, $uploader->getMetadata()->offsetGet(self::key3)->getNumberValue(), "invalid metadata number value");
     }
 
-    public function testOptional(): void {
+    public function testOptional(): void
+    {
         $uploader = Uploader::newInstance(self::name)
             ->toUploader();
 

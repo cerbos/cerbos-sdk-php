@@ -39,32 +39,37 @@ final class ResourceTest extends TestCase
         );
     }
 
-    public function testConstructor(): void {
+    public function testConstructor(): void
+    {
         $resource = Resource::newInstance("leave_request", "john")->toResource();
 
         $this->assertEquals("leave_request", $resource->getKind(), "invalid kind");
         $this->assertEquals("john", $resource->getId(), "invalid id");
     }
 
-    public function testWithKind(): void {
+    public function testWithKind(): void
+    {
         $resource = Resource::newInstance("leave_request", "alex")->withKind("purchase_order")->toResource();
 
         $this->assertEquals("purchase_order", $resource->getKind(), "invalid kind");
     }
 
-    public function testWithId(): void {
+    public function testWithId(): void
+    {
         $resource = Resource::newInstance("leave_request", "alex")->withId("john")->toResource();
 
         $this->assertEquals("john", $resource->getId(), "invalid id");
     }
 
-    public function testWithPolicyVersion(): void {
+    public function testWithPolicyVersion(): void
+    {
         $resource = Resource::newInstance("leave_request", "john")->withPolicyVersion("20210210")->toResource();
 
         $this->assertEquals("20210210", $resource->getPolicyVersion(), "invalid policyVersion");
     }
 
-    public function testWithAttribute(): void {
+    public function testWithAttribute(): void
+    {
         $resource = Resource::newInstance("leave_request", "john")
             ->withAttribute("boolAttr", AttributeValue::boolValue(true))
             ->withAttribute("floatAttr", AttributeValue::floatValue(1.2))
@@ -84,7 +89,8 @@ final class ResourceTest extends TestCase
         $this->assertEquals(2, $resource->getAttr()->offsetGet("intAttr")->getNumberValue(), "invalid int attr value");
     }
 
-    public function testWithAttributes(): void {
+    public function testWithAttributes(): void
+    {
         $resource = Resource::newInstance("leave_request", "john")
             ->withAttributes(
                 array(
@@ -110,7 +116,8 @@ final class ResourceTest extends TestCase
         $this->assertEquals(2, $resource->getAttr()->offsetGet("intAttr")->getNumberValue(), "invalid int attr value");
     }
 
-    public function testWithScope(): void {
+    public function testWithScope(): void
+    {
         $resource = Resource::newInstance("leave_request", "john")->withScope("acme")->toResource();
 
         $this->assertEquals("acme", $resource->getScope(), "invalid scope");

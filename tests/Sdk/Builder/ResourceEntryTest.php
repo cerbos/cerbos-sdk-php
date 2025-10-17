@@ -39,32 +39,37 @@ final class ResourceEntryTest extends TestCase
         );
     }
 
-    public function testConstructor(): void {
+    public function testConstructor(): void
+    {
         $resourceEntry = ResourceEntry::newInstance("leave_request", "john")->toResourceEntry();
 
         $this->assertEquals("leave_request", $resourceEntry->getResource()->getKind(), "invalid kind");
         $this->assertEquals("john", $resourceEntry->getResource()->getId(), "invalid id");
     }
 
-    public function testWithKind(): void {
+    public function testWithKind(): void
+    {
         $resourceEntry = ResourceEntry::newInstance("leave_request", "alex")->withKind("purchase_order")->toResourceEntry();
 
         $this->assertEquals("purchase_order", $resourceEntry->getResource()->getKind(), "invalid kind");
     }
 
-    public function testWithId(): void {
+    public function testWithId(): void
+    {
         $resourceEntry = ResourceEntry::newInstance("leave_request", "alex")->withId("john")->toResourceEntry();
 
         $this->assertEquals("john", $resourceEntry->getResource()->getId(), "invalid id");
     }
 
-    public function testWithPolicyVersion(): void {
+    public function testWithPolicyVersion(): void
+    {
         $resourceEntry = ResourceEntry::newInstance("leave_request", "john")->withPolicyVersion("20210210")->toResourceEntry();
 
         $this->assertEquals("20210210", $resourceEntry->getResource()->getPolicyVersion(), "invalid policyVersion");
     }
 
-    public function testWithAttribute(): void {
+    public function testWithAttribute(): void
+    {
         $resourceEntry = ResourceEntry::newInstance("leave_request", "john")
             ->withAttribute("boolAttr", AttributeValue::boolValue(true))
             ->withAttribute("floatAttr", AttributeValue::floatValue(1.2))
@@ -87,7 +92,8 @@ final class ResourceEntryTest extends TestCase
         $this->assertEquals(2, $resource->getAttr()->offsetGet("intAttr")->getNumberValue(), "invalid int attr value");
     }
 
-    public function testWithAttributes(): void {
+    public function testWithAttributes(): void
+    {
         $resourceEntry = ResourceEntry::newInstance("leave_request", "john")
             ->withAttributes(
                 array(
@@ -118,19 +124,22 @@ final class ResourceEntryTest extends TestCase
         $this->assertEquals(2, $resource->getAttr()->offsetGet("intAttr")->getNumberValue(), "invalid int attr value");
     }
 
-    public function testWithScope(): void {
+    public function testWithScope(): void
+    {
         $resourceEntry = ResourceEntry::newInstance("leave_request", "john")->withScope("acme")->toResourceEntry();
         $this->assertEquals("acme", $resourceEntry->getResource()->getScope(), "invalid scope");
     }
 
-    public function testWithAction(): void {
+    public function testWithAction(): void
+    {
         $resourceEntry = ResourceEntry::newInstance("leave_request", "john")->withAction("approve")->withAction("create")->toResourceEntry();
 
         $this->assertEquals("approve", $resourceEntry->getActions()[0], "missing action approve");
         $this->assertEquals("create", $resourceEntry->getActions()[1], "missing action create");
     }
 
-    public function testWithActions(): void {
+    public function testWithActions(): void
+    {
         $resourceEntry = ResourceEntry::newInstance("leave_request", "john")->withActions(array("approve", "create"))->withActions(array("defer"))->toResourceEntry();
 
         $this->assertEquals("approve", $resourceEntry->getActions()[0], "missing action approve");

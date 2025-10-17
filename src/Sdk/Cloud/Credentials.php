@@ -9,7 +9,8 @@ namespace Cerbos\Sdk\Cloud;
 
 use Cerbos\Sdk\Cloud\Apikey\V1\IssueAccessTokenRequest;
 
-final class Credentials {
+final class Credentials
+{
     private string $clientId;
     private string $clientSecret;
 
@@ -17,7 +18,8 @@ final class Credentials {
      * @param string $clientId
      * @param string $clientSecret
      */
-    public function __construct(string $clientId, string $clientSecret) {
+    public function __construct(string $clientId, string $clientSecret)
+    {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
     }
@@ -26,7 +28,8 @@ final class Credentials {
      * @return IssueAccessTokenRequest
      * @throws Exception
      */
-    public function toIssueAccessTokenRequest(): IssueAccessTokenRequest {
+    public function toIssueAccessTokenRequest(): IssueAccessTokenRequest
+    {
         $request = IssueAccessTokenRequest::newInstance([
             'client_id' => $this->clientId,
             'client_secret' => $this->clientSecret

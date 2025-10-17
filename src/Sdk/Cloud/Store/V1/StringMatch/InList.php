@@ -7,7 +7,8 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1\StringMatch;
 
-final class InList {
+final class InList
+{
     private \Cerbos\Cloud\Store\V1\StringMatch\InList $inList;
 
     /**
@@ -34,7 +35,8 @@ final class InList {
     /**
      * @return \Cerbos\Cloud\Store\V1\StringMatch\InList
      */
-    public function toInList(): \Cerbos\Cloud\Store\V1\StringMatch\InList {
+    public function toInList(): \Cerbos\Cloud\Store\V1\StringMatch\InList
+    {
         return $this->inList;
     }
 }

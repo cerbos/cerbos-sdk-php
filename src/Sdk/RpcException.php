@@ -19,7 +19,8 @@ final class RpcException extends Exception
      * @param GrpcStatus $grpcStatus
      * @throws ValueError
      */
-    public function __construct(string $message, GrpcStatus $grpcStatus) {
+    public function __construct(string $message, GrpcStatus $grpcStatus)
+    {
         if ($grpcStatus == GrpcStatus::STATUS_OK) {
             throw new ValueError("STATUS_OK is not an exception");
         }
@@ -31,7 +32,8 @@ final class RpcException extends Exception
     /**
      * @return string
      */
-    public function __toString() : string {
+    public function __toString(): string
+    {
         $status = GrpcStatus::toString($this->grpcStatus);
         return __CLASS__ . ": {$status} (Code: {$this->grpcStatus->value}): {$this->message}\n";
     }
@@ -39,15 +41,17 @@ final class RpcException extends Exception
     /**
      * @return GrpcStatus
      */
-    public function getGrpcStatus() : GrpcStatus {
+    public function getGrpcStatus(): GrpcStatus
+    {
         return $this->grpcStatus;
-    } 
+    }
 
     /**
      * @param object $status
      * @throws RpcException
      */
-    public static function fromStatus(object $status) : void {
+    public static function fromStatus(object $status): void
+    {
         $grpcStatus = GrpcStatus::from($status->code);
         if ($grpcStatus == GrpcStatus::STATUS_OK) {
             return;
@@ -62,7 +66,8 @@ final class RpcException extends Exception
     /**
      * @throws RpcException
      */
-    public static function unauthenticated() : RpcException {
+    public static function unauthenticated(): RpcException
+    {
         throw new RpcException(
             RpcException::message(GrpcStatus::STATUS_UNAUTHENTICATED, null),
             GrpcStatus::STATUS_UNAUTHENTICATED
@@ -74,7 +79,8 @@ final class RpcException extends Exception
      * @param string|null $details
      * @return string
      */
-    private static function message(GrpcStatus $grpcStatus, ?string $details) : string {
+    private static function message(GrpcStatus $grpcStatus, ?string $details): string
+    {
         if (isset($details)) {
             return sprintf('RpcException: %s: code: %d, details: %s', GrpcStatus::toString($grpcStatus), $grpcStatus->value, $details);
         }
@@ -108,7 +114,8 @@ enum GrpcStatus: int
      * @return string
      * @throws ValueError
      */
-    public static function toString($grpcStatus) : string {
+    public static function toString($grpcStatus): string
+    {
         switch ($grpcStatus) {
             case GrpcStatus::STATUS_OK:
                 return "STATUS_OK";

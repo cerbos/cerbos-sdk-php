@@ -7,7 +7,8 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1\ChangeDetails;
 
-final class Git {
+final class Git
+{
     private \Cerbos\Cloud\Store\V1\ChangeDetails\Git $git;
 
     /**
@@ -69,7 +70,8 @@ final class Git {
     /**
      * @return \Cerbos\Cloud\Store\V1\ChangeDetails\Git
      */
-    public function toGit(): \Cerbos\Cloud\Store\V1\ChangeDetails\Git {
+    public function toGit(): \Cerbos\Cloud\Store\V1\ChangeDetails\Git
+    {
         return $this->git;
     }
 }

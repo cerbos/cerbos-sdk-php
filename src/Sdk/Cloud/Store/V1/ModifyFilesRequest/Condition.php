@@ -7,7 +7,8 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1\ModifyFilesRequest;
 
-final class Condition {
+final class Condition
+{
     private \Cerbos\Cloud\Store\V1\ModifyFilesRequest\Condition $condition;
 
     /**
@@ -30,11 +31,12 @@ final class Condition {
     ): Condition {
         return new Condition($storeVersionMustEqual);
     }
-    
+
     /**
      * @return \Cerbos\Cloud\Store\V1\ModifyFilesRequest\Condition
      */
-    public function toCondition(): \Cerbos\Cloud\Store\V1\ModifyFilesRequest\Condition {
+    public function toCondition(): \Cerbos\Cloud\Store\V1\ModifyFilesRequest\Condition
+    {
         return $this->condition;
     }
 }

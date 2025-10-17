@@ -34,7 +34,7 @@ final class ModifyFilesRequestTest extends TestCase
     private const string description = "description";
 
     private const string file = "policy.yaml";
-    
+
     public function setUp(): void
     {
         parent::setUp();
@@ -42,7 +42,8 @@ final class ModifyFilesRequestTest extends TestCase
         $this->commitDate = new \Google\Protobuf\Timestamp();
     }
 
-    public function testAll(): void {
+    public function testAll(): void
+    {
         $uploader = Uploader::newInstance(self::name);
 
         $git = Git::newInstance(
@@ -69,7 +70,8 @@ final class ModifyFilesRequestTest extends TestCase
         $this->assertEquals(self::file, $request->getOperations()[0]->getDelete(), "invalid operations");
     }
 
-    public function testOptional(): void {
+    public function testOptional(): void
+    {
         $request = ModifyFilesRequest::newInstance(self::storeId, null, null, FileOp::delete(self::file))
             ->toModifyFilesRequest();
 

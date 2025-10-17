@@ -7,7 +7,8 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1;
 
-final class FileOp {
+final class FileOp
+{
     private \Cerbos\Cloud\Store\V1\FileOp $fileOp;
 
     /**
@@ -22,13 +23,11 @@ final class FileOp {
             $this->fileOp = new \Cerbos\Cloud\Store\V1\FileOp([
                 'add_or_update' => $addOrUpdate->toFile(),
             ]);
-        }
-        elseif(isset($delete)) {
+        } elseif (isset($delete)) {
             $this->fileOp = new \Cerbos\Cloud\Store\V1\FileOp([
                 'delete' => $delete
             ]);
-        }
-        else {
+        } else {
             throw new \Exception("addOrUpdate or delete must be specified");
         }
     }
@@ -60,7 +59,8 @@ final class FileOp {
     /**
      * @return \Cerbos\Cloud\Store\V1\FileOp
      */
-    public function toFileOp(): \Cerbos\Cloud\Store\V1\FileOp {
+    public function toFileOp(): \Cerbos\Cloud\Store\V1\FileOp
+    {
         return $this->fileOp;
     }
 }

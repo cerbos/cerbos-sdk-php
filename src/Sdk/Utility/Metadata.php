@@ -17,7 +17,8 @@ final class Metadata
      * @return array<string, array>
      * @throws Exception
      */
-    public static function merge(?array $first, ?array $second): array {
+    public static function merge(?array $first, ?array $second): array
+    {
         if (is_null($first) && is_null($second))
             return [];
         else if (is_null($first) && !is_null($second))
@@ -31,8 +32,7 @@ final class Metadata
                 foreach ($v as $i => $vv) {
                     $combined[$k][] = $vv;
                 }
-            }
-            else {
+            } else {
                 throw new Exception("the type for the parameter first and second parameter is array<string, array>|null");
             }
         }
@@ -42,8 +42,7 @@ final class Metadata
                 foreach ($v as $i => $vv) {
                     $combined[$k][] = $vv;
                 }
-            }
-            else {
+            } else {
                 throw new Exception("the type for the parameter first and second parameter is array<string, array>|null");
             }
         }

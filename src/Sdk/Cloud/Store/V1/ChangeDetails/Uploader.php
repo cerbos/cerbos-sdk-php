@@ -7,7 +7,8 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1\ChangeDetails;
 
-final class Uploader {
+final class Uploader
+{
     private \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader $uploader;
 
     /**
@@ -36,7 +37,8 @@ final class Uploader {
      * @param MetadataValue $value
      * @return $this
      */
-    public function withMetadata(string $key, MetadataValue $value): Uploader {
+    public function withMetadata(string $key, MetadataValue $value): Uploader
+    {
         $newMetadata = array();
         foreach ($this->uploader->getMetadata()->getIterator() as $k => $v) {
             $newMetadata[$k] = $v;
@@ -51,7 +53,8 @@ final class Uploader {
      * @param array<string, MetadataValue> $metadata
      * @return $this
      */
-    public function withMetadatas(array $metadata): Uploader {
+    public function withMetadatas(array $metadata): Uploader
+    {
         $newMetadata = array();
         foreach ($this->uploader->getMetadata()->getIterator() as $k => $v) {
             $newMetadata[$k] = $v;
@@ -68,7 +71,8 @@ final class Uploader {
     /**
      * @return \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader
      */
-    public function toUploader(): \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader {
+    public function toUploader(): \Cerbos\Cloud\Store\V1\ChangeDetails\Uploader
+    {
         return $this->uploader;
     }
 }

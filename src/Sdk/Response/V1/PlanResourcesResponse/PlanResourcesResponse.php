@@ -17,7 +17,8 @@ final class PlanResourcesResponse
     /**
      * @param \Cerbos\Response\V1\PlanResourcesResponse $response
      */
-    public function __construct(\Cerbos\Response\V1\PlanResourcesResponse $response) {
+    public function __construct(\Cerbos\Response\V1\PlanResourcesResponse $response)
+    {
         $this->response = $response;
     }
 
@@ -26,17 +27,19 @@ final class PlanResourcesResponse
      * @return string
      * @deprecated
      */
-    public function getAction(): string {
+    public function getAction(): string
+    {
         /**
-        * @psalm-suppress DeprecatedMethod
-        */
+         * @psalm-suppress DeprecatedMethod
+         */
         return $this->response->getAction();
     }
-    
+
     /**
      * @return array<string>
      */
-    public function getActions(): array {
+    public function getActions(): array
+    {
         $actions = array();
         foreach ($this->response->getActions() as $action) {
             $actions[] = $action;
@@ -48,14 +51,16 @@ final class PlanResourcesResponse
     /**
      * @return PlanResourcesFilter|null
      */
-    public function getFilter(): ?PlanResourcesFilter {
+    public function getFilter(): ?PlanResourcesFilter
+    {
         return $this->response->getFilter();
     }
 
     /**
      * @return Meta|null
      */
-    public function getMeta(): ?Meta {
+    public function getMeta(): ?Meta
+    {
         $meta = $this->response->getMeta();
         if (!is_null($meta)) {
             return new Meta($meta);
@@ -67,28 +72,32 @@ final class PlanResourcesResponse
     /**
      * @return string
      */
-    public function getPolicyVersion(): string {
+    public function getPolicyVersion(): string
+    {
         return $this->response->getPolicyVersion();
     }
 
     /**
      * @return string
      */
-    public function getResourceKind(): string {
+    public function getResourceKind(): string
+    {
         return $this->response->getResourceKind();
     }
 
     /**
      * @return string
      */
-    public function getRequestId(): string {
+    public function getRequestId(): string
+    {
         return $this->response->getRequestId();
     }
 
     /**
      * @return array<ValidationError>
      */
-    public function getValidationErrors(): array {
+    public function getValidationErrors(): array
+    {
         $validationErrors = array();
         foreach ($this->response->getValidationErrors() as $validationError) {
             $validationErrors[] = $validationError;
@@ -100,14 +109,16 @@ final class PlanResourcesResponse
     /**
      * @return bool
      */
-    public function hasValidationErrors(): bool {
+    public function hasValidationErrors(): bool
+    {
         return count($this->response->getValidationErrors()) > 0;
     }
 
     /**
      * @return bool
      */
-    public function isAlwaysAllowed(): bool {
+    public function isAlwaysAllowed(): bool
+    {
         $filter = $this->response->getFilter();
         if (!is_null($filter)) {
             return $filter->getKind() == PlanResourcesFilter\Kind::KIND_ALWAYS_ALLOWED;
@@ -119,7 +130,8 @@ final class PlanResourcesResponse
     /**
      * @return bool
      */
-    public function isAlwaysDenied(): bool {
+    public function isAlwaysDenied(): bool
+    {
         $filter = $this->response->getFilter();
         if (!is_null($filter)) {
             return $filter->getKind() == PlanResourcesFilter\Kind::KIND_ALWAYS_DENIED;
@@ -131,7 +143,8 @@ final class PlanResourcesResponse
     /**
      * @return bool
      */
-    public function isConditional(): bool {
+    public function isConditional(): bool
+    {
         $filter = $this->response->getFilter();
         if (!is_null($filter)) {
             return $filter->getKind() == PlanResourcesFilter\Kind::KIND_CONDITIONAL;
@@ -143,7 +156,8 @@ final class PlanResourcesResponse
     /**
      * @return \Cerbos\Response\V1\PlanResourcesResponse
      */
-    public function toPlanResourcesResponse(): \Cerbos\Response\V1\PlanResourcesResponse {
+    public function toPlanResourcesResponse(): \Cerbos\Response\V1\PlanResourcesResponse
+    {
         return $this->response;
     }
 }

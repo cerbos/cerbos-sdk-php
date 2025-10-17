@@ -11,7 +11,8 @@ use \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Git;
 use \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Internal;
 use \Cerbos\Sdk\Cloud\Store\V1\ChangeDetails\Uploader;
 
-final class ChangeDetails {
+final class ChangeDetails
+{
     private \Cerbos\Cloud\Store\V1\ChangeDetails $changeDetails;
 
     /**
@@ -33,15 +34,13 @@ final class ChangeDetails {
                 'uploader' => $uploader->toUploader(),
                 'git' => $git->toGit(),
             ]);
-        }
-        elseif(isset($internal)) {
+        } elseif (isset($internal)) {
             $this->changeDetails = new \Cerbos\Cloud\Store\V1\ChangeDetails([
                 'description' => $description,
                 'uploader' => $uploader->toUploader(),
                 'internal' => $internal->toInternal(),
             ]);
-        }
-        else {
+        } else {
             throw new \Exception("Git or internal must be specified");
         }
     }
@@ -56,8 +55,7 @@ final class ChangeDetails {
         string $description,
         Uploader $uploader,
         Git $git
-    ): ChangeDetails
-    {
+    ): ChangeDetails {
         return new ChangeDetails(
             description: $description,
             uploader: $uploader,
@@ -75,8 +73,7 @@ final class ChangeDetails {
         string $description,
         Uploader $uploader,
         Internal $internal
-    ): ChangeDetails
-    {
+    ): ChangeDetails {
         return new ChangeDetails(
             description: $description,
             uploader: $uploader,
@@ -87,7 +84,8 @@ final class ChangeDetails {
     /**
      * @return \Cerbos\Cloud\Store\V1\ChangeDetails
      */
-    public function toChangeDetails(): \Cerbos\Cloud\Store\V1\ChangeDetails {
+    public function toChangeDetails(): \Cerbos\Cloud\Store\V1\ChangeDetails
+    {
         return $this->changeDetails;
     }
 }

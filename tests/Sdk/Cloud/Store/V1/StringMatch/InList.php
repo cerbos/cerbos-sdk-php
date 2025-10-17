@@ -21,7 +21,8 @@ final class InListTest extends TestCase
         parent::setUp();
     }
 
-    public function testAll(): void {
+    public function testAll(): void
+    {
         $inList = InList::newInstance(self::in, self::in)->toInList();
 
         $this->assertEquals(self::in, $inList->getValues()[0], "invalid first value");

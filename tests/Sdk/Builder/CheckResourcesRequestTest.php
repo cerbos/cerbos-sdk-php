@@ -23,7 +23,8 @@ final class CheckResourcesRequestTest extends TestCase
     private string $token = "eyJhbGciOiJFUzM4NCIsImtpZCI6IjE5TGZaYXRFZGc4M1lOYzVyMjNndU1KcXJuND0iLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiY2VyYm9zLWp3dC10ZXN0cyJdLCJjdXN0b21BcnJheSI6WyJBIiwiQiIsIkMiXSwiY3VzdG9tSW50Ijo0MiwiY3VzdG9tTWFwIjp7IkEiOiJBQSIsIkIiOiJCQiIsIkMiOiJDQyJ9LCJjdXN0b21TdHJpbmciOiJmb29iYXIiLCJleHAiOjE5NTAyNzc5MjYsImlzcyI6ImNlcmJvcy10ZXN0LXN1aXRlIn0._nCHIsuFI3wczeuUv_xjSwaVnIQUdYA9sGf_jVsrsDWloLs3iPWDaA1bXpuIUJVsi8-G6qqdrPI0cOBxEocg1NCm8fyD9T_3hsZV0fYWon_Je6Kl93a3JIW3S6kbvjsL";
     private string $keySetId = "123";
 
-    public function testWithAuxData(): void {
+    public function testWithAuxData(): void
+    {
         try {
             $crq = CheckResourcesRequest::newInstance()
                 ->withRequestId(RequestId::generate())
@@ -48,7 +49,8 @@ final class CheckResourcesRequestTest extends TestCase
         $this->assertEquals($this->keySetId, $crq->getAuxData()->getJwt()->getKeySetId(), "invalid keySetId");
     }
 
-    public function testWithIncludeMeta(): void {
+    public function testWithIncludeMeta(): void
+    {
         try {
             $crq = CheckResourcesRequest::newInstance()
                 ->withRequestId(RequestId::generate())
@@ -69,7 +71,8 @@ final class CheckResourcesRequestTest extends TestCase
         $this->assertTrue($crq->getIncludeMeta(), "invalid includeMeta");
     }
 
-    public function testWithPrincipal(): void {
+    public function testWithPrincipal(): void
+    {
         try {
             $crq = CheckResourcesRequest::newInstance()
                 ->withRequestId(RequestId::generate())
@@ -91,7 +94,8 @@ final class CheckResourcesRequestTest extends TestCase
         $this->assertEquals("20210210", $crq->getPrincipal()->getPolicyVersion(), "invalid policyVersion");
     }
 
-    public function testWithResourceEntry(): void {
+    public function testWithResourceEntry(): void
+    {
         try {
             $crq = CheckResourcesRequest::newInstance()
                 ->withRequestId(RequestId::generate())
@@ -114,7 +118,8 @@ final class CheckResourcesRequestTest extends TestCase
         $this->assertEquals("20210210", $crq->getResources()[0]->getResource()->getPolicyVersion(), "invalid policyVersion");
     }
 
-    public function testWithResourceEntries(): void {
+    public function testWithResourceEntries(): void
+    {
         try {
             $crq = CheckResourcesRequest::newInstance()
                 ->withRequestId(RequestId::generate())
@@ -147,7 +152,8 @@ final class CheckResourcesRequestTest extends TestCase
         $this->assertEquals("20210210v2", $crq->getResources()[1]->getResource()->getPolicyVersion(), "invalid policyVersion");
     }
 
-    public function testWithRequestId(): void {
+    public function testWithRequestId(): void
+    {
         try {
             $crq = CheckResourcesRequest::newInstance()
                 ->withRequestId("123")

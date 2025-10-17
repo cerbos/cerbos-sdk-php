@@ -20,7 +20,8 @@ final class ApiKeyClient
     /**
      * @param \Cerbos\Cloud\Apikey\V1\ApiKeyServiceClient $client
      */
-    public function __construct(\Cerbos\Cloud\Apikey\V1\ApiKeyServiceClient $client) {
+    public function __construct(\Cerbos\Cloud\Apikey\V1\ApiKeyServiceClient $client)
+    {
         $this->client = $client;
     }
 
@@ -30,7 +31,8 @@ final class ApiKeyClient
      * @psalm-suppress ArgumentTypeCoercion
      * @psalm-suppress PossiblyNullArgument
      */
-    public function issueAccessToken(IssueAccessTokenRequest $request): IssueAccessTokenResponse {
+    public function issueAccessToken(IssueAccessTokenRequest $request): IssueAccessTokenResponse
+    {
         list($response, $status) = $this->client->IssueAccessToken($request->toIssueAccessTokenRequest())->wait();
         RpcException::fromStatus($status);
         NullResponseException::fromResponse($response);

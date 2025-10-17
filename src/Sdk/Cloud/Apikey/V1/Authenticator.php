@@ -16,7 +16,8 @@ use Cerbos\Sdk\Utility\Metadata;
 const AUTH_TOKEN_HEADER = "x-cerbos-auth";
 const EARLY_EXPIRE_IN_SECONDS = 300;
 
-final class Authenticator {
+final class Authenticator
+{
     private ApiKeyClient $apiKeyClient;
     private Credentials $credentials;
 
@@ -28,7 +29,8 @@ final class Authenticator {
      * @param ApiKeyClient $apiKeyClient
      * @param Credentials $credentials
      */
-    public function __construct(ApiKeyClient $apiKeyClient, Credentials $credentials) {
+    public function __construct(ApiKeyClient $apiKeyClient, Credentials $credentials)
+    {
         $this->apiKeyClient = $apiKeyClient;
         $this->credentials = $credentials;
     }
@@ -49,16 +51,16 @@ final class Authenticator {
         return Metadata::merge(
             $metadata,
             [
-                AUTH_TOKEN_HEADER => [ Authenticator::$accessToken ]
+                AUTH_TOKEN_HEADER => [Authenticator::$accessToken]
             ]
         );
     }
 
-    private function issueToken() : void {
+    private function issueToken(): void
+    {
         try {
             $response = $this->apiKeyClient->issueAccessToken($this->credentials->toIssueAccessTokenRequest());
-        } 
-        catch(RpcException $e) {
+        } catch (RpcException $e) {
             if ($e->getGrpcStatus() == GrpcStatus::STATUS_UNAUTHENTICATED) {
                 Authenticator::$unauthenticated = true;
             }
@@ -70,17 +72,19 @@ final class Authenticator {
         Authenticator::$expiresAt = time() + (int)$response->getExpiresIn()->getSeconds();
     }
 
-    private function throwIfUnauthenticated() : void {
+    private function throwIfUnauthenticated(): void
+    {
         if (Authenticator::$unauthenticated) {
             throw RpcException::unauthenticated();
         }
     }
 
-    private function expired() : bool {
+    private function expired(): bool
+    {
         if (Authenticator::$expiresAt == 0) {
             return true;
         }
-        
+
 
         return time() > (Authenticator::$expiresAt - EARLY_EXPIRE_IN_SECONDS);
     }
