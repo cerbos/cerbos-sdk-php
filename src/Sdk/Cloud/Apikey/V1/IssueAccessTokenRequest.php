@@ -22,7 +22,8 @@ final class IssueAccessTokenRequest
      *     @type string $client_secret
      * }
      */
-    private function __construct(array $data) {
+    private function __construct(array $data)
+    {
         $this->request = new \Cerbos\Cloud\Apikey\V1\IssueAccessTokenRequest($data);
     }
 
@@ -33,7 +34,8 @@ final class IssueAccessTokenRequest
      * }
      * @return IssueAccessTokenRequest
      */
-    public static function newInstance(array $data): IssueAccessTokenRequest {
+    public static function newInstance(array $data): IssueAccessTokenRequest
+    {
         return new IssueAccessTokenRequest($data);
     }
 
@@ -41,7 +43,8 @@ final class IssueAccessTokenRequest
      * @return \Cerbos\Cloud\Apikey\V1\IssueAccessTokenRequest
      * @throws Exception
      */
-    public function toIssueAccessTokenRequest(): \Cerbos\Cloud\Apikey\V1\IssueAccessTokenRequest {
+    public function toIssueAccessTokenRequest(): \Cerbos\Cloud\Apikey\V1\IssueAccessTokenRequest
+    {
         return $this->request;
     }
 }

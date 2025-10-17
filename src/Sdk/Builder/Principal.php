@@ -23,7 +23,8 @@ final class Principal
      * @param string $id
      * @return Principal
      */
-    public static function newInstance(string $id): Principal {
+    public static function newInstance(string $id): Principal
+    {
         return new Principal($id);
     }
 
@@ -31,7 +32,8 @@ final class Principal
      * @param string $id
      * @return $this
      */
-    public function withId(string $id): Principal {
+    public function withId(string $id): Principal
+    {
         $this->principal->setId($id);
         return $this;
     }
@@ -40,7 +42,8 @@ final class Principal
      * @param string $policyVersion
      * @return $this
      */
-    public function withPolicyVersion(string $policyVersion): Principal {
+    public function withPolicyVersion(string $policyVersion): Principal
+    {
         $this->principal->setPolicyVersion($policyVersion);
         return $this;
     }
@@ -49,7 +52,8 @@ final class Principal
      * @param string $role
      * @return $this
      */
-    public function withRole(string $role): Principal {
+    public function withRole(string $role): Principal
+    {
         $newRoles = array();
         foreach ($this->principal->getRoles()->getIterator() as $r) {
             $newRoles[] = $r;
@@ -64,7 +68,8 @@ final class Principal
      * @param string[] $roles
      * @return $this
      */
-    public function withRoles(array $roles): Principal {
+    public function withRoles(array $roles): Principal
+    {
         $newRoles = array();
         foreach ($this->principal->getRoles()->getIterator() as $r) {
             $newRoles[] = $r;
@@ -83,7 +88,8 @@ final class Principal
      * @param AttributeValue $value
      * @return $this
      */
-    public function withAttribute(string $key, AttributeValue $value): Principal {
+    public function withAttribute(string $key, AttributeValue $value): Principal
+    {
         $newAttrs = array();
         foreach ($this->principal->getAttr()->getIterator() as $k => $v) {
             $newAttrs[$k] = $v;
@@ -98,7 +104,8 @@ final class Principal
      * @param array<string, AttributeValue> $attributes
      * @return $this
      */
-    public function withAttributes(array $attributes): Principal {
+    public function withAttributes(array $attributes): Principal
+    {
         $newAttrs = array();
         foreach ($this->principal->getAttr()->getIterator() as $k => $v) {
             $newAttrs[$k] = $v;
@@ -116,7 +123,8 @@ final class Principal
      * @param string $scope
      * @return $this
      */
-    public function withScope(string $scope): Principal {
+    public function withScope(string $scope): Principal
+    {
         $this->principal->setScope($scope);
         return $this;
     }
@@ -124,7 +132,8 @@ final class Principal
     /**
      * @return \Cerbos\Engine\V1\Principal
      */
-    public function toPrincipal(): \Cerbos\Engine\V1\Principal {
+    public function toPrincipal(): \Cerbos\Engine\V1\Principal
+    {
         return $this->principal;
     }
 }

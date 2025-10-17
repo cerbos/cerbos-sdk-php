@@ -9,7 +9,8 @@ namespace Cerbos\Sdk\Cloud\Store\V1;
 
 use Cerbos\Sdk\Cloud\Store\V1\ModifyFilesRequest\Condition;
 
-final class ModifyFilesRequest {
+final class ModifyFilesRequest
+{
     private \Cerbos\Cloud\Store\V1\ModifyFilesRequest $request;
 
     /**
@@ -34,11 +35,11 @@ final class ModifyFilesRequest {
             'operations' => $fileOperations
         ]);
 
-        if(isset($condition)) {
+        if (isset($condition)) {
             $this->request->setCondition($condition->toCondition());
         }
 
-        if(isset($changeDetails)) {
+        if (isset($changeDetails)) {
             $this->request->setChangeDetails($changeDetails->toChangeDetails());
         }
     }
@@ -90,7 +91,8 @@ final class ModifyFilesRequest {
     /**
      * @return \Cerbos\Cloud\Store\V1\ModifyFilesRequest
      */
-    public function toModifyFilesRequest(): \Cerbos\Cloud\Store\V1\ModifyFilesRequest {
+    public function toModifyFilesRequest(): \Cerbos\Cloud\Store\V1\ModifyFilesRequest
+    {
         return $this->request;
     }
 }

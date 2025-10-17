@@ -2,7 +2,10 @@
   "name": "cerbos/cerbos-sdk-php",
   "homepage": "https://github.com/cerbos/cerbos-sdk-php",
   "description": "PHP SDK for interacting with the Cerbos PDP",
-  "keywords": ["cerbos","pdp"],
+  "keywords": [
+    "cerbos",
+    "pdp"
+  ],
   "type": "library",
   "license": "Apache-2.0",
   "authors": [
@@ -16,7 +19,8 @@
     "psr-4": {
       "Cerbos\\Sdk\\": "src/Sdk",
       "Cerbos\\": "src/Cerbos",
-      "GPBMetadata\\": "src/GPBMetadata"
+      "GPBMetadata\\": "src/GPBMetadata",
+      "Grpc\\Health\\": "src/Grpc/Health"
     }
   },
   "autoload-dev": {

@@ -18,13 +18,15 @@ final class ListFilesRequestTest extends TestCase
     private const string equals = "equals";
     private const string storeId = "MD1LAP5BJNA9";
 
-    public function testAll(): void {
+    public function testAll(): void
+    {
         $request = ListFilesRequest::newInstance(self::storeId)->toListFilesRequest();
 
         $this->assertEquals(self::storeId, $request->getStoreId(), "invalid storeId");
     }
 
-    public function testWithFilter(): void {
+    public function testWithFilter(): void
+    {
         $fileFilter = FileFilter::pathEquals(self::equals);
         $request = ListFilesRequest::withFilter(self::storeId, $fileFilter)->toListFilesRequest();
 

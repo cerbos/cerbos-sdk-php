@@ -17,19 +17,22 @@ final class FileFilterTest extends TestCase
 {
     private const string something = "something";
 
-    public function testContains(): void {
+    public function testContains(): void
+    {
         $fileFilter = FileFilter::pathContains(self::something)->toFileFilter();
 
         $this->assertEquals(self::something, $fileFilter->getPath()->getContains(), "invalid path contains");
     }
 
-    public function testEquals(): void {
+    public function testEquals(): void
+    {
         $fileFilter = FileFilter::pathEquals(self::something)->toFileFilter();
 
         $this->assertEquals(self::something, $fileFilter->getPath()->getEquals(), "invalid path equals");
     }
 
-    public function testIn(): void {
+    public function testIn(): void
+    {
         $fileFilter = FileFilter::pathIn(InList::newInstance(self::something, self::something))->toFileFilter();
 
         $this->assertEquals(self::something, $fileFilter->getPath()->getIn()->getValues()[0], "invalid path in value at index 0");

@@ -102,7 +102,7 @@ final class StoreClientTest extends TestCase
         parent::setUp();
 
         $this->client = $this->hubClient->storeClient();
-        
+
         $pathToTemporaryPolicyFile = realpath(__DIR__ . "/../../../../res/cloud/v1/temporary.yaml");
         $pathToStoreContents = realpath(__DIR__ . "/../../../../res/cloud/v1/store.zip");
         $pathToTemporaryContents = realpath(__DIR__ . "/../../../../res/cloud/v1/temporary.zip");
@@ -146,7 +146,7 @@ final class StoreClientTest extends TestCase
         $initialStoreVersion = ($this->client->ListFiles(ListFilesRequest::newInstance($this->storeId)))->getStoreVersion();
 
         $fileContents = file_get_contents($this->pathToTemporaryPolicyFile);
-        if($fileContents == false) {
+        if ($fileContents == false) {
             $this->fail("failed to read file from " . $this->pathToTemporaryPolicyFile);
         }
 
@@ -192,7 +192,7 @@ final class StoreClientTest extends TestCase
         $initialStoreVersion = ($this->client->ListFiles(ListFilesRequest::newInstance($this->storeId)))->getStoreVersion();
 
         $temporaryContents = file_get_contents($this->pathToTemporaryContents);
-        if($temporaryContents == false) {
+        if ($temporaryContents == false) {
             $this->fail("failed to read file from " . $this->pathToTemporaryContents);
         }
 
@@ -216,7 +216,7 @@ final class StoreClientTest extends TestCase
         $this->assertEquals($initialStoreVersion + 1, $response->getNewStoreVersion(), "invalid store version");
 
         $storeContents = file_get_contents($this->pathToStoreContents);
-        if($storeContents == false) {
+        if ($storeContents == false) {
             $this->fail("failed to read file from " . $this->pathToStoreContents);
         }
 

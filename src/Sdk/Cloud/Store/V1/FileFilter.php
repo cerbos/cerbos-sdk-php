@@ -9,7 +9,8 @@ namespace Cerbos\Sdk\Cloud\Store\V1;
 
 use Cerbos\Sdk\Cloud\Store\V1\StringMatch\InList;
 
-final class FileFilter {
+final class FileFilter
+{
     private \Cerbos\Cloud\Store\V1\FileFilter $fileFilter;
 
     /**
@@ -29,8 +30,7 @@ final class FileFilter {
      */
     public static function pathContains(
         string $contains
-    ): FileFilter
-    {
+    ): FileFilter {
         $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
             'contains' => $contains
         ]);
@@ -44,8 +44,7 @@ final class FileFilter {
      */
     public static function pathEquals(
         string $equals
-    ): FileFilter
-    {
+    ): FileFilter {
         $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
             'equals' => $equals
         ]);
@@ -59,8 +58,7 @@ final class FileFilter {
      */
     public static function pathIn(
         InList $inList
-    ): FileFilter
-    {
+    ): FileFilter {
         $stringMatch = new \Cerbos\Cloud\Store\V1\StringMatch([
             'in' => $inList->toInList()
         ]);
@@ -71,7 +69,8 @@ final class FileFilter {
     /**
      * @return \Cerbos\Cloud\Store\V1\FileFilter
      */
-    public function toFileFilter(): \Cerbos\Cloud\Store\V1\FileFilter {
+    public function toFileFilter(): \Cerbos\Cloud\Store\V1\FileFilter
+    {
         return $this->fileFilter;
     }
 }

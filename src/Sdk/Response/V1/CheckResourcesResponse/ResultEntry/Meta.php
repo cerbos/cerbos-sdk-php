@@ -16,14 +16,16 @@ final class Meta
     /**
      * @param \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Meta $meta
      */
-    public function __construct(\Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Meta $meta) {
+    public function __construct(\Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Meta $meta)
+    {
         $this->meta = $meta;
     }
 
     /**
      * @return array<string, EffectMeta>
      */
-    public function getActions(): array {
+    public function getActions(): array
+    {
         $actions = array();
         foreach ($this->meta->getActions()->getIterator() as $action => $effect) {
             $actions[$action] = $effect;
@@ -35,7 +37,8 @@ final class Meta
     /**
      * @return array<string>
      */
-    public function getEffectiveDerivedRoles(): array {
+    public function getEffectiveDerivedRoles(): array
+    {
         $roles = array();
         foreach ($this->meta->getEffectiveDerivedRoles()->getIterator() as $role) {
             $roles[] = $role;
@@ -47,7 +50,8 @@ final class Meta
     /**
      * @return \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Meta
      */
-    public function toMeta(): \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Meta {
+    public function toMeta(): \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Meta
+    {
         return $this->meta;
     }
 }

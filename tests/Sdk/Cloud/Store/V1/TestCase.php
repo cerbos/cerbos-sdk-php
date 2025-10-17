@@ -47,13 +47,11 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->hubClient = HubClientBuilder::fromEnv()->build();
 
         $storeId = getenv("CERBOS_HUB_STORE_ID");
-        if (!is_string($storeId))
-        {
+        if (!is_string($storeId)) {
             $this->markTestSkipped("Skipping the test because CERBOS_HUB_STORE_ID environment variable must be specified.");
         }
 
-        if (empty($storeId))
-        {
+        if (empty($storeId)) {
             $this->markTestSkipped("Skipping the test because value of the CERBOS_HUB_STORE_ID environment variable must be greater than zero.");
         }
 

@@ -7,10 +7,12 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1;
 
-final class File {
+final class File
+{
     private \Cerbos\Cloud\Store\V1\File $file;
 
-    public function __construct(\Cerbos\Cloud\Store\V1\File $file) {
+    public function __construct(\Cerbos\Cloud\Store\V1\File $file)
+    {
         $this->file = $file;
     }
 
@@ -19,7 +21,8 @@ final class File {
      * @param string $contents
      * @return File
      */
-    public static function newInstance(string $path, string $contents): File {
+    public static function newInstance(string $path, string $contents): File
+    {
         return new File(
             new \Cerbos\Cloud\Store\V1\File([
                 'path' => $path,
@@ -47,7 +50,8 @@ final class File {
     /**
      * @return \Cerbos\Cloud\Store\V1\File
      */
-    public function toFile(): \Cerbos\Cloud\Store\V1\File {
+    public function toFile(): \Cerbos\Cloud\Store\V1\File
+    {
         return $this->file;
     }
 }

@@ -13,7 +13,8 @@ final class AuxData
 {
     private \Cerbos\Request\V1\AuxData $auxData;
 
-    private function __construct() {
+    private function __construct()
+    {
         $this->auxData = new \Cerbos\Request\V1\AuxData();
     }
 
@@ -39,7 +40,8 @@ final class AuxData
     /**
      * @return \Cerbos\Request\V1\AuxData
      */
-    public function toAuxData(): \Cerbos\Request\V1\AuxData {
+    public function toAuxData(): \Cerbos\Request\V1\AuxData
+    {
         return $this->auxData;
     }
 }

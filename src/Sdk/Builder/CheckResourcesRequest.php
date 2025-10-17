@@ -17,7 +17,8 @@ final class CheckResourcesRequest
     private array $resourceEntries;
     private ?string $requestId;
 
-    private function __construct() {
+    private function __construct()
+    {
         $this->auxData = null;
         $this->includeMeta = false;
         $this->principal = null;
@@ -28,7 +29,8 @@ final class CheckResourcesRequest
     /**
      * @return CheckResourcesRequest
      */
-    public static function newInstance(): CheckResourcesRequest {
+    public static function newInstance(): CheckResourcesRequest
+    {
         return new CheckResourcesRequest();
     }
 
@@ -36,7 +38,8 @@ final class CheckResourcesRequest
      * @param AuxData $auxData
      * @return $this
      */
-    public function withAuxData(AuxData $auxData): CheckResourcesRequest {
+    public function withAuxData(AuxData $auxData): CheckResourcesRequest
+    {
         $this->auxData = $auxData;
         return $this;
     }
@@ -45,7 +48,8 @@ final class CheckResourcesRequest
      * @param bool $include
      * @return $this
      */
-    public function withIncludeMeta(bool $include): CheckResourcesRequest {
+    public function withIncludeMeta(bool $include): CheckResourcesRequest
+    {
         $this->includeMeta = $include;
         return $this;
     }
@@ -54,7 +58,8 @@ final class CheckResourcesRequest
      * @param Principal $principal
      * @return $this
      */
-    public function withPrincipal(Principal $principal): CheckResourcesRequest {
+    public function withPrincipal(Principal $principal): CheckResourcesRequest
+    {
         $this->principal = $principal;
         return $this;
     }
@@ -63,7 +68,8 @@ final class CheckResourcesRequest
      * @param ResourceEntry $resourceEntry
      * @return $this
      */
-    public function withResourceEntry(ResourceEntry $resourceEntry): CheckResourcesRequest {
+    public function withResourceEntry(ResourceEntry $resourceEntry): CheckResourcesRequest
+    {
         $this->resourceEntries[] = $resourceEntry;
         return $this;
     }
@@ -72,7 +78,8 @@ final class CheckResourcesRequest
      * @param array<ResourceEntry> $resourceEntries
      * @return $this
      */
-    public function withResourceEntries(array $resourceEntries): CheckResourcesRequest {
+    public function withResourceEntries(array $resourceEntries): CheckResourcesRequest
+    {
         foreach ($resourceEntries as $resourceEntry) {
             $this->resourceEntries[] = $resourceEntry;
         }
@@ -83,7 +90,8 @@ final class CheckResourcesRequest
      * @param string $requestId
      * @return $this
      */
-    public function withRequestId(string $requestId): CheckResourcesRequest {
+    public function withRequestId(string $requestId): CheckResourcesRequest
+    {
         $this->requestId = $requestId;
         return $this;
     }
@@ -92,7 +100,8 @@ final class CheckResourcesRequest
      * @return \Cerbos\Request\V1\CheckResourcesRequest
      * @throws Exception
      */
-    public function toCheckResourcesRequest(): \Cerbos\Request\V1\CheckResourcesRequest {
+    public function toCheckResourcesRequest(): \Cerbos\Request\V1\CheckResourcesRequest
+    {
         if (!isset($this->principal)) {
             throw new Exception("principal is not set");
         }

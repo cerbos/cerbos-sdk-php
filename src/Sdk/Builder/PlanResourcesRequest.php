@@ -19,7 +19,8 @@ final class PlanResourcesRequest
     private ?Resource $resource;
     private ?string $requestId;
 
-    private function __construct() {
+    private function __construct()
+    {
         $this->action = null;
         $this->actions = array();
         $this->auxData = null;
@@ -32,7 +33,8 @@ final class PlanResourcesRequest
     /**
      * @return PlanResourcesRequest
      */
-    public static function newInstance(): PlanResourcesRequest {
+    public static function newInstance(): PlanResourcesRequest
+    {
         return new PlanResourcesRequest();
     }
 
@@ -42,7 +44,8 @@ final class PlanResourcesRequest
      * @return $this
      * @deprecated
      */
-    public function withAction(string $action): PlanResourcesRequest {
+    public function withAction(string $action): PlanResourcesRequest
+    {
         $this->action = $action;
         return $this;
     }
@@ -51,7 +54,8 @@ final class PlanResourcesRequest
      * @param array<string> $actions
      * @return $this
      */
-    public function withActions(array $actions): PlanResourcesRequest {
+    public function withActions(array $actions): PlanResourcesRequest
+    {
         foreach ($actions as $action) {
             $this->actions[] = $action;
         }
@@ -62,7 +66,8 @@ final class PlanResourcesRequest
      * @param AuxData $auxData
      * @return $this
      */
-    public function withAuxData(AuxData $auxData): PlanResourcesRequest {
+    public function withAuxData(AuxData $auxData): PlanResourcesRequest
+    {
         $this->auxData = $auxData;
         return $this;
     }
@@ -71,7 +76,8 @@ final class PlanResourcesRequest
      * @param bool $include
      * @return $this
      */
-    public function withIncludeMeta(bool $include): PlanResourcesRequest {
+    public function withIncludeMeta(bool $include): PlanResourcesRequest
+    {
         $this->includeMeta = $include;
         return $this;
     }
@@ -80,7 +86,8 @@ final class PlanResourcesRequest
      * @param Principal $principal
      * @return $this
      */
-    public function withPrincipal(Principal $principal): PlanResourcesRequest {
+    public function withPrincipal(Principal $principal): PlanResourcesRequest
+    {
         $this->principal = $principal;
         return $this;
     }
@@ -89,7 +96,8 @@ final class PlanResourcesRequest
      * @param Resource $resource
      * @return $this
      */
-    public function withResource(Resource $resource): PlanResourcesRequest {
+    public function withResource(Resource $resource): PlanResourcesRequest
+    {
         $this->resource = $resource;
         return $this;
     }
@@ -98,7 +106,8 @@ final class PlanResourcesRequest
      * @param string $requestId
      * @return $this
      */
-    public function withRequestId(string $requestId): PlanResourcesRequest {
+    public function withRequestId(string $requestId): PlanResourcesRequest
+    {
         $this->requestId = $requestId;
         return $this;
     }
@@ -107,7 +116,8 @@ final class PlanResourcesRequest
      * @return \Cerbos\Request\V1\PlanResourcesRequest
      * @throws Exception
      */
-    public function toPlanResourcesRequest(): \Cerbos\Request\V1\PlanResourcesRequest {
+    public function toPlanResourcesRequest(): \Cerbos\Request\V1\PlanResourcesRequest
+    {
         if (!isset($this->action) && count($this->actions) == 0) {
             throw new Exception("action(s) is empty or not set");
         }
@@ -132,11 +142,10 @@ final class PlanResourcesRequest
 
         if (isset($this->action) && count($this->actions) == 0) {
             /**
-            * @psalm-suppress DeprecatedMethod
-            */
+             * @psalm-suppress DeprecatedMethod
+             */
             $request->setAction($this->action);
-        }
-        else if (!isset($this->action) && count($this->actions) != 0) {
+        } else if (!isset($this->action) && count($this->actions) != 0) {
             $request->setActions($this->actions);
         } else {
             throw new Exception("either use withAction or withActions for specifying action(s)");

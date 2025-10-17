@@ -17,14 +17,16 @@ final class HubClient
     /**
      * @param StoreClient $storeClient
      */
-    public function __construct(StoreClient $storeClient) {
+    public function __construct(StoreClient $storeClient)
+    {
         $this->storeClient = $storeClient;
     }
 
     /**
      * @return StoreClient
      */
-    public function storeClient(): StoreClient {
+    public function storeClient(): StoreClient
+    {
         return $this->storeClient;
     }
 }

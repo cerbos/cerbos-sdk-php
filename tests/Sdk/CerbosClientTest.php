@@ -8,10 +8,13 @@ namespace Cerbos\Test\Sdk;
 use Cerbos\Sdk\Builder\AttributeValue;
 use Cerbos\Sdk\Builder\AuxData;
 use Cerbos\Sdk\Builder\CheckResourcesRequest;
+use Cerbos\Sdk\Builder\HealthCheckRequest;
+use Cerbos\Sdk\Builder\HealthCheckRequest\Service;
 use Cerbos\Sdk\Builder\PlanResourcesRequest;
 use Cerbos\Sdk\Builder\Principal;
 use Cerbos\Sdk\Builder\Resource;
 use Cerbos\Sdk\Builder\ResourceEntry;
+use Cerbos\Sdk\Response\V1\HealthCheckResponse\ServiceStatus;
 use Exception;
 
 /**
@@ -58,7 +61,8 @@ final class CerbosClientTest extends TestCase
         $this->assertFalse($resultEntry->isAllowed("nonexistent_action"), "result of XX125 for non-existent action is wrong");
     }
 
-    public function testCheckWithJwt(): void {
+    public function testCheckWithJwt(): void
+    {
         $request = CheckResourcesRequest::newInstance()
             ->withAuxData(AuxData::withJwt($this->jwt, null))
             ->withRequestId("1")
@@ -92,7 +96,8 @@ final class CerbosClientTest extends TestCase
         $this->assertTrue($resultEntry->isAllowed("defer"), "result of XX125 for defer action is wrong");
     }
 
-    public function testCheckMultiple(): void {
+    public function testCheckMultiple(): void
+    {
         $request = CheckResourcesRequest::newInstance()
             ->withAuxData(AuxData::withJwt($this->jwt, null))
             ->withRequestId("1")
@@ -186,7 +191,8 @@ final class CerbosClientTest extends TestCase
         $this->assertCount(4, $resultEntry->getValidationErrors());
     }
 
-    public function testPlanResources(): void{
+    public function testPlanResources(): void
+    {
         $request = PlanResourcesRequest::newInstance()
             ->withAuxData(AuxData::withJwt($this->jwt, null))
             ->withRequestId("1")
@@ -234,7 +240,8 @@ final class CerbosClientTest extends TestCase
         $this->assertEquals("eq", $planResourcesResult->getFilter()->getCondition()->getExpression()->getOperands()[1]->getExpression()->getOperator(), "planResourcesResult operand is not 'eq'");
     }
 
-    public function testPlanResourcesValidation(): void{
+    public function testPlanResourcesValidation(): void
+    {
         $request = PlanResourcesRequest::newInstance()
             ->withAuxData(AuxData::withJwt($this->jwt, null))
             ->withRequestId("1")
@@ -274,7 +281,8 @@ final class CerbosClientTest extends TestCase
         $this->assertFalse($planResourcesResult->isConditional(), "planResourcesResult is conditional");
     }
 
-    public function testPlayground(): void {
+    public function testPlayground(): void
+    {
         $request = CheckResourcesRequest::newInstance()
             ->withRequestId("1")
             ->withPrincipal(
@@ -302,5 +310,24 @@ final class CerbosClientTest extends TestCase
 
         $this->assertTrue($resultEntry->isAllowed("approve"), "result of XX125 for approve action is wrong");
         $this->assertTrue($resultEntry->isAllowed("delete"), "result of XX125 for delete action is wrong");
+    }
+
+    public function testCheckHealth(): void
+    {
+        $request = HealthCheckRequest::newInstance(Service::CERBOS);
+        try {
+            $healthCheckResponse = $this->client->checkHealth($request, $this->metadata);
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
+        $this->assertEquals(ServiceStatus::SERVING, $healthCheckResponse->getServiceStatus(), "healthCheckResponse service status is wrong");
+
+        $request = HealthCheckRequest::newInstance(Service::ADMIN);
+        try {
+            $healthCheckResponse = $this->client->checkHealth($request, $this->metadata);
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
+        $this->assertEquals(ServiceStatus::DISABLED, $healthCheckResponse->getServiceStatus(), "healthCheckResponse service status is wrong");
     }
 }

@@ -27,7 +27,8 @@ final class ResourceEntry
      * @param string $id
      * @return ResourceEntry
      */
-    public static function newInstance(string $kind, string $id): ResourceEntry {
+    public static function newInstance(string $kind, string $id): ResourceEntry
+    {
         return new ResourceEntry($kind, $id);
     }
 
@@ -35,7 +36,8 @@ final class ResourceEntry
      * @param string $id
      * @return $this
      */
-    public function withId(string $id): ResourceEntry {
+    public function withId(string $id): ResourceEntry
+    {
         $this->resource->withId($id);
         return $this;
     }
@@ -44,7 +46,8 @@ final class ResourceEntry
      * @param string $kind
      * @return $this
      */
-    public function withKind(string $kind): ResourceEntry {
+    public function withKind(string $kind): ResourceEntry
+    {
         $this->resource->withKind($kind);
         return $this;
     }
@@ -53,7 +56,8 @@ final class ResourceEntry
      * @param string $policyVersion
      * @return $this
      */
-    public function withPolicyVersion(string $policyVersion): ResourceEntry {
+    public function withPolicyVersion(string $policyVersion): ResourceEntry
+    {
         $this->resource->withPolicyVersion($policyVersion);
         return $this;
     }
@@ -64,7 +68,8 @@ final class ResourceEntry
      * @param AttributeValue $value
      * @return $this
      */
-    public function withAttribute(string $key, AttributeValue $value): ResourceEntry {
+    public function withAttribute(string $key, AttributeValue $value): ResourceEntry
+    {
         $this->resource->withAttribute($key, $value);
         return $this;
     }
@@ -73,7 +78,8 @@ final class ResourceEntry
      * @param array<string, AttributeValue> $attributes
      * @return $this
      */
-    public function withAttributes(array $attributes): ResourceEntry {
+    public function withAttributes(array $attributes): ResourceEntry
+    {
         $this->resource->withAttributes($attributes);
         return $this;
     }
@@ -82,7 +88,8 @@ final class ResourceEntry
      * @param string $scope
      * @return $this
      */
-    public function withScope(string $scope): ResourceEntry {
+    public function withScope(string $scope): ResourceEntry
+    {
         $this->resource->withScope($scope);
         return $this;
     }
@@ -91,7 +98,8 @@ final class ResourceEntry
      * @param string $action
      * @return $this
      */
-    public function withAction(string $action): ResourceEntry {
+    public function withAction(string $action): ResourceEntry
+    {
         $this->actions[] = $action;
         return $this;
     }
@@ -100,7 +108,8 @@ final class ResourceEntry
      * @param array<string> $actions
      * @return $this
      */
-    public function withActions(array $actions): ResourceEntry {
+    public function withActions(array $actions): ResourceEntry
+    {
         foreach ($actions as $action) {
             $this->actions[] = $action;
         }
@@ -110,7 +119,8 @@ final class ResourceEntry
     /**
      * @return \Cerbos\Request\V1\CheckResourcesRequest\ResourceEntry
      */
-    public function toResourceEntry(): \Cerbos\Request\V1\CheckResourcesRequest\ResourceEntry {
+    public function toResourceEntry(): \Cerbos\Request\V1\CheckResourcesRequest\ResourceEntry
+    {
         return (new \Cerbos\Request\V1\CheckResourcesRequest\ResourceEntry())
             ->setActions($this->actions)
             ->setResource($this->resource->toResource());

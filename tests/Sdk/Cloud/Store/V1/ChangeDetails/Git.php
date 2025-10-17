@@ -22,7 +22,7 @@ final class GitTest extends TestCase
     private const string ref = 'ref';
     private \Google\Protobuf\Timestamp $authorDate;
     private \Google\Protobuf\Timestamp $commitDate;
-    
+
     public function setUp(): void
     {
         parent::setUp();
@@ -30,7 +30,8 @@ final class GitTest extends TestCase
         $this->commitDate = new \Google\Protobuf\Timestamp();
     }
 
-    public function testAll(): void {
+    public function testAll(): void
+    {
         $git = Git::newInstance(
             repo: self::repo,
             ref: self::ref,

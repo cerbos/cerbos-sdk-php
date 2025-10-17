@@ -19,14 +19,16 @@ final class ResultEntry
     /**
      * @param \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry $resultEntry
      */
-    public function __construct(\Cerbos\Response\V1\CheckResourcesResponse\ResultEntry $resultEntry) {
+    public function __construct(\Cerbos\Response\V1\CheckResourcesResponse\ResultEntry $resultEntry)
+    {
         $this->resultEntry = $resultEntry;
     }
 
     /**
      * @return array<string, Effect>
      */
-    public function getActions(): array {
+    public function getActions(): array
+    {
         $actions = array();
         foreach ($this->resultEntry->getActions()->getIterator() as $action => $effect) {
             $actions[$action] = $effect;
@@ -38,7 +40,8 @@ final class ResultEntry
     /**
      * @return Meta|null
      */
-    public function getMeta(): ?Meta {
+    public function getMeta(): ?Meta
+    {
         $meta = $this->resultEntry->getMeta();
         if (!is_null($meta)) {
             return new Meta($meta);
@@ -50,14 +53,16 @@ final class ResultEntry
     /**
      * @return Resource|null
      */
-    public function getResource(): ?Resource {
+    public function getResource(): ?Resource
+    {
         return $this->resultEntry->getResource();
     }
 
     /**
      * @return array<OutputEntry>
      */
-    public function getOutputs(): array {
+    public function getOutputs(): array
+    {
         $outputs = array();
         foreach ($this->resultEntry->getOutputs()->getIterator() as $output) {
             $outputs[] = $output;
@@ -69,7 +74,8 @@ final class ResultEntry
     /**
      * @return array<ValidationError>
      */
-    public function getValidationErrors(): array {
+    public function getValidationErrors(): array
+    {
         $validationErrors = array();
         foreach ($this->resultEntry->getValidationErrors() as $validationError) {
             $validationErrors[] = $validationError;
@@ -82,7 +88,8 @@ final class ResultEntry
      * @param string $action
      * @return bool
      */
-    public function isAllowed(string $action): bool {
+    public function isAllowed(string $action): bool
+    {
         $actions = $this->getActions();
 
         if (!isset($actions[$action])) {
@@ -95,7 +102,8 @@ final class ResultEntry
     /**
      * @return \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry
      */
-    public function toResultEntry(): \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry {
+    public function toResultEntry(): \Cerbos\Response\V1\CheckResourcesResponse\ResultEntry
+    {
         return $this->resultEntry;
     }
 }

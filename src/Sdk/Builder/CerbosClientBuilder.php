@@ -12,6 +12,7 @@ use Cerbos\Sdk\Utility\Metadata;
 use Cerbos\Svc\V1\CerbosServiceClient;
 use Exception;
 use Grpc\ChannelCredentials;
+use Grpc\Health\V1\HealthClient;
 
 final class CerbosClientBuilder
 {
@@ -28,7 +29,8 @@ final class CerbosClientBuilder
     /**
      * @param string $hostname
      */
-    private function __construct(string $hostname) {
+    private function __construct(string $hostname)
+    {
         $this->hostname = $hostname;
         $this->plaintext = false;
         $this->playgroundInstanceId = "";
@@ -42,7 +44,8 @@ final class CerbosClientBuilder
      * @param string $hostname
      * @return CerbosClientBuilder
      */
-    public static function newInstance(string $hostname): CerbosClientBuilder {
+    public static function newInstance(string $hostname): CerbosClientBuilder
+    {
         return new CerbosClientBuilder($hostname);
     }
 
@@ -50,7 +53,8 @@ final class CerbosClientBuilder
      * @param array<string, array> $headers
      * @return CerbosClientBuilder
      */
-    public function withMetadata(array $headers): CerbosClientBuilder {
+    public function withMetadata(array $headers): CerbosClientBuilder
+    {
         $this->metadata = $headers;
         return $this;
     }
@@ -59,7 +63,8 @@ final class CerbosClientBuilder
      * @param bool $plaintext
      * @return CerbosClientBuilder
      */
-    public function withPlaintext(bool $plaintext): CerbosClientBuilder {
+    public function withPlaintext(bool $plaintext): CerbosClientBuilder
+    {
         $this->plaintext = $plaintext;
         return $this;
     }
@@ -68,7 +73,8 @@ final class CerbosClientBuilder
      * @param string $caCertificate
      * @return $this
      */
-    public function withCaCertificate(string $caCertificate): CerbosClientBuilder {
+    public function withCaCertificate(string $caCertificate): CerbosClientBuilder
+    {
         $this->caCertificate = $caCertificate;
         return $this;
     }
@@ -77,7 +83,8 @@ final class CerbosClientBuilder
      * @param string $tlsCertificate
      * @return $this
      */
-    public function withTlsCertificate(string $tlsCertificate): CerbosClientBuilder {
+    public function withTlsCertificate(string $tlsCertificate): CerbosClientBuilder
+    {
         $this->tlsCertificate = $tlsCertificate;
         return $this;
     }
@@ -86,7 +93,8 @@ final class CerbosClientBuilder
      * @param string $tlsKey
      * @return $this
      */
-    public function withTlsKey(string $tlsKey): CerbosClientBuilder {
+    public function withTlsKey(string $tlsKey): CerbosClientBuilder
+    {
         $this->tlsKey = $tlsKey;
         return $this;
     }
@@ -95,7 +103,8 @@ final class CerbosClientBuilder
      * @param string $playgroundInstanceId
      * @return $this
      */
-    public function withPlayground(string $playgroundInstanceId): CerbosClientBuilder {
+    public function withPlayground(string $playgroundInstanceId): CerbosClientBuilder
+    {
         $this->playgroundInstanceId = $playgroundInstanceId;
         return $this;
     }
@@ -104,29 +113,27 @@ final class CerbosClientBuilder
      * @return CerbosClient
      * @throws Exception
      */
-    public function build(): CerbosClient {
+    public function build(): CerbosClient
+    {
         if ($this->plaintext) {
             if ($this->playgroundInstanceId != "") {
                 throw new Exception("cannot use a plaintext connection to interact with the Cerbos Playground");
             }
 
             $credentials = ChannelCredentials::createInsecure();
-        }
-        else if (!is_null($this->caCertificate)) {
+        } else if (!is_null($this->caCertificate)) {
             if (!is_null($this->tlsCertificate) && !is_null($this->tlsKey)) {
                 $credentials = ChannelCredentials::createSsl(
                     $this->caCertificate,
                     $this->tlsKey,
                     $this->tlsCertificate
                 );
-            }
-            else {
+            } else {
                 $credentials = ChannelCredentials::createSsl(
                     $this->caCertificate
                 );
             }
-        }
-        else {
+        } else {
             /**
              * @psalm-suppress TooFewArguments
              */
@@ -140,16 +147,23 @@ final class CerbosClientBuilder
             ]
         );
 
+        $hc = new HealthClient(
+            $this->hostname,
+            [
+                'credentials' => $credentials,
+            ]
+        );
+
         $combined = $this->metadata;
         if ($this->playgroundInstanceId != "") {
             $combined = Metadata::merge(
                 $this->metadata,
                 [
-                    self::PLAYGROUND_INSTANCE_HEADER => [ $this->playgroundInstanceId ]
+                    self::PLAYGROUND_INSTANCE_HEADER => [$this->playgroundInstanceId]
                 ]
             );
         }
 
-        return new CerbosClient($csc, $combined);
+        return new CerbosClient($csc, $hc, $combined);
     }
 }

@@ -15,7 +15,8 @@ final class MetadataValue
 {
     private Value $value;
 
-    private function __construct(Value $value) {
+    private function __construct(Value $value)
+    {
         $this->value = $value;
     }
 
@@ -23,7 +24,8 @@ final class MetadataValue
      * @param bool $value
      * @return MetadataValue
      */
-    public static function boolValue(bool $value): MetadataValue {
+    public static function boolValue(bool $value): MetadataValue
+    {
         return new MetadataValue((new Value())->setBoolValue($value));
     }
 
@@ -31,7 +33,8 @@ final class MetadataValue
      * @param float $value
      * @return MetadataValue
      */
-    public static function floatValue(float $value): MetadataValue {
+    public static function floatValue(float $value): MetadataValue
+    {
         return new MetadataValue((new Value())->setNumberValue($value));
     }
 
@@ -39,7 +42,8 @@ final class MetadataValue
      * @param int $value
      * @return MetadataValue
      */
-    public static function intValue(int $value): MetadataValue {
+    public static function intValue(int $value): MetadataValue
+    {
         return new MetadataValue((new Value())->setNumberValue($value));
     }
 
@@ -47,7 +51,8 @@ final class MetadataValue
      * @param array<MetadataValue> $values
      * @return MetadataValue
      */
-    public static function listValue(array $values): MetadataValue {
+    public static function listValue(array $values): MetadataValue
+    {
         $v = array();
         foreach ($values as $value) {
             $v[] = $value->toValue();
@@ -60,7 +65,8 @@ final class MetadataValue
      * @param array<string, MetadataValue> $values
      * @return MetadataValue
      */
-    public static function mapValue(array $values): MetadataValue {
+    public static function mapValue(array $values): MetadataValue
+    {
         $v = array();
         foreach ($values as $key => $value) {
             $v[$key] = $value->toValue();
@@ -73,14 +79,16 @@ final class MetadataValue
      * @param string $value
      * @return MetadataValue
      */
-    public static function stringValue(string $value): MetadataValue {
+    public static function stringValue(string $value): MetadataValue
+    {
         return new MetadataValue((new Value())->setStringValue($value));
     }
 
     /**
      * @return Value
      */
-    public function toValue(): Value {
+    public function toValue(): Value
+    {
         return $this->value;
     }
 }

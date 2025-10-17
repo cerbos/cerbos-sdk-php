@@ -34,7 +34,7 @@ final class ChangeDetailsTest extends TestCase
     private const string key2 = "key2";
     private MetadataValue $value1;
     private MetadataValue $value2;
-    
+
     private const string description = "description";
 
     public function setUp(): void
@@ -42,12 +42,13 @@ final class ChangeDetailsTest extends TestCase
         parent::setUp();
         $this->authorDate = new \Google\Protobuf\Timestamp();
         $this->commitDate = new \Google\Protobuf\Timestamp();
-        
+
         $this->value1 = MetadataValue::boolValue(true);
         $this->value2 = MetadataValue::stringValue("stringValue");
     }
 
-    public function testWithGit(): void {
+    public function testWithGit(): void
+    {
         $uploader = Uploader::newInstance(self::name);
 
         $git = Git::newInstance(
@@ -77,7 +78,8 @@ final class ChangeDetailsTest extends TestCase
         $this->assertEquals($this->commitDate, $changeDetails->getGit()->getCommitDate(), "invalid commitDate");
     }
 
-    public function testWithInternal(): void {
+    public function testWithInternal(): void
+    {
         $uploader = Uploader::newInstance(self::name);
 
         $internal = Internal::newInstance(self::source)
@@ -88,7 +90,7 @@ final class ChangeDetailsTest extends TestCase
             ->toChangeDetails();
 
         $this->assertEquals(self::description, $changeDetails->getDescription(), "invalid description");
-        
+
         $this->assertEquals(self::name, $changeDetails->getUploader()->getName(), "invalid name");
 
         $this->assertEquals(self::source, $changeDetails->getInternal()->getSource(), "invalid source");

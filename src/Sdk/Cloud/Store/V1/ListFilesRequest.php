@@ -7,7 +7,8 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1;
 
-final class ListFilesRequest {
+final class ListFilesRequest
+{
     private \Cerbos\Cloud\Store\V1\ListFilesRequest $request;
 
     /**
@@ -45,15 +46,15 @@ final class ListFilesRequest {
     public static function withFilter(
         string $storeId,
         FileFilter $filter
-    ): ListFilesRequest
-    {
+    ): ListFilesRequest {
         return new ListFilesRequest($storeId, $filter);
     }
 
     /**
      * @return \Cerbos\Cloud\Store\V1\ListFilesRequest
      */
-    public function toListFilesRequest(): \Cerbos\Cloud\Store\V1\ListFilesRequest {
+    public function toListFilesRequest(): \Cerbos\Cloud\Store\V1\ListFilesRequest
+    {
         return $this->request;
     }
 }

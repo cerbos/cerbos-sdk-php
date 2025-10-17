@@ -7,7 +7,8 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1;
 
-final class GetFilesRequest {
+final class GetFilesRequest
+{
     private \Cerbos\Cloud\Store\V1\GetFilesRequest $request;
 
     /**
@@ -39,7 +40,8 @@ final class GetFilesRequest {
     /**
      * @return \Cerbos\Cloud\Store\V1\GetFilesRequest
      */
-    public function toGetFilesRequest(): \Cerbos\Cloud\Store\V1\GetFilesRequest {
+    public function toGetFilesRequest(): \Cerbos\Cloud\Store\V1\GetFilesRequest
+    {
         return $this->request;
     }
 }

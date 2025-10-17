@@ -9,7 +9,8 @@ namespace Cerbos\Sdk\Cloud\Store\V1\ReplaceFilesRequest;
 
 use Cerbos\Sdk\Cloud\Store\V1\File;
 
-final class Files {
+final class Files
+{
     private \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Files $files;
 
     /**
@@ -40,7 +41,8 @@ final class Files {
     /**
      * @return \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Files
      */
-    public function toFiles(): \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Files {
+    public function toFiles(): \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Files
+    {
         return $this->files;
     }
 }

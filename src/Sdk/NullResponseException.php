@@ -14,14 +14,16 @@ final class NullResponseException extends Exception
     /**
      * @param string $message
      */
-    public function __construct(string $message) {
+    public function __construct(string $message)
+    {
         parent::__construct($message);
     }
 
     /**
      * @return string
      */
-    public function __toString() : string {
+    public function __toString(): string
+    {
         return __CLASS__ . ": The response value is null\n";
     }
 
@@ -29,7 +31,8 @@ final class NullResponseException extends Exception
      * @param object|null $response
      * @throws NullResponseException
      */
-    public static function fromResponse(?object $response) : void {
+    public static function fromResponse(?object $response): void
+    {
         if ($response === null) {
             throw new NullResponseException(
                 "The response value is null"

@@ -10,7 +10,8 @@ namespace Cerbos\Sdk\Cloud\Store\V1;
 use Cerbos\Sdk\Cloud\Store\V1\ReplaceFilesRequest\Condition;
 use Cerbos\Sdk\Cloud\Store\V1\ReplaceFilesRequest\Files;
 
-final class ReplaceFilesRequest {
+final class ReplaceFilesRequest
+{
     private \Cerbos\Cloud\Store\V1\ReplaceFilesRequest $request;
 
     /**
@@ -31,21 +32,19 @@ final class ReplaceFilesRequest {
             'store_id' => $storeId,
         ]);
 
-        if(isset($condition)) {
+        if (isset($condition)) {
             $this->request->setCondition($condition->toCondition());
         }
 
-        if(isset($changeDetails)) {
+        if (isset($changeDetails)) {
             $this->request->setChangeDetails($changeDetails->toChangeDetails());
         }
 
         if (isset($files)) {
             $this->request->setFiles($files->toFiles());
-        }
-        elseif(isset($zippedContents)) {
+        } elseif (isset($zippedContents)) {
             $this->request->setZippedContents($zippedContents);
-        }
-        else {
+        } else {
             throw new \Exception("files or zippedContents must be specified");
         }
     }
@@ -62,8 +61,7 @@ final class ReplaceFilesRequest {
         Files $files,
         ?Condition $condition = null,
         ?ChangeDetails $changeDetails = null
-    ): ReplaceFilesRequest
-    {
+    ): ReplaceFilesRequest {
         return new ReplaceFilesRequest(
             storeId: $storeId,
             files: $files,
@@ -84,8 +82,7 @@ final class ReplaceFilesRequest {
         string $zippedContents,
         ?Condition $condition = null,
         ?ChangeDetails $changeDetails = null
-    ): ReplaceFilesRequest
-    {
+    ): ReplaceFilesRequest {
         return new ReplaceFilesRequest(
             storeId: $storeId,
             zippedContents: $zippedContents,
@@ -97,7 +94,8 @@ final class ReplaceFilesRequest {
     /**
      * @return \Cerbos\Cloud\Store\V1\ReplaceFilesRequest
      */
-    public function toReplaceFilesRequest(): \Cerbos\Cloud\Store\V1\ReplaceFilesRequest {
+    public function toReplaceFilesRequest(): \Cerbos\Cloud\Store\V1\ReplaceFilesRequest
+    {
         return $this->request;
     }
 }

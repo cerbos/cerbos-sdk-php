@@ -36,7 +36,7 @@ final class ReplaceFilesRequestTest extends TestCase
 
     private const string path = "path";
     private const string contents = "<contents>";
-    
+
     public function setUp(): void
     {
         parent::setUp();
@@ -44,7 +44,8 @@ final class ReplaceFilesRequestTest extends TestCase
         $this->commitDate = new \Google\Protobuf\Timestamp();
     }
 
-    public function testFiles(): void {
+    public function testFiles(): void
+    {
         $uploader = Uploader::newInstance(self::name);
 
         $git = Git::newInstance(
@@ -77,7 +78,8 @@ final class ReplaceFilesRequestTest extends TestCase
         $this->assertEquals(self::contents, $request->getZippedContents(), "invalid zipped contents");
     }
 
-    public function testWithZippedContents(): void {
+    public function testWithZippedContents(): void
+    {
         $uploader = Uploader::newInstance(self::name);
 
         $git = Git::newInstance(

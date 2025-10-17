@@ -7,7 +7,8 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1\ChangeDetails;
 
-final class Internal {
+final class Internal
+{
     private \Cerbos\Cloud\Store\V1\ChangeDetails\Internal $internal;
 
     /**
@@ -36,7 +37,8 @@ final class Internal {
      * @param MetadataValue $value
      * @return $this
      */
-    public function withMetadata(string $key, MetadataValue $value): Internal {
+    public function withMetadata(string $key, MetadataValue $value): Internal
+    {
         $newMetadata = array();
         foreach ($this->internal->getMetadata()->getIterator() as $k => $v) {
             $newMetadata[$k] = $v;
@@ -51,7 +53,8 @@ final class Internal {
      * @param array<string, MetadataValue> $metadata
      * @return $this
      */
-    public function withMetadatas(array $metadata): Internal {
+    public function withMetadatas(array $metadata): Internal
+    {
         $newMetadata = array();
         foreach ($this->internal->getMetadata()->getIterator() as $k => $v) {
             $newMetadata[$k] = $v;
@@ -68,7 +71,8 @@ final class Internal {
     /**
      * @return \Cerbos\Cloud\Store\V1\ChangeDetails\Internal
      */
-    public function toInternal(): \Cerbos\Cloud\Store\V1\ChangeDetails\Internal {
+    public function toInternal(): \Cerbos\Cloud\Store\V1\ChangeDetails\Internal
+    {
         return $this->internal;
     }
 }

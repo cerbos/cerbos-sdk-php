@@ -17,7 +17,8 @@ use Exception;
 use Google\Rpc\Status;
 use GPBMetadata\Google\Rpc\ErrorDetails;
 
-final class ErrorDetailException {
+final class ErrorDetailException
+{
     private const GRPC_STATUS_DETAILS_BIN_HEADER = "grpc-status-details-bin";
 
     /**
@@ -28,7 +29,8 @@ final class ErrorDetailException {
      * @throws OperationDiscardedException
      * @throws ValidationFailureException
      */
-    public static function fromStatus($status) : void {
+    public static function fromStatus($status): void
+    {
         ErrorDetails::initOnce();
 
         $message = $status->details;
@@ -38,29 +40,29 @@ final class ErrorDetailException {
             return;
         }
 
-        if(!array_key_exists(self::GRPC_STATUS_DETAILS_BIN_HEADER, $metadata)) {
+        if (!array_key_exists(self::GRPC_STATUS_DETAILS_BIN_HEADER, $metadata)) {
             return;
         }
 
-        if(!array_key_exists(0, $metadata[self::GRPC_STATUS_DETAILS_BIN_HEADER])) {
+        if (!array_key_exists(0, $metadata[self::GRPC_STATUS_DETAILS_BIN_HEADER])) {
             return;
         }
 
         $rpcStatus = new Status();
         $rpcStatus->mergeFromString($metadata[self::GRPC_STATUS_DETAILS_BIN_HEADER][0]);
-        
+
         /** @psalm-suppress UnnecessaryVarAnnotation */
         /** @var \Google\Protobuf\RepeatedField */
         $details = $rpcStatus->getDetails();
 
-        if(is_null($details[0])) {
+        if (is_null($details[0])) {
             return;
         }
 
         $errorDetail = $details[0]->unpack();
         $errorDetail->discardUnknownFields();
 
-        switch(true) {
+        switch (true) {
             case $errorDetail instanceof ErrDetailCannotModifyGitConnectedStore:
                 throw new CannotModifyGitConnectedStoreException(
                     $message
@@ -91,7 +93,8 @@ final class ErrorDetailException {
     }
 }
 
-final class CannotModifyGitConnectedStoreException extends Exception {
+final class CannotModifyGitConnectedStoreException extends Exception
+{
     /**
      * @param string $message
      */
@@ -104,12 +107,14 @@ final class CannotModifyGitConnectedStoreException extends Exception {
     /**
      * @return string
      */
-    public function __toString() : string {
+    public function __toString(): string
+    {
         return __CLASS__ . ': ' . $this->message;
     }
 }
 
-final class ConditionUnsatisfiedException extends Exception {
+final class ConditionUnsatisfiedException extends Exception
+{
     private ErrDetailConditionUnsatisfied $detail;
 
     /**
@@ -127,19 +132,22 @@ final class ConditionUnsatisfiedException extends Exception {
     /**
      * @return int
      */
-    public function getCurrentStoreVersion() : int {
+    public function getCurrentStoreVersion(): int
+    {
         return (int)$this->detail->getCurrentStoreVersion();
     }
 
     /**
      * @return string
      */
-    public function __toString() : string {
+    public function __toString(): string
+    {
         return __CLASS__ . ': ' . $this->message;
     }
 }
 
-final class NoUsableFilesException extends Exception {
+final class NoUsableFilesException extends Exception
+{
     private ErrDetailNoUsableFiles $detail;
 
     /**
@@ -157,19 +165,22 @@ final class NoUsableFilesException extends Exception {
     /**
      * @return string[]
      */
-    public function getIgnoredFiles() : array {
+    public function getIgnoredFiles(): array
+    {
         return iterator_to_array($this->detail->getIgnoredFiles());
     }
 
     /**
      * @return string
      */
-    public function __toString() : string {
+    public function __toString(): string
+    {
         return __CLASS__ . ': ' . $this->message;
     }
 }
 
-final class OperationDiscardedException extends Exception {
+final class OperationDiscardedException extends Exception
+{
     private ErrDetailOperationDiscarded $detail;
 
     /**
@@ -187,19 +198,22 @@ final class OperationDiscardedException extends Exception {
     /**
      * @return int
      */
-    public function getCurrentStoreVersion() : int {
+    public function getCurrentStoreVersion(): int
+    {
         return (int)$this->detail->getCurrentStoreVersion();
     }
 
     /**
      * @return string
      */
-    public function __toString() : string {
+    public function __toString(): string
+    {
         return __CLASS__ . ': ' . $this->message;
     }
 }
 
-final class ValidationFailureException extends Exception {
+final class ValidationFailureException extends Exception
+{
     private ErrDetailValidationFailure $detail;
 
     /**
@@ -217,14 +231,16 @@ final class ValidationFailureException extends Exception {
     /**
      * @return FileError[]
      */
-    public function getCurrentStoreVersion() : array {
+    public function getCurrentStoreVersion(): array
+    {
         return iterator_to_array($this->detail->getErrors());
     }
 
     /**
      * @return string
      */
-    public function __toString() : string {
+    public function __toString(): string
+    {
         return __CLASS__ . ': ' . $this->message;
     }
 }

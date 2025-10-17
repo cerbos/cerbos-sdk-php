@@ -17,7 +17,8 @@ final class CheckResourcesResponse
     /**
      * @param \Cerbos\Response\V1\CheckResourcesResponse $response
      */
-    public function __construct(\Cerbos\Response\V1\CheckResourcesResponse $response) {
+    public function __construct(\Cerbos\Response\V1\CheckResourcesResponse $response)
+    {
         $this->response = $response;
     }
 
@@ -26,27 +27,30 @@ final class CheckResourcesResponse
      * @return ResultEntry
      * @throws Exception
      */
-    public function find(string $id): ResultEntry {
+    public function find(string $id): ResultEntry
+    {
         foreach ($this->response->getResults()->getIterator() as $resultEntry) {
             $resource = $resultEntry->getResource();
             if (isset($resource) && $resource->getId() == $id) {
                 return new ResultEntry($resultEntry);
             }
         }
-        throw new Exception("failed to find result entry with the id ".$id);
+        throw new Exception("failed to find result entry with the id " . $id);
     }
 
     /**
      * @return string
      */
-    public function getRequestId(): string {
+    public function getRequestId(): string
+    {
         return $this->response->getRequestId();
     }
 
     /**
      * @return \Cerbos\Response\V1\CheckResourcesResponse
      */
-    public function toCheckResourcesResponse(): \Cerbos\Response\V1\CheckResourcesResponse {
+    public function toCheckResourcesResponse(): \Cerbos\Response\V1\CheckResourcesResponse
+    {
         return $this->response;
     }
 }

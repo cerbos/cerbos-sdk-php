@@ -7,7 +7,8 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Cloud\Store\V1\ReplaceFilesRequest;
 
-final class Condition {
+final class Condition
+{
     private \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Condition $condition;
 
     /**
@@ -34,7 +35,8 @@ final class Condition {
     /**
      * @return \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Condition
      */
-    public function toCondition(): \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Condition {
+    public function toCondition(): \Cerbos\Cloud\Store\V1\ReplaceFilesRequest\Condition
+    {
         return $this->condition;
     }
 }
