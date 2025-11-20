@@ -5,7 +5,7 @@ on:
   pull_request:
     branches:
       - main
-      - 'v*'
+      - "v*"
 
 jobs:
   validate-lint-statically-analyze-and-unit-test:
@@ -14,8 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.3', '8.4' ]
-        experimental: [ false ]
+        php-version: ["8.3", "8.4"]
+        experimental: [false]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -35,7 +35,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           setup_only: true
           token: ${{ secrets.BUF_TOKEN }}
-      
+
       - name: Validate
         shell: bash
         run: make validate-composer
