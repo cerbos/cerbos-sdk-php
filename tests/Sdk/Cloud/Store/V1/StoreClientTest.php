@@ -113,6 +113,30 @@ final class StoreClientTest extends TestCase
         $this->pathToTemporaryPolicyFile = $pathToTemporaryPolicyFile;
         $this->pathToStoreContents = $pathToStoreContents;
         $this->pathToTemporaryContents = $pathToTemporaryContents;
+
+        // initial state
+
+        $storeContents = file_get_contents($this->pathToStoreContents);
+        if ($storeContents == false) {
+            $this->fail("failed to read file from " . $this->pathToStoreContents);
+        }
+
+        $request = ReplaceFilesRequest::withZippedContents(
+            $this->storeId,
+            $storeContents,
+            null,
+            ChangeDetails::internal(
+                'cerbos-sdk-php/ReplaceFiles/With=store.zip',
+                Uploader::newInstance('cerbos-sdk-php'),
+                Internal::newInstance('sdk')
+            )
+        );
+
+        try {
+            $this->client->replaceFiles($request);
+        } catch (Exception $e) {
+            return;
+        }
     }
 
     public function testGetFiles(): void
