@@ -41,15 +41,15 @@
     "php": "^8.3 || ^8.4",
     "ext-grpc": "*",
     "ext-json": "*",
-    "google/common-protos": "4.12.4",
-    "google/protobuf": "v4.33.1",
-    "grpc/grpc": "1.74.0",
-    "ramsey/uuid": "4.9.1"
+    "google/common-protos": "^4.12",
+    "google/protobuf": "^v4.33",
+    "grpc/grpc": "^1.74",
+    "ramsey/uuid": "^4.9"
   },
   "require-dev": {
-    "php-parallel-lint/php-parallel-lint": "1.4.0",
-    "phpstan/phpstan": "2.1.32",
-    "phpunit/phpunit": "12.4.3",
-    "vimeo/psalm": "6.13.1"
+    "php-parallel-lint/php-parallel-lint": "^1.4",
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^12.4",
+    "vimeo/psalm": "^6.13"
   }
 }
