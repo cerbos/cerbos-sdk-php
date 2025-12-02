@@ -38,7 +38,7 @@
     }
   },
   "require": {
-    "php": "^8.3 || ^8.4",
+    "php": "^8.4",
     "ext-grpc": "*",
     "ext-json": "*",
     "google/common-protos": "^4.12",
