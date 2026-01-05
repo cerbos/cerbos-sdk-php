@@ -26,6 +26,7 @@ class Hub extends \Google\Protobuf\Internal\Message
      *     @type string $deployment_id
      *     @type string $playground_id
      *     @type \Cerbos\Audit\V1\PolicySource\Hub\LocalBundle $local_bundle
+     *     @type \Cerbos\Audit\V1\PolicySource\Hub\EmbeddedBundle $embedded_bundle
      * }
      */
     public function __construct($data = NULL) {
@@ -137,6 +138,33 @@ class Hub extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Audit\V1\PolicySource\Hub\LocalBundle::class);
         $this->writeOneof(4, $var);
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource.Hub.EmbeddedBundle embedded_bundle = 5 [json_name = "embeddedBundle"];</code>
+     * @return \Cerbos\Audit\V1\PolicySource\Hub\EmbeddedBundle|null
+     */
+    public function getEmbeddedBundle()
+    {
+        return $this->readOneof(5);
+    }
+
+    public function hasEmbeddedBundle()
+    {
+        return $this->hasOneof(5);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource.Hub.EmbeddedBundle embedded_bundle = 5 [json_name = "embeddedBundle"];</code>
+     * @param \Cerbos\Audit\V1\PolicySource\Hub\EmbeddedBundle $var
+     * @return $this
+     */
+    public function setEmbeddedBundle($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Audit\V1\PolicySource\Hub\EmbeddedBundle::class);
+        $this->writeOneof(5, $var);
 
         return $this;
     }
