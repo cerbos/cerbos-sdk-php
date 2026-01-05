@@ -30,6 +30,10 @@ class TestOptions extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string default_policy_version = 4 [json_name = "defaultPolicyVersion"];</code>
      */
     protected $default_policy_version = '';
+    /**
+     * Generated from protobuf field <code>string default_scope = 5 [json_name = "defaultScope"];</code>
+     */
+    protected $default_scope = '';
 
     /**
      * Constructor.
@@ -41,6 +45,7 @@ class TestOptions extends \Google\Protobuf\Internal\Message
      *     @type bool $lenient_scope_search
      *     @type array|\Google\Protobuf\Internal\MapField $globals
      *     @type string $default_policy_version
+     *     @type string $default_scope
      * }
      */
     public function __construct($data = NULL) {
@@ -142,6 +147,28 @@ class TestOptions extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->default_policy_version = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string default_scope = 5 [json_name = "defaultScope"];</code>
+     * @return string
+     */
+    public function getDefaultScope()
+    {
+        return $this->default_scope;
+    }
+
+    /**
+     * Generated from protobuf field <code>string default_scope = 5 [json_name = "defaultScope"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setDefaultScope($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->default_scope = $var;
 
         return $this;
     }

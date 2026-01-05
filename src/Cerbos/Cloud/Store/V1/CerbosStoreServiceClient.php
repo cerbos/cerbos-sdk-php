@@ -35,6 +35,20 @@ class CerbosStoreServiceClient extends \Grpc\BaseStub {
     }
 
     /**
+     * @param \Cerbos\Cloud\Store\V1\GetCurrentVersionRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall<\Cerbos\Cloud\Store\V1\GetCurrentVersionResponse>
+     */
+    public function GetCurrentVersion(\Cerbos\Cloud\Store\V1\GetCurrentVersionRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/cerbos.cloud.store.v1.CerbosStoreService/GetCurrentVersion',
+        $argument,
+        ['\Cerbos\Cloud\Store\V1\GetCurrentVersionResponse', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
      * @param \Cerbos\Cloud\Store\V1\GetFilesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
