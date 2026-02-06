@@ -36,6 +36,10 @@ class CheckResourcesRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.cerbos.request.v1.AuxData aux_data = 5 [json_name = "auxData"];</code>
      */
     protected $aux_data = null;
+    /**
+     * Generated from protobuf field <code>optional .cerbos.audit.v1.RequestContext request_context = 6 [json_name = "requestContext"];</code>
+     */
+    protected $request_context = null;
 
     /**
      * Constructor.
@@ -48,6 +52,7 @@ class CheckResourcesRequest extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Engine\V1\Principal $principal
      *     @type \Cerbos\Request\V1\CheckResourcesRequest\ResourceEntry[] $resources
      *     @type \Cerbos\Request\V1\AuxData $aux_data
+     *     @type \Cerbos\Audit\V1\RequestContext $request_context
      * }
      */
     public function __construct($data = NULL) {
@@ -181,6 +186,38 @@ class CheckResourcesRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Request\V1\AuxData::class);
         $this->aux_data = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>optional .cerbos.audit.v1.RequestContext request_context = 6 [json_name = "requestContext"];</code>
+     * @return \Cerbos\Audit\V1\RequestContext|null
+     */
+    public function getRequestContext()
+    {
+        return $this->request_context;
+    }
+
+    public function hasRequestContext()
+    {
+        return isset($this->request_context);
+    }
+
+    public function clearRequestContext()
+    {
+        unset($this->request_context);
+    }
+
+    /**
+     * Generated from protobuf field <code>optional .cerbos.audit.v1.RequestContext request_context = 6 [json_name = "requestContext"];</code>
+     * @param \Cerbos\Audit\V1\RequestContext $var
+     * @return $this
+     */
+    public function setRequestContext($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Audit\V1\RequestContext::class);
+        $this->request_context = $var;
 
         return $this;
     }

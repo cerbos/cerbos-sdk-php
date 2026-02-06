@@ -15,6 +15,10 @@ use Google\Protobuf\RepeatedField;
 class RolePolicy extends \Google\Protobuf\Internal\Message
 {
     /**
+     * Generated from protobuf field <code>string version = 6 [json_name = "version"];</code>
+     */
+    protected $version = '';
+    /**
      * Generated from protobuf field <code>repeated string parent_roles = 5 [json_name = "parentRoles"];</code>
      */
     private $parent_roles;
@@ -42,6 +46,7 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $role
+     *     @type string $version
      *     @type string[] $parent_roles
      *     @type string $scope
      *     @type \Cerbos\Policy\V1\RoleRule[] $rules
@@ -77,6 +82,28 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->writeOneof(1, $var);
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string version = 6 [json_name = "version"];</code>
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->version;
+    }
+
+    /**
+     * Generated from protobuf field <code>string version = 6 [json_name = "version"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setVersion($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->version = $var;
 
         return $this;
     }

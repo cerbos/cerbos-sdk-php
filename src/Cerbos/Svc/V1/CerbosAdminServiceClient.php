@@ -77,6 +77,20 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
     }
 
     /**
+     * @param \Cerbos\Request\V1\DeletePolicyRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\DeletePolicyResponse>
+     */
+    public function DeletePolicy(\Cerbos\Request\V1\DeletePolicyRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/cerbos.svc.v1.CerbosAdminService/DeletePolicy',
+        $argument,
+        ['\Cerbos\Response\V1\DeletePolicyResponse', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
      * @param \Cerbos\Request\V1\DisablePolicyRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
@@ -185,6 +199,20 @@ class CerbosAdminServiceClient extends \Grpc\BaseStub {
         return $this->_simpleRequest('/cerbos.svc.v1.CerbosAdminService/ReloadStore',
         $argument,
         ['\Cerbos\Response\V1\ReloadStoreResponse', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * @param \Cerbos\Request\V1\PurgeStoreRevisionsRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall<\Cerbos\Response\V1\PurgeStoreRevisionsResponse>
+     */
+    public function PurgeStoreRevisions(\Cerbos\Request\V1\PurgeStoreRevisionsRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/cerbos.svc.v1.CerbosAdminService/PurgeStoreRevisions',
+        $argument,
+        ['\Cerbos\Response\V1\PurgeStoreRevisionsResponse', 'decode'],
         $metadata, $options);
     }
 
