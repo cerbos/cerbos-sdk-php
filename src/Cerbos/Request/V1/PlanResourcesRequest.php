@@ -43,6 +43,10 @@ class PlanResourcesRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>bool include_meta = 6 [json_name = "includeMeta", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
      */
     protected $include_meta = false;
+    /**
+     * Generated from protobuf field <code>optional .cerbos.audit.v1.RequestContext request_context = 8 [json_name = "requestContext"];</code>
+     */
+    protected $request_context = null;
 
     /**
      * Constructor.
@@ -57,6 +61,7 @@ class PlanResourcesRequest extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Engine\V1\PlanResourcesInput\Resource $resource
      *     @type \Cerbos\Request\V1\AuxData $aux_data
      *     @type bool $include_meta
+     *     @type \Cerbos\Audit\V1\RequestContext $request_context
      * }
      */
     public function __construct($data = NULL) {
@@ -250,6 +255,38 @@ class PlanResourcesRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkBool($var);
         $this->include_meta = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>optional .cerbos.audit.v1.RequestContext request_context = 8 [json_name = "requestContext"];</code>
+     * @return \Cerbos\Audit\V1\RequestContext|null
+     */
+    public function getRequestContext()
+    {
+        return $this->request_context;
+    }
+
+    public function hasRequestContext()
+    {
+        return isset($this->request_context);
+    }
+
+    public function clearRequestContext()
+    {
+        unset($this->request_context);
+    }
+
+    /**
+     * Generated from protobuf field <code>optional .cerbos.audit.v1.RequestContext request_context = 8 [json_name = "requestContext"];</code>
+     * @param \Cerbos\Audit\V1\RequestContext $var
+     * @return $this
+     */
+    public function setRequestContext($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Audit\V1\RequestContext::class);
+        $this->request_context = $var;
 
         return $this;
     }

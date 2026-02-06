@@ -22,6 +22,10 @@ class OutputEntry extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.google.protobuf.Value val = 2 [json_name = "val", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
      */
     protected $val = null;
+    /**
+     * Generated from protobuf field <code>string action = 3 [json_name = "action", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    protected $action = '';
 
     /**
      * Constructor.
@@ -31,6 +35,7 @@ class OutputEntry extends \Google\Protobuf\Internal\Message
      *
      *     @type string $src
      *     @type \Google\Protobuf\Value $val
+     *     @type string $action
      * }
      */
     public function __construct($data = NULL) {
@@ -88,6 +93,28 @@ class OutputEntry extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Google\Protobuf\Value::class);
         $this->val = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string action = 3 [json_name = "action", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return string
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * Generated from protobuf field <code>string action = 3 [json_name = "action", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setAction($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->action = $var;
 
         return $this;
     }
