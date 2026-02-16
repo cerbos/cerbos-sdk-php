@@ -26,6 +26,38 @@ class Policy extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>map<string, double> avg_condition_count = 3 [json_name = "avgConditionCount"];</code>
      */
     private $avg_condition_count;
+    /**
+     * Generated from protobuf field <code>map<string, uint32> condition_count = 4 [json_name = "conditionCount"];</code>
+     */
+    private $condition_count;
+    /**
+     * Generated from protobuf field <code>map<string, uint32> rule_count = 5 [json_name = "ruleCount"];</code>
+     */
+    private $rule_count;
+    /**
+     * Generated from protobuf field <code>map<string, uint32> max_condition_count = 6 [json_name = "maxConditionCount"];</code>
+     */
+    private $max_condition_count;
+    /**
+     * Generated from protobuf field <code>map<string, uint32> max_rule_count = 7 [json_name = "maxRuleCount"];</code>
+     */
+    private $max_rule_count;
+    /**
+     * Generated from protobuf field <code>uint32 distinct_action_count = 8 [json_name = "distinctActionCount"];</code>
+     */
+    protected $distinct_action_count = 0;
+    /**
+     * Generated from protobuf field <code>uint32 distinct_resource_count = 9 [json_name = "distinctResourceCount"];</code>
+     */
+    protected $distinct_resource_count = 0;
+    /**
+     * Generated from protobuf field <code>bool has_output = 10 [json_name = "hasOutput"];</code>
+     */
+    protected $has_output = false;
+    /**
+     * Generated from protobuf field <code>bool has_scoped_policies = 11 [json_name = "hasScopedPolicies"];</code>
+     */
+    protected $has_scoped_policies = false;
 
     /**
      * Constructor.
@@ -36,6 +68,14 @@ class Policy extends \Google\Protobuf\Internal\Message
      *     @type array|\Google\Protobuf\Internal\MapField $count
      *     @type array|\Google\Protobuf\Internal\MapField $avg_rule_count
      *     @type array|\Google\Protobuf\Internal\MapField $avg_condition_count
+     *     @type array|\Google\Protobuf\Internal\MapField $condition_count
+     *     @type array|\Google\Protobuf\Internal\MapField $rule_count
+     *     @type array|\Google\Protobuf\Internal\MapField $max_condition_count
+     *     @type array|\Google\Protobuf\Internal\MapField $max_rule_count
+     *     @type int $distinct_action_count
+     *     @type int $distinct_resource_count
+     *     @type bool $has_output
+     *     @type bool $has_scoped_policies
      * }
      */
     public function __construct($data = NULL) {
@@ -105,6 +145,182 @@ class Policy extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::DOUBLE);
         $this->avg_condition_count = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, uint32> condition_count = 4 [json_name = "conditionCount"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getConditionCount()
+    {
+        return $this->condition_count;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, uint32> condition_count = 4 [json_name = "conditionCount"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setConditionCount($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::UINT32);
+        $this->condition_count = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, uint32> rule_count = 5 [json_name = "ruleCount"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getRuleCount()
+    {
+        return $this->rule_count;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, uint32> rule_count = 5 [json_name = "ruleCount"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setRuleCount($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::UINT32);
+        $this->rule_count = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, uint32> max_condition_count = 6 [json_name = "maxConditionCount"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getMaxConditionCount()
+    {
+        return $this->max_condition_count;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, uint32> max_condition_count = 6 [json_name = "maxConditionCount"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setMaxConditionCount($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::UINT32);
+        $this->max_condition_count = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, uint32> max_rule_count = 7 [json_name = "maxRuleCount"];</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getMaxRuleCount()
+    {
+        return $this->max_rule_count;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, uint32> max_rule_count = 7 [json_name = "maxRuleCount"];</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setMaxRuleCount($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::UINT32);
+        $this->max_rule_count = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>uint32 distinct_action_count = 8 [json_name = "distinctActionCount"];</code>
+     * @return int
+     */
+    public function getDistinctActionCount()
+    {
+        return $this->distinct_action_count;
+    }
+
+    /**
+     * Generated from protobuf field <code>uint32 distinct_action_count = 8 [json_name = "distinctActionCount"];</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setDistinctActionCount($var)
+    {
+        GPBUtil::checkUint32($var);
+        $this->distinct_action_count = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>uint32 distinct_resource_count = 9 [json_name = "distinctResourceCount"];</code>
+     * @return int
+     */
+    public function getDistinctResourceCount()
+    {
+        return $this->distinct_resource_count;
+    }
+
+    /**
+     * Generated from protobuf field <code>uint32 distinct_resource_count = 9 [json_name = "distinctResourceCount"];</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setDistinctResourceCount($var)
+    {
+        GPBUtil::checkUint32($var);
+        $this->distinct_resource_count = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool has_output = 10 [json_name = "hasOutput"];</code>
+     * @return bool
+     */
+    public function getHasOutput()
+    {
+        return $this->has_output;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool has_output = 10 [json_name = "hasOutput"];</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setHasOutput($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->has_output = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool has_scoped_policies = 11 [json_name = "hasScopedPolicies"];</code>
+     * @return bool
+     */
+    public function getHasScopedPolicies()
+    {
+        return $this->has_scoped_policies;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool has_scoped_policies = 11 [json_name = "hasScopedPolicies"];</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setHasScopedPolicies($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->has_scoped_policies = $var;
 
         return $this;
     }
