@@ -26,6 +26,10 @@ class Git extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string subdirectory = 3 [json_name = "subdirectory"];</code>
      */
     protected $subdirectory = '';
+    /**
+     * Generated from protobuf field <code>string hash = 4 [json_name = "hash"];</code>
+     */
+    protected $hash = '';
 
     /**
      * Constructor.
@@ -36,6 +40,7 @@ class Git extends \Google\Protobuf\Internal\Message
      *     @type string $repository_url
      *     @type string $branch
      *     @type string $subdirectory
+     *     @type string $hash
      * }
      */
     public function __construct($data = NULL) {
@@ -105,6 +110,28 @@ class Git extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->subdirectory = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string hash = 4 [json_name = "hash"];</code>
+     * @return string
+     */
+    public function getHash()
+    {
+        return $this->hash;
+    }
+
+    /**
+     * Generated from protobuf field <code>string hash = 4 [json_name = "hash"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setHash($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->hash = $var;
 
         return $this;
     }

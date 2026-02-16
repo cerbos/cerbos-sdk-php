@@ -19,8 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
-        php-version: ["8.4"]
+        php-version: ["8.4", "8.5"]
         experimental: [false]
     steps:
       - name: Check out repository
@@ -29,8 +30,8 @@ jobs:
           lfs: true
           persist-credentials: false
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # 2.37.0
+      - name: Setup PHP
+        uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2
         with:
           php-version: ${{ matrix.php-version }}
           coverage: xdebug

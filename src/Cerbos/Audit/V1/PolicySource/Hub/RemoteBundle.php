@@ -10,14 +10,14 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
- * Generated from protobuf message <code>cerbos.audit.v1.PolicySource.Hub.LocalBundle</code>
+ * Generated from protobuf message <code>cerbos.audit.v1.PolicySource.Hub.RemoteBundle</code>
  */
-class LocalBundle extends \Google\Protobuf\Internal\Message
+class RemoteBundle extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string path = 1 [json_name = "path"];</code>
+     * Generated from protobuf field <code>string deployment_id = 1 [json_name = "deploymentId"];</code>
      */
-    protected $path = '';
+    protected $deployment_id = '';
     /**
      * Generated from protobuf field <code>string bundle_id = 2 [json_name = "bundleId"];</code>
      */
@@ -29,7 +29,7 @@ class LocalBundle extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type string $path
+     *     @type string $deployment_id
      *     @type string $bundle_id
      * }
      */
@@ -39,23 +39,23 @@ class LocalBundle extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string path = 1 [json_name = "path"];</code>
+     * Generated from protobuf field <code>string deployment_id = 1 [json_name = "deploymentId"];</code>
      * @return string
      */
-    public function getPath()
+    public function getDeploymentId()
     {
-        return $this->path;
+        return $this->deployment_id;
     }
 
     /**
-     * Generated from protobuf field <code>string path = 1 [json_name = "path"];</code>
+     * Generated from protobuf field <code>string deployment_id = 1 [json_name = "deploymentId"];</code>
      * @param string $var
      * @return $this
      */
-    public function setPath($var)
+    public function setDeploymentId($var)
     {
         GPBUtil::checkString($var, True);
-        $this->path = $var;
+        $this->deployment_id = $var;
 
         return $this;
     }

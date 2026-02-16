@@ -27,6 +27,7 @@ class Hub extends \Google\Protobuf\Internal\Message
      *     @type string $playground_id
      *     @type \Cerbos\Audit\V1\PolicySource\Hub\LocalBundle $local_bundle
      *     @type \Cerbos\Audit\V1\PolicySource\Hub\EmbeddedBundle $embedded_bundle
+     *     @type \Cerbos\Audit\V1\PolicySource\Hub\RemoteBundle $remote_bundle
      * }
      */
     public function __construct($data = NULL) {
@@ -62,26 +63,35 @@ class Hub extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string deployment_id = 2 [json_name = "deploymentId"];</code>
+     * Generated from protobuf field <code>string deployment_id = 2 [json_name = "deploymentId", deprecated = true];</code>
      * @return string
+     * @deprecated
      */
     public function getDeploymentId()
     {
+        if ($this->hasOneof(2)) {
+            @trigger_error('deployment_id is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->readOneof(2);
     }
 
     public function hasDeploymentId()
     {
+        if ($this->hasOneof(2)) {
+            @trigger_error('deployment_id is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->hasOneof(2);
     }
 
     /**
-     * Generated from protobuf field <code>string deployment_id = 2 [json_name = "deploymentId"];</code>
+     * Generated from protobuf field <code>string deployment_id = 2 [json_name = "deploymentId", deprecated = true];</code>
      * @param string $var
      * @return $this
+     * @deprecated
      */
     public function setDeploymentId($var)
     {
+        @trigger_error('deployment_id is deprecated.', E_USER_DEPRECATED);
         GPBUtil::checkString($var, True);
         $this->writeOneof(2, $var);
 
@@ -165,6 +175,33 @@ class Hub extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Audit\V1\PolicySource\Hub\EmbeddedBundle::class);
         $this->writeOneof(5, $var);
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource.Hub.RemoteBundle remote_bundle = 6 [json_name = "remoteBundle"];</code>
+     * @return \Cerbos\Audit\V1\PolicySource\Hub\RemoteBundle|null
+     */
+    public function getRemoteBundle()
+    {
+        return $this->readOneof(6);
+    }
+
+    public function hasRemoteBundle()
+    {
+        return $this->hasOneof(6);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource.Hub.RemoteBundle remote_bundle = 6 [json_name = "remoteBundle"];</code>
+     * @param \Cerbos\Audit\V1\PolicySource\Hub\RemoteBundle $var
+     * @return $this
+     */
+    public function setRemoteBundle($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Audit\V1\PolicySource\Hub\RemoteBundle::class);
+        $this->writeOneof(6, $var);
 
         return $this;
     }
