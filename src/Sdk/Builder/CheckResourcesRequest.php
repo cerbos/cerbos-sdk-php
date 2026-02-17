@@ -11,6 +11,7 @@ use Exception;
 
 final class CheckResourcesRequest
 {
+    private bool $allowPartialRequests;
     private ?AuxData $auxData;
     private bool $includeMeta;
     private ?Principal $principal;
@@ -19,6 +20,7 @@ final class CheckResourcesRequest
 
     private function __construct()
     {
+        $this->allowPartialRequests = false;
         $this->auxData = null;
         $this->includeMeta = false;
         $this->principal = null;
@@ -32,6 +34,16 @@ final class CheckResourcesRequest
     public static function newInstance(): CheckResourcesRequest
     {
         return new CheckResourcesRequest();
+    }
+
+    /**
+     * @param bool $allowPartialRequests
+     * @return $this
+     */
+    public function withAllowPartialRequests(bool $allowPartialRequests): CheckResourcesRequest
+    {
+        $this->allowPartialRequests = $allowPartialRequests;
+        return $this;
     }
 
     /**
@@ -102,31 +114,34 @@ final class CheckResourcesRequest
      */
     public function toCheckResourcesRequest(): \Cerbos\Request\V1\CheckResourcesRequest
     {
-        if (!isset($this->principal)) {
-            throw new Exception("principal is not set");
-        }
-
-        if (count($this->resourceEntries) == 0) {
-            throw new Exception("resource entries is empty or not set");
-        }
-
-        if (!isset($this->requestId)) {
-            throw new Exception("request id is not set");
-        }
-
-        $re = array();
-        foreach ($this->resourceEntries as $resourceEntry) {
-            $re[] = $resourceEntry->toResourceEntry();
-        }
-
         $request = (new \Cerbos\Request\V1\CheckResourcesRequest())
-            ->setIncludeMeta($this->includeMeta)
-            ->setPrincipal($this->principal->toPrincipal())
-            ->setRequestId($this->requestId)
-            ->setResources($re);
+            ->setIncludeMeta($this->includeMeta);
 
         if (isset($this->auxData)) {
             $request->setAuxData($this->auxData->toAuxData());
+        }
+
+        if (isset($this->principal)) {
+            $request->setPrincipal($this->principal->toPrincipal());
+        } else if (!$this->allowPartialRequests) {
+            throw new Exception("principal is not set");
+        }
+
+        if (count($this->resourceEntries) > 0) {
+            $re = array();
+            foreach ($this->resourceEntries as $resourceEntry) {
+                $re[] = $resourceEntry->toResourceEntry();
+            }
+
+            $request->setResources($re);
+        } else if (!$this->allowPartialRequests) {
+            throw new Exception("resource entries is empty or not set");
+        }
+
+        if (isset($this->requestId)) {
+            $request->setRequestId($this->requestId);
+        } else if (!$this->allowPartialRequests) {
+            throw new Exception("request id is not set");
         }
 
         return $request;
