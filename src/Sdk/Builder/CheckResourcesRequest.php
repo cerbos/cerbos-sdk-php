@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Builder;
 
+use Cerbos\Sdk\Utility\RequestId;
 use Exception;
 
 final class CheckResourcesRequest
@@ -115,7 +116,8 @@ final class CheckResourcesRequest
     public function toCheckResourcesRequest(): \Cerbos\Request\V1\CheckResourcesRequest
     {
         $request = (new \Cerbos\Request\V1\CheckResourcesRequest())
-            ->setIncludeMeta($this->includeMeta);
+            ->setIncludeMeta($this->includeMeta)
+            ->setRequestId(isset($this->requestId) ? $this->requestId : RequestId::generate());
 
         if (isset($this->auxData)) {
             $request->setAuxData($this->auxData->toAuxData());
@@ -136,12 +138,6 @@ final class CheckResourcesRequest
             $request->setResources($re);
         } else if (!$this->allowPartialRequests) {
             throw new Exception("resource entries is empty or not set");
-        }
-
-        if (isset($this->requestId)) {
-            $request->setRequestId($this->requestId);
-        } else if (!$this->allowPartialRequests) {
-            throw new Exception("request id is not set");
         }
 
         return $request;

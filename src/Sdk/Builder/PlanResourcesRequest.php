@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Builder;
 
+use Cerbos\Sdk\Utility\RequestId;
 use Exception;
 
 final class PlanResourcesRequest
@@ -131,7 +132,8 @@ final class PlanResourcesRequest
     public function toPlanResourcesRequest(): \Cerbos\Request\V1\PlanResourcesRequest
     {
         $request = (new \Cerbos\Request\V1\PlanResourcesRequest())
-            ->setIncludeMeta($this->includeMeta);
+            ->setIncludeMeta($this->includeMeta)
+            ->setRequestId(isset($this->requestId) ? $this->requestId : RequestId::generate());
 
         if (isset($this->action)) {
             /**
@@ -158,12 +160,6 @@ final class PlanResourcesRequest
             $request->setResource($this->resource->toPlanResource());
         } else if (!$this->allowPartialRequests) {
             throw new Exception("resource is not set");
-        }
-
-        if (isset($this->requestId)) {
-            $request->setRequestId($this->requestId);
-        } else if (!$this->allowPartialRequests) {
-            throw new Exception("request id is not set");
         }
 
         return $request;
