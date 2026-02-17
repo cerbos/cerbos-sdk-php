@@ -7,13 +7,15 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Builder;
 
+use Cerbos\Sdk\Utility\RequestId;
 use Exception;
 
 final class PlanResourcesRequest
 {
-    private ?AuxData $auxData;
     private ?string $action;
     private array $actions;
+    private bool $allowPartialRequests;
+    private ?AuxData $auxData;
     private bool $includeMeta;
     private ?Principal $principal;
     private ?Resource $resource;
@@ -21,6 +23,7 @@ final class PlanResourcesRequest
 
     private function __construct()
     {
+        $this->allowPartialRequests = false;
         $this->action = null;
         $this->actions = array();
         $this->auxData = null;
@@ -59,6 +62,16 @@ final class PlanResourcesRequest
         foreach ($actions as $action) {
             $this->actions[] = $action;
         }
+        return $this;
+    }
+
+    /**
+     * @param bool $allowPartialRequests
+     * @return $this
+     */
+    public function withAllowPartialRequests(bool $allowPartialRequests): PlanResourcesRequest
+    {
+        $this->allowPartialRequests = $allowPartialRequests;
         return $this;
     }
 
@@ -118,41 +131,35 @@ final class PlanResourcesRequest
      */
     public function toPlanResourcesRequest(): \Cerbos\Request\V1\PlanResourcesRequest
     {
-        if (!isset($this->action) && count($this->actions) == 0) {
-            throw new Exception("action(s) is empty or not set");
-        }
-
-        if (!isset($this->principal)) {
-            throw new Exception("principal is not set");
-        }
-
-        if (!isset($this->resource)) {
-            throw new Exception("resource is not set");
-        }
-
-        if (!isset($this->requestId)) {
-            throw new Exception("request id is not set");
-        }
-
         $request = (new \Cerbos\Request\V1\PlanResourcesRequest())
             ->setIncludeMeta($this->includeMeta)
-            ->setPrincipal($this->principal->toPrincipal())
-            ->setRequestId($this->requestId)
-            ->setResource($this->resource->toPlanResource());
+            ->setRequestId(isset($this->requestId) ? $this->requestId : RequestId::generate());
 
-        if (isset($this->action) && count($this->actions) == 0) {
+        if (isset($this->action)) {
             /**
              * @psalm-suppress DeprecatedMethod
              */
             $request->setAction($this->action);
-        } else if (!isset($this->action) && count($this->actions) != 0) {
+        } else if (count($this->actions) > 0) {
             $request->setActions($this->actions);
-        } else {
-            throw new Exception("either use withAction or withActions for specifying action(s)");
+        } else if (!$this->allowPartialRequests) {
+            throw new Exception("action(s) is empty or not set");
         }
 
         if (isset($this->auxData)) {
             $request->setAuxData($this->auxData->toAuxData());
+        }
+
+        if (isset($this->principal)) {
+            $request->setPrincipal($this->principal->toPrincipal());
+        } else if (!$this->allowPartialRequests) {
+            throw new Exception("principal is not set");
+        }
+
+        if (isset($this->resource)) {
+            $request->setResource($this->resource->toPlanResource());
+        } else if (!$this->allowPartialRequests) {
+            throw new Exception("resource is not set");
         }
 
         return $request;

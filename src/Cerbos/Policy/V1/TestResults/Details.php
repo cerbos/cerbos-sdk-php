@@ -19,9 +19,14 @@ class Details extends \Google\Protobuf\Internal\Message
      */
     protected $result = 0;
     /**
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.Trace engine_trace = 4 [json_name = "engineTrace"];</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.Trace engine_trace = 4 [json_name = "engineTrace", deprecated = true];</code>
+     * @deprecated
      */
     private $engine_trace;
+    /**
+     * Generated from protobuf field <code>.cerbos.engine.v1.TraceBatch engine_trace_batch = 7 [json_name = "engineTraceBatch"];</code>
+     */
+    protected $engine_trace_batch = null;
     protected $outcome;
 
     /**
@@ -36,6 +41,7 @@ class Details extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Policy\V1\TestResults\Success $success
      *     @type string $skip_reason
      *     @type \Cerbos\Engine\V1\Trace[] $engine_trace
+     *     @type \Cerbos\Engine\V1\TraceBatch $engine_trace_batch
      * }
      */
     public function __construct($data = NULL) {
@@ -174,23 +180,63 @@ class Details extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.Trace engine_trace = 4 [json_name = "engineTrace"];</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.Trace engine_trace = 4 [json_name = "engineTrace", deprecated = true];</code>
      * @return RepeatedField<\Cerbos\Engine\V1\Trace>
+     * @deprecated
      */
     public function getEngineTrace()
     {
+        if (count($this->engine_trace) !== 0) {
+            @trigger_error('engine_trace is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->engine_trace;
     }
 
     /**
-     * Generated from protobuf field <code>repeated .cerbos.engine.v1.Trace engine_trace = 4 [json_name = "engineTrace"];</code>
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.Trace engine_trace = 4 [json_name = "engineTrace", deprecated = true];</code>
      * @param \Cerbos\Engine\V1\Trace[] $var
      * @return $this
+     * @deprecated
      */
     public function setEngineTrace($var)
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\Trace::class);
+        if (count($arr) !== 0) {
+            @trigger_error('engine_trace is deprecated.', E_USER_DEPRECATED);
+        }
         $this->engine_trace = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.engine.v1.TraceBatch engine_trace_batch = 7 [json_name = "engineTraceBatch"];</code>
+     * @return \Cerbos\Engine\V1\TraceBatch|null
+     */
+    public function getEngineTraceBatch()
+    {
+        return $this->engine_trace_batch;
+    }
+
+    public function hasEngineTraceBatch()
+    {
+        return isset($this->engine_trace_batch);
+    }
+
+    public function clearEngineTraceBatch()
+    {
+        unset($this->engine_trace_batch);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.engine.v1.TraceBatch engine_trace_batch = 7 [json_name = "engineTraceBatch"];</code>
+     * @param \Cerbos\Engine\V1\TraceBatch $var
+     * @return $this
+     */
+    public function setEngineTraceBatch($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Engine\V1\TraceBatch::class);
+        $this->engine_trace_batch = $var;
 
         return $this;
     }
