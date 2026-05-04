@@ -34,4 +34,32 @@ class ApiKeyServiceClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Cerbos\Cloud\Apikey\V1\RegisterDeviceRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\ServerStreamingCall
+     */
+    public function RegisterDevice(\Cerbos\Cloud\Apikey\V1\RegisterDeviceRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_serverStreamRequest('/cerbos.cloud.apikey.v1.ApiKeyService/RegisterDevice',
+        $argument,
+        ['\Cerbos\Cloud\Apikey\V1\RegisterDeviceResponse', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * @param \Cerbos\Cloud\Apikey\V1\RefreshDeviceTokenRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall<\Cerbos\Cloud\Apikey\V1\RefreshDeviceTokenResponse>
+     */
+    public function RefreshDeviceToken(\Cerbos\Cloud\Apikey\V1\RefreshDeviceTokenRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/cerbos.cloud.apikey.v1.ApiKeyService/RefreshDeviceToken',
+        $argument,
+        ['\Cerbos\Cloud\Apikey\V1\RefreshDeviceTokenResponse', 'decode'],
+        $metadata, $options);
+    }
+
 }
