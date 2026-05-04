@@ -7,6 +7,12 @@ on:
       - main
       - "v*"
 
+defaults:
+  run:
+    shell: bash
+
+permissions: {}
+
 jobs:
   validate-lint-statically-analyze-and-unit-test:
     name: Run validation, linters, static analysis and unit tests
@@ -17,27 +23,25 @@ jobs:
         php-version: ["8.4"]
         experimental: [false]
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           lfs: true
+          persist-credentials: false
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2
+      - name: Set up PHP
+        uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # 2.37.0
         with:
           php-version: ${{ matrix.php-version }}
           coverage: xdebug
           extensions: "grpc"
 
-      - name: Buf
-        uses: bufbuild/buf-action@fd21066df7214747548607aaa45548ba2b9bc1ff # v1
+      - name: Install Buf
+        uses: cerbos/actions/install-tools@bb5570805858670fd33787e9ded60b8c1140b2a1 # main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          setup_only: true
-          token: ${{ secrets.BUF_TOKEN }}
+          tools: buf
 
       - name: Validate
-        shell: bash
         run: make validate-composer
 
       - name: Install dependencies
@@ -49,29 +53,18 @@ jobs:
         run: make generate
 
       - name: Lint
-        shell: bash
         run: make lint
 
       - name: Static analysis
-        shell: bash
         run: make static-analysis
 
       - name: Check repo status
-        shell: bash
-        run: |
-          repo_status=$(git status --porcelain)
-          if [[ ! -z "${repo_status}" ]]; then
-            echo "::error::Uncommitted changes detected"
-            echo "${repo_status}"
-            git status -vv
-            exit 1
-          fi
+        uses: cerbos/actions/check-repo-status@bb5570805858670fd33787e9ded60b8c1140b2a1 # main
 
       - name: Run cerbos service
         run: docker compose up -d
 
       - name: Run unit tests
-        shell: bash
         env:
           CERBOS_HUB_API_ENDPOINT: "${{ secrets.CERBOS_HUB_API_ENDPOINT }}"
           CERBOS_HUB_CLIENT_ID: "${{ secrets.CERBOS_HUB_CLIENT_ID }}"
