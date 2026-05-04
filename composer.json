@@ -42,7 +42,7 @@
     "ext-grpc": "*",
     "ext-json": "*",
     "google/common-protos": "^4.12",
-    "google/protobuf": "^v4.33",
+    "google/protobuf": "^v5.0.0",
     "grpc/grpc": "^1.74",
     "ramsey/uuid": "^4.9"
   },
