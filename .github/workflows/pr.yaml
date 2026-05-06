@@ -30,7 +30,7 @@ jobs:
           lfs: true
           persist-credentials: false
 
-      - name: Setup PHP
+      - name: Set up PHP
         uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2
         with:
           php-version: ${{ matrix.php-version }}
