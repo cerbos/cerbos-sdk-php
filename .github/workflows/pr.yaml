@@ -38,7 +38,7 @@ jobs:
           extensions: "grpc"
 
       - name: Install Buf
-        uses: cerbos/actions/install-tools@b65bfbd7621d9a89a06901a7daaed0cfc72eb690 # main
+        uses: cerbos/actions/install-tools@0c9f5496bb1c168e663ad7ecb99ad0d2b947ba46 # main
         with:
           tools: buf
 
@@ -60,7 +60,7 @@ jobs:
         run: make static-analysis
 
       - name: Check repo status
-        uses: cerbos/actions/check-repo-status@b65bfbd7621d9a89a06901a7daaed0cfc72eb690 # main
+        uses: cerbos/actions/check-repo-status@0c9f5496bb1c168e663ad7ecb99ad0d2b947ba46 # main
 
       - name: Run cerbos service
         run: docker compose up -d
