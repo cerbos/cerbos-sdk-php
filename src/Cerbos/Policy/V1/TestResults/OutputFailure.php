@@ -29,6 +29,7 @@ class OutputFailure extends \Google\Protobuf\Internal\Message
      *     @type string $src
      *     @type \Cerbos\Policy\V1\TestResults\OutputFailure\MismatchedValue $mismatched
      *     @type \Cerbos\Policy\V1\TestResults\OutputFailure\MissingValue $missing
+     *     @type \Cerbos\Policy\V1\TestResults\OutputFailure\EvaluationError $errored
      * }
      */
     public function __construct($data = NULL) {
@@ -108,6 +109,33 @@ class OutputFailure extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Policy\V1\TestResults\OutputFailure\MissingValue::class);
         $this->writeOneof(3, $var);
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.TestResults.OutputFailure.EvaluationError errored = 4 [json_name = "errored"];</code>
+     * @return \Cerbos\Policy\V1\TestResults\OutputFailure\EvaluationError|null
+     */
+    public function getErrored()
+    {
+        return $this->readOneof(4);
+    }
+
+    public function hasErrored()
+    {
+        return $this->hasOneof(4);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.TestResults.OutputFailure.EvaluationError errored = 4 [json_name = "errored"];</code>
+     * @param \Cerbos\Policy\V1\TestResults\OutputFailure\EvaluationError $var
+     * @return $this
+     */
+    public function setErrored($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\TestResults\OutputFailure\EvaluationError::class);
+        $this->writeOneof(4, $var);
 
         return $this;
     }

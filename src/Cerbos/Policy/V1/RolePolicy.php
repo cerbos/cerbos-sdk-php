@@ -37,6 +37,14 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
      * @deprecated
      */
     protected $scope_permissions = 0;
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 7 [json_name = "variables"];</code>
+     */
+    protected $variables = null;
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Constants constants = 8 [json_name = "constants"];</code>
+     */
+    protected $constants = null;
     protected $policy_type;
 
     /**
@@ -52,6 +60,8 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Policy\V1\RoleRule[] $rules
      *     @type int $scope_permissions
      *           Deprecated: no-op.
+     *     @type \Cerbos\Policy\V1\Variables $variables
+     *     @type \Cerbos\Policy\V1\Constants $constants
      * }
      */
     public function __construct($data = NULL) {
@@ -202,6 +212,70 @@ class RolePolicy extends \Google\Protobuf\Internal\Message
         @trigger_error('scope_permissions is deprecated.', E_USER_DEPRECATED);
         GPBUtil::checkEnum($var, \Cerbos\Policy\V1\ScopePermissions::class);
         $this->scope_permissions = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 7 [json_name = "variables"];</code>
+     * @return \Cerbos\Policy\V1\Variables|null
+     */
+    public function getVariables()
+    {
+        return $this->variables;
+    }
+
+    public function hasVariables()
+    {
+        return isset($this->variables);
+    }
+
+    public function clearVariables()
+    {
+        unset($this->variables);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Variables variables = 7 [json_name = "variables"];</code>
+     * @param \Cerbos\Policy\V1\Variables $var
+     * @return $this
+     */
+    public function setVariables($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Variables::class);
+        $this->variables = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Constants constants = 8 [json_name = "constants"];</code>
+     * @return \Cerbos\Policy\V1\Constants|null
+     */
+    public function getConstants()
+    {
+        return $this->constants;
+    }
+
+    public function hasConstants()
+    {
+        return isset($this->constants);
+    }
+
+    public function clearConstants()
+    {
+        unset($this->constants);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Constants constants = 8 [json_name = "constants"];</code>
+     * @param \Cerbos\Policy\V1\Constants $var
+     * @return $this
+     */
+    public function setConstants($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Constants::class);
+        $this->constants = $var;
 
         return $this;
     }

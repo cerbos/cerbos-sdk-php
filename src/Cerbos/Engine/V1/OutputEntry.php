@@ -26,6 +26,10 @@ class OutputEntry extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string action = 3 [json_name = "action", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
      */
     protected $action = '';
+    /**
+     * Generated from protobuf field <code>string error = 4 [json_name = "error", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    protected $error = '';
 
     /**
      * Constructor.
@@ -36,6 +40,7 @@ class OutputEntry extends \Google\Protobuf\Internal\Message
      *     @type string $src
      *     @type \Google\Protobuf\Value $val
      *     @type string $action
+     *     @type string $error
      * }
      */
     public function __construct($data = NULL) {
@@ -115,6 +120,28 @@ class OutputEntry extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->action = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string error = 4 [json_name = "error", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return string
+     */
+    public function getError()
+    {
+        return $this->error;
+    }
+
+    /**
+     * Generated from protobuf field <code>string error = 4 [json_name = "error", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setError($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->error = $var;
 
         return $this;
     }
