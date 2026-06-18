@@ -328,6 +328,6 @@ final class CerbosClientTest extends TestCase
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
-        $this->assertEquals(ServiceStatus::DISABLED, $healthCheckResponse->getServiceStatus(), "healthCheckResponse service status is wrong");
+        $this->assertEquals(ServiceStatus::SERVING, $healthCheckResponse->getServiceStatus(), "healthCheckResponse service status is wrong");
     }
 }
