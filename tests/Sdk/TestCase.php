@@ -50,7 +50,9 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 
     private function cerbos(): StartedGenericContainer
     {
-        $pathToConfig = realpath("./tests/res/config");
+        $pathToConfig = realpath(__DIR__ . "/../res/config");
+        if (!is_string($pathToConfig)) $this->fail("pathToConfig is not of string type");
+
         $container = new GenericContainer('ghcr.io/cerbos/cerbos:dev')
             ->withExposedPorts(3592)
             ->withExposedPorts(3593)
@@ -71,10 +73,12 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         ];
         array_push($combinedArgs, ...$args);
 
-        $pathToPolicies = realpath("./tests/res/policies");
+        $pathToPolicies = realpath(__DIR__ . "/../res/policies");
+        if (!is_string($pathToPolicies)) $this->fail("pathToPolicies is not of string type");
+
         new GenericContainer('ghcr.io/cerbos/cerbosctl:dev')
             ->withMount($pathToPolicies, "/policies")
-            ->withCommand($combinedArgs)
+            ->withCommand(array_values($combinedArgs))
             ->start();
     }
 }
