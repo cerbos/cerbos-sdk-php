@@ -1,8 +1,4 @@
 ---
-server:
-  httpListenAddr: ":3592"
-  grpcListenAddr: ":3593"
-
 auxData:
   jwt:
     keySets:
@@ -16,8 +12,17 @@ engine:
 schema:
   enforcement: reject
 
+server:
+  adminAPI:
+    enabled: true
+  grpcListenAddr: ":3593"
+  httpListenAddr: ":3592"
+  logRequestPayloads: true
+
 storage:
-  driver: "disk"
-  disk:
-    directory: /policies
-    watchForChanges: true
+  driver: "sqlite3"
+  sqlite3:
+    dsn: "file::memory:?cache=shared"
+
+telemetry:
+  disabled: true

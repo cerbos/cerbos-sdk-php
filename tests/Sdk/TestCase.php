@@ -9,25 +9,30 @@ namespace Cerbos\Test\Sdk;
 
 use Cerbos\Sdk\Builder\CerbosClientBuilder;
 use Cerbos\Sdk\CerbosClient;
-use Exception;
+use Testcontainers\Container\GenericContainer;
+use Testcontainers\Container\StartedGenericContainer;
+use Testcontainers\Wait\WaitForLog;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
-    private string $host = 'localhost:3593';
     private string $playgroundHost = 'demo-pdp.cerbos.cloud';
     private string $playgroundInstanceId = 'XhkOi82fFKk3YW60e2c806Yvm0trKEje'; // See: https://play.cerbos.dev/p/XhkOi82fFKk3YW60e2c806Yvm0trKEje
+    private StartedGenericContainer $cerbosContainer;
     protected array $metadata = ["wibble" => ["wobble"]];
     protected CerbosClient $client;
     protected CerbosClient $playgroundClient;
 
-    /**
-     * @return void
-     * @throws Exception
-     */
     protected function setUp(): void
     {
         parent::setUp();
-        $this->client = CerbosClientBuilder::newInstance($this->host)
+
+        $this->cerbosContainer = $this->cerbos();
+        $host = $this->cerbosContainer->getIpAddress($this->cerbosContainer->getNetworkNames()[0]);
+        $this->cerbosctl($host, ["put", "policies", "--plaintext", "-R", "/policies"]);
+        $this->cerbosctl($host, ["put", "schemas", "--plaintext", "-R", "/policies"]);
+
+        $port = $this->cerbosContainer->getMappedPort(3593);
+        $this->client = CerbosClientBuilder::newInstance('localhost:' . $port)
             ->withMetadata($this->metadata)
             ->withPlaintext(true)
             ->build();
@@ -35,5 +40,45 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
             ->withMetadata($this->metadata)
             ->withPlayground($this->playgroundInstanceId)
             ->build();
+    }
+
+    protected function tearDown(): void
+    {
+        $this->cerbosContainer->stop();
+        parent::tearDown();
+    }
+
+    private function cerbos(): StartedGenericContainer
+    {
+        $pathToConfig = realpath(__DIR__ . "/../res/config");
+        if (!is_string($pathToConfig)) $this->fail("pathToConfig is not of string type");
+
+        $container = new GenericContainer('ghcr.io/cerbos/cerbos:dev')
+            ->withExposedPorts(3592)
+            ->withExposedPorts(3593)
+            ->withMount($pathToConfig, "/config")
+            ->withCommand(["server", "--config=/config/config.yaml"])
+            ->withWait(new WaitForLog('Starting gRPC server at :3593'))
+            ->start();
+
+        return $container;
+    }
+
+    private function cerbosctl(string $host, array $args): void
+    {
+        $combinedArgs = [
+            "--server=" . $host . ':3593',
+            "--username=cerbos",
+            "--password=cerbosAdmin"
+        ];
+        array_push($combinedArgs, ...$args);
+
+        $pathToPolicies = realpath(__DIR__ . "/../res/policies");
+        if (!is_string($pathToPolicies)) $this->fail("pathToPolicies is not of string type");
+
+        new GenericContainer('ghcr.io/cerbos/cerbosctl:dev')
+            ->withMount($pathToPolicies, "/policies")
+            ->withCommand(array_values($combinedArgs))
+            ->start();
     }
 }

@@ -26,6 +26,14 @@ class RoleRule extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.cerbos.policy.v1.Condition condition = 3 [json_name = "condition"];</code>
      */
     protected $condition = null;
+    /**
+     * Generated from protobuf field <code>string name = 4 [json_name = "name"];</code>
+     */
+    protected $name = '';
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Output output = 5 [json_name = "output"];</code>
+     */
+    protected $output = null;
 
     /**
      * Constructor.
@@ -36,6 +44,8 @@ class RoleRule extends \Google\Protobuf\Internal\Message
      *     @type string $resource
      *     @type string[] $allow_actions
      *     @type \Cerbos\Policy\V1\Condition $condition
+     *     @type string $name
+     *     @type \Cerbos\Policy\V1\Output $output
      * }
      */
     public function __construct($data = NULL) {
@@ -115,6 +125,60 @@ class RoleRule extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Condition::class);
         $this->condition = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string name = 4 [json_name = "name"];</code>
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Generated from protobuf field <code>string name = 4 [json_name = "name"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setName($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->name = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Output output = 5 [json_name = "output"];</code>
+     * @return \Cerbos\Policy\V1\Output|null
+     */
+    public function getOutput()
+    {
+        return $this->output;
+    }
+
+    public function hasOutput()
+    {
+        return isset($this->output);
+    }
+
+    public function clearOutput()
+    {
+        unset($this->output);
+    }
+
+    /**
+     * Generated from protobuf field <code>.cerbos.policy.v1.Output output = 5 [json_name = "output"];</code>
+     * @param \Cerbos\Policy\V1\Output $var
+     * @return $this
+     */
+    public function setOutput($var)
+    {
+        GPBUtil::checkMessage($var, \Cerbos\Policy\V1\Output::class);
+        $this->output = $var;
 
         return $this;
     }

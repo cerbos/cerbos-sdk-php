@@ -30,6 +30,16 @@ jobs:
           lfs: true
           persist-credentials: false
 
+      - name: Set up Buf
+        uses: cerbos/actions/install-tools@0c9f5496bb1c168e663ad7ecb99ad0d2b947ba46 # main
+        with:
+          tools: buf
+
+      - name: Set up just
+        uses: cerbos/actions/install-tools@0c9f5496bb1c168e663ad7ecb99ad0d2b947ba46 # main
+        with:
+          tools: just
+
       - name: Set up PHP
         uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2
         with:
@@ -37,13 +47,8 @@ jobs:
           coverage: xdebug
           extensions: "grpc"
 
-      - name: Install Buf
-        uses: cerbos/actions/install-tools@0c9f5496bb1c168e663ad7ecb99ad0d2b947ba46 # main
-        with:
-          tools: buf
-
       - name: Validate
-        run: make validate-composer
+        run: just validate-composer
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
@@ -51,19 +56,16 @@ jobs:
       - name: Generate
         env:
           BUF_TOKEN: ${{ secrets.BUF_TOKEN }}
-        run: make generate
+        run: just generate
 
       - name: Lint
-        run: make lint
+        run: just lint
 
       - name: Static analysis
-        run: make static-analysis
+        run: just static-analysis
 
       - name: Check repo status
         uses: cerbos/actions/check-repo-status@0c9f5496bb1c168e663ad7ecb99ad0d2b947ba46 # main
-
-      - name: Run cerbos service
-        run: docker compose up -d
 
       - name: Run unit tests
         env:
@@ -71,7 +73,4 @@ jobs:
           CERBOS_HUB_CLIENT_ID: "${{ secrets.CERBOS_HUB_CLIENT_ID }}"
           CERBOS_HUB_CLIENT_SECRET: "${{ secrets.CERBOS_HUB_CLIENT_SECRET }}"
           CERBOS_HUB_STORE_ID: "${{ secrets.CERBOS_HUB_STORE_ID }}"
-        run: make test
-
-      - name: Stop cerbos service
-        run: docker compose down
+        run: just test

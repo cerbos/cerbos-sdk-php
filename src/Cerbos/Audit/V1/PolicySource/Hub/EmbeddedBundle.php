@@ -22,6 +22,10 @@ class EmbeddedBundle extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated string scopes = 2 [json_name = "scopes"];</code>
      */
     private $scopes;
+    /**
+     * Generated from protobuf field <code>string bundle_id = 3 [json_name = "bundleId"];</code>
+     */
+    protected $bundle_id = '';
 
     /**
      * Constructor.
@@ -31,6 +35,7 @@ class EmbeddedBundle extends \Google\Protobuf\Internal\Message
      *
      *     @type string $rule_id
      *     @type string[] $scopes
+     *     @type string $bundle_id
      * }
      */
     public function __construct($data = NULL) {
@@ -78,6 +83,28 @@ class EmbeddedBundle extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->scopes = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string bundle_id = 3 [json_name = "bundleId"];</code>
+     * @return string
+     */
+    public function getBundleId()
+    {
+        return $this->bundle_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string bundle_id = 3 [json_name = "bundleId"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setBundleId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->bundle_id = $var;
 
         return $this;
     }
