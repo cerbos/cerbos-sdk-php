@@ -55,6 +55,10 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>map<string, string> matched_scopes = 10 [json_name = "matchedScopes"];</code>
      */
     private $matched_scopes;
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.EvaluationError evaluation_errors = 11 [json_name = "evaluationErrors"];</code>
+     */
+    private $evaluation_errors;
 
     /**
      * Constructor.
@@ -72,6 +76,7 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
      *     @type \Cerbos\Schema\V1\ValidationError[] $validation_errors
      *     @type string[] $actions
      *     @type array|\Google\Protobuf\Internal\MapField $matched_scopes
+     *     @type \Cerbos\Engine\V1\EvaluationError[] $evaluation_errors
      * }
      */
     public function __construct($data = NULL) {
@@ -311,6 +316,28 @@ class PlanResourcesOutput extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::STRING);
         $this->matched_scopes = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.EvaluationError evaluation_errors = 11 [json_name = "evaluationErrors"];</code>
+     * @return RepeatedField<\Cerbos\Engine\V1\EvaluationError>
+     */
+    public function getEvaluationErrors()
+    {
+        return $this->evaluation_errors;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.EvaluationError evaluation_errors = 11 [json_name = "evaluationErrors"];</code>
+     * @param \Cerbos\Engine\V1\EvaluationError[] $var
+     * @return $this
+     */
+    public function setEvaluationErrors($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\EvaluationError::class);
+        $this->evaluation_errors = $arr;
 
         return $this;
     }

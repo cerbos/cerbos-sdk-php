@@ -171,26 +171,35 @@ class PolicySource extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource.EmbeddedPDP embedded_pdp = 6 [json_name = "embeddedPdp"];</code>
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource.EmbeddedPDP embedded_pdp = 6 [json_name = "embeddedPdp", deprecated = true];</code>
      * @return \Cerbos\Audit\V1\PolicySource\EmbeddedPDP|null
+     * @deprecated
      */
     public function getEmbeddedPdp()
     {
+        if ($this->hasOneof(6)) {
+            @trigger_error('embedded_pdp is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->readOneof(6);
     }
 
     public function hasEmbeddedPdp()
     {
+        if ($this->hasOneof(6)) {
+            @trigger_error('embedded_pdp is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->hasOneof(6);
     }
 
     /**
-     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource.EmbeddedPDP embedded_pdp = 6 [json_name = "embeddedPdp"];</code>
+     * Generated from protobuf field <code>.cerbos.audit.v1.PolicySource.EmbeddedPDP embedded_pdp = 6 [json_name = "embeddedPdp", deprecated = true];</code>
      * @param \Cerbos\Audit\V1\PolicySource\EmbeddedPDP $var
      * @return $this
+     * @deprecated
      */
     public function setEmbeddedPdp($var)
     {
+        @trigger_error('embedded_pdp is deprecated.', E_USER_DEPRECATED);
         GPBUtil::checkMessage($var, \Cerbos\Audit\V1\PolicySource\EmbeddedPDP::class);
         $this->writeOneof(6, $var);
 

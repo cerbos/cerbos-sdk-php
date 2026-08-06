@@ -18,6 +18,10 @@ class AuxData extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.cerbos.request.v1.AuxData.JWT jwt = 1 [json_name = "jwt"];</code>
      */
     protected $jwt = null;
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.request.v1.AuxData.JWT> jwts = 2 [json_name = "jwts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     */
+    private $jwts;
 
     /**
      * Constructor.
@@ -26,6 +30,7 @@ class AuxData extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type \Cerbos\Request\V1\AuxData\JWT $jwt
+     *     @type array|\Google\Protobuf\Internal\MapField $jwts
      * }
      */
     public function __construct($data = NULL) {
@@ -61,6 +66,28 @@ class AuxData extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Cerbos\Request\V1\AuxData\JWT::class);
         $this->jwt = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.request.v1.AuxData.JWT> jwts = 2 [json_name = "jwts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getJwts()
+    {
+        return $this->jwts;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<string, .cerbos.request.v1.AuxData.JWT> jwts = 2 [json_name = "jwts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setJwts($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Request\V1\AuxData\JWT::class);
+        $this->jwts = $arr;
 
         return $this;
     }
