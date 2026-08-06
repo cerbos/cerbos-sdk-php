@@ -8,9 +8,11 @@ declare(strict_types=1);
 namespace Cerbos\Sdk\Response\V1\CheckResourcesResponse\ResultEntry;
 
 use Cerbos\Effect\V1\Effect;
-use Cerbos\Engine\V1\OutputEntry;
 use Cerbos\Response\V1\CheckResourcesResponse\ResultEntry\Resource;
 use Cerbos\Schema\V1\ValidationError;
+use Cerbos\Sdk\Engine\V1\OutputEntry\OutputEntry;
+use Cerbos\Sdk\Engine\V1\OutputEntry\OutputEntryEvaluationException;
+use Cerbos\Sdk\Engine\V1\OutputEntry\OutputEntryNotFoundException;
 
 final class ResultEntry
 {
@@ -65,7 +67,7 @@ final class ResultEntry
     {
         $outputs = array();
         foreach ($this->resultEntry->getOutputs()->getIterator() as $output) {
-            $outputs[] = $output;
+            $outputs[] = new OutputEntry($output);
         }
 
         return $outputs;
@@ -97,6 +99,41 @@ final class ResultEntry
         }
 
         return $actions[$action] == Effect::EFFECT_ALLOW;
+    }
+
+    /**
+     * @param string $src
+     * @return OutputEntry
+     * @throws OutputEntryEvaluationException|OutputEntryNotFoundException
+     */
+    public function output(string $src): OutputEntry
+    {
+        foreach ($this->getOutputs() as $output) {
+            if ($output->getSrc() == $src) {
+                OutputEntryEvaluationException::fromOutputEntry($output);
+                return $output;
+            }
+        }
+
+        throw OutputEntryNotFoundException::src($src);
+    }
+
+    /**
+     * @param string $action
+     * @return OutputEntry
+     * @throws OutputEntryEvaluationException|OutputEntryNotFoundException
+     * @psalm-suppress PossiblyUnusedReturnValue
+     */
+    public function outputByAction(string $action): OutputEntry
+    {
+        foreach ($this->getOutputs() as $output) {
+            if ($output->getAction() == $action) {
+                OutputEntryEvaluationException::fromOutputEntry($output);
+                return $output;
+            }
+        }
+
+        throw OutputEntryNotFoundException::action($action);
     }
 
     /**

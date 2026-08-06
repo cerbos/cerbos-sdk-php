@@ -14,6 +14,8 @@ use Cerbos\Sdk\Builder\PlanResourcesRequest;
 use Cerbos\Sdk\Builder\Principal;
 use Cerbos\Sdk\Builder\Resource;
 use Cerbos\Sdk\Builder\ResourceEntry;
+use Cerbos\Sdk\Engine\V1\OutputEntry\OutputEntryEvaluationException;
+use Cerbos\Sdk\Engine\V1\OutputEntry\OutputEntryNotFoundException;
 use Cerbos\Sdk\Response\V1\HealthCheckResponse\ServiceStatus;
 use Exception;
 
@@ -46,7 +48,7 @@ final class CerbosClientTest extends TestCase
                     ->withAttribute("geography", AttributeValue::stringValue("GB"))
                     ->withAttribute("team", AttributeValue::stringValue("design"))
                     ->withAttribute("owner", AttributeValue::stringValue("john"))
-                    ->withActions(["view:public", "approve"])
+                    ->withActions(["approve", "error", "view:public"])
             );
 
         try {
@@ -56,9 +58,21 @@ final class CerbosClientTest extends TestCase
             $this->fail($e->getMessage());
         }
 
-        $this->assertTrue($resultEntry->isAllowed("view:public"), "result of XX125 for view:public action is wrong");
         $this->assertFalse($resultEntry->isAllowed("approve"), "result of XX125 for approve action is wrong");
+        $this->assertTrue($resultEntry->isAllowed("error"), "result of XX125 for error action is wrong");
+        $this->assertTrue($resultEntry->isAllowed("view:public"), "result of XX125 for view:public action is wrong");
         $this->assertFalse($resultEntry->isAllowed("nonexistent_action"), "result of XX125 for non-existent action is wrong");
+
+        $this->assertEquals("view:public:john", $resultEntry->output("resource.leave_request.v20210210#public-view")->getVal()->getStringValue());
+
+        $this->expectException(OutputEntryEvaluationException::class);
+        $resultEntry->output("resource.leave_request.v20210210#output-error");
+
+        $this->expectException(OutputEntryEvaluationException::class);
+        $resultEntry->outputByAction("error");
+
+        $this->expectException(OutputEntryNotFoundException::class);
+        $resultEntry->outputByAction("error:notfoundexception");
     }
 
     public function testCheckWithJwt(): void
