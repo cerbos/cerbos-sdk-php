@@ -7,15 +7,21 @@ declare(strict_types=1);
 
 namespace Cerbos\Sdk\Builder;
 
-use Cerbos\Request\V1\AuxData\JWT;
+use Cerbos\Sdk\Builder\AuxData\JWT;
 
 final class AuxData
 {
     private \Cerbos\Request\V1\AuxData $auxData;
 
-    private function __construct()
+    /**
+     * @param array $data {
+     *     @type \Cerbos\Request\V1\AuxData\JWT $jwt
+     *     @type array|\Google\Protobuf\Internal\MapField $jwts
+     * }
+     */
+    private function __construct(array $data)
     {
-        $this->auxData = new \Cerbos\Request\V1\AuxData();
+        $this->auxData = new \Cerbos\Request\V1\AuxData($data);
     }
 
     /**
@@ -25,16 +31,9 @@ final class AuxData
      */
     public static function withJwt(string $token, ?string $keySetId): AuxData
     {
-        $jwt = new JWT();
-        $jwt->setToken($token);
-        if (!is_null($keySetId)) {
-            $jwt->setKeySetId($keySetId);
-        }
-
-        $auxData = new AuxData();
-        $auxData->auxData = (new \Cerbos\Request\V1\AuxData())->setJwt($jwt);
-
-        return $auxData;
+        return new AuxData([
+            'jwt' => (JWT::newInstance($token, $keySetId))->toJWT()
+        ]);
     }
 
     /**

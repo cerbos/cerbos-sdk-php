@@ -19,7 +19,6 @@ final class AuxDataTest extends TestCase
     public function testWithJwt(): void
     {
         $auxData = AuxData::withJwt($this->token, $this->keySetId)->toAuxData();
-
         $this->assertEquals($this->token, $auxData->getJwt()->getToken(), "invalid token");
         $this->assertEquals($this->keySetId, $auxData->getJwt()->getKeySetId(), "invalid keySetId");
 
