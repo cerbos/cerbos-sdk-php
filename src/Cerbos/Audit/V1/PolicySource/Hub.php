@@ -36,26 +36,35 @@ class Hub extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string label = 1 [json_name = "label"];</code>
+     * Generated from protobuf field <code>string label = 1 [json_name = "label", deprecated = true];</code>
      * @return string
+     * @deprecated
      */
     public function getLabel()
     {
+        if ($this->hasOneof(1)) {
+            @trigger_error('label is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->readOneof(1);
     }
 
     public function hasLabel()
     {
+        if ($this->hasOneof(1)) {
+            @trigger_error('label is deprecated.', E_USER_DEPRECATED);
+        }
         return $this->hasOneof(1);
     }
 
     /**
-     * Generated from protobuf field <code>string label = 1 [json_name = "label"];</code>
+     * Generated from protobuf field <code>string label = 1 [json_name = "label", deprecated = true];</code>
      * @param string $var
      * @return $this
+     * @deprecated
      */
     public function setLabel($var)
     {
+        @trigger_error('label is deprecated.', E_USER_DEPRECATED);
         GPBUtil::checkString($var, True);
         $this->writeOneof(1, $var);
 

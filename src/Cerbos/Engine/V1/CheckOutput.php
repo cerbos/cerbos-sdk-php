@@ -38,6 +38,10 @@ class CheckOutput extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated .cerbos.engine.v1.OutputEntry outputs = 6 [json_name = "outputs"];</code>
      */
     private $outputs;
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.EvaluationError evaluation_errors = 7 [json_name = "evaluationErrors"];</code>
+     */
+    private $evaluation_errors;
 
     /**
      * Constructor.
@@ -51,6 +55,7 @@ class CheckOutput extends \Google\Protobuf\Internal\Message
      *     @type string[] $effective_derived_roles
      *     @type \Cerbos\Schema\V1\ValidationError[] $validation_errors
      *     @type \Cerbos\Engine\V1\OutputEntry[] $outputs
+     *     @type \Cerbos\Engine\V1\EvaluationError[] $evaluation_errors
      * }
      */
     public function __construct($data = NULL) {
@@ -186,6 +191,28 @@ class CheckOutput extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\OutputEntry::class);
         $this->outputs = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.EvaluationError evaluation_errors = 7 [json_name = "evaluationErrors"];</code>
+     * @return RepeatedField<\Cerbos\Engine\V1\EvaluationError>
+     */
+    public function getEvaluationErrors()
+    {
+        return $this->evaluation_errors;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated .cerbos.engine.v1.EvaluationError evaluation_errors = 7 [json_name = "evaluationErrors"];</code>
+     * @param \Cerbos\Engine\V1\EvaluationError[] $var
+     * @return $this
+     */
+    public function setEvaluationErrors($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cerbos\Engine\V1\EvaluationError::class);
+        $this->evaluation_errors = $arr;
 
         return $this;
     }
