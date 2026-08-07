@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace Cerbos\Sdk\Builder;
 
 use Cerbos\Sdk\Builder\AuxData\JWT;
+use InvalidArgumentException;
 
 final class AuxData
 {
@@ -33,6 +34,26 @@ final class AuxData
     {
         return new AuxData([
             'jwt' => (JWT::newInstance($token, $keySetId))->toJWT()
+        ]);
+    }
+
+    /**
+     * @param array<string, JWT> $jwts
+     * @return AuxData
+     */
+    public static function withJwts(array $jwts): AuxData
+    {
+        if (count($jwts) == 0) {
+            throw new InvalidArgumentException("there must be at least one JWT in the map");
+        }
+
+        $v = array();
+        foreach ($jwts as $key => $value) {
+            $v[$key] = $value->toJWT();
+        }
+
+        return new AuxData([
+            'jwts' => $v
         ]);
     }
 

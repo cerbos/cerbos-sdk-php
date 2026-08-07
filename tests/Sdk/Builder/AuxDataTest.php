@@ -6,6 +6,7 @@
 namespace Cerbos\Test\Sdk\Builder;
 
 use Cerbos\Sdk\Builder\AuxData;
+use Cerbos\Sdk\Builder\AuxData\JWT;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -25,5 +26,23 @@ final class AuxDataTest extends TestCase
         $auxData1 = AuxData::withJwt($this->token, null)->toAuxData();
         $this->assertEquals($this->token, $auxData1->getJwt()->getToken(), "invalid token");
         $this->assertEquals("", $auxData1->getJwt()->getKeySetId(), "invalid keySetId");
+    }
+
+    public function testWithJwts(): void
+    {
+        $name1 = "name1";
+        $name2 = "name2";
+
+        $jwt = JWT::newInstance($this->token, $this->keySetId);
+        $auxData = AuxData::withJwts([
+            $name1 => $jwt,
+            $name2 => $jwt,
+        ])->toAuxData();
+
+        $this->assertEquals($this->token, $auxData->getJwts()[$name1]->getToken(), "invalid token on first JWT");
+        $this->assertEquals($this->keySetId, $auxData->getJwts()[$name1]->getKeySetId(), "invalid keySetId on first JWT");
+
+        $this->assertEquals($this->token, $auxData->getJwts()[$name2]->getToken(), "invalid token on second JWT");
+        $this->assertEquals($this->keySetId, $auxData->getJwts()[$name2]->getKeySetId(), "invalid keySetId on second JWT");
     }
 }
